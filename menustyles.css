@@ -33,16 +33,24 @@
     text-decoration: none;
     color: black;
 }
-.logo{
+.nav-links a:hover {
+    color: green;
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-color:#399918(181, 181, 181)
+  }
+.logo {
     display: flex;
     flex-direction: row;
 }
-.logo img{
+
+.logo img {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-   
+
 }
+
 .logo a {
     display: flex;
     flex-direction: row;
@@ -51,6 +59,7 @@
     list-style: none;
     font-size: 1.5rem;
     font-weight: 500;
+    cursor: default;
 }
 
 /* HANBURGER MENU */
@@ -79,24 +88,152 @@
 
 /*MENU BAR*/
 
-.menubar{
+.menubar {
     padding-top: 20px;
 }
-.menu-list{
+
+.menu-list {
     display: flex;
     flex-direction: row;
-    justify-content:center;
-    gap:2rem;
+    justify-content: center;
+    gap: 2rem;
     list-style: none;
-    font-size:0.7rem;
+    font-size: 0.7rem;
 }
-.menu-list li{
+
+.menu-list li {
     border: 0.3px lightgrey solid;
-    padding:2px;
+    padding: 2px;
     border-radius: 10px;
     cursor: pointer;
-   
 }
-.menu-list li:hover{
-    box-shadow: 1px 1px 1px 1px  lightgreen;
+
+.menu-list a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+
+.menu-list li:hover {
+    /*box-shadow: 1px 1px 1px 1px  lightgreen;*/
+    background-color: #9BEC00;
+}
+
+
+/*PROTEIN BOWL*/
+#proteinbowl {
+    position: relative;
+}
+
+.section-heading {
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    color: #399918;
+    font-weight: 500;
+    padding: 1rem;
+}
+
+.section-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.details-container {
+    
+    display: flex;
+    text-align: initial;
+    flex-wrap:wrap;
+    gap: 1.5rem;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    width: 35rem;
+    justify-content: start;
+    gap: 0.01rem;
+    margin-bottom: 0.1rem;
+    border: 0.002rem black solid;
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.about-img {
+    float: right;
+    margin-left: 1rem;
+    margin-top: -2rem;
+
+}
+
+.about-img,
+img {
+    width: 200px;
+    height: 150px;
+    border-radius: 15px;
+}
+
+.btn1 {
+     border: none;
+     background-color: transparent;
+}
+.about-img .btn1{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+    background-color:#399918;
+    padding: 0.35rem 1.5rem;
+    position: relative;
+    bottom: 30px;
+    left:50px;
+    border-radius: 10px;
+}
+
+.about-img .btn1:hover{
+    background-color: #88D66C;
+}
+
+.about-container {
+    margin-top: 0.3rem;
+    margin-left: 0.3rem;
+}
+
+.about-container p {
+    margin-bottom: 0.6rem;
+}
+
+
+
+.dish {
+    font-size: 1.24rem;
+    font-weight: 500;
+}
+
+.ingredient {
+    font-size: 0.84rem;
+}
+
+.price {
+    font-size: 0.94rem;
+    font-weight: 550;
+}
+
+span {
+    color: green;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.nutrients {
+    font-size: 0.89rem;
+
+}
+
+/*VEG-SALADS*/
+#vegsalads {
+    position: relative;
 }
