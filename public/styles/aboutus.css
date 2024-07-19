@@ -1,0 +1,57 @@
+/*GENERAL*/
+* {
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*Breadcrumb*/
+
+ol.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    margin-left: -5px;
+    padding: 1rem;
+}
+
+ol.breadcrumb li {
+    display: inline;
+    font-size: 1.2rem;
+}
+
+ol.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: ">\00a0";
+}
+
+/*ABOUT PAGE*/
+.aboutbg img {
+    float: right;
+    width: 800px;
+    height: auto;
+    padding: 1.5rem;
+   
+}
+.aboutimg{
+    border: 2px black solid;
+    border-radius: 17px;
+}
+
+.about-content {
+    width: 600px;
+    height: fit-content;
+    position: absolute;
+    top: 400px;
+    background-color: transparent;
+    color:blue;
+    font-size: 3rem;
+}
+
+.greenytxt {
+    color: #88D66C;
+    font-size: 4rem;
+}

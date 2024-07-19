@@ -1,0 +1,627 @@
+/*GENERAL*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+@keyframes Rotate {
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+/* NAV BAR */
+
+.nav-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 13vh;
+    box-shadow: 0px 2px 2px 0px rgba(100, 94, 94, 0.2);
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    margin-top: 10px;
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-links a:not(.menu-content a):hover {
+    color: #399918;
+    text-decoration: underline;
+    text-underline-offset: 1.2rem;
+    text-decoration-color: #0c2e01(181, 181, 181)
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+}
+
+.logo img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+}
+
+.logo a {
+    display: flex;
+    flex-direction: row;
+    margin-left: 40px;
+    margin-top: 10px;
+    list-style: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: default;
+}
+
+
+/*login and cart*/
+.btnpress,
+.btnpress1 {
+    cursor: pointer;
+}
+
+.loginway {
+    display: none;
+    position: absolute;
+    right: 40px;
+    margin-top: 60px;
+    padding: 10px;
+    background-color: #B4E380;
+    min-width: 200px;
+    min-height: 70px;
+    z-index: 1;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+.cnl,
+.cnllogin,
+.cnlotp {
+    position: absolute;
+    top: 4px;
+    right: 15px;
+    font-size: 24px;
+}
+
+.loginway .lgn1 {
+    background-color: black;
+    color: #fff;
+    padding: 8px 80px;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.hidden1 {
+    display: block;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.overlaylog {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/*loginpopup*/
+.loginpopup {
+    display: none;
+    position: absolute;
+    top: 150px;
+    left: 30%;
+    width: 550px;
+    height: 380px;
+    background-color: #B4E380;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+
+}
+
+::placeholder {
+    font-weight: 700;
+    font-size: 0.9rem;
+
+}
+
+.loginpop-content {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.loginpop-content1,
+.otppop-content1 {
+    background-color: #88D66C;
+    display: flex;
+    min-width: 450px;
+    min-height: 240px;
+    flex-direction: column;
+    margin-left: 20px;
+    border-radius: 15px;
+    margin-right: 20px;
+
+}
+
+.mobno {
+    margin-top: 10px;
+    position: absolute;
+    left: 70px;
+    display: flex;
+}
+
+.otpbtn {
+    margin: 20px;
+    text-align: center;
+    border: none;
+    background-color: #d0d9de;
+    border-radius: 10px;
+    width: 190px;
+    height: 45 px;
+    padding: 13px 40px;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+#textbox {
+    width: 380px;
+    height: 55px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: 15px;
+    border-color: #eef6fa;
+
+}
+
+/* cart*/
+
+.cart {
+    display: none;
+    position: absolute;
+    left: 900px;
+    top: 0;
+    margin-top: -10;
+    background-color: #B4E380;
+    min-width: 450px;
+    min-height: 700px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    flex-wrap: wrap;
+
+}
+
+.cart p {
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 20px;
+}
+
+.cart .buy {
+    display: flex;
+    position: absolute;
+    top: 180px;
+    left: 50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.hidden2 {
+    display: flex;
+}
+
+.hidden1 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.cbtnc {
+    font-size: 19px;
+    font-weight: bold;
+    margin-left: 20px;
+    width: 180px;
+    height: auto;
+    padding: 8px;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    background-color: black;
+    color: white;
+}
+
+
+/*  HAMBURGER MENU */
+
+.hamburger-nav {
+    display: none;
+}
+
+.hamburger-menu {
+    display: inline;
+    margin-top: 10px;
+
+}
+
+.hamburger-icon {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.hamburger-icon span {
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    transition: all 0.3 ease-in-out;
+}
+
+
+.menu-links {
+    position: absolute;
+    right: 20px;
+    z-index: 1;
+    margin-top: 15px;
+    background-color: white;
+    width: 170px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3 ease-in-out;
+}
+
+.menu-links a {
+    margin-left: 20px;
+    display: block;
+    padding: 10px;
+    font-size: 1.3rem;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3 ease-in-out;
+}
+
+.menu-links li {
+    list-style: none;
+}
+
+.menu-links.open {
+    max-height: 300px;
+}
+
+.hamburger-icon.open span:first-child {
+    transform: rotate(45deg) translate(10px, 5px);
+}
+
+.hamburger-icon.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-icon.open span:last-child {
+    transform: rotate(-45deg) translate(10px, -5px);
+}
+
+.hamburger-icon span:first-child {
+    transform: none;
+}
+
+.hamburger-icon span:first-child {
+    opacity: 1;
+}
+
+.hamburger-icon span:first-child {
+    transform: none;
+}
+
+
+.menucardhamb {
+    width: fit-content;
+    height: fit-content;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 1px lightgray;
+    display: none;
+    padding: 0.2rem;
+    padding-top: 1rem;
+    position: absolute;
+    top: 10rem;
+    right:10.5rem;
+    background-color: #fff;
+    z-index: 1000;
+    border: 0.3px solid #399918;
+}
+
+
+.menu-content1 {
+    position: relative;
+}
+
+.menu-content1 li {
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.8rem;
+    margin-left: -25px;
+    margin-bottom: 0.5rem;
+}
+
+.menu-content1 a {
+    text-decoration: none;
+    color: black;
+    padding: 6px 40px 6px 20px;
+}
+
+.menu-content1 a:hover {
+    background-color: #88D66C;
+}
+
+.hamburger-icon {
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+
+/*MENU BAR*/
+
+.menubar {
+    padding-top: 20px;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    font-size: 0.7rem;
+}
+
+.menu-list li {
+    border: 0.3px lightgrey solid;
+    padding: 2px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.menu-list a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+
+.menu-list li:hover {
+    /*box-shadow: 1px 1px 1px 1px  lightgreen;*/
+    background-color: #9BEC00;
+}
+
+
+/*MENU CARD*/
+
+.menucard {
+    width: fit-content;
+    height: fit-content;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 1px lightgray;
+    display: none;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 0.3rem;
+    position: absolute;
+    margin-top: 3rem;
+    margin-left: 6rem;
+    background-color: #fff;
+}
+
+.menucard-js {
+    display: flex;
+}
+
+.menu-content li {
+    cursor: pointer;
+    list-style: none;
+    font-size: 1.1rem;
+    margin-left: -25px;
+    margin-bottom: 0.5rem;
+
+}
+
+.menu-content a {
+    text-decoration: none;
+    color: black;
+    padding: 6px 40px 6px 20px;
+}
+
+.menu-content a:hover {
+    background-color: #88D66C;
+}
+
+/*PROTEIN BOWL*/
+#proteinbowl {
+    position: relative;
+}
+
+.veg_nonveg_icon {
+    display: inline;
+}
+
+.veg-non-veg-icon {
+    width: 18px;
+    height: 18px;
+
+}
+
+.section-heading {
+    font-size: 1.4rem;
+    margin-left: 1.5rem;
+    color: #399918;
+    font-weight: 500;
+    padding: 1rem;
+    padding-right: 2rem;
+}
+
+.caret-styles {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.caret-styles-js {
+    transform: rotate(180deg);
+}
+
+.spacecaret {
+    display: inline;
+}
+
+.spacecaret .caret-styles {
+    float: right;
+    margin-top: 1rem;
+    margin-right: 10rem
+}
+
+.section-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.section-container-js {
+    display: none;
+}
+
+.details-container {
+
+    display: flex;
+    text-align: initial;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    width: 35rem;
+    justify-content: start;
+    gap: 0.01rem;
+    margin-bottom: 0.1rem;
+    border: 0.002rem black solid;
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+.about-img {
+    float: right;
+    margin-left: 1rem;
+    margin-top: -2rem;
+
+}
+
+.about-img,
+img {
+    width: 200px;
+    height: 150px;
+    border-radius: 15px;
+}
+
+.btn1 {
+    border: none;
+    background-color: transparent;
+}
+
+.about-img .btn1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+    background-color: #399918;
+    padding: 0.35rem 1.5rem;
+    position: relative;
+    bottom: 30px;
+    left: 50px;
+    border-radius: 10px;
+}
+
+.about-img .btn1:hover {
+    background-color: #88D66C;
+}
+
+.about-container {
+    margin-top: 0.3rem;
+    margin-left: 0.3rem;
+}
+
+.about-container p {
+    margin-bottom: 0.6rem;
+}
+
+
+
+.dish {
+    font-size: 1.24rem;
+    font-weight: 500;
+}
+
+.ingredient {
+    font-size: 0.84rem;
+}
+
+.price {
+    font-size: 0.94rem;
+    font-weight: 550;
+}
+
+span {
+    color: green;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.nutrients {
+    font-size: 0.89rem;
+
+}
+
+/*VEG-SALADS*/
+#vegsalads {
+    position: relative;
+}
