@@ -74,9 +74,9 @@ body {
 
 
 /*login and cart*/
-.btnpress,
-.btnpress1 {
+.btnpress1,.btnpress2,.btnpress {
     cursor: pointer;
+    font-size:1.8rem;
 }
 
 .loginway {
@@ -333,7 +333,7 @@ body {
 }
 
 .hamburger-icon.open span:first-child {
-    transform: rotate(45deg) translate(10px, 5px);
+    transform: rotate(45deg) translate(8px, 3px);
 }
 
 .hamburger-icon.open span:nth-child(2) {

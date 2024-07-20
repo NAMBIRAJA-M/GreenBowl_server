@@ -64,21 +64,22 @@ $(document).ready(function () {
 
 
 
-// hamburger-menu
+
+
+// hamburger-menu > icon and menus open and close
 function toggleMenu() {
     const menu = document.querySelector(".hamburger-nav .menu-links");
     const icon = document.querySelector(".hamburger-icon");
     menu.classList.toggle("open");
     icon.classList.toggle("open");
 }
-function toggleMenus() {
-    const menu = document.querySelector(".hamburger-nav .menu-links");
-    menu.classList.add("open");
 
-}
+
+
+//hamburger-nav > menucard open and close
 
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".menu-links .menus1").addEventListener("click", function () {
+    document.querySelector(".menus1").addEventListener("click", function () {
         const menucardhamb = document.querySelector(".menucardhamb");
         if (menucardhamb.style.display === "flex") {
             menucardhamb.style.display = "none";
@@ -88,27 +89,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-//hamburger menu---open close function
+//hamburger-nav > menucard open and close (other elements)
 
 $(document).click(function (event) {
-    if (!$(event.target).closest('.hamburger-icon,.menus1').length) {
+    if (!$(event.target).closest('.menus1').length) {
         const menucardhamb = document.querySelector(".menucardhamb");
         if (menucardhamb.style.display === "flex") {
             menucardhamb.style.display = "none";
         }
-        const menu= document.querySelector(".hamburger-nav .menu-links");
-        menu.classList.remove("open");
-        const icon = document.querySelector(".hamburger-icon");
-        icon.classList.remove("open");
+     
     }
 });
-
-
-
-
-
-// $("#icon .overlay").css("display", "none"); 
-//$('body').css('overflow', 'auto');
 
 
 

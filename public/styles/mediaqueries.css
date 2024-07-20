@@ -1,11 +1,11 @@
 @media screen and (max-width:1200px) {
-    .nav-area{
+    .nav-area {
         display: none;
     }
 
     .hamburger-nav {
         display: flex;
-        justify-content:space-around;
+        justify-content: space-around;
     }
 }
 
@@ -13,94 +13,150 @@
 
     .hamburger-nav {
         display: flex;
-        justify-content:space-between;
+        justify-content: space-around;
         margin-left: 1rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
-
-    }
-    .logo{
-        display:in
+        margin-right: 1rem;
     }
 
-    .logo a{
-  display: none;
+    .logo img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
 
     }
+
+
+    .logo a {
+        display: none;
+
+    }
+
     .nav-links {
-        gap: 4rem;
+        gap: 1.5rem;
         margin-top: 10px;
-        list-style: none;
-        font-size: 1.5rem;
-        padding-left: 5px;
-        position: relative;
+    }
+
+    .btnpress,
+    .btnpress1,
+    .btnpress2 {
+        font-size: 1.6rem;
+    }
+
+    .loginway {
+        width: 100px;
+        height: 50px;
+        font-size: 0.9rem;
+        flex-direction: row;
+        padding-right: 2px;
+        right: 30px;
+        margin-top: 50px;
+    }
+
+    .loginway p {
+        margin-bottom: 0.3rem;
+    }
+
+    .loginway .lgn1 {
+        padding: 8px 50px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .cnl,
+    .cnllogin,
+    .cnlotp {
+        font-size: 20px;
+    }
+
+    .hamburger-menu {
+        margin-top: 8px;
+    }
+
+    .hamburger-icon {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 19px;
+        width: 25px;
+        cursor: pointer;
     }
 
     .menu-links {
-        right: -30px;
+        right: -50px;
+        width: 150px;
         z-index: 1;
         margin-top: 20px;
 
     }
+
     .menu-links a {
         font-size: 0.9rem;
     }
+
     .menucardhamb {
-        top: 10rem;
+        top: 4.5rem;
         right: 2rem;
     }
-    
+
 
     /*sections*/
+
     .section-heading {
         font-size: 1.2rem;
         padding-right: 2rem;
     }
-    
+
     .spacecaret .caret-styles {
         margin-right: 0rem
     }
+
     .about-img,
     img {
         margin-top: 0.01rem;
         width: 150px;
         height: 100px;
     }
+
     .about-img .btn1 {
         font-size: 1rem;
         padding: 0.3rem 1.4rem;
         bottom: 20px;
         left: 30px;
     }
+
     .about-container {
         margin-top: 0.2rem;
         margin-left: 0.2rem;
     }
-    
+
     .about-container p {
         margin-bottom: 0.5rem;
     }
+
     .dish {
         font-size: 1.14rem;
     }
-    
+
     .ingredient {
         font-size: 0.8rem;
     }
-    
+
     .price {
         font-size: 0.9rem;
     }
-    
+
     span {
         color: green;
         font-size: 1rem;
         font-weight: 600;
     }
-    
+
     .nutrients {
         font-size: 0.89rem;
-    
+
     }
 
 
