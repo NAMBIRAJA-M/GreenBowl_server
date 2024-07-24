@@ -7,6 +7,15 @@
     background-color: lightgray;
   }
 
+  @media screen and (max-width:600px) {
+
+    /*INDEX PAGE (HOME)*/
+    .main-content a {
+        font-size: 15px;
+        padding:20px 40px;
+    }
+  }    
+
 /* MAIN CONTAINER*/
 
 .main-container{
