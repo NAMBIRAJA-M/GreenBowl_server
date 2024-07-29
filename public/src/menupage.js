@@ -23,6 +23,10 @@ $(".nonvegsalads .section-heading,.nonvegsalads .caret-styles").click(function (
     $(".nonvegsalads .caret-styles").toggleClass("caret-styles-js")
     $(".nonvegsalads .section-container").toggleClass("section-container-js")
 });
+$(".vegsandwiches .section-heading,.vegsandwiches .caret-styles").click(function () {
+    $(".vegsandwiches .caret-styles").toggleClass("caret-styles-js")
+    $(".vegsandwiches .section-container").toggleClass("section-container-js")
+});
 
 //loginpathway
 $(".nav-links .btnpress").click(function () {

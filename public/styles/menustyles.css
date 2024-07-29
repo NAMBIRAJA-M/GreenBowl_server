@@ -477,6 +477,16 @@ body {
     background-color: #88D66C;
 }
 
+
+
+
+
+
+
+
+
+
+
 /*PROTEIN BOWL*/
 #proteinbowl {
     position: relative;
@@ -627,5 +637,11 @@ span {
 
 /*VEG-SALADS*/
 #vegsalads {
+    position: relative;
+}
+
+
+/*  NON VEG-SALADS*/
+#Nonvegsalads {
     position: relative;
 }

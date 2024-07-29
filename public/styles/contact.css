@@ -1,0 +1,29 @@
+/*GENERAL*/
+* {
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*Breadcrumb*/
+
+ol.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    margin-left: -5px;
+    padding: 1rem;
+}
+
+ol.breadcrumb li {
+    display: inline;
+    font-size: 1.2rem;
+}
+
+ol.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: ">\00a0";
+}
