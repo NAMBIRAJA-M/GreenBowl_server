@@ -6,6 +6,7 @@
     font-style: normal;
 
 }
+
 body {
     overflow-x: hidden;
 }
@@ -48,9 +49,10 @@ body {
     text-decoration-color: #0c2e01(181, 181, 181)
 }
 
-.menus{
+.menus {
     cursor: pointer;
 }
+
 .logo {
     display: flex;
     flex-direction: row;
@@ -76,9 +78,11 @@ body {
 
 
 /*login and cart*/
-.btnpress1,.btnpress2,.btnpress {
+.btnpress1,
+.btnpress2,
+.btnpress {
     cursor: pointer;
-    font-size:1.8rem;
+    font-size: 1.8rem;
 }
 
 .loginway {
@@ -115,7 +119,7 @@ body {
 }
 
 .hidden1 {
-    display: block;
+    display:flex;
 }
 
 .overlay {
@@ -148,17 +152,26 @@ body {
     left: 30%;
     width: 550px;
     height: 380px;
-    background-color: #B4E380;
+    background-color:#E0FBE2;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     z-index: 2;
 
 }
 
-::placeholder {
-    font-weight: 700;
-    font-size: 0.9rem;
+.inner-content ::placeholder {
+    font-weight: 550;
+    font-size: 0.86rem;
 
+}
+
+.headingpop {
+    font-size: 1.2rem;
+}
+
+.sub-heading {
+    font-weight: 450;
+    font-size: 1.1rem;
 }
 
 .loginpop-content {
@@ -171,7 +184,7 @@ body {
 
 .loginpop-content1,
 .otppop-content1 {
-    background-color: #88D66C;
+    background-color: #B0EBB4;
     display: flex;
     min-width: 450px;
     min-height: 240px;
@@ -182,11 +195,16 @@ body {
 
 }
 
-.mobno {
-    margin-top: 10px;
+.inner-content{
     position: absolute;
     left: 70px;
-    display: flex;
+}
+
+.mobno {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .otpbtn {
@@ -211,6 +229,16 @@ body {
     border-color: #eef6fa;
 
 }
+.bottompop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bottompop p{
+    text-align: center;
+    font-size: 0.7rem;
+}
+
 
 /* cart*/
 
@@ -287,7 +315,6 @@ body {
 }
 
 .hamburger-icon {
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -369,7 +396,7 @@ body {
     padding-top: 1rem;
     position: absolute;
     top: 10rem;
-    right:10.5rem;
+    right: 10.5rem;
     background-color: #fff;
     z-index: 1000;
     border: 0.3px solid #399918;
@@ -492,6 +519,7 @@ body {
 /*PROTEIN BOWL*/
 #proteinbowl {
     position: relative;
+   
 }
 
 .veg_nonveg_icon {
@@ -568,7 +596,7 @@ article {
 
 .about-img {
     float: right;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     margin-top: -2rem;
 
 }
@@ -620,7 +648,9 @@ img {
 .ingredient {
     font-size: 0.84rem;
 }
-
+.ingredient b{
+    font-size: 0.9rem;
+}
 .price {
     font-size: 0.94rem;
     font-weight: 550;

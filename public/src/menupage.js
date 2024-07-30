@@ -46,6 +46,12 @@ $(".loginpopup .cnllogin").click(function () {
     $(".loginway .overlaylog").css("display", "none");
     $(".loginway").removeClass("hidden1");
 });
+$(".bottompop .otpbtn").click(function () {
+    $(".nav-links .loginpopup").css("display", "none");
+    $(".loginway .overlaylog").css("display", "none");
+    $(".loginway").removeClass("hidden1");
+}
+)
 
 
 // cart pathway
@@ -71,17 +77,26 @@ $(document).ready(function () {
 
 
 // hamburger-menu > icon and menus open and close
+
 function toggleMenu() {
     const menu = document.querySelector(".hamburger-nav .menu-links");
     const icon = document.querySelector(".hamburger-icon");
     menu.classList.toggle("open");
     icon.classList.toggle("open");
+
+    //hamburger-menu > icon and menus open and clos (other elements)
+    
+    $(document).click(function (event) {
+        if (!$(event.target).closest('.hamburger-nav .menu-links,.hamburger-icon').length) {
+            $(".hamburger-nav .menu-links").removeClass("open");
+            $(".hamburger-icon").removeClass("open");
+
+        }
+    });
 }
 
 
-
 //hamburger-nav > menucard open and close
-
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".menus1").addEventListener("click", function () {
         const menucardhamb = document.querySelector(".menucardhamb");
@@ -93,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
 //hamburger-nav > menucard open and close (other elements)
 
 $(document).click(function (event) {
@@ -101,7 +117,7 @@ $(document).click(function (event) {
         if (menucardhamb.style.display === "flex") {
             menucardhamb.style.display = "none";
         }
-     
+
     }
 });
 
