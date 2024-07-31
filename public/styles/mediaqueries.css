@@ -198,6 +198,41 @@
         margin-bottom: 0rem;
     }
 
+
+
+ /*cartpop*/
+    .cart {
+        width:275px;
+        min-width:0%;
+        min-height:0%;
+        height: 600px;
+        left:100px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        z-index:2;
+    }
+    .cart p {
+        font-size: 15px;
+    }
+    
+    .cart .buy {
+        top: 100px;
+        left: 20px;
+    }
+
+    .buy img{
+        width: 200px;
+        height: 200px;
+    }
+    
+    .cbtnc {
+        font-size: 10px;
+        margin-left: 10px;
+        width: 100px;
+        padding: 5px;
+    }
+    
+
+
     /*sections*/
     #proteinbowl,
     .vegsalads,

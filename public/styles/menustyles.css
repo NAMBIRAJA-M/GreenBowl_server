@@ -243,13 +243,11 @@ body {
     left: 900px;
     top: 0;
     margin-top: -10;
-    background-color: #B4E380;
+    background-color: #fff;
     min-width: 450px;
     min-height: 700px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    z-index: 2;
-    flex-wrap: wrap;
-
+    z-index:2;
 }
 
 .cart p {
@@ -269,6 +267,11 @@ body {
     align-items: center;
     justify-content: center;
 
+}
+
+.buy img{
+    width: 300px;
+    height: 300px;
 }
 
 .hidden2 {

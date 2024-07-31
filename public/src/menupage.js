@@ -86,6 +86,10 @@ $(document).ready(function () {
 
         }
     });
+
+    $(".cbtnc").click(function (){
+        window.location.href ="C:/Users/MS NAMBIRAJA/Documents/Projects/GreenBowl/public/menupage.html";
+    })
 });
 
 
@@ -126,8 +130,7 @@ function toggleMenu() {
 
 
 //hamburger-nav > menucard open and close
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".menus1").addEventListener("click", function () {
+    $(".menus1").click(function () {
         const menucardhamb = document.querySelector(".menucardhamb");
         if (menucardhamb.style.display === "flex") {
             menucardhamb.style.display = "none";
@@ -138,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function () {
             $("#proteinbowl").css("padding-top", "300px");
         }
     });
-});
 
 
 //hamburger-nav > menucard open and close (other elements)
@@ -146,10 +148,9 @@ document.addEventListener("DOMContentLoaded", function () {
 $(document).click(function (event) {
     if (!$(event.target).closest('.menus1').length) {
         const menucardhamb = document.querySelector(".menucardhamb");
-        var currentPadding = $("#proteinbowl").css("padding-top");
         if (menucardhamb.style.display === "flex") {
             menucardhamb.style.display = "none";
-            $("#proteinbowl").css("padding-top", "0px");
+            $("#proteinbowl").css("padding-top", "20px");
         }
     }
 });
