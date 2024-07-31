@@ -87,9 +87,8 @@ $(document).ready(function () {
         }
     });
 
-    $(".cbtnc").click(function (){
-        window.location.href ="C:/Users/MS NAMBIRAJA/Documents/Projects/GreenBowl/public/menupage.html";
-    })
+   //     window.location.href ="C:/Users/MS NAMBIRAJA/Documents/Projects/GreenBowl/public/menupage.html";
+    
 });
 
 
