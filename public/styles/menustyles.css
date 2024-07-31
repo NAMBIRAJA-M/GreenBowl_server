@@ -133,17 +133,6 @@ body {
     z-index: 1;
 }
 
-.overlaylog {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
 /*loginpopup*/
 .loginpopup {
     display: none;
@@ -159,6 +148,13 @@ body {
 
 }
 
+.hiddenpopup {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    transform: translateY(0); /* Slide in */
+
+}
 .inner-content ::placeholder {
     font-weight: 550;
     font-size: 0.86rem;
@@ -211,22 +207,21 @@ body {
     margin: 20px;
     text-align: center;
     border: none;
-    background-color: #d0d9de;
     border-radius: 10px;
     width: 190px;
     height: 45 px;
     padding: 13px 40px;
     font-size: 16px;
     font-weight: bolder;
+    background-color:black;
+    color: white;
 }
-
 #textbox {
     width: 380px;
     height: 55px;
     padding: 0.5rem;
     font-size: 0.9rem;
     border-radius: 15px;
-    border-color: #eef6fa;
 
 }
 .bottompop{
@@ -390,7 +385,7 @@ body {
     width: fit-content;
     height: fit-content;
     border-radius: 15px;
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
     display: none;
     padding: 0.2rem;
     padding-top: 1rem;
@@ -399,7 +394,7 @@ body {
     right: 10.5rem;
     background-color: #fff;
     z-index: 1000;
-    border: 0.3px solid #399918;
+    border:0.01rem solid white;
 }
 
 
@@ -610,7 +605,8 @@ img {
 
 .btn1 {
     border: none;
-    background-color: transparent;
+    background-color:white;
+    border-radius: 50%;
 }
 
 .about-img .btn1 {

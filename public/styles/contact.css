@@ -6,6 +6,11 @@
     font-style: normal;
 }
 
+.loginway {
+    gap: 0.3rem;
+}
+
+
 /*Breadcrumb*/
 
 ol.breadcrumb {

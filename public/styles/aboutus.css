@@ -6,6 +6,13 @@
     font-style: normal;
 }
 
+
+
+
+.loginway {
+    gap: 0.3rem;
+}
+
 /*Breadcrumb*/
 
 ol.breadcrumb {
@@ -30,12 +37,16 @@ ol.breadcrumb li+li:before {
 
 /*ABOUT PAGE*/
 
+.GP-container{
+    position:relative;
+}
+
 .modelbor{
     font-size: 2rem;
     font-weight: 500;
     color: #399918;
     position: absolute;
-    top: 160px;
+    top: 0px;
     left: 19%;
     background-color: #fff;
 }
@@ -58,7 +69,7 @@ ol.breadcrumb li+li:before {
 }
 
 .list li{
-    padding: 5px;
+    padding: 15px;
 }
 /*GREEN PASS*/
 

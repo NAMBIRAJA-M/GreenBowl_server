@@ -18,6 +18,7 @@
 
 }
 
+
 @media screen and (max-width:600px) {
 
 
@@ -59,7 +60,7 @@
         padding-right: 2px;
         padding-bottom: 1rem;
         right: 30px;
-        margin-top: 50px;
+        margin-top: 60px;
     }
 
     .loginway p {
@@ -111,16 +112,14 @@
 
     /*.loginpopup*/
 
-    .popup .loginpopup {
-        position: absolute;
-        top: 150px;
-        left: 3%;
-        width: 300px;
+
+    .loginpopup {
+        left: 0.1rem;
+        width: 100%;
+        max-width: 550px;
         height: 300px;
 
     }
-
-
 
     .headingpop {
         font-size: 0.9rem;
@@ -151,18 +150,18 @@
         left: 30px;
         padding: 10px;
         padding-top: 5px;
-        padding-bottom:0rem;
+        padding-bottom: 0rem;
     }
 
     .inner-content ::placeholder {
         font-weight: 500;
         font-size: 0.76rem;
-       
+
     }
 
     .mobno {
-        font-size: 0.9rem;
-        font-weight: 300;
+        font-size: 1rem;
+        font-weight: 500;
         margin-top: 2px;
         margin-bottom: 4px;
     }
@@ -177,34 +176,40 @@
         margin-left: 5px;
     }
 
+
     #textbox {
-        width: 220px;
-        height: 40px;
+        width: 200px;
+        height: 35px;
         padding: 0.5rem;
         font-size: 1rem;
         border-radius: 10px;
-        border-color: #eef6fa;
     }
 
-    .bottompop{
+    .bottompop {
         padding: 3px;
         flex-wrap: wrap;
-        margin-left:-15px;
+        margin-left: -15px;
         margin-right: 15px;
-     
+
     }
-    .bottompop p{
+
+    .bottompop p {
         font-size: 0.65rem;
-        margin-bottom:0rem;
+        margin-bottom: 0rem;
     }
 
     /*sections*/
-    #proteinbowl {
-        margin-left:7px;
-        margin-right: 7px;
+    #proteinbowl,
+    .vegsalads,
+    .nonvegsalads,
+    .vegsandwiches {
+        margin-left: 15px;
+        margin-right: 15px;
     }
 
-
+    #proteinbowl {
+        padding-top: 20px;
+    }
 
     .section-heading {
         font-size: 1.2rem;
@@ -215,16 +220,17 @@
         margin-right: 0rem
     }
 
-    .about-img{
+    .about-img {
         margin-bottom: 24px;
-        margin-left:0.3rem
+        margin-left: 0.3rem
     }
+
     .about-img,
     img {
         margin-top: -0.01rem;
         width: 150px;
         height: 100px;
-        
+
     }
 
     .about-img .btn1 {
@@ -250,9 +256,11 @@
     .ingredient {
         font-size: 0.7rem;
     }
-    .ingredient b{
+
+    .ingredient b {
         font-size: 0.7rem;
     }
+
     .price {
         font-size: 0.9rem;
     }
@@ -267,6 +275,8 @@
         font-size: 0.89rem;
 
     }
+
+
 
 
 

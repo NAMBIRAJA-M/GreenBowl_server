@@ -31,27 +31,43 @@ $(".vegsandwiches .section-heading,.vegsandwiches .caret-styles").click(function
 //loginpathway
 $(".nav-links .btnpress").click(function () {
     $(".loginway").toggleClass("hidden1");
+    var currentPadding = $("#proteinbowl").css("padding-top");
+   var currentPadding1= $(".specificnav").css("padding-top");
+    if (currentPadding === "80px" ){ 
+        $("#proteinbowl").css("padding-top", "20px");
+    } else {
+        $("#proteinbowl").css("padding-top", "80px");
+    }
+    if (currentPadding1 === "90px" ){ 
+        $(".specificnav").css("padding-top", "20px");
+    } else {
+        $(".specificnav").css("padding-top", "90px");
+    }
 });
 
 $(".loginway .cnl").click(function () {
     $(".loginway").removeClass("hidden1");
+    $("#proteinbowl").css("padding-top", "20px");
 });
 
 $(".loginway .lgn1").click(function () {
-    $(".nav-links .loginpopup").css("display", "block");
-    $(".loginway .overlaylog").css("display", "block");
+    $(".nav-links .loginpopup").addClass("hiddenpopup ")
+    $(".overlaylog").css("display", "inline")
+    $(".loginway").removeClass("hidden1");
 });
 $(".loginpopup .cnllogin").click(function () {
-    $(".nav-links .loginpopup").css("display", "none");
-    $(".loginway .overlaylog").css("display", "none");
+    $(".nav-links .loginpopup").removeClass("hiddenpopup");
+    $(".overlaylog").css("display", "none");
     $(".loginway").removeClass("hidden1");
 });
 $(".bottompop .otpbtn").click(function () {
-    $(".nav-links .loginpopup").css("display", "none");
-    $(".loginway .overlaylog").css("display", "none");
+    $(".nav-links .loginpopup").removeClass("hiddenpopup");
+    $(".overlaylog").css("display", "none");
     $(".loginway").removeClass("hidden1");
 }
 )
+
+
 
 
 // cart pathway
@@ -83,9 +99,22 @@ function toggleMenu() {
     const icon = document.querySelector(".hamburger-icon");
     menu.classList.toggle("open");
     icon.classList.toggle("open");
+    var currentPadding = $("#proteinbowl").css("padding-top");
+    if (currentPadding === "80px") {
+        $("#proteinbowl").css("padding-top", "20px");
+    } else {
+        $("#proteinbowl").css("padding-top", "80px");
+    }
+    var currentPadding1= $(".specificnav").css("padding-top");
+    if (currentPadding1 === "90px" ){ 
+        $(".specificnav").css("padding-top", "20px");
+    } else {
+        $(".specificnav").css("padding-top", "90px");
+    }
+
 
     //hamburger-menu > icon and menus open and clos (other elements)
-    
+
     $(document).click(function (event) {
         if (!$(event.target).closest('.hamburger-nav .menu-links,.hamburger-icon').length) {
             $(".hamburger-nav .menu-links").removeClass("open");
@@ -102,8 +131,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const menucardhamb = document.querySelector(".menucardhamb");
         if (menucardhamb.style.display === "flex") {
             menucardhamb.style.display = "none";
+            $("#proteinbowl").css("padding-top", "20px");
+
         } else {
             menucardhamb.style.display = "flex";
+            $("#proteinbowl").css("padding-top", "300px");
         }
     });
 });
@@ -114,12 +146,26 @@ document.addEventListener("DOMContentLoaded", function () {
 $(document).click(function (event) {
     if (!$(event.target).closest('.menus1').length) {
         const menucardhamb = document.querySelector(".menucardhamb");
+        var currentPadding = $("#proteinbowl").css("padding-top");
         if (menucardhamb.style.display === "flex") {
             menucardhamb.style.display = "none";
+            $("#proteinbowl").css("padding-top", "0px");
         }
-
     }
 });
+
+
+
+
+
+//cart page
+
+
+
+
+
+
+
 
 
 
