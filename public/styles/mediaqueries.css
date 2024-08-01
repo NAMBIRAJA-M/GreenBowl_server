@@ -24,9 +24,36 @@
         z-index:2;
     }
 
-
+/*MENU LIST*/
+.menu-list {
+    padding-left: 600px;
+    gap: 2rem;
+    font-size: 0.7rem;
+    overflow-x: scroll;
 }
 
+.menu-list li {
+    width: 500px;
+    min-width: 200px;
+    height: auto;
+    padding: 5px;
+    
+}
+
+
+.menu-list a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    padding-bottom:4px;
+}
+
+}
+@media screen and (max-width:900px) {
+.menu-list {
+    display: none;
+ }
+}
 
 @media screen and (max-width:600px) {
 
@@ -240,6 +267,14 @@
         padding: 5px;
     }
     
+
+/*MENU LIST*/
+
+
+.menu-list {
+   display: none;
+}
+
 
 
     /*sections*/

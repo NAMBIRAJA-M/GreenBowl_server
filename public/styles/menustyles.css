@@ -442,11 +442,16 @@ body {
     gap: 2rem;
     list-style: none;
     font-size: 0.7rem;
+    
 }
 
 .menu-list li {
+   text-align: center;
     border: 0.3px lightgrey solid;
-    padding: 2px;
+    width: 165px;
+    height: auto;
+    min-width: 130px;
+    padding: 5px;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -517,6 +522,7 @@ body {
 /*PROTEIN BOWL*/
 #proteinbowl {
     position: relative;
+    padding-top: 20px;
    
 }
 
