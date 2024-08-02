@@ -31,12 +31,12 @@ $(".vegsandwiches .section-heading,.vegsandwiches .caret-styles").click(function
 //loginpathway
 $(".nav-links .btnpress").click(function () {
     $(".loginway").toggleClass("hidden1");
-    var currentPadding = $("#proteinbowl").css("padding-top");
+    var currentPadding = $(".caropic").css("padding-top");
    var currentPadding1= $(".specificnav").css("padding-top");
     if (currentPadding === "80px" ){ 
-        $("#proteinbowl").css("padding-top", "20px");
+        $(".caropic").css("padding-top", "20px");
     } else {
-        $("#proteinbowl").css("padding-top", "80px");
+        $(".caropic").css("padding-top", "80px");
     }
     if (currentPadding1 === "90px" ){ 
         $(".specificnav").css("padding-top", "20px");
@@ -47,7 +47,7 @@ $(".nav-links .btnpress").click(function () {
 
 $(".loginway .cnl").click(function () {
     $(".loginway").removeClass("hidden1");
-    $("#proteinbowl").css("padding-top", "20px");
+    $(".caropic").css("padding-top", "20px");
 });
 
 $(".loginway .lgn1").click(function () {
@@ -102,11 +102,11 @@ function toggleMenu() {
     const icon = document.querySelector(".hamburger-icon");
     menu.classList.toggle("open");
     icon.classList.toggle("open");
-    var currentPadding = $("#proteinbowl").css("padding-top");
-    if (currentPadding === "80px") {
-        $("#proteinbowl").css("padding-top", "20px");
+    var currentPadding = $(".caropic").css("padding-top");
+    if (currentPadding === "100px") {
+        $(".caropic").css("padding-top", "20px");
     } else {
-        $("#proteinbowl").css("padding-top", "80px");
+        $(".caropic").css("padding-top", "100px");
     }
     var currentPadding1= $(".specificnav").css("padding-top");
     if (currentPadding1 === "90px" ){ 
@@ -133,11 +133,11 @@ function toggleMenu() {
         const menucardhamb = document.querySelector(".menucardhamb");
         if (menucardhamb.style.display === "flex") {
             menucardhamb.style.display = "none";
-            $("#proteinbowl").css("padding-top", "20px");
+            $(".caropic").css("padding-top", "20px");
 
         } else {
             menucardhamb.style.display = "flex";
-            $("#proteinbowl").css("padding-top", "300px");
+            $(".caropic").css("padding-top", "300px");
         }
     });
 
@@ -149,7 +149,7 @@ $(document).click(function (event) {
         const menucardhamb = document.querySelector(".menucardhamb");
         if (menucardhamb.style.display === "flex") {
             menucardhamb.style.display = "none";
-            $("#proteinbowl").css("padding-top", "20px");
+            $(".caropic").css("padding-top", "20px");
         }
     }
 });
