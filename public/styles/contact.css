@@ -32,3 +32,260 @@ ol.breadcrumb li+li:before {
     color: black;
     content: ">\00a0";
 }
+
+
+
+
+
+/*contact page*/
+
+.contact-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 3rem;
+}
+
+.touch-container,
+.find-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    margin: 3rem;
+    margin-top: 1rem;
+
+
+}
+
+.touch-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.touch-heading {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    width: fit-content;
+    border: 3px solid #399918;
+    padding: 10px;
+    color: #399918;
+
+}
+
+.touch-content {
+    margin-top: 0px;
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
+}
+
+.contact-form {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 3rem;
+    gap: 0.5rem;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.contact-form label {
+    font-size: 1.2rem;
+}
+
+.contact-form input {
+    width: 300px;
+    height: auto;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.contact-form textarea {
+    font-size: 1.2rem;
+}
+
+.contact-form .sendbtn {
+    border: none;
+    outline: none;
+    color: black;
+    background-color: #399918;
+    width: 160px;
+    height: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 15px;
+    margin-left: 50%;
+    margin-top: 30px;
+    color: white;
+}
+
+
+/*FIND CONTAINER*/
+
+.find-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 400px;
+}
+
+.find-block {
+    display: flex;
+    gap: 2rem;
+}
+
+.loc {
+    font-size: 1.5rem;
+
+}
+
+.locbtn {
+    border: none;
+    border-radius: 50%;
+}
+
+.find-header {
+    font-size: 1.5rem;
+}
+
+.addr {
+    font-size: 1rem;
+    margin-top: 0.8rem;
+    margin-left: 2.5rem;
+    padding-left: 2.5rem;
+}
+
+.find-location {
+    display: flex;
+    flex-direction: column;
+}
+
+.find-location:hover .locbtn {
+    background-color: #399918;
+
+}
+
+.find-location:hover .find-header {
+    color: #399918;
+}
+
+.find-location:hover .loc {
+    color: white;
+}
+
+.embedded-map {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.embedded-map iframe {
+    width: 450px;
+    height: 250px;
+}
+
+.mapcaption {
+    padding: 0.3rem;
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+
+/*FOOTER CONTAINER*/
+
+.footer-container {
+    width: fit-content;
+    height: fit-content;
+    box-shadow: 0px 0px 1.5px 2px rgba(0, 0, 0, 0.5);
+    margin-left: 3rem;
+    margin-right: 3rem;
+    min-width: 500px;
+    display: flex;
+    gap: 1rem;
+
+}
+
+.foot-container1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logofoot {
+    margin: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 0px;
+}
+
+.logo-textfoot {
+    font-size: 2rem;
+    font-weight: 550;
+    margin: 1rem;
+    margin-top: 0rem;
+    color: #399918;
+}
+
+.foot-container2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.foot-container2 .caption {
+    margin: top 0px;
+    ;
+    font-size: 1rem;
+    text-align: center;
+}
+
+
+.media-header {
+    margin: 2rem;
+    font-size: 2.3rem;
+    margin-bottom: 0.1rem;
+}
+
+.smedia {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    padding: 3rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.smedia button {
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.smedia i {
+    font-size: 2.1rem;
+    color: #399918;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    padding: 1rem;
+    color: gray;
+    margin-bottom: 1rem;
+}

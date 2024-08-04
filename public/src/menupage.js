@@ -71,6 +71,7 @@ $(".bottompop .otpbtn").click(function () {
 
 
 // cart pathway
+
 $(document).ready(function () {
     $(".nav-links .btnpress1").click(function (e) {
         e.stopPropagation(); // Prevent click event from bubbling up to the document
