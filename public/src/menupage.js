@@ -59,6 +59,8 @@ $(".loginpopup .cnllogin").click(function () {
     $(".nav-links .loginpopup").removeClass("hiddenpopup");
     $(".overlaylog").css("display", "none");
     $(".loginway").removeClass("hidden1");
+    $(".caropic").css("padding-top", "20px");
+
 });
 $(".bottompop .otpbtn").click(function () {
     $(".nav-links .loginpopup").removeClass("hiddenpopup");

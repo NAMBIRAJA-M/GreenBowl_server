@@ -392,7 +392,7 @@
     }
 
 
-}
+
 
 
 
@@ -535,28 +535,24 @@ find-container {
 
 .foot-container2 {
     gap: 0.4rem;
+    padding: 0.8rem;
 }
 
 .foot-container2 .caption {
     font-size: 0.8rem;
     padding: 5px;
+    
     }
-
-
-.media-header {
-    margin: 0.7rem;
-    font-size: 1.8rem;
-}
 
 .smedia {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     justify-content: center;
-    padding: 1.5rem;
+    padding: 1rem;
 }
 
 .smedia i {
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 .copyright {
@@ -566,7 +562,7 @@ find-container {
     text-align: center;
 }
 
-
+}
 
 
 
