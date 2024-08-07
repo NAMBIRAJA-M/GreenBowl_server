@@ -169,7 +169,3 @@ $(document).click(function (event) {
 
 
 
-
-
-
-

@@ -599,5 +599,16 @@ find-container {
         padding: 5px;
     }
 
+/*ABOUT PAGE*/
+    .story-section {
+        margin-right: 1rem;
+        margin-left: 0.6rem;
+    }
+    .section-details{
+        width: 300px;
+        height: fit-content;
+        font-size: 0.76rem;
+        text-align: justify;
+    }
 
 }
