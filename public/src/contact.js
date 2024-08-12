@@ -3,8 +3,6 @@ $(".nav-links .menus").click(function () {
 });
 
 
-
-
 // hamburger-menu > icon and menus open and close
 function toggleMenu() {
     const menu = document.querySelector(".hamburger-nav .menu-links");
@@ -98,7 +96,6 @@ $(document).ready(function () {
         window.location.href ="C:/Users/MS NAMBIRAJA/Documents/Projects/GreenBowl/public/menupage.html";
     })
 });
-
 
 
 

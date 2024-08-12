@@ -579,11 +579,20 @@ body {
     margin-top: 1rem;
     margin-right: 10rem
 }
-
+.proteinbowl {
+    margin: 3rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+    overflow-wrap: break-word;
+}
 .section-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .section-container-js {
@@ -591,7 +600,6 @@ body {
 }
 
 .details-container {
-
     display: flex;
     text-align: initial;
     flex-wrap: wrap;
@@ -604,19 +612,23 @@ body {
 article {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     width: 35rem;
+    min-width: 15rem;
     justify-content: start;
     gap: 0.01rem;
     margin-bottom: 0.1rem;
     border: 0.002rem black solid;
     border-radius: 15px;
     padding: 1rem;
+    overflow-wrap: break-word;
 }
 
 .about-img {
     float: right;
     margin-left: 0.5rem;
     margin-top: -2rem;
+    overflow-wrap: break-word;
 
 }
 
@@ -626,6 +638,7 @@ img {
     height: 150px;
     border-radius: 15px;
     transition:transform 0.3s ease;
+    overflow-wrap: break-word;
 }
 .about-img img:hover{
     transform: scale(1.1);
@@ -655,10 +668,12 @@ img {
 .about-container {
     margin-top: 0.3rem;
     margin-left: 0.3rem;
+    overflow-wrap: break-word;
 }
 
 .about-container p {
     margin-bottom: 0.6rem;
+    overflow-wrap: break-word;
 }
 
 
@@ -670,6 +685,7 @@ img {
 
 .ingredient {
     font-size: 0.84rem;
+    overflow-wrap: break-word;
 }
 
 .ingredient b {

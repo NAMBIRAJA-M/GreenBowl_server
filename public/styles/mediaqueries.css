@@ -314,26 +314,30 @@
 
 
     /*sections*/
-    #proteinbowl,
-    .vegsalads,
-    .nonvegsalads,
-    .vegsandwiches {
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-
+   
+   
     #proteinbowl {
         padding-top: 20px;
     }
 
+
+   .proteinbowl{
+    margin:1rem;
+   }
+
     .section-heading {
         font-size: 1.2rem;
-        padding-right: 2rem;
     }
 
     .spacecaret .caret-styles {
-        margin-right: 0rem
+        margin-right: 5rem
     }
+
+
+
+     article {
+        width:25rem;
+    } 
 
     .about-img {
         margin-bottom: 24px;
@@ -354,6 +358,8 @@
         bottom: 20px;
         left: 30px;
     }
+
+
 
     .about-container {
         margin-top: 0.2rem;
@@ -568,6 +574,59 @@ find-container {
 
 
 @media screen and (max-width:374px) {
+
+    
+    article {
+        width:20rem;
+    }
+    #proteinbowl {
+        padding-top: 20px;
+    }
+
+
+   .proteinbowl{
+    margin:1rem;
+   }
+
+    .section-heading {
+        font-size: 1.1rem;
+    }
+
+    .spacecaret .caret-styles {
+        margin-right: 0.2rem
+    }
+
+
+    .dish {
+        font-size: 1.1rem;
+    }
+
+    .ingredient {
+        font-size: 0.5rem;
+      
+    }
+
+    .ingredient b {
+        font-size: 0.5rem;
+    }
+
+    .price {
+        font-size: 0.7rem;
+    }
+
+    span {
+        color: green;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .nutrients {
+        font-size: 0.8rem;
+
+    }
+
+
+
 
     /*cartpop*/
     .cart {

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>
+        Contact Us
+    </title>
+   
+</head>
+
+<body>
+    <%- include("../views/partials/header.ejs") %>
+    <div class="menucardhamb">
+        <ul class="menu-content1">
+            <li><a href="#proteinbowl">Protein Bowl</a></li>
+            <li><a href="#salads">Veg Salads</a></li>
+            <li><a href="#Non Veg Salads">Non Veg Salads</a></li>
+            <li><a href="#Veg Sandwiches">Veg Sandwiches</a></li>
+            <li><a href="#Non Veg Sandwiches">Non Veg Sandwiches</a></li>
+            <li><a href="#Veg Wraps">Veg Wraps</a></li>
+            <li><a href="#Non Veg Wraps">Non Veg Wraps</a></li>
+            <li><a href="#smoothies">Smoothies</a></li>
+            <li><a href="#diaryFreesmoothies">Diary free Smoothies</a></li>
+            <li><a href="#Smoothiebowl">Smoothie Bowl</a></li>
+        </ul>
+
+    </div>
+    <div class="specificnav">
+        <nav class="bread">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a style="color: black;text-decoration: none;" href="../index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item"><a style="color: black;text-decoration: none;" href="menupage.html">Menu</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page" style="font-weight: 300;">Contact Us</li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <div class="contact-container">
+        <div class="touch-container">
+            <div class="touch-header">
+                <p class="touch-heading">GET IN TOUCH</p>
+                <p class="touch-content">You have a piece of advice or suggestion that you would like to share with us ?
+                    Feel free to contact us
+                </p>
+            </div>
+            <form class="contact-form">
+                <label type="text" for="name">Name</label>
+                <input id="name" name="name">
+                <label type="email" for="email">Email</label>
+                <input id="email" name="email">
+                <label type="text" for="Subject">Subject</label>
+                <input id="subject" name="suject">
+                <label type="text" for="content">Message</label>
+                <textarea id="content" name="content" rows="4"></textarea>
+                <button class="sendbtn">Send Message</button>
+            </form>
+
+
+        </div>
+        <div class="find-container">
+            <div class="touch-header">
+                <p class="touch-heading">FIND US </p>
+                </p>
+            </div>
+            <div class="find-content">
+                <div class="find-location">
+                    <div class="find-block">
+                        <button class="locbtn"><i class="bi bi-geo-alt-fill loc "></i></button>
+                        <p class="find-header"> Location</p>
+                    </div>
+
+                    <p class="addr">Shop No - 6, Halimabai Building, Lady Jamshedji Rd, next to Sadar Cycle and Could 9
+                        Gym,
+                        Mahim West, Mahim, Mumbai, Maharashtra 400016</p>
+
+                </div>
+                <div class="find-location">
+                    <div class="find-block">
+                        <button class="locbtn"><i class="bi bi-envelope-fill loc "></i></button>
+                        <p class="find-header"> Email</p>
+                    </div>
+
+                    <p class="addr">theGreenBowl@gmail.com</p>
+
+                </div>
+                <div class="find-location">
+                    <div class="find-block">
+                        <button class="locbtn"><i class="bi bi-telephone-fill loc "></i></button>
+                        <p class="find-header">Call Us</p>
+                    </div>
+
+                    <p class="addr">+91 9080470329</p>
+                </div>
+                <div class="embedded-map">
+                    <a style="color: black;"
+                        href="https://www.google.com/maps?ll=19.033157,72.84242&z=15&t=m&hl=en&gl=IN&mapclient=embed&cid=11266605717543744453">
+                        <p class="mapcaption">The Green Bowl-Mahim, Mumbai</p>
+                    </a>
+
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.6948879573697!2d72.83984477454892!3d19.03316185331733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cfe0a2e35ef9%3A0x9c5b0635029473c5!2sThe%20GreenBowl%20Co.!5e0!3m2!1sen!2sin!4v1722668117130!5m2!1sen!2sin"
+                         style="border:1px;  " loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <%- include("../views/partials/footer.ejs") %>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="src/contact.js"></script>
+</body>

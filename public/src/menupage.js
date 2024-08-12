@@ -11,9 +11,9 @@ $(document).click(function (event) {
 
 //caret up and down
 
-$(".proteinbowl .section-heading,.proteinbowl .caret-styles").click(function () {
-    $(".proteinbowl .caret-styles").toggleClass("caret-styles-js");
-    $(".proteinbowl .section-container").toggleClass("section-container-js");
+$("#proteinbowl .section-heading,#proteinbowl .caret-styles").click(function () {
+    $("#proteinbowl .caret-styles").toggleClass("caret-styles-js");
+    $("#proteinbowl .section-container").toggleClass("section-container-js");
 });
 $(".vegsalads .section-heading,.vegsalads .caret-styles").click(function () {
     $(".vegsalads .caret-styles").toggleClass("caret-styles-js")

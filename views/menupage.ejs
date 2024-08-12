@@ -2,257 +2,121 @@
 
 <head>
     <title>The Green Bowl</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-    <link rel="Stylesheet" href="../public/styles/menustyles.css">
-    <link rel="stylesheet" href="../public/styles/mediaqueries.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
 </head>
 
 <body>
-    <div class="nav-area">
-        <div class="logo">
-            <img src="Assets/logo_green_bg.jpeg" class="logo" alt="logo">
-            <a>The Green Bowl</a>
+
+    <%- include("../views/partials/header.ejs") %>
+
+
+        <div class="menucardhamb">
+            <ul class="menu-content1">
+                <li><a href="#proteinbowl">Protein Bowl</a></li>
+                <li><a href="#salads">Veg Salads</a></li>
+                <li><a href="#nonvegsalads">Non Veg Salads</a></li>
+                <li><a href="#vegsandwiches">Veg Sandwiches</a></li>
+                <li><a href="#nonvegsandwiches">Non Veg Sandwiches</a></li>
+                <li><a href="#vegwraps">Veg Wraps</a></li>
+                <li><a href="#nonvegwraps">Non Veg Wraps</a></li>
+                <li><a href="#smoothies">Smoothies</a></li>
+                <li><a href="#diaryFreesmoothies">Diary free Smoothies</a></li>
+                <li><a href="#Smoothiebowl">Smoothie Bowl</a></li>
+            </ul>
+
         </div>
-        <div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li> <a class="menus">Menu</a></li>
-                <!-- MENU CARD-->
-                <div class="menucard">
-                    <ul class="menu-content">
-                        <li><a href="#proteinbowl">Protein Bowl</a></li>
-                        <li><a href="#salads">Veg Salads</a></li>
-                        <li><a href="#nonvegsalads">Non Veg Salads</a></li>
-                        <li><a href="#vegsandwiches">Veg Sandwiches</a></li>
-                        <li><a href="#nonvegsandwiches">Non Veg Sandwiches</a></li>
-                        <li><a href="#vegwraps">Veg Wraps</a></li>
-                        <li><a href="#nonvegwraps">Non Veg Wraps</a></li>
-                        <li><a href="#smoothies">Smoothies</a></li>
-                        <li><a href="#diaryFreesmoothies">Diary free Smoothies</a></li>
-                        <li><a href="#Smoothiebowl">Smoothie Bowl</a></li>
-                    </ul>
+        <div class="caropic">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide">
+                <div class="carousel-indicators carobtn" style="z-index:0">
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"
+                        style="background-color: #000; border: none; border-radius: 50%; width:4px; height:4px; padding: 0;"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                        aria-label="Slide 2"
+                        style="background-color: #000; border: none; border-radius: 50%; width: 4px; height: 4px; padding: 0;"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                        aria-label="Slide 3"
+                        style="background-color: #000; border: none; border-radius: 50%; width:4px; height:4px; padding: 0;"></button>
                 </div>
-                <li> <a href="aboutus.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><i style="font-size:1.8rem;" class="person  bi bi-person btnpress"></i></li>
-                <li><i style="font-size:1.8rem;" class="bi bi-cart btnpress1"></i></li>
-                <div class="loginway">
-                    <div id="overlay" class="overlaylog"></div>
-                    <p>Hi healthyMan!</p>
-                    <button class="btn1 cnl"><i class="bi bi-x"></i></button>
-                    <button class="btn1 lgn1">Login</button>
-                </div>
-                <div class="loginpopup">
-                    <div class="loginpop-content">
-                        <p style="font-size: 24px;">Get <b>Started</b></p>
-                        <button class="btn1 cnllogin"><i class="bi bi-x"></i></button>
-
-                        <p style="font-size: 1rem; font-weight: 600px;">Please enter your Mobile Number to continue</p>
-                    </div>
-                    <div class="loginpop-content1">
-                        <div style="position: absolute;left: 70px;">
-                            <form>
-                                <label for="mobileno"
-                                    style="font-size: 1.5rem; font-weight: 300px;margin-top: 20px; margin-bottom: 10px;font-size:15px;">Enter
-                                    Mobile
-                                    Number</label>
-                                <br>
-                                <input type="tel" inputmode="numeric" placeholder=" Type Here" maxlength="10"
-                                    id="textbox" required>
-                                <br>
-                                <center>
-                                    <button class="otpbtn">SEND OTP</button>
-                                    <p style="font-size: 0.7rem;">By Confirming, you agree to boAt's Terms and
-                                        Conditions and <bR>Privacy Policy.</p>
-                                </center>
-
-                            </form>
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="2000">
+                            <a href="aboutus.html.#greenpass"><img src="Assets/caro-gp.png" class="d-block w-100"
+                                    alt="..."></a>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="Assets/carooff (1).jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="Assets/flatoff.jpg" class="d-block w-100" alt="...">
                         </div>
                     </div>
                 </div>
-                <div id="overlay" class="overlay"></div>
-                <div class="cart">
 
-                    <p> Your Cart</p>
-                    <div class="buy">
-                        <img style="width: 300px;height:300px;" src="Assets/cartg.png" alt="buy">
-                        <p style="font-weight: 900;">Your bowl is feeling lonely</p>
-                        <a href="menupage.html"><button class="cbtnc">Start Ordering</button></a>
-                    </div>
-                </div>
-            </ul>
-        </div>
-
-    </div>
-    <nav class="hamburger-nav">
-        <div class="logo">
-            <img src="Assets/logo_green_bg.jpeg" class="logo" alt="logo">
-            <a>The Green Bowl</a>
-        </div>
-
-        <div class="popup">
-            <ul class="nav-links">
-
-                <li><i class="bi bi-menu-up btnpress2 menus1"></i></li>
-                <li><i class="person  bi bi-person btnpress"></i></li>
-                <li><i class="bi bi-cart btnpress1"></i></li>
-                <div class="loginway">
-                    <p>Hi healthyMan!</p>
-                    <button class="btn1 cnl"><i class="bi bi-x"></i></button>
-                    <button class="btn1 lgn1">Login</button>
-                </div>
-
-                <div class="loginpopup">
-                    <div class="loginpop-content">
-                        <p class="headingpop">Get <b>Started</b></p>
-                        <button class="btn1 cnllogin"><i class="bi bi-x"></i></button>
-
-                        <p class="sub-heading">Please enter your Mobile Number to continue</p>
-                    </div>
-                    <div class="loginpop-content1">
-                        <div class="inner-content">
-                            <form>
-                                <label for="mobileno" class="mobno">Enter
-                                    Mobile
-                                    Number</label>
-                                <br>
-                                <input type="tel" inputmode="numeric" placeholder=" Type Here" maxlength="10"
-                                    id="textbox" required>
-                                <br>
-                                <div class="bottompop">
-                                    <button class="otpbtn">SEND OTP</button>
-                                    <p>By Confirming, you agree to Green bowl Terms and
-                                        Conditions and Privacy Policy.</p>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div id="overlay" class="overlay"></div>
-                <div class="cart">
-
-                    <p> Your Cart</p>
-                    <div class="buy">
-                        <img src="Assets/cartg.png" alt="buy">
-                        <p style="font-weight: 900;">Your bowl is feeling lonely</p>
-                        <a href="menupage.html"><button class="cbtnc">Start Ordering</button></a>
-                    </div>
-                </div>
-
-                <div class="hamburger-menu">
-                    <div class="hamburger-icon" onclick="toggleMenu()">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <div class="menu-links">
-                        <li><a href="../index.html" onclick="toggleMenu()">Home</a></li>
-                        <li> <a href="aboutus.html" onclick="toggleMenu()">About</a></li>
-                        <li><a href="contact.html" onclick="toggleMenu()">Contact</a></li>
-                    </div>
-                </div>
-            </ul>
-        </div>
-
-    </nav>
-    <div class="menucardhamb">
-        <ul class="menu-content1">
-            <li><a href="#proteinbowl">Protein Bowl</a></li>
-            <li><a href="#salads">Veg Salads</a></li>
-            <li><a href="#nonvegsalads">Non Veg Salads</a></li>
-            <li><a href="#vegsandwiches">Veg Sandwiches</a></li>
-            <li><a href="#nonvegsandwiches">Non Veg Sandwiches</a></li>
-            <li><a href="#vegwraps">Veg Wraps</a></li>
-            <li><a href="#nonvegwraps">Non Veg Wraps</a></li>
-            <li><a href="#smoothies">Smoothies</a></li>
-            <li><a href="#diaryFreesmoothies">Diary free Smoothies</a></li>
-            <li><a href="#Smoothiebowl">Smoothie Bowl</a></li>
-        </ul>
-
-    </div>
-    <div class="caropic">
-        <div id="carouselExampleDark" class="carousel carousel-dark slide">
-            <div class="carousel-indicators carobtn" style="z-index:0">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="background-color: #000; border: none; border-radius: 50%; width:4px; height:4px; padding: 0;"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2" style="background-color: #000; border: none; border-radius: 50%; width: 4px; height: 4px; padding: 0;"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3" style="background-color: #000; border: none; border-radius: 50%; width:4px; height:4px; padding: 0;"></button>
             </div>
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <div class="carousel-item active" data-bs-interval="2000" >
-                   <a href="aboutus.html.#greenpass" ><img src="Assets/caro-gp.png" class="d-block w-100" alt="..."></a>
-                  </div>
-                  <div class="carousel-item"  data-bs-interval="2000"  >
-                    <img src="Assets/carooff (1).jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item" data-bs-interval="2000"  >
-                    <img src="Assets/flatoff.jpg" class="d-block w-100" alt="...">
-                  </div>
-                </div>
-              </div>
-    
         </div>
-    </div>
 
 
-    <div class="menubar">
-        <ul class="menu-list">
-            <li><a href="#smoothiebowl">Smoothie Bowl</a></li>
-            <li><a href="#salads">Salads</a></li>
-            <li><a href="#wraps">Wraps</a></li>
-            <li><a href="#vegsandwiches">Sandwiches</a></li>
-            <li><a href="#smoothies">Smoothies</a></li>
-            <li><a href="#diaryFreesmoothies">Diary free Smoothies</a></li>
-            <li><a href="#proteinbowl">Protein Bowl</a></li>
-        </ul>
-    </div>
+        <div class="menubar">
+            <ul class="menu-list">
+                <li><a href="#smoothiebowl">Smoothie Bowl</a></li>
+                <li><a href="#salads">Salads</a></li>
+                <li><a href="#wraps">Wraps</a></li>
+                <li><a href="#vegsandwiches">Sandwiches</a></li>
+                <li><a href="#smoothies">Smoothies</a></li>
+                <li><a href="#diaryFreesmoothies">Diary free Smoothies</a></li>
+                <li><a href="#proteinbowl">Protein Bowl</a></li>
+            </ul>
+        </div>
 
 
-    <section id="proteinbowl">
-        <div class="proteinbowl">
+        <section id="proteinbowl">
+
             <div class="spacecaret">
                 <button class="section-heading btn1"> Protein Bowl</button>
                 <img class="caret-styles" src="Assets/caret-down.webp">
             </div>
+            <div class="proteinbowl">
+                <% recipes.forEach(recipe=>{ %>
 
-            <div class="section-container">
-                <div class="content-container">
-                    <div class="details-container">
-                        <article>
-                            <div class="veg_nonveg_icon">
-                                <img class="veg-non-veg-icon" src="Assets/veg_icon (1).png"> <img
-                                    class="veg-non-veg-icon" src="Assets/non-veg_icon (1).png">
-                            </div>
-                            <p class="dish">THE PERUVIAN RICE BOWL</p>
-                            <div class="about-container">
-                                <div class="about-img">
-                                    <img src="Assets/peruvianbowl.jpg" alt="the peruvian bowl">
-                                    <button class="btn1">Add+</button>
-                                </div>
-                                <P class="ingredient"><b>INGREDIENTS :</b> Mint,
-                                    Coriander,
-                                    Jalapeno, Mayo, Olive Oil, Salt, Ginger, Red Chilli, Rice</P>
-                                <p class="price">Rs.219</p>
-                                <p class="nutrients"><span>Kcal</span>•Protein•Carbs•Fat•Fiber</p>
+                    <% console.log(recipe) %>
 
-                            </div>
-                        </article>
+                        <div class="section-container">
+                            <div class="content-container">
+                                <div class="details-container">
+                                    <article>
+                                        <div class="veg_nonveg_icon">
+                                            <% if (recipe.veg) {%>
+                                                <img class="veg-non-veg-icon" src="<%= recipe.veg %>">
+                                                <% } %>
+                                                    <img class="veg-non-veg-icon" src="<%= recipe.nonveg  %>">
+                                        </div>
 
-                        <article>
+                                        <p class="dish">
+                                            <%= recipe.name %>
+                                        </p>
+                                        <div class="about-container">
+                                            <div class="about-img">
+                                                <img src="<%= recipe.image %>" alt="the peruvian bowl">
+                                                <button class="btn1">Add+</button>
+                                            </div>
+                                            <P class="ingredient"><b>INGREDIENTS :</b>
+                                                <%= recipe.ingredients %>
+                                            </P>
+                                            <p class="price"> Rs.<%= recipe.price%>
+                                            </p>
+                                            <p class="nutrients"><span>
+                                                    <%= recipe.nutrients.kcal %> Kcal
+                                                </span>•Protein <%= recipe.nutrients.protein%> •Carbs <%=
+                                                        recipe.nutrients.Carbs%> •Fat <%= recipe.nutrients.Fat%> •Fiber
+                                                            <%= recipe.nutrients.Fiber%>
+                                            </p>
+
+                                        </div>
+
+
+                                    </article>
+
+                                    <!--   <article>
                             <div class="veg_nonveg_icon">
                                 <img class="veg-non-veg-icon" src="Assets/veg_icon (1).png"> <img
                                     class="veg-non-veg-icon" src="Assets/non-veg_icon (1).png">
@@ -273,8 +137,9 @@
 
                             </div>
                         </article>
-                        <!---->
+                     
                     </div>
+
                     <div class="details-container">
                         <article>
                             <div class="veg_nonveg_icon">
@@ -319,7 +184,7 @@
 
                             </div>
                         </article>
-                        <!---->
+                     
                     </div>
                     <div class="details-container">
                         <article>
@@ -363,13 +228,16 @@
                                 <p class="nutrients"><span>673Kcal</span>•31g Protein•91g Carbs•34g Fat•14g Fiber
                                 </p>
                             </div>
-                        </article>
-                        <!---->
-                    </div>
-                </div>
+                        </article> -->
+
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
             </div>
-        </div>
-    </section>
+        </section>
+        <!-- 
+
     <section id="salads">
         <div id="vegsalad">
             <div class="vegsalads">
@@ -421,7 +289,7 @@
 
                                 </div>
                             </article>
-                            <!---->
+
                         </div>
                         <div class="details-container">
                             <article>
@@ -463,7 +331,7 @@
 
                                 </div>
                             </article>
-                            <!---->
+                    
                         </div>
                         <div class="details-container">
                             <article>
@@ -508,7 +376,7 @@
                                     </p>
                                 </div>
                             </article>
-                            <!---->
+                        
                         </div>
                     </div>
                 </div>
@@ -609,7 +477,7 @@
 
                             </div>
                         </article>
-                        <!---->
+                    
                     </div>
                     <div class="details-container">
                         <article>
@@ -653,7 +521,7 @@
                                 </p>
                             </div>
                         </article>
-                        <!---->
+                     
                     </div>
                 </div>
             </div>
@@ -710,7 +578,7 @@
 
                                 </div>
                             </article>
-                            <!---->
+                       
                         </div>
                         <div class="details-container">
                             <article>
@@ -752,7 +620,7 @@
 
                                 </div>
                             </article>
-                            <!---->
+                         
                         </div>
                         <div class="details-container">
                             <article>
@@ -797,7 +665,7 @@
                                     </p>
                                 </div>
                             </article>
-                            <!---->
+                         
                         </div>
                     </div>
                 </div>
@@ -805,9 +673,13 @@
         </div>
     </section>
 
+     -->
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="src/menupage.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <%- include("../views/partials/footer.ejs") %>
+
+
+            <script src="https://code.jquery.com/jquery-3.7.1.js"
+                integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+            <script src="src/menupage.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
