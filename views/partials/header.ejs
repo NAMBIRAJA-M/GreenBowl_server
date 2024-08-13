@@ -56,7 +56,7 @@
                 <li> <a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><i style="font-size:1.8rem;" class="person  bi bi-person btnpress"></i></li>
-                <li><i style="font-size:1.8rem;" class="bi bi-cart btnpress1"></i></li>
+                <li><i style="font-size:1.8rem;" onclick="cartnav()" class="bi bi-cart btnpress1"></i></li>
                 <div class="loginway">
                     <div id="overlay" class="overlaylog"></div>
                     <p>Hi healthyMan!</p>
@@ -91,16 +91,6 @@
                         </div>
                     </div>
                 </div>
-                <div id="overlay" class="overlay"></div>
-                <div class="cart">
-
-                    <p> Your Cart</p>
-                    <div class="buy">
-                        <img style="width: 300px;height:300px;" src="Assets/cartg.png" alt="buy">
-                        <p style="font-weight: 900;">Your bowl is feeling lonely</p>
-                        <a href="/menu"><button class="cbtnc">Start Ordering</button></a>
-                    </div>
-                </div>
             </ul>
         </div>
 
@@ -116,7 +106,7 @@
 
                 <li><i class="bi bi-menu-up btnpress2 menus1"></i></li>
                 <li><i class="person  bi bi-person btnpress"></i></li>
-                <li><i class="bi bi-cart btnpress1"></i></li>
+                <li><i class="bi bi-cart btnpress1" onclick="cartnav()" ></i></li>
                 <div class="loginway">
                     <p>Hi healthyMan!</p>
                     <button class="btn1 cnl"><i class="bi bi-x"></i></button>
@@ -151,15 +141,7 @@
                     </div>
                 </div>
                 <div id="overlay" class="overlay"></div>
-                <div class="cart">
-
-                    <p> Your Cart</p>
-                    <div class="buy">
-                        <img src="Assets/cartg.png" alt="buy">
-                        <p style="font-weight: 900;">Your bowl is feeling lonely</p>
-                        <a href="/menu"><button class="cbtnc">Start Ordering</button></a>
-                    </div>
-                </div>
+                
 
                 <div class="hamburger-menu">
                     <div class="hamburger-icon" onclick="toggleMenu()">

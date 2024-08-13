@@ -72,7 +72,7 @@ $(".bottompop .otpbtn").click(function () {
 
 
 
-// cart pathway
+/* // cart pathway
 
 $(document).ready(function () {
     $(".nav-links .btnpress1").click(function (e) {
@@ -93,7 +93,7 @@ $(document).ready(function () {
    //     window.location.href ="C:/Users/MS NAMBIRAJA/Documents/Projects/GreenBowl/public/menupage.html";
     
 });
-
+ */
 
 
 
@@ -163,6 +163,10 @@ $(document).click(function (event) {
 
 //cart page
 
+
+ function cartnav(){
+    window.location.href ="/cart";
+ }
 
 
 

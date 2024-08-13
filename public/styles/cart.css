@@ -1,0 +1,130 @@
+/*GENERAL*/
+* {
+    margin: 0px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* cart*/
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-heading {
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 2rem;
+    font-weight: 550;
+}
+
+.cart img {
+    width: 300px;
+    height: 300px;
+}
+
+.section-caption {
+    font-size: 2rem;
+    font-weight: 550;
+}
+
+.cbtnc {
+    font-size: 19px;
+    font-weight: bold;
+    margin-left: 20px;
+    width: 180px;
+    height: auto;
+    padding: 8px;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    background-color: #399918;
+    color: white;
+}
+
+
+
+/* CART AFTER ADDED */
+/* .cart-section{
+   
+}
+ */
+.cart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    box-shadow: 0px 0px 4px 1.3px #399918;
+    padding: 1rem;
+    border-radius: 15px;
+
+
+}
+
+.image-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+}
+
+/* DETAILS AREA */
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.details-container p {
+    margin-bottom: 0.6rem;
+}
+
+.details-heading {
+    font-size: 1.4rem;
+    font-weight: 550;
+}
+
+.details-type {
+    font-size: 0.98rem;
+    font-weight: 450;
+    text-align: center;
+}
+
+/* PRICE AREA */
+
+.price-content{
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+   
+}
+.details-price {
+    margin-left: 2rem;
+    font-size: 1.4rem;
+    font-weight: 450;
+    text-align: center;
+}
+
+
+.decrement{
+    margin-left: 4rem;
+}
+
+.decrement,.increment{
+    width: 38px;
+    height: 38px;
+    font-size: 1.3rem;
+    font-weight: 550;
+    background-color:#399918;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+.quantity{
+    font-size: 1.5rem;
+    font-weight: 580;
+}

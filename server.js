@@ -1,10 +1,11 @@
 import express from "express";
+import bodyparser from "body-parser";
 
 
 const app = express();
 const port = 3000;
 app.use(express.static("public"));
-
+app.use(bodyparser.urlencoded({ extended: true }));
 
 const recipeJSON = [
     {
@@ -55,14 +56,16 @@ app.get("/menu", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-
     res.render("about.ejs");
 });
 
 app.get("/contact", (req, res) => {
     res.render("contact.ejs");
 });
-
+app.post("/cart", (req, res) => {
+    const item = req.body.recipes;
+    res.render("cart.ejs", { orders: item });
+});
 app.listen(port, () => {
     console.log(`listening on port ${port}`)
 });

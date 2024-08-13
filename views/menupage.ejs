@@ -78,45 +78,45 @@
             <div class="proteinbowl">
                 <% recipes.forEach(recipe=>{ %>
 
-                    <% console.log(recipe) %>
-
-                        <div class="section-container">
-                            <div class="content-container">
-                                <div class="details-container">
-                                    <article>
-                                        <div class="veg_nonveg_icon">
-                                            <% if (recipe.veg) {%>
-                                                <img class="veg-non-veg-icon" src="<%= recipe.veg %>">
-                                                <% } %>
-                                                    <img class="veg-non-veg-icon" src="<%= recipe.nonveg  %>">
-                                        </div>
-
-                                        <p class="dish">
-                                            <%= recipe.name %>
-                                        </p>
-                                        <div class="about-container">
-                                            <div class="about-img">
-                                                <img src="<%= recipe.image %>" alt="the peruvian bowl">
-                                                <button class="btn1">Add+</button>
+                        <form action="/cart" method="POST">
+                            <div class="section-container">
+                                <div class="content-container">
+                                    <div class="details-container">
+                                        <article>
+                                            <div class="veg_nonveg_icon">
+                                                <% if (recipe.veg) {%>
+                                                    <img class="veg-non-veg-icon" src="<%= recipe.veg %>">
+                                                    <% } %>
+                                                        <img class="veg-non-veg-icon" src="<%= recipe.nonveg  %>">
                                             </div>
-                                            <P class="ingredient"><b>INGREDIENTS :</b>
-                                                <%= recipe.ingredients %>
-                                            </P>
-                                            <p class="price"> Rs.<%= recipe.price%>
+
+                                            <p class="dish">
+                                                <%= recipe.name %>
                                             </p>
-                                            <p class="nutrients"><span>
-                                                    <%= recipe.nutrients.kcal %> Kcal
-                                                </span>•Protein <%= recipe.nutrients.protein%> •Carbs <%=
-                                                        recipe.nutrients.Carbs%> •Fat <%= recipe.nutrients.Fat%> •Fiber
-                                                            <%= recipe.nutrients.Fiber%>
-                                            </p>
+                                            <div class="about-container">
+                                                <div class="about-img">
+                                                    <img src="<%= recipe.image %>" alt="the peruvian bowl">
+                                                    <button class="btn1" type="submit">Add+</button>
+                                                </div>
+                                                <P class="ingredient"><b>INGREDIENTS :</b>
+                                                    <%= recipe.ingredients %>
+                                                </P>
+                                                <p class="price"> Rs.<%= recipe.price%>
+                                                </p>
+                                                <p class="nutrients"><span>
+                                                        <%= recipe.nutrients.kcal %> Kcal
+                                                    </span>•Protein <%= recipe.nutrients.protein%> •Carbs <%=
+                                                            recipe.nutrients.Carbs%> •Fat <%= recipe.nutrients.Fat%>
+                                                                •Fiber
+                                                                <%= recipe.nutrients.Fiber%>
+                                                </p>
+                                                <input type="hidden" name="recipes[]" value='<%= JSON.stringify(recipe) %>' />
+                                            </div>
 
-                                        </div>
 
+                                        </article>
 
-                                    </article>
-
-                                    <!--   <article>
+                                        <!--   <article>
                             <div class="veg_nonveg_icon">
                                 <img class="veg-non-veg-icon" src="Assets/veg_icon (1).png"> <img
                                     class="veg-non-veg-icon" src="Assets/non-veg_icon (1).png">
@@ -230,9 +230,10 @@
                             </div>
                         </article> -->
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                         <% }); %>
             </div>
         </section>
