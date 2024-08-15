@@ -43,3 +43,26 @@ $(".increment").click(() => {
     UpdatePrice(count);
 
 });
+
+
+
+
+/* checkbox */
+
+$(document).ready(function() {
+    $('#checkbox1').on('change', function() {
+        if ($(this).is(':checked')) {
+            $('.cart-container').css('box-shadow', '0px 0px 4px 2.3px #399918');
+        } else {
+            $('.cart-container').css('box-shadow', '0px 0px 4px 1.3px #939185');
+        }
+
+    
+    });
+    $('.deleteicon').click( function() {
+        $('.deleteicon').toggleClass('shadoweffect');
+        $('.elseclass').toggleClass('hiddenclass');
+        $('.checkboxbtn').toggleClass('elseclass');
+
+    });
+});

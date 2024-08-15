@@ -33,44 +33,50 @@
                     <% const items=JSON.parse(orders); %>
                         <% console.log(items.type) %>
                             <p class="section-heading"> Your Cart</p>
-                            <% if(items && count>0) {%>
-                               
-                                <div class="cart-section">
-                                    <div class="cart-container">
-                                        <div class="image-container">
-                                            <img src=<%=items.image%> />
+                            <%# < if(items && count>0) {% %>
+                                <div class="checkboxbtn">
+                                    <input type="checkbox" id="checkbox1" class="custom-checkbox">
+                                    <label for="checkbox1">
+                                        <div class="cart-section">
+                                            <div class="cart-container">
+                                                <div class="image-container">
+                                                    <img src=<%=items.image%> />
+                                                </div>
+                                                <div class="details-container">
+                                                    <p class="details-heading">
+                                                        <%= items.name %>
+                                                    </p>
+                                                    <p class="details-type">
+                                                        (<%= items.type %>)
+                                                    </p>
+                                                </div>
+
+
+                                                <div class="price-content">
+                                                    <p class="details-price">
+                                                        Rs.<%= items.price %>
+                                                    </p>
+                                                    <button class="decrement"> - </button>
+                                                    <p class="quantity">
+                                                        <%= count %>
+                                                    </p>
+                                                    <button class="increment"> + </button>
+
+                                                </div>
+                                            </div>
+                                            <div id="cart-data" data-items='<%= JSON.stringify(items) %>'></div>
                                         </div>
-                                        <div class="details-container">
-                                            <p class="details-heading">
-                                                <%= items.name %>
-                                            </p>
-                                            <p class="details-type">
-                                                (<%= items.type %>)
-                                            </p>
-                                        </div>
-                                        
-                                       
-                                        <div class="price-content">
-                                            <p class="details-price">
-                                                Rs.<%= items.price %>
-                                            </p>
-                                            <button class="decrement"> - </button>
-                                            <p class="quantity">
-                                                <%= count %>
-                                            </p>
-                                            <button class="increment"> + </button>
-                                        </div>
-                                    </div>
-                                    <div id="cart-data" data-items='<%= JSON.stringify(items) %>'></div>
+                                    </label>
+                                    <button class="deleteicon"><i class="bi bi-trash3"></i></button>
+
                                 </div>
 
-                                <% }else{%>
+                                <div class="elseclass">
                                     <img src="Assets/cartg.png" alt="buy">
                                     <p class="section-caption">Your bowl is feeling lonely</p>
                                     <a href="/menu"><button class="cbtnc">Start Ordering</button></a>
-                                    <% } %>
 
-
+                                </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>

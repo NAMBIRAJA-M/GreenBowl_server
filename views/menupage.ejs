@@ -104,12 +104,12 @@
                                                 <p class="price"> Rs.<%= recipe.price%>
                                                 </p>
                                                 <p class="nutrients"><span>
-                                                        <%= recipe.nutrients.kcal %> Kcal
-                                                    </span>•Protein <%= recipe.nutrients.protein%> •Carbs <%=
-                                                            recipe.nutrients.Carbs%> •Fat <%= recipe.nutrients.Fat%>
-                                                                •Fiber
-                                                                <%= recipe.nutrients.Fiber%>
-                                                </p>
+                                                <%= recipe.kcal %> Kcal
+                                            </span>•Protein <%= recipe.protein%> •Carbs <%=
+                                                    recipe.carbs%>•Fat <%= recipe.fat%>
+                                                        •Fiber
+                                                        <%= recipe.fiber%>
+                                        </p>
                                                 <input type="hidden" name="recipes[]" value='<%= JSON.stringify(recipe) %>' />
                                             </div>
 

@@ -10,8 +10,10 @@
   "author": "NAMBI RAJA",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.7.4",
     "body-parser": "^1.20.2",
     "ejs": "^3.1.10",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
   }
 }
