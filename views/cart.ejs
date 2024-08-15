@@ -29,47 +29,51 @@
     <% const count=1; %>
         <div class="cart">
             <% console.log("from the cart.ejs file",orders) %>
-                <% console.log(typeof orders); %>
-                    <% const items=JSON.parse(orders); %>
-                        <% console.log(items.type) %>
-                            <p class="section-heading"> Your Cart</p>
-                            <%# < if(items && count>0) {% %>
-                                <div class="checkboxbtn">
-                                    <input type="checkbox" id="checkbox1" class="custom-checkbox">
-                                    <label for="checkbox1">
-                                        <div class="cart-section">
-                                            <div class="cart-container">
-                                                <div class="image-container">
-                                                    <img src=<%=items.image%> />
-                                                </div>
-                                                <div class="details-container">
-                                                    <p class="details-heading">
-                                                        <%= items.name %>
-                                                    </p>
-                                                    <p class="details-type">
-                                                        (<%= items.type %>)
-                                                    </p>
-                                                </div>
-
-
-                                                <div class="price-content">
-                                                    <p class="details-price">
-                                                        Rs.<%= items.price %>
-                                                    </p>
-                                                    <button class="decrement"> - </button>
-                                                    <p class="quantity">
-                                                        <%= count %>
-                                                    </p>
-                                                    <button class="increment"> + </button>
-
-                                                </div>
-                                            </div>
-                                            <div id="cart-data" data-items='<%= JSON.stringify(items) %>'></div>
+            <% orders.forEach((order)=>{%>
+                <% const jsondata=order %>
+             
+          
+                
+                <% console.log(jsondata.type) %>
+                    <p class="section-heading"> Your Cart</p>
+                    <%# < if(items && count>0) {% %>
+                        <div class="checkboxbtn">
+                            <input type="checkbox" id="checkbox1" class="custom-checkbox">
+                            <label for="checkbox1">
+                                <div class="cart-section">
+                                    <div class="cart-container">
+                                        <div class="image-container">
+                                            <img src=<%=jsondata.image%> />
                                         </div>
-                                    </label>
-                                    <button class="deleteicon"><i class="bi bi-trash3"></i></button>
+                                        <div class="details-container">
+                                            <p class="details-heading">
+                                                <%= jsondata.name %>
+                                            </p>
+                                            <p class="details-type">
+                                                (<%= jsondata.type %>)
+                                            </p>
+                                        </div>
 
+
+                                        <div class="price-content">
+                                            <p class="details-price">
+                                                Rs.<%= jsondata.price %>
+                                            </p>
+                                            <button class="decrement"> - </button>
+                                            <p class="quantity">
+                                                <%= count %>
+                                            </p>
+                                            <button class="increment"> + </button>
+
+                                        </div>
+                                    </div>
+                                            <div id="cart-data" data-items='<%= JSON.stringify(jsondata) %>'></div>
                                 </div>
+                            </label>
+                            <button class="deleteicon"><i class="bi bi-trash3"></i></button>
+
+                        </div>
+                        <% }) %>
 
                                 <div class="elseclass">
                                     <img src="Assets/cartg.png" alt="buy">
