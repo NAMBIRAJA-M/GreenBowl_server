@@ -21,6 +21,31 @@
     margin-left: 20px;
     font-size: 2rem;
     font-weight: 550;
+    color: #399918;
+}
+.backwardbtn{
+    margin: 1rem;
+    margin-bottom: 0%;
+}
+.bbtn{
+    display:inline;
+    position: relative;
+    font-size: 1.7rem;
+    width: 150px;
+    height: 50px;
+    background:transparent;
+    border: none;
+    font-weight: 550;
+   /*  padding: 1rem; */
+    border-radius:15px;
+    left: 4rem;
+    background-color:white;
+    color:#399918 ;
+}
+.bbtn:hover{
+    background-color:#399918;
+    color:white ;
+
 }
 
 .checkboxbtn {
@@ -28,6 +53,8 @@
     gap:1rem;
     justify-content: center;
     align-items: center;
+   /*  width:1000px; */
+    padding:2rem;
 
 }
 
@@ -103,12 +130,13 @@
  */
 .cart-container {
     display: flex;
-    justify-content: center;
+    justify-content:space-between;
     align-items: center;
-    gap: 5rem;
+    gap:2rem;
     padding: 1rem;
     border-radius: 15px;
     box-shadow:0px 0px 4px 1.3px #939185;
+    width: 800px;
 
 
 }
@@ -120,9 +148,6 @@
 }
 
 .elseclass{
-    display: none;
-}
-.hiddenclass{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -136,16 +161,16 @@
 }
 
 .details-container p {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.3rem;
 }
 
 .details-heading {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 550;
 }
 
 .details-type {
-    font-size: 0.98rem;
+    font-size: 0.8rem;
     font-weight: 450;
     text-align: center;
 }
@@ -154,14 +179,14 @@
 
 .price-content {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     justify-content: space-between;
 
 }
 
 .details-price {
-    margin-left: 2rem;
-    font-size: 1.4rem;
+    margin-left: 1rem;
+    font-size: 1.3rem;
     font-weight: 450;
     text-align: center;
 }
@@ -173,8 +198,8 @@
 
 .decrement,
 .increment {
-    width: 38px;
-    height: 38px;
+    width: 30px;
+    height: 30px;
     font-size: 1.3rem;
     font-weight: 550;
     background-color: #399918;
@@ -184,11 +209,14 @@
 }
 
 .quantity {
-    font-size: 1.5rem;
-    font-weight: 580;
+    font-size: 1.3rem;
+    font-weight: 500;
 }
 
 .deleteicon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     bottom:0.4rem;
     font-size: 2.1rem;
