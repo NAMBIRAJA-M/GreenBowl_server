@@ -136,7 +136,7 @@ app.post("/cart", async (req, res) => {
 
 
 app.get("/cart", async (req, res) => {
-    const result = await db.query("SELECT * FROM cartitems");
+    const result = await db.query("SELECT * FROM cartitems ORDER by id ASC;");
     const cartItem = result.rows;
     res.render("cart.ejs", { orders: cartItem });
 });
@@ -147,6 +147,20 @@ app.get("/cart/delete/:id",async(req,res)=>{
     const result= await db.query("DELETE FROM cartitems WHERE id=$1",[id]);
     res.redirect("/cart");
 });
+/* app.get("/cart/price/:actualprice/:id",async (req,res)=>{
+    const id = parseInt(req.params.id);
+    const price = parseInt(req.params.actualprice);
+    console.log("pricechangeid",id);
+    console.log("pricechangeid",price);
+    try{
+    const result= await db.query("UPDATE cartitems  SET  price=$1 WHERE id=$2",[price,id]);
+    res.redirect("/cart");
+    console.log("cartitem updated successfully..!")
+    }catch(e){
+  console.log("error from cartitem update",e)
+    }
+}) */
+
 app.listen(port, () => {
     console.log(`listening on port ${port}`)
 });

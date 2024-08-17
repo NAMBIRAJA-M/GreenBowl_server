@@ -58,13 +58,14 @@
 
 }
 
+
+/* Hide all checkboxes */
 .custom-checkbox {
     display: none;
 }
 
-
-/* Custom checkbox style */
-.custom-checkbox+label {
+/* General label style */
+.custom-checkbox + label {
     position: relative;
     cursor: pointer;
     display: flex;
@@ -73,28 +74,28 @@
     align-items: center;
 }
 
-.custom-checkbox+label::before {
+/* Base style for the custom checkbox before being checked */
+.custom-checkbox + label::before {
     content: '';
     display: flex;
-    gap: 5rem;
-    justify-content: center;
-    align-items: center;
     width: 30px;
     height: 30px;
     background-color: #ccc;
     border-radius: 4px;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.custom-checkbox:checked+label::before {
-    background-color: #4CAF50;
-    /* Change this to your desired color */
-    content: '✔';
-    /* Optional: Add a checkmark */
+/* Style for the custom checkbox when checked */
+.custom-checkbox:checked + label::before {
+    background-color: #4CAF50; /* Same color for all checkboxes */
+    content: '✔'; /* Same content for all checkboxes */
     color: white;
-    text-align: center;
-    line-height: 20px;
+    line-height: 30px; /* Center the checkmark vertically */
 }
+
+
 
 .cart img {
     width: 300px;
@@ -234,4 +235,18 @@
     box-shadow:0px 0px 7px 1.3px red;
     transition: box-shadow 0.3s ease ; 
     
+}
+
+
+/* CALCULATION */
+
+
+.calc-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+}
+.totalprice{
+    font-size: 1.3rem;
 }
