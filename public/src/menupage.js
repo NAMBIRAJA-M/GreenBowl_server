@@ -32,13 +32,13 @@ $(".vegsandwiches .section-heading,.vegsandwiches .caret-styles").click(function
 $(".nav-links .btnpress").click(function () {
     $(".loginway").toggleClass("hidden1");
     var currentPadding = $(".caropic").css("padding-top");
-   var currentPadding1= $(".specificnav").css("padding-top");
-    if (currentPadding === "80px" ){ 
-        $(".caropic").css("padding-top", "20px");
+    var currentPadding1 = $(".specificnav").css("padding-top");
+    if (currentPadding === "120px") {
+        $(".caropic").css("padding-top", "10px");
     } else {
-        $(".caropic").css("padding-top", "80px");
+        $(".caropic").css("padding-top", "120px");
     }
-    if (currentPadding1 === "90px" ){ 
+    if (currentPadding1 === "90px") {
         $(".specificnav").css("padding-top", "20px");
     } else {
         $(".specificnav").css("padding-top", "90px");
@@ -68,7 +68,24 @@ $(".bottompop .otpbtn").click(function () {
     $(".loginway").removeClass("hidden1");
 }
 )
+$(".signuppopup .cnllogin").click(function () {
+    $(".nav-links .signuppopup").removeClass("hiddenpopup");
+    $(".overlaylog").css("display", "none");
+    $(".loginway").removeClass("hidden1");
+    $(".caropic").css("padding-top", "40px");
 
+});
+
+
+$(".loginway .signupbtn").click(function () {
+    $(".nav-links .signuppopup").addClass("hiddenpopup ")
+    $(".loginway").removeClass("hidden1");
+});
+
+
+function submitSign() {
+    window.location.href = "/cart";
+}
 
 
 
@@ -111,8 +128,8 @@ function toggleMenu() {
     } else {
         $(".caropic").css("padding-top", "100px");
     }
-    var currentPadding1= $(".specificnav").css("padding-top");
-    if (currentPadding1 === "90px" ){ 
+    var currentPadding1 = $(".specificnav").css("padding-top");
+    if (currentPadding1 === "90px") {
         $(".specificnav").css("padding-top", "20px");
     } else {
         $(".specificnav").css("padding-top", "90px");
@@ -132,17 +149,17 @@ function toggleMenu() {
 
 
 //hamburger-nav > menucard open and close
-    $(".menus1").click(function () {
-        const menucardhamb = document.querySelector(".menucardhamb");
-        if (menucardhamb.style.display === "flex") {
-            menucardhamb.style.display = "none";
-            $(".caropic").css("padding-top", "20px");
+$(".menus1").click(function () {
+    const menucardhamb = document.querySelector(".menucardhamb");
+    if (menucardhamb.style.display === "flex") {
+        menucardhamb.style.display = "none";
+        $(".caropic").css("padding-top", "20px");
 
-        } else {
-            menucardhamb.style.display = "flex";
-            $(".caropic").css("padding-top", "300px");
-        }
-    });
+    } else {
+        menucardhamb.style.display = "flex";
+        $(".caropic").css("padding-top", "300px");
+    }
+});
 
 
 //hamburger-nav > menucard open and close (other elements)
@@ -164,12 +181,69 @@ $(document).click(function (event) {
 //cart page
 
 
- function cartnav(){
-    window.location.href ="/cart";
- }
+function cartnav() {
+    window.location.href = "/cart";
+}
 
 
 
 
 
 
+/* LOGIN MESSAGE */
+// Function to clear URL parameters
+function clearUrlParams() {
+    const url = new URL(window.location.href);
+    url.search = ''; // Clear search parameters
+    window.history.replaceState({}, document.title, url.toString()); // Update the URL
+}
+
+// Call this function after showing the toast
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+    const name = urlParams.get('name');
+    const error = urlParams.get('error');
+
+    if (message) {
+        toastr.success(decodeURIComponent(message),`${name}`, {
+            timeOut: 5000,
+            closeButton: true,
+            progressBar: true,
+            positionClass: 'toast-top-center',
+        });
+
+        const audio = new Audio("/Assets/success3.mp3");
+        audio.play();
+        console.log(name);
+        $(".loginname").text("Hi "+name+" !");
+        $(".lgn1").text("Log Out");
+
+        $(".loginway .lgn1").click(function () {
+            $(".nav-links .loginpopup").removeClass("hiddenpopup ")
+        })
+
+
+        $(".lgn1").click(()=>{
+
+            window.location.href="/menu";
+
+        })
+
+        clearUrlParams();
+    }
+
+    if (error) {
+        toastr.error(decodeURIComponent(error), '', {
+            timeOut: 5000,
+            closeButton: true,
+            progressBar: true,
+            positionClass: 'toast-top-center',
+        });
+
+        // Clear URL parameters after showing the toast
+        clearUrlParams();
+        const audio = new Audio("/Assets/error4.mp3");
+        audio.play();
+    }
+});
