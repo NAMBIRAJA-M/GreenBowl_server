@@ -1,6 +1,12 @@
 $(".nav-links .menus").click(function () {
     window.location.href = "/menu";
 });
+//cart page
+
+
+function cartnav() {
+    window.location.href = "/cart";
+}
 
 
 // hamburger-menu > icon and menus open and close

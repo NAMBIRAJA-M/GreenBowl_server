@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         $(".lgn1").click(()=>{
 
-            window.location.href="/menu";
+            window.location.href=`/menu?message=You%20have%20successfully%20Signed%20Up!&name=${name}`;
 
         })
 

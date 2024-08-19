@@ -145,13 +145,9 @@ app.get("/", (req, res) => {
 
 
 app.get("/menu", async (req, res) => {
-    /*  let message = {};
-     if (req.query.message) {
-         message = JSON.parse(decodeURIComponent(req.query.message));
-     } */
     const result = await db.query("SELECT * FROM cartinfo");
     const recipeJSON = result.rows;
-    res.render("menupage.ejs", { recipes: recipeJSON/* ,message:message  */ });
+    res.render("menupage.ejs", { recipes: recipeJSON });
     /*   console.log(Array.isArray(recipeJSON)); */
 });
 
@@ -188,11 +184,9 @@ app.post("/cart", async (req, res) => {
     }
     else {
 
-        res.redirect("/menu");
-        /*  const message = { news: "already added" };
-         res.redirect(`/menu?message=${encodeURIComponent(JSON.stringify(message))}`);
- 
-  */
+        res.redirect("/menu?error=Already%20Added..");
+       
+
     }
 
 });

@@ -12,27 +12,31 @@
 
 
 /*Breadcrumb*/
-
 ol.breadcrumb {
-    padding: 10px 16px;
+    padding: 1rem 0; /* Increased top/bottom padding */
     list-style: none;
-    text-decoration: none;
-    color: black;
-    margin-left: -5px;
-    padding: 1rem;
+    margin: 0; /* Resetting margin */
 }
 
 ol.breadcrumb li {
-    display: inline;
+    display: inline; /* Change to inline for horizontal layout */
     font-size: 1.2rem;
 }
 
-ol.breadcrumb li+li:before {
-    padding: 8px;
+ol.breadcrumb li+li::before {
+    padding: 0 8px; 
     color: black;
-    content: ">\00a0";
+    content: ">";
 }
 
+ol.breadcrumb li a {
+    color: black; 
+    text-decoration: none; 
+}
+
+ol.breadcrumb li a:hover {
+    text-decoration: underline; 
+}
 
 
 
