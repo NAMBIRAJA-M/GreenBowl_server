@@ -22,7 +22,7 @@ Green Bowl is a website dedicated to providing hygienic, nutritious, and environ
 
 1. **Clone the repository:**
     ```bash
-https://github.com/NAMBIRAJA-M/GreenBowl_server.git
+     https://github.com/NAMBIRAJA-M/GreenBowl_server.git
     ```
 2. **Navigate to the project directory:**
     ```bash
