@@ -38,7 +38,7 @@ Green Bowl is a website dedicated to providing hygienic, nutritious, and environ
         ```env
         PORT=000
         DATABASE_URL=your_postgresql_connection_string
-        JWT_SECRET=your_jwt_secret
+       
         ```
 
 5. **Run the application:**
