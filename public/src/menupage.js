@@ -204,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const message = urlParams.get('message');
     const name = urlParams.get('name');
     const error = urlParams.get('error');
+    const warning = urlParams.get('warning');
 
     if (message) {
         toastr.success(decodeURIComponent(message),`${name}`, {
@@ -226,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         $(".lgn1").click(()=>{
 
-            window.location.href=`/menu?message=You%20have%20successfully%20Signed%20Up!&name=${name}`;
+            window.location.href=`/logout`;
 
         })
 
@@ -235,6 +236,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (error) {
         toastr.error(decodeURIComponent(error), '', {
+            timeOut: 5000,
+            closeButton: true,
+            progressBar: true,
+            positionClass: 'toast-top-center',
+        });
+
+        // Clear URL parameters after showing the toast
+        clearUrlParams();
+        const audio = new Audio("/Assets/error4.mp3");
+        audio.play();
+    }
+    if (warning) {
+        toastr.warning(decodeURIComponent(warning), '', {
             timeOut: 5000,
             closeButton: true,
             progressBar: true,

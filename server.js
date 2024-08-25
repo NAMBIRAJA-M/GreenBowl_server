@@ -22,6 +22,8 @@ db.connect();
 app.use(express.static("public"));
 app.use(bodyparser.urlencoded({ extended: true }));
 
+let currentUserId= 0;
+
 
 const jsonData = JSON.parse(fs.readFileSync('recipe.json', 'utf8'));
 
@@ -37,8 +39,8 @@ async function checkcart(ids) {
             if (result.rows.length > 0) {
                 const { id, type, name, price, image } = result.rows[0];
                 await db.query(
-                    "INSERT INTO cartitems (id, type, name, price, image) VALUES ($1, $2, $3, $4, $5)",
-                    [id, type, name, price, image]
+                    "INSERT INTO cartitems (id, type, item_name, price, image,user_id) VALUES ($1, $2, $3, $4, $5,$6)",
+                    [id, type, name, price, image,currentUserId]
                 );
 
             }
@@ -50,8 +52,6 @@ async function checkcart(ids) {
         return err.code;
     }
 }
-
-
 
 const insertData = async () => {
 
@@ -76,7 +76,7 @@ const insertData = async () => {
 
 };
 insertData();
-
+console.log("currect user id :",currentUserId)
 
 
 app.post("/signup", async (req, res) => {
@@ -121,6 +121,7 @@ app.post("/login", async (req, res) => {
     if (result.rows.length > 0) {
         const users = result.rows[0];
         const registerpassword = users.password;
+        currentUserId=users.id
 
         bcrypt.compare(loginpassword, registerpassword, (err, result) => {
                 if(result){
@@ -137,6 +138,11 @@ app.post("/login", async (req, res) => {
         res.redirect('/menu?error=Invalid%20credentials');
     }
 
+})
+
+app.get("/logout",(req,res)=>{
+    res.redirect("/menu?warning=You%20have%20successfully%20Logged%20Out!");
+    currentUserId=0;
 })
 
 app.get("/", (req, res) => {
@@ -176,10 +182,12 @@ app.post("/cart", async (req, res) => {
 
     console.log("response from function", response);
     if (response === 'Cart check completed successfully.') {
-        const result = await db.query("SELECT * FROM cartitems");
+    
+        const result = await db.query("SELECT * FROM cartitems JOIN users ON users.id= user_id WHERE user_id=$1",[currentUserId]);
+    
         const cartItem = result.rows;
-        /*console.log(typeof cartItem);
-          console.log("cartitems", cartItem); */
+        /*console.log(typeof cartItem);*/
+          console.log("cartitems", cartItem); 
         res.render("cart.ejs", { orders: cartItem });
     }
     else {
@@ -193,7 +201,9 @@ app.post("/cart", async (req, res) => {
 
 
 app.get("/cart", async (req, res) => {
-    const result = await db.query("SELECT * FROM cartitems ORDER by id ASC;");
+    const result = await db.query("SELECT * FROM cartitems JOIN users ON users.id= user_id WHERE user_id=$1",[currentUserId]);
+
+   /*  ORDER by id ASC */
     const cartItem = result.rows;
     res.render("cart.ejs", { orders: cartItem });
 });
