@@ -27,6 +27,28 @@ body {
 .toast-warning {
     background-color: #343A40 !important; 
 }
+.toast-info {
+    background-color: #17a2b8 !important; 
+    color: #151515 !important; 
+    font-size: 2rem;
+}
+
+/* Define the shake animation */
+@keyframes shake {
+    0% {
+        transform: scale(1) ;
+    }
+    100% {
+        transform: scale(3.5) ;
+    }
+}
+
+
+/* Apply the shake animation to an icon */
+.icon-shake {
+        animation: shake 1s ease; 
+}
+
 
 /* NAV BAR */
 

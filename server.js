@@ -22,35 +22,69 @@ db.connect();
 app.use(express.static("public"));
 app.use(bodyparser.urlencoded({ extended: true }));
 
-let currentUserId= 0;
+let currentUserId = 0;
 
 
 const jsonData = JSON.parse(fs.readFileSync('recipe.json', 'utf8'));
+
 
 
 async function checkcart(ids) {
     try {
         for (const id of ids) {
             console.log(`Processing item with id: ${id}`);
+            if (currentUserId === 0) {
 
-            const result = await db.query("SELECT * FROM cartinfo WHERE id = $1", [id]);
-            ids.length = 0;
-            console.log(ids);
-            if (result.rows.length > 0) {
-                const { id, type, name, price, image } = result.rows[0];
-                await db.query(
-                    "INSERT INTO cartitems (id, type, item_name, price, image,user_id) VALUES ($1, $2, $3, $4, $5,$6)",
-                    [id, type, name, price, image,currentUserId]
-                );
+                return 'notlogined';
+            }
+            else {
+                const result = await db.query("SELECT * FROM cartinfo WHERE id = $1", [id]);
+                ids.length = 0;
+        
+                if (result.rows.length > 0) {
+
+                    const cres = await db.query("SELECT * FROM cartitems JOIN users ON users.id= user_id WHERE user_id=$1", [currentUserId]);
+                    const checkitem = cres.rows;
+
+    
+                    const { type, name, price, image } = result.rows[0];
+
+                    if (checkitem.length > 0) {
+
+                        let itemFound = false;
+
+
+                        for (const item of checkitem) {
+                    
+                            if (item.item_name === name && item.user_id === currentUserId) {
+                                itemFound = true;
+                                break;
+                            }
+                        }
+
+                        if (itemFound) {
+                           
+                            return 'duplicate';
+                        }
+                    }
+
+                    await db.query(
+                        "INSERT INTO cartitems (type, item_name, price, image, user_id) VALUES ($1, $2, $3, $4, $5)",
+                        [type, name, price, image, currentUserId]
+                    );
+
+                    return 'Cart check completed successfully.';
+
+                }
 
             }
 
         }
-        return 'Cart check completed successfully.';
     } catch (err) {
         console.error('Error processing cart:', err);
-        return err.code;
+        return err;
     }
+
 }
 
 const insertData = async () => {
@@ -60,11 +94,11 @@ const insertData = async () => {
         const { type, name, price, image, veg, nonveg, ingredients, kcal, protein, carbs, fat, fiber } = item;
 
         const formattedIngredients = Array.isArray(ingredients) ? JSON.stringify(ingredients) : ingredients;
-        /* console.log( formattedIngredients ) */
+       
         try {
 
             await db.query("INSERT INTO cartinfo (type, name, price, image, veg, nonveg, ingredients, kcal, protein, carbs, fat, fiber)VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12) ON CONFLICT (name) DO NOTHING;", [type, name, price, image, veg, nonveg, formattedIngredients, kcal, protein, carbs, fat, fiber]);
-            console.log('Data inserted');
+           
 
         } catch (err) {
             console.error('Error inserting data:', err);
@@ -76,7 +110,7 @@ const insertData = async () => {
 
 };
 insertData();
-console.log("currect user id :",currentUserId)
+
 
 
 app.post("/signup", async (req, res) => {
@@ -103,7 +137,7 @@ app.post("/signup", async (req, res) => {
                     );
                     console.log("user registered details inserted  successfully")
                     res.redirect(`/menu?message=You%20have%20successfully%20Signed%20Up!&name=${name}`);
-                } 
+                }
             })
 
         }
@@ -121,28 +155,28 @@ app.post("/login", async (req, res) => {
     if (result.rows.length > 0) {
         const users = result.rows[0];
         const registerpassword = users.password;
-        currentUserId=users.id
+        currentUserId = users.id
 
         bcrypt.compare(loginpassword, registerpassword, (err, result) => {
-                if(result){
-                    res.redirect(`/menu?message=You%20have%20successfully%20logged%20in!&name=${users.name}`);
-                }else{
-                    res.redirect('/menu?error=Invalid%20credentials');
-                }
-        
+            if (result) {
+                res.redirect(`/menu?message=You%20have%20successfully%20logged%20in!&name=${users.name}`);
+            } else {
+                res.redirect('/menu?error=Invalid%20credentials');
+            }
+
         })
 
 
 
-    }else{
+    } else {
         res.redirect('/menu?error=Invalid%20credentials');
     }
 
 })
 
-app.get("/logout",(req,res)=>{
+app.get("/logout", (req, res) => {
     res.redirect("/menu?warning=You%20have%20successfully%20Logged%20Out!");
-    currentUserId=0;
+    currentUserId = 0;
 })
 
 app.get("/", (req, res) => {
@@ -181,29 +215,29 @@ app.post("/cart", async (req, res) => {
     const response = await checkcart(itemid);
 
     console.log("response from function", response);
+
     if (response === 'Cart check completed successfully.') {
-    
-        const result = await db.query("SELECT * FROM cartitems JOIN users ON users.id= user_id WHERE user_id=$1",[currentUserId]);
-    
-        const cartItem = result.rows;
-        /*console.log(typeof cartItem);*/
-          console.log("cartitems", cartItem); 
-        res.render("cart.ejs", { orders: cartItem });
+
+        res.redirect("/menu?added=Item%20Added%20Into%20The%20Cart..");
+
+    }
+    else if (response === 'notlogined') {
+        res.redirect("/menu?info=Login%20To%20Add%20Items..");
+    }
+    else if(response === 'duplicate') {
+        res.redirect("/menu?already=Already%20Added..");
     }
     else {
-
-        res.redirect("/menu?error=Already%20Added..");
-       
-
+        res.redirect("/menu?error=Something%20went%20wrong..");
     }
 
 });
 
 
 app.get("/cart", async (req, res) => {
-    const result = await db.query("SELECT * FROM cartitems JOIN users ON users.id= user_id WHERE user_id=$1",[currentUserId]);
+    const result = await db.query("SELECT * FROM cartitems JOIN users ON users.id= user_id WHERE user_id=$1", [currentUserId]);
 
-   /*  ORDER by id ASC */
+    /*  ORDER by id ASC */
     const cartItem = result.rows;
     res.render("cart.ejs", { orders: cartItem });
 });
