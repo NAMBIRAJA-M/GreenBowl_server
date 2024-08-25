@@ -234,20 +234,32 @@ app.post("/cart", async (req, res) => {
 });
 
 
-app.get("/cart", async (req, res) => {
-    const result = await db.query("SELECT * FROM cartitems JOIN users ON users.id= user_id WHERE user_id=$1", [currentUserId]);
+/* app.get("/cart", async (req, res) => {
+    const result = await db.query("SELECT * FROM cartitems JOIN users ON users.id = user_id WHERE user_id = $1 ORDER BY cartitems.id ASC", [currentUserId]);
 
-    /*  ORDER by id ASC */
+    /*  ORDER by id ASC 
     const cartItem = result.rows;
+    console.log(cartItem);
     res.render("cart.ejs", { orders: cartItem });
+}); */
+
+app.get("/cart", async (req, res) => {
+    try {
+        const result = await db.query(
+            "SELECT cartitems.id AS item_id, cartitems.*, users.* FROM cartitems JOIN users ON users.id = user_id WHERE user_id = $1 ORDER BY cartitems.id ASC",
+            [currentUserId]
+        );
+
+        const cartItems = result.rows;
+        console.log(cartItems);
+        res.render("cart.ejs", { orders: cartItems });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal Server Error");
+    }
 });
 
-app.get("/cart/delete/:id", async (req, res) => {
-    const id = parseInt(req.params.id);
-    console.log("delete id ", id);
-    const result = await db.query("DELETE FROM cartitems WHERE id=$1", [id]);
-    res.redirect("/cart");
-});
+
 /* app.get("/cart/price/:actualprice/:id",async (req,res)=>{
     const id = parseInt(req.params.id);
     const price = parseInt(req.params.actualprice);

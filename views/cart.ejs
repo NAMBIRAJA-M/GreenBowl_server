@@ -34,10 +34,12 @@
             <p class="section-heading"> Your Cart</p>
             <% if (orders && orders.length> 0) { %>
                 <% orders.forEach((order)=> { %>
+                    <% console.log("items id:",order.item_id) %>
+                    <% console.log(" id:",order.id) %>
                     <% const items=order %>
                         <div class="checkboxbtn">
-                            <input type="checkbox" id="checkbox-<%=items.id %>" price="<%= items.price %>"  class="custom-checkbox">
-                            <label for="checkbox-<%=items.id %>" onclick="handleclick('<%= items.price %>')">
+                            <input type="checkbox" id="checkbox-<%=items.item_id%>" price="<%= items.price %>"  class="custom-checkbox">
+                            <label for="checkbox-<%=items.item_id %>" onclick="handleclick('<%= items.price %>')">
                                 <div class="cart-section">
                                     <div class="cart-container">
                                         <div class="image-container">
@@ -52,22 +54,22 @@
                                             </p>
                                         </div>
                                         <div class="price-content">
-                                            <p id="details-price-<%= items.id %>" class="details-price">
+                                            <p id="details-price-<%= items.item_id %>" class="details-price">
                                                 Rs.<%= items.price %>
                                             </p>
                                             <button class="decrement" onclick="decrement('<%=items.id%>','<%=items.price%>')"> - </button>
-                                            <p id="quantity-<%= items.id %>" class="quantity">
+                                            <p id="quantity-<%=items.item_id%>" class="quantity">
                                                 <%= count %>
                                             </p>
                                             <button class="increment"
-                                                onclick="increment('<%=items.id%>','<%=items.price%>')"> +
+                                                onclick="increment('<%=items.item_id%>','<%=items.price%>')"> +
                                             </button>
                                         </div>
                                     </div>
-                                    <div id="cart-data-<%= items.id %>" data-items='<%= JSON.stringify(items) %>'></div>
+                                    <div id="cart-data-<%= items.item_id %>" data-items='<%= JSON.stringify(items) %>'></div>
                                 </div>
                             </label>
-                            <a class="deleteicon" href="/cart/delete/<%= items.id %>"><i class="bi bi-trash3"></i></a>
+                            <a class="deleteicon" href="/cart/delete/<%= items.item_name  %>"><i class="bi bi-trash3"></i></a>
                         </div>
                           <div class="calc-container">
                             <p class="totalprice"></p>
