@@ -46,4 +46,4 @@ Green Bowl is a website dedicated to providing hygienic, nutritious, and environ
     npm start
     ```
 6. **Access the website:**
-    Open your browser and go to `http://localhost/
+    Open your browser and go to `http://localhost/3000/`
