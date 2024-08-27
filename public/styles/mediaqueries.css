@@ -516,23 +516,25 @@ find-container {
 
 /*FOOTER CONTAINER*/
 
+
 .footer-container {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    min-width: 300px;
-    gap: 0.8rem;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    margin-right:0.5rem;
+    margin-bottom: 1rem;
+    min-width:350px;
 
 }
 
 .foot-container1 {
     gap: 0.4rem;
-    width: 300px;
+    flex-wrap: wrap;
 }
 
 .logofoot {
     margin: 15px;
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
 }
 
 .logo-textfoot {
@@ -540,21 +542,30 @@ find-container {
 }
 
 .foot-container2 {
-    gap: 0.4rem;
-    padding: 0.8rem;
+    gap: 0.3rem;
+    padding: 0.5rem;
+    min-width:350px;
 }
 
 .foot-container2 .caption {
     font-size: 0.8rem;
     padding: 5px;
+    overflow-wrap: anywhere;
     
     }
 
 .smedia {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     justify-content: center;
     padding: 1rem;
+}
+
+.benifits {
+    gap: 0.4rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+   
 }
 
 .smedia i {

@@ -755,3 +755,130 @@ span {
 #Nonvegsalads {
     position: relative;
 }
+
+
+
+
+
+
+
+
+
+
+
+/*FOOTER CONTAINER*/
+
+.footer-container {
+    margin-top: 2rem;
+    width: fit-content;
+    height: fit-content;
+    box-shadow: 0px 0px 1.5px 2px rgba(0, 0, 0, 0.5);
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-bottom: 1.3rem;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.foot-container1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.logofoot {
+    margin: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 0px;
+}
+
+.logo-textfoot {
+    font-size: 2rem;
+    font-weight: 550;
+    margin: 1rem;
+    margin-top: 0rem;
+    color: #399918;
+}
+
+.smedia {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    padding: 3rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+
+}
+
+.smedia a {
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background-color: #65B741;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.smedia i {
+    font-size: 1.5rem;
+    color: black;
+    padding: 5px;
+}
+
+.benifits {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.benifits p {
+    margin-top: 15px;
+}
+
+.benifits a {
+    text-decoration: none;
+    color: black;
+}
+
+.benifits a:hover {
+    color: #399918;
+    font-weight: 500;
+}
+
+.foot-container2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #EEEDEB;
+    padding: 3rem;
+    min-width: 500px;
+}
+
+.foot-container2 .caption {
+    padding-top: 20px;
+    margin: top 0px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: black;
+}
+
+
+.copyright {
+    font-size: 0.9rem;
+    padding: 1rem;
+    color: gray;
+    margin-bottom: 1rem;
+}

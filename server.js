@@ -2,7 +2,6 @@ import express from "express";
 import bodyparser from "body-parser";
 import pg from "pg";
 import fs from 'fs';
-
 import bcrypt from 'bcrypt';
 import toastr from "toastr";
 
@@ -29,7 +28,7 @@ const jsonData = JSON.parse(fs.readFileSync('recipe.json', 'utf8'));
 
 
 
-async function checkcart(ids) {
+async function insertItem(ids) {
     try {
         for (const id of ids) {
             console.log(`Processing item with id: ${id}`);
@@ -212,7 +211,7 @@ app.post("/cart", async (req, res) => {
         itemid.push(id);
     });
 
-    const response = await checkcart(itemid);
+    const response = await insertItem(itemid);
 
     console.log("response from function", response);
 
@@ -234,14 +233,7 @@ app.post("/cart", async (req, res) => {
 });
 
 
-/* app.get("/cart", async (req, res) => {
-    const result = await db.query("SELECT * FROM cartitems JOIN users ON users.id = user_id WHERE user_id = $1 ORDER BY cartitems.id ASC", [currentUserId]);
 
-    /*  ORDER by id ASC 
-    const cartItem = result.rows;
-    console.log(cartItem);
-    res.render("cart.ejs", { orders: cartItem });
-}); */
 
 app.get("/cart", async (req, res) => {
     try {
@@ -260,19 +252,6 @@ app.get("/cart", async (req, res) => {
 });
 
 
-/* app.get("/cart/price/:actualprice/:id",async (req,res)=>{
-    const id = parseInt(req.params.id);
-    const price = parseInt(req.params.actualprice);
-    console.log("pricechangeid",id);
-    console.log("pricechangeid",price);
-    try{
-    const result= await db.query("UPDATE cartitems  SET  price=$1 WHERE id=$2",[price,id]);
-    res.redirect("/cart");
-    console.log("cartitem updated successfully..!")
-    }catch(e){
-  console.log("error from cartitem update",e)
-    }
-}) */
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`)

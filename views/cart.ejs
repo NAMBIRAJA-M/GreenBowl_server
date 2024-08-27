@@ -34,9 +34,9 @@
             <p class="section-heading"> Your Cart</p>
             <% if (orders && orders.length> 0) { %>
                 <% orders.forEach((order)=> { %>
-                    <% console.log("items id:",order.item_id) %>
-                    <% console.log(" id:",order.id) %>
+
                     <% const items=order %>
+                    
                         <div class="checkboxbtn">
                             <input type="checkbox" id="checkbox-<%=items.item_id%>" price="<%= items.price %>"  class="custom-checkbox">
                             <label for="checkbox-<%=items.item_id %>" onclick="handleclick('<%= items.price %>')">
