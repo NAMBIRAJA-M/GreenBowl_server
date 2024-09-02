@@ -10,7 +10,14 @@
       {
         "src": "/(.*)",
         "dest": "/server.js"
-      }
+    },
+    {
+      "src": "/public/(.*)", 
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      },
+      "dest": "/public/$1"
+    }
     ]
   }
   
