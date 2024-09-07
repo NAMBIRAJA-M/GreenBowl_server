@@ -1,2 +1,5 @@
 node_modules
 jsonfile.json
+.env
+env
+dotenv
