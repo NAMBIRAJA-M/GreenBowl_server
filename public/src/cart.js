@@ -96,3 +96,51 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
+
+
+/* LOGIN MESSAGE */
+
+function clearUrlParams() {
+    const url = new URL(window.location.href);
+    url.search = ''; 
+    window.history.replaceState({}, document.title, url.toString()); 
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+    const error = urlParams.get('error');
+
+    if (message) {
+        toastr.success(decodeURIComponent(message),{
+            timeOut: 5000,
+            closeButton: true,
+            progressBar: true,
+            positionClass: 'toast-top-center',
+        });
+
+        const audio = new Audio("/Assets/success3.mp3");
+        audio.play();
+        clearUrlParams();
+    }
+
+    if (error) {
+        toastr.error(decodeURIComponent(error),  {
+            timeOut: 5000,
+            closeButton: true,
+            progressBar: true,
+            positionClass: 'toast-top-center',
+        });
+        clearUrlParams();
+        const audio = new Audio("/Assets/error4.mp3");
+        audio.play();
+    }
+});
+
+
+
+
+

@@ -191,14 +191,14 @@ function cartnav() {
 
 
 /* LOGIN MESSAGE */
-// Function to clear URL parameters
+
 function clearUrlParams() {
     const url = new URL(window.location.href);
-    url.search = ''; // Clear search parameters
-    window.history.replaceState({}, document.title, url.toString()); // Update the URL
+    url.search = ''; 
+    window.history.replaceState({}, document.title, url.toString()); 
 }
 
-// Call this function after showing the toast
+
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const message = urlParams.get('message');
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     if (message) {
-        toastr.success(decodeURIComponent(message), `${name}`, {
+        toastr.success(decodeURIComponent(message),{
             timeOut: 5000,
             closeButton: true,
             progressBar: true,
@@ -222,11 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.play();
         console.log(name);
         $(".loginname").text("Hi " + name + " !");
-        $(".lgn1").text("Log Out");
+     $(".lgn1").text("Log Out");
 
         $(".loginway .lgn1").click(function () {
             $(".nav-links .loginpopup").removeClass("hiddenpopup ")
         })
+            
 
         $(".lgn1").click(() => {
             window.location.href = `/logout`;
