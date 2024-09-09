@@ -194,15 +194,14 @@ function cartnav() {
 
 function clearUrlParams() {
     const url = new URL(window.location.href);
-    url.search = ''; 
-    window.history.replaceState({}, document.title, url.toString()); 
+    url.search = '';
+    window.history.replaceState({}, document.title, url.toString());
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const message = urlParams.get('message');
-    const name = urlParams.get('name');
     const error = urlParams.get('error');
     const already = urlParams.get('already');
     const warning = urlParams.get('warning');
@@ -211,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     if (message) {
-        toastr.success(decodeURIComponent(message),{
+        toastr.success(decodeURIComponent(message), {
             timeOut: 5000,
             closeButton: true,
             progressBar: true,
@@ -220,19 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const audio = new Audio("/Assets/success3.mp3");
         audio.play();
-        console.log(name);
-        $(".loginname").text("Hi " + name + " !");
-     $(".lgn1").text("Log Out");
-
-        $(".loginway .lgn1").click(function () {
-            $(".nav-links .loginpopup").removeClass("hiddenpopup ")
-        })
-            
-
-        $(".lgn1").click(() => {
-            window.location.href = `/logout`;
-        })
-
         clearUrlParams();
     }
 
@@ -299,29 +285,59 @@ document.addEventListener('DOMContentLoaded', () => {
             positionClass: 'toast-top-center',
             toastClass: 'toast-added'
         });
-    
+
         clearUrlParams();
         const audio = new Audio("/Assets/added.mp3");
         audio.play();
-    
+
         setTimeout(() => {
 
             const latestToast = document.querySelector('.toast-added');
-    
+
             if (latestToast) {
                 latestToast.addEventListener('click', () => {
                     const button = document.querySelector('.btnpress1');
                     button.classList.add('icon-shake');
-    
+
                     // Redirect after a short delay to allow the animation to play
                     setTimeout(() => {
                         window.location.href = '/cart';
-                    }, 100); 
+                    }, 100);
                 });
             }
-        }, 100); 
+        }, 100);
     }
-    
+
 
 });
 
+
+
+let LoginName=[];
+$(document).ready(function() {
+fetch("/api/user")
+    .then(response => response.json()) 
+    .then(data => {
+        LoginName.push(data.loginName);
+        loginName = data.loginName;
+       
+
+        console.log("Login Name is:", loginName);
+        if(loginName){
+        $(".loginname").text("Hi " + loginName + " !");
+        $(".lgn1").text("Log Out");
+        $(".loginway .lgn1").click(function () {
+            $(".nav-links .loginpopup").removeClass("hiddenpopup ")
+        })
+        $(".lgn1").click(() => {
+            window.location.href = `/logout`;
+        })
+    }
+    }).catch(function() {
+        console.error('Error fetching LoginName');
+    });
+});
+
+LoginName.forEach(loginName => {
+    console.log("outside:",loginName);  
+});
