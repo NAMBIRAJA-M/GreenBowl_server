@@ -59,12 +59,12 @@
                                             <p id="details-price-<%= items.item_id %>" class="details-price">
                                                 Rs.<%= items.price %>
                                             </p>
-                                            <button class="decrement"
-                                                onclick="decrement('<%=items.id%>','<%=items.price%>')"> - </button>
+                                            <button class="decrement incheck-<%=items.item_id   %>"
+                                                onclick="decrement('<%=items.item_id%>','<%=items.price%>')"> - </button>
                                             <p id="quantity-<%=items.item_id%>" class="quantity">
                                                 <%= count %>
                                             </p>
-                                            <button class="increment"
+                                            <button class="increment  incheck-<%=items.item_id   %>"
                                                 onclick="increment('<%=items.item_id%>','<%=items.price%>')"> +
                                             </button>
                                         </div>

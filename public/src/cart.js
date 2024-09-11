@@ -36,6 +36,8 @@ function decrement(id, price) {
 
 
 function increment(id, price) {
+    // Get the checkbox element for the current item
+
     console.log("id:", id);
     let quantityElementId = 'quantity-' + id;
     let quantityElement = document.getElementById(quantityElementId);
@@ -73,23 +75,30 @@ document.addEventListener('DOMContentLoaded', function () {
             const items = JSON.parse(itemsJson);
             console.log(items)
 
+            let checkboxElementId = 'checkbox-' + clickedid; // Assuming the checkbox has an ID like 'checkbox-1'
+            let checkboxElement = document.getElementById(checkboxElementId);
+            let checkinc = 'incheck-' + clickedid; // This generates the ID you want to target
+
             if (checkbox.checked) {
 
                 label.style.setProperty('--bg-color', '#4CAF50');
                 label.style.setProperty('--content', '"✔"');
 
-                let aws =
+                if (checkboxElement && checkboxElement.checked) {
+                    $(".price-content ." + checkinc).css("background-color", "grey");
+                    
+                    return;
+                }
 
-                    /* total calc */
 
-                    price = items.price;
+                /* total calc */
+                price = items.price;
                 let value = 0;
                 if (originalAmt.length === 0) {
                     console.log("empty");
                     originalAmt.push(price);
                 }
                 const lastElement = originalAmt[originalAmt.length - 1];
-                const fnprice = pricecalc(value, lastElement);
                 value = price;
                 console.log("value:", value)
                 console.log("amt:", originalAmt)
@@ -97,6 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log("lastelement:", lastElement)
                 totalAmt.push(lastElement);
                 console.log("totalAmt:", totalAmt);
+
+
                 let total = totalAmt.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
                 console.log("element:", total)
                 document.querySelectorAll('.totalprice').forEach(function (element) {
@@ -106,11 +117,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+               
 
             } else {
                 label.style.setProperty('--bg-color', '#ccc');
                 label.style.setProperty('--content', '""');
+                $(".price-content ." + checkinc).css("background-color", "#399918");
 
                 /* total calc */
 
