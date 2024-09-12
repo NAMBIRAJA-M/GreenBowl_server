@@ -42,7 +42,7 @@
                             <input type="checkbox" id="checkbox-<%=items.item_id%>" price="<%= items.price %>"
                                 class="custom-checkbox">
                             <label for="checkbox-<%=items.item_id %>" onclick="handleclick('<%= items.price %>')">
-                                <div class="cart-section">
+                                <div class="cart-section-<%= items.item_id %>">
                                     <div class="cart-container">
                                         <div class="image-container">
                                             <img src="<%= items.image %>" alt="item image" />

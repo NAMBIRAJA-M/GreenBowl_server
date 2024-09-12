@@ -124,18 +124,18 @@
 
 
 
-/* CART AFTER ADDED */
-/* .cart-section{
-   
-}
- */
+/* /* CART AFTER ADDED 
+.cart-section{
+
+} */
+
 .cart-container {
     display: flex;
     justify-content:space-between;
     align-items: center;
     gap:2rem;
     padding: 1rem;
-    border-radius: 15px;
+   
     box-shadow:0px 0px 4px 1.3px #939185;
     width: 800px;
 

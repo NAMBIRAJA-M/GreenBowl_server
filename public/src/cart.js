@@ -36,7 +36,14 @@ function decrement(id, price) {
 
 
 function increment(id, price) {
-    // Get the checkbox element for the current item
+   
+    let checkboxElementId = 'checkbox-' + id; 
+    let checkboxElement = document.getElementById(checkboxElementId);
+
+    if (checkboxElement && checkboxElement.checked) {
+        console.log("Checkbox is checked, increment function will not run.");
+        return;
+    }
 
     console.log("id:", id);
     let quantityElementId = 'quantity-' + id;
@@ -58,10 +65,7 @@ function handleclick(price) {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Get all checkboxes with the class 'custom-checkbox'
     const checkboxes = document.querySelectorAll('.custom-checkbox');
-
-    // Loop through each checkbox and add an event listener
     checkboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
             const label = document.querySelector(`label[for='${checkbox.id}']`);
@@ -75,9 +79,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const items = JSON.parse(itemsJson);
             console.log(items)
 
-            let checkboxElementId = 'checkbox-' + clickedid; // Assuming the checkbox has an ID like 'checkbox-1'
+            let checkboxElementId = 'checkbox-' + clickedid;
             let checkboxElement = document.getElementById(checkboxElementId);
-            let checkinc = 'incheck-' + clickedid; // This generates the ID you want to target
+            let checkinc = 'incheck-' + clickedid; 
 
             if (checkbox.checked) {
 
@@ -85,44 +89,49 @@ document.addEventListener('DOMContentLoaded', function () {
                 label.style.setProperty('--content', '"✔"');
 
                 if (checkboxElement && checkboxElement.checked) {
+                   $('.checkboxbtn .cart-section-'+clickedid).css('box-shadow','0px 2px 5px 5px #4CAF50');
                     $(".price-content ." + checkinc).css("background-color", "grey");
-                    
+
+                    price = items.price;
+                    let value = 0;
+                    if (originalAmt.length === 0) {
+                        console.log("empty");
+                        originalAmt.push(price);
+                    }
+                    const lastElement = originalAmt[originalAmt.length - 1];
+                    value = price;
+                    console.log("value:", value)
+                    console.log("amt:", originalAmt)
+                    originalAmt = [];
+                    console.log("lastelement:", lastElement)
+                    totalAmt.push(lastElement);
+                    console.log("totalAmt:", totalAmt);
+
+
+                    let total = totalAmt.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+                    console.log("element:", total)
+                    document.querySelectorAll('.totalprice').forEach(function (element) {
+                        element.textContent = total;
+                    });
+                    console.log(originalAmt);
+
+
                     return;
                 }
 
 
                 /* total calc */
-                price = items.price;
-                let value = 0;
-                if (originalAmt.length === 0) {
-                    console.log("empty");
-                    originalAmt.push(price);
-                }
-                const lastElement = originalAmt[originalAmt.length - 1];
-                value = price;
-                console.log("value:", value)
-                console.log("amt:", originalAmt)
-                originalAmt = [];
-                console.log("lastelement:", lastElement)
-                totalAmt.push(lastElement);
-                console.log("totalAmt:", totalAmt);
-
-
-                let total = totalAmt.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-                console.log("element:", total)
-                document.querySelectorAll('.totalprice').forEach(function (element) {
-                    element.textContent = total;
-                });
-                console.log(originalAmt);
 
 
 
-               
+
 
             } else {
                 label.style.setProperty('--bg-color', '#ccc');
                 label.style.setProperty('--content', '""');
                 $(".price-content ." + checkinc).css("background-color", "#399918");
+                $('.checkboxbtn .cart-section-' + clickedid).css('box-shadow', 'none');
+              
 
                 /* total calc */
 
