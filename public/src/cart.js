@@ -4,11 +4,7 @@ function navmenu() {
     window.location.href = "/menu";
 }
 
-let originalAmt = [];
-let totalAmt = [];
-let temptotal = [];
-let ele = 0;
-let sampleprice = 0;
+
 
 function increment(id, price) {
     let checkboxElement = document.getElementById('checkbox-' + id);
@@ -42,14 +38,8 @@ function UpdatePrice(id, count, priceofitem) {
     let actualprice = count * priceofitem;
     let priceElement = document.getElementById('details-price-' + id);
     priceElement.textContent = "Rs." + actualprice;
-    /*  originalAmt.push(actualprice); */
+    
 }
-
-let originalprice;
-function handleclick(price) {
-    originalprice = price;
-}
-
 
 document.addEventListener('DOMContentLoaded', function () {
     const checkboxes = document.querySelectorAll('.custom-checkbox');
@@ -72,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
             let priceElement = document.getElementById('details-price-' + clickedid).textContent.trim().replace('Rs.', '');
             let price = parseInt(priceElement);
             console.log("PRICE ::", price);
-            console.log("temporary total", temptotal[0]);
 
             if (checkbox.checked) {
 
@@ -80,54 +69,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 label.style.setProperty('--content', '"✔"');
 
                 if (checkboxElement && checkboxElement.checked) {
+
                     $('.checkboxbtn .cart-section-' + clickedid).css('box-shadow', '0px 2px 5px 5px #4CAF50');
                     $(".price-content ." + checkinc).css("background-color", "grey");
 
-                    let totalElement=document.querySelector('.totalprice');
+                    let totalElement = document.querySelector('.totalprice');
                     let totalele = parseInt(totalElement.textContent.trim());
-                    console.log("total content",totalele);
-
-
-                    total = totalele+price;
-
-                   /*  originalAmt.push(price);
-                    const lastElement = originalAmt[originalAmt.length - 1];
-
-                    console.log("amt:", originalAmt);
-                    originalAmt = [];
-                    console.log("lastelement:", lastElement)
-                    totalAmt.push(lastElement);
-                    console.log("totalAmt:", totalAmt);
- */
-                  /*   let total = totalAmt.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-                    console.log("element:", total)
-                    temptotal.push(total);
- */
-
-
+                    console.log("total content", totalele);
+                    total = totalele + price;
                     document.querySelectorAll('.totalprice').forEach(function (element) {
                         element.textContent = total;
                     });
-                    console.log(originalAmt);
-
-
+                    console.log("total price", total);
+               
                     return;
                 }
-
-
-                /* total calc */
-
-
-
-
-
             } else {
                 label.style.setProperty('--bg-color', '#ccc');
                 label.style.setProperty('--content', '""');
                 $(".price-content ." + checkinc).css("background-color", "#399918");
                 $('.checkboxbtn .cart-section-' + clickedid).css('box-shadow', 'none');
                 totalAmt = [];
-                let totalElement=document.querySelector('.totalprice');
+                let totalElement = document.querySelector('.totalprice');
                 let total = parseInt(totalElement.textContent.trim());
                 console.log("total sub", total);
                 if (total >= price) {
@@ -138,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         element.textContent = finaltotal;
                     });
                 }
-                else{
+                else {
                     console.log('error from total')
                 }
             }
