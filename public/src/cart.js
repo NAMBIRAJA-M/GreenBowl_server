@@ -3,24 +3,29 @@
 function navmenu() {
     window.location.href = "/menu";
 }
+
 let originalAmt = [];
 let totalAmt = [];
+let temptotal = [];
 let ele = 0;
 let sampleprice = 0;
-function UpdatePrice(id, count, priceofitem) {
-    let actualprice = count * priceofitem;
-    let priceElementId = 'details-price-' + id;
-    let priceElement = document.getElementById(priceElementId);
-    priceElement.textContent = "Rs." + actualprice;
-    originalAmt.push(actualprice);
-    /*  sampleprice = actualprice; */
+
+function increment(id, price) {
+    let checkboxElement = document.getElementById('checkbox-' + id);
+    if (checkboxElement && checkboxElement.checked) {
+        console.log("Checkbox is checked, increment function will not run.");
+        return;
+    }
+    let quantityElement = document.getElementById('quantity-' + id);
+    let count = parseInt(quantityElement.textContent);
+    count++;
+    quantityElement.textContent = count;
+    let priceofitem = parseInt(price);
+    UpdatePrice(id, count, priceofitem);
 }
-function pricecalc(value, price) {
-    return price + value;
-}
+
 function decrement(id, price) {
-    let quantityElementId = 'quantity-' + id;
-    let quantityElement = document.getElementById(quantityElementId);
+    let quantityElement = document.getElementById('quantity-' + id);
     let count = parseInt(quantityElement.textContent);
     count--;
     if (count > 0) {
@@ -30,38 +35,20 @@ function decrement(id, price) {
         quantityElement.textContent = count;
     }
     let priceofitem = parseInt(price);
-    console.log(typeof priceofitem);
     UpdatePrice(id, count, priceofitem);
 }
 
-
-function increment(id, price) {
-   
-    let checkboxElementId = 'checkbox-' + id; 
-    let checkboxElement = document.getElementById(checkboxElementId);
-
-    if (checkboxElement && checkboxElement.checked) {
-        console.log("Checkbox is checked, increment function will not run.");
-        return;
-    }
-
-    console.log("id:", id);
-    let quantityElementId = 'quantity-' + id;
-    let quantityElement = document.getElementById(quantityElementId);
-    let count = parseInt(quantityElement.textContent);
-    count++;
-    quantityElement.textContent = count;
-    let priceofitem = parseInt(price);
-    console.log(typeof priceofitem);
-    UpdatePrice(id, count, priceofitem);
-    /*   totalprice(id, priceofitem) */
+function UpdatePrice(id, count, priceofitem) {
+    let actualprice = count * priceofitem;
+    let priceElement = document.getElementById('details-price-' + id);
+    priceElement.textContent = "Rs." + actualprice;
+    /*  originalAmt.push(actualprice); */
 }
 
 let originalprice;
 function handleclick(price) {
     originalprice = price;
 }
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -73,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const number = checkbox.id;
             const clickedid = parseInt(number.match(/\d+/)[0], 10);
 
-
             const cartDataDiv = document.getElementById('cart-data-' + clickedid);
             const itemsJson = cartDataDiv.getAttribute('data-items');
             const items = JSON.parse(itemsJson);
@@ -81,7 +67,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let checkboxElementId = 'checkbox-' + clickedid;
             let checkboxElement = document.getElementById(checkboxElementId);
-            let checkinc = 'incheck-' + clickedid; 
+            let checkinc = 'incheck-' + clickedid;
+
+            let priceElement = document.getElementById('details-price-' + clickedid).textContent.trim().replace('Rs.', '');
+            let price = parseInt(priceElement);
+            console.log("PRICE ::", price);
+            console.log("temporary total", temptotal[0]);
 
             if (checkbox.checked) {
 
@@ -89,27 +80,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 label.style.setProperty('--content', '"✔"');
 
                 if (checkboxElement && checkboxElement.checked) {
-                   $('.checkboxbtn .cart-section-'+clickedid).css('box-shadow','0px 2px 5px 5px #4CAF50');
+                    $('.checkboxbtn .cart-section-' + clickedid).css('box-shadow', '0px 2px 5px 5px #4CAF50');
                     $(".price-content ." + checkinc).css("background-color", "grey");
 
-                    price = items.price;
-                    let value = 0;
-                    if (originalAmt.length === 0) {
-                        console.log("empty");
-                        originalAmt.push(price);
-                    }
+                    let totalElement=document.querySelector('.totalprice');
+                    let totalele = parseInt(totalElement.textContent.trim());
+                    console.log("total content",totalele);
+
+
+                    total = totalele+price;
+
+                   /*  originalAmt.push(price);
                     const lastElement = originalAmt[originalAmt.length - 1];
-                    value = price;
-                    console.log("value:", value)
-                    console.log("amt:", originalAmt)
+
+                    console.log("amt:", originalAmt);
                     originalAmt = [];
                     console.log("lastelement:", lastElement)
                     totalAmt.push(lastElement);
                     console.log("totalAmt:", totalAmt);
-
-
-                    let total = totalAmt.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+ */
+                  /*   let total = totalAmt.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
                     console.log("element:", total)
+                    temptotal.push(total);
+ */
+
+
                     document.querySelectorAll('.totalprice').forEach(function (element) {
                         element.textContent = total;
                     });
@@ -131,13 +126,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 label.style.setProperty('--content', '""');
                 $(".price-content ." + checkinc).css("background-color", "#399918");
                 $('.checkboxbtn .cart-section-' + clickedid).css('box-shadow', 'none');
-              
+                totalAmt = [];
+                let totalElement=document.querySelector('.totalprice');
+                let total = parseInt(totalElement.textContent.trim());
+                console.log("total sub", total);
+                if (total >= price) {
+                    finaltotal = total - price;
+                    console.log("FinalTotal", finaltotal);
 
-                /* total calc */
-
-                /*   document.querySelectorAll('.totalprice').forEach(function (element) {
-                      element.textContent =0;
-                  }); */
+                    document.querySelectorAll('.totalprice').forEach(function (element) {
+                        element.textContent = finaltotal;
+                    });
+                }
+                else{
+                    console.log('error from total')
+                }
             }
         });
     });
