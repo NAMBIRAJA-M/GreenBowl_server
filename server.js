@@ -20,8 +20,9 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 360000,
-    }
+        maxAge: 1000 * 60 * 30
+    },
+    rolling: true 
 }));
 
 app.use(passport.initialize());
@@ -182,6 +183,9 @@ app.get("/auth/google/menu",
 /* routes to pages */
 
 app.get("/api/user",(req,res)=>{
+   /*  if (!req.session.user) {
+        return res.status(401).send('Session expired, please login again');
+      } */
     res.json({ loginName: LoginName });
 })
 
@@ -234,6 +238,9 @@ app.post('/cart', async (req, res) => {
 });
 
 app.get('/cart', async (req, res) => {
+  /*   if (!req.session.user) {
+        return res.status(401).send('Session expired, please login again');
+      } */
     try {
         const result = await db.query(
             "SELECT cartitems.id AS item_id, cartitems.*, users.* FROM cartitems JOIN users ON users.id = user_id WHERE user_id = $1 ORDER BY cartitems.id ASC",
@@ -276,8 +283,7 @@ passport.use(new LocalStrategy({
                 const user = result.rows[0];
                 const registerPassword = user.password;
                 currentUserId = user.id;
-                LoginName = user.name;
-                console.log("current_username from local:",LoginName);
+               
 
                 bcrypt.compare(password, registerPassword, (err, valid) => {
                     if (err) {
@@ -287,12 +293,15 @@ passport.use(new LocalStrategy({
 
                     if (valid) {
                         console.log("Authentication successful for user:", user);
+                        LoginName = user.name;
+                        console.log("current_username from local:",LoginName);
 
                         return cb(null, user);
                     } else {
                         console.log("Invalid credentials: Password mismatch");
                         return cb(null, false, { message: 'Invalid credentials' });
                     }
+
                 });
             } else {
                 console.log("Invalid credentials: User not found");

@@ -33,74 +33,95 @@
         </div>
         <div class="cart">
             <p class="section-heading"> Your Cart</p>
-            <% if (orders && orders.length> 0) { %>
-                <% orders.forEach((order)=> { %>
+            <p class="slogon">Start your day with our delicious food menu</p>
+            <div class="cart-container-main">
+                <% if (orders && orders.length> 0) { %>
+                    <% orders.forEach((order)=> { %>
 
-                    <% const items=order %>
+                        <% const items=order %>
 
-                        <div class="checkboxbtn">
-                            <input type="checkbox" id="checkbox-<%=items.item_id%>" price="<%= items.price %>"
-                                class="custom-checkbox">
-                            <label for="checkbox-<%=items.item_id %>" onclick="handleclick('<%= items.price %>')">
-                                <div class="cart-section-<%= items.item_id %>">
-                                    <div class="cart-container">
-                                        <div class="image-container">
-                                            <img src="<%= items.image %>" alt="item image" />
+                            <div class="checkboxbtn">
+                                <input type="checkbox" id="checkbox-<%=items.item_id%>" price="<%= items.price %>"
+                                    class="custom-checkbox">
+                                <label for="checkbox-<%=items.item_id %>" onclick="handleclick('<%= items.price %>')">
+                                    <div class="cart-section-<%= items.item_id %>">
+                                        <div class="cart-container">
+                                            <div class="image-container">
+                                                <img src="<%= items.image %>" alt="item image" />
+                                            </div>
+                                            <div class="content-container">
+                                                <div class="details-container">
+                                                    <p class="details-heading">
+                                                        <%= items.item_name %>
+                                                    </p>
+                                                    <p class="details-type">
+                                                        (<%= items.type %>)
+                                                    </p>
+                                                </div>
+                                                <div class="price-content">
+                                                    <p id="details-price-<%= items.item_id %>" class="details-price">
+                                                        Rs.<%= items.price %>
+                                                    </p>
+                                                    <div class="btn-container">
+                                                        <button class="decrement incheck-<%=items.item_id   %>"
+                                                            onclick="decrement('<%=items.item_id%>','<%=items.price%>')">
+                                                            -
+                                                        </button>
+                                                        <p id="quantity-<%=items.item_id%>" class="quantity">
+                                                            <%= count %>
+                                                        </p>
+                                                        <button class="increment  incheck-<%=items.item_id   %>"
+                                                            onclick="increment('<%=items.item_id%>','<%=items.price%>')">
+                                                            +
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="details-container">
-                                            <p class="details-heading">
-                                                <%= items.item_name %>
-                                            </p>
-                                            <p class="details-type">
-                                                (<%= items.type %>)
-                                            </p>
-                                        </div>
-                                        <div class="price-content">
-                                            <p id="details-price-<%= items.item_id %>" class="details-price">
-                                                Rs.<%= items.price %>
-                                            </p>
-                                            <button class="decrement incheck-<%=items.item_id   %>"
-                                                onclick="decrement('<%=items.item_id%>','<%=items.price%>')"> - </button>
-                                            <p id="quantity-<%=items.item_id%>" class="quantity">
-                                                <%= count %>
-                                            </p>
-                                            <button class="increment  incheck-<%=items.item_id   %>"
-                                                onclick="increment('<%=items.item_id%>','<%=items.price%>')"> +
-                                            </button>
+                                        <div id="cart-data-<%= items.item_id %>"
+                                            data-items='<%= JSON.stringify(items) %>'>
                                         </div>
                                     </div>
-                                    <div id="cart-data-<%= items.item_id %>" data-items='<%= JSON.stringify(items) %>'>
-                                    </div>
+                                </label>
+                                <div class="calc-container">
+                                    <a class="deleteicon" href="/cart/delete/<%= items.item_id %>"><i
+                                            class="bi bi-trash3"></i></a>
                                 </div>
-                            </label>
-                            <a class="deleteicon" href="/cart/delete/<%= items.item_id %>"><i
-                                    class="bi bi-trash3"></i></a>
-                        </div>
+                            </div>
+
+
+
+                            <% }) %>
+            </div>
         </div>
+        <div class="total-container">
+            <p class="orders-count"> Your Orders (0)</p>
+            <div class="pricesum">
+                <p>Total :Rs</p>
+                <p class="totalprice"> 0 </p>
+                <button id="addbtn">Add to Proceed</button>
+            </div>
+           
+        </div>
+        <% } else { %>
+            <div class="elseclass">
+                <img src="Assets/cartg.png" alt="buy">
+                <p class="section-caption">Your bowl is feeling lonely</p>
+                <a href="/menu"><button class="cbtnc">Start Ordering</button></a>
+            </div>
+            <% } %>
 
-        <% }) %>
-            <% } else { %>
-                <div class="elseclass">
-                    <img src="Assets/cartg.png" alt="buy">
-                    <p class="section-caption">Your bowl is feeling lonely</p>
-                    <a href="/menu"><button class="cbtnc">Start Ordering</button></a>
-                </div>
-                <% } %>
+              
 
-                    <div class="calc-container">
-                        <p class="totalprice">0</p>
-                    </div>
+                <script src="https://code.jquery.com/jquery-3.7.1.js"
+                    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+                <script src="src/cart.js"></script>
 
-                    <script src="https://code.jquery.com/jquery-3.7.1.js"
-                        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-                        crossorigin="anonymous"></script>
-                    <script src="src/cart.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                <!-- Include Toastr JS -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                    <!-- Include Toastr JS -->
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

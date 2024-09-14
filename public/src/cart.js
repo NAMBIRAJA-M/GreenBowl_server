@@ -4,6 +4,12 @@ function navmenu() {
     window.location.href = "/menu";
 }
 
+let orderCount = 0;
+
+function addOrder() {
+  orderCount++;
+  document.querySelector('.orders-count').textContent = `Your Orders (${orderCount})`;
+}
 
 
 function increment(id, price) {
@@ -80,8 +86,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.querySelectorAll('.totalprice').forEach(function (element) {
                         element.textContent = total;
                     });
+                    addOrder();
                     console.log("total price", total);
-               
                     return;
                 }
             } else {
@@ -96,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (total >= price) {
                     finaltotal = total - price;
                     console.log("FinalTotal", finaltotal);
-
                     document.querySelectorAll('.totalprice').forEach(function (element) {
                         element.textContent = finaltotal;
                     });
