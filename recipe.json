@@ -1,4 +1,5 @@
-[
+{
+  "proteinbowl":[
   {
     "id": "1",
     "type": "protein bowl",
@@ -281,4 +282,217 @@
     "fat": "23g",
     "fiber": "4g"
   }
+],
+"vegsalads":[
+  
+    {
+      "id": "1",
+      "type": "veg salad",
+      "name": "GBC Greek Salad",
+      "price": 99,
+      "image": "Assets/GREEK_SALAD_1842x954-1-1024x530.jpg",
+      "veg": "Assets/veg_icon (1).png",
+      "nonveg": null,
+      "ingredients": [
+        "Lettuce",
+        "Cherry Tomato",
+        "American Corn",
+        "Balsamic Onion",
+        "Zucchini",
+        "Bell Peppers"
+      ],
+      "kcal": 231,
+      "protein": "2g",
+      "carbs": "6g",
+      "fat": "22g",
+      "fiber": "2g"
+    },
+    {
+      "id": "2",
+      "type": "veg salad",
+      "name": "Spicy Spinach Supreme Salad",
+      "price": 168,
+      "image": "Assets/spinach-salad1.jpeg",
+      "veg": "Assets/veg_icon (1).png",
+      "nonveg": null,
+      "ingredients": [
+        "Arugula",
+        "Spinach",
+        "Sautéed Brown Rice",
+        "Sautéed Bell Peppers",
+        "Onion",
+        "Herb Broccoli",
+        "Roasted Almonds"
+      ],
+      "kcal": 470,
+      "protein": "11g",
+      "carbs": "40g",
+      "fat": "27g",
+      "fiber": "8g"
+    },
+    {
+      "id": "3",
+      "type": "veg salad",
+      "name": "Grilled Soba Bites Salad",
+      "price": 179,
+      "image": "Assets/Grilled_Soba_Bite_tr2rbo.jpg",
+      "veg":"Assets/veg_icon (1).png",
+      "nonveg": null,
+      "ingredients": [
+        "Mixed Lettuce",
+        "Gluten-Free Soba Noodles",
+        "Roasted Tofu",
+        "Sautéed Mushrooms",
+        "Herb Broccoli"
+      ],
+      "kcal": 268,
+      "protein": "16g",
+      "carbs": "15g",
+      "fat": "14g",
+      "fiber": "10g"
+    },
+    {
+      "id": "4",
+      "type": "veg salad",
+      "name": "Sweet Summer Salad",
+      "price": 209,
+      "image":"Assets/Sweet_Summer_bnqpmd.jpg",
+      "veg": "Assets/veg_icon (1).png",
+      "nonveg": null,
+      "ingredients": [
+        "Arugula",
+        "Mixed Lettuce",
+        "Couscous",
+        "Roasted Potatoes",
+        "Roasted Sweet Potatoes",
+        "Sautéed Mushrooms",
+        "Onions",
+        "Grated Carrots",
+        "Chili Cashews",
+        "Feta Cheese"
+      ],
+      "kcal": 480,
+      "protein": "13g",
+      "carbs": "55g",
+      "fat": "22g",
+      "fiber": "6.5g"
+    },
+    {
+      "id": "5",
+      "type": "veg salad",
+      "name": "Avocado Affair Salad",
+      "price": 209,
+      "image": "Assets/Avocado_Affair_isbb5w.jpg",
+      "veg": "Assets/veg_icon (1).png",
+      "nonveg": null,
+      "ingredients": [
+        "Arugula",
+        "Avocado",
+        "Baby Tomato",
+        "American Corn",
+        "Sun-Dried Tomato",
+        "Cucumber",
+        "Red Radish",
+        "Black Olives",
+        "Feta Cheese"
+      ],
+      "kcal": 305,
+      "protein": "6g",
+      "carbs": "12.5g",
+      "fat": "25g",
+      "fiber": "7g"
+    },
+    {
+      "id": "6",
+      "type": "veg salad",
+      "name": "Tropical Harvest Quinoa Salad",
+      "price": 219,
+      "image": "Assets/Tropical_Harvest_Quinoa_ta4lqs.jpg",
+      "veg": "Assets/veg_icon (1).png",
+      "nonveg": null,
+      "ingredients": [
+        "Arugula",
+        "American Kale",
+        "Quinoa",
+        "Malta Orange",
+        "Red Cranberries",
+        "Grated Carrots",
+        "Pomegranate Seeds",
+        "Ricotta Cheese"
+      ],
+      "kcal": 342,
+      "protein": "12g",
+      "carbs": "34g",
+      "fat": "16g",
+      "fiber": "11g"
+    },
+    {
+      "id": "7",
+      "type": "veg salad",
+      "name": "Apple Walnut Crunch Salad (With Ricotta Cheese)",
+      "price": 225,
+      "image": "Assets/apple-walnut-salad.jpeg",
+      "veg":"Assets/veg_icon (1).png",
+      "nonveg": null,
+      "ingredients": [
+        "Mixed Lettuce",
+        "Apples",
+        "Grated Beetroots",
+        "Caramelized Walnuts",
+        "Ricotta Cheese"
+      ],
+      "kcal": 528,
+      "protein": "15g",
+      "carbs": "15g",
+      "fat": "46g",
+      "fiber": "6g"
+    },
+    {
+      "id": "8",
+      "type": "veg salad",
+      "name": "Fruitful Fusion Salad",
+      "price": 229,
+      "image": "Assets/fruitful_fusion_salad.jpg",
+      "veg": "Assets/veg_icon (1).png",
+      "nonveg": null,
+      "ingredients": [
+        "American Kale",
+        "Arugula",
+        "Watermelon",
+        "Apple",
+        "Pineapple",
+        "Malta Orange",
+        "Seasonal Fruit",
+        "Pomegranate",
+        "Caramelized Walnuts",
+        "Feta Cheese"
+      ],
+      "kcal": 658,
+      "protein": "14g",
+      "carbs": "33g",
+      "fat": "52g",
+      "fiber": "10g"
+    },
+    {
+      "id": "9",
+      "type": "veg salad",
+      "name": "Apple Walnut Crunch Salad (With Goat Cheese)",
+      "price": 249,
+      "image": "Assets/apple_walnut_crunch_goat.jpg",
+      "veg": "Assets/veg_icon (1).png",
+      "nonveg":null,
+      "ingredients": [
+        "Mixed Lettuce",
+        "Apples",
+        "Grated Beetroots",
+        "Caramelized Walnuts",
+        "Goat Cheese"
+      ],
+      "kcal": 528,
+      "protein": "15g",
+      "carbs": "14g",
+      "fat": "46g",
+      "fiber": "6g"
+    }
 ]
+}

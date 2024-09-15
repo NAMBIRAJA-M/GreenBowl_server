@@ -642,7 +642,7 @@ padding: 0.3rem 0.8rem;
     margin-right: 10rem
 }
 
-.proteinbowl {
+.proteinbowl,.vegsalads {
     margin: 3rem;
     display: flex;
     justify-content: center;

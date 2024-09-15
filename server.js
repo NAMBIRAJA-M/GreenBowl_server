@@ -43,7 +43,10 @@ db.connect();
 
 let currentUserId = 0;
 let LoginName = "";
-const jsonData = JSON.parse(fs.readFileSync('recipe.json', 'utf8'));
+const rawData = fs.readFileSync('recipe.json', 'utf8');
+
+const jsonData=JSON.parse(rawData);
+
 
 /* inster data from menu to cart  */
 
@@ -92,7 +95,10 @@ async function insertItem(ids) {
     }
 }
 const insertData = async () => {
-    for (const item of jsonData) {
+    for (const key of Object.keys(jsonData)) {
+        const array = jsonData[key];
+
+    for (const item of array) {
         const { type, name, price, image, veg, nonveg, ingredients, kcal, protein, carbs, fat, fiber } = item;
 
         const formattedIngredients = Array.isArray(ingredients) ? JSON.stringify(ingredients) : ingredients;
@@ -106,9 +112,10 @@ const insertData = async () => {
             console.error('Error inserting data:', err);
         }
     }
+}
 };
-insertData();
-
+/* insertData();
+ */
 
 
 /* LOCAL AUTHENTICATION  */
@@ -194,9 +201,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/menu', async (req, res) => {
-    const result = await db.query("SELECT * FROM cartinfo");
-    const recipeJSON = result.rows;
-    res.render('menupage.ejs', { recipes: recipeJSON });
+    const proteinbowl = await db.query("SELECT * FROM cartinfo WHERE type='protein bowl' ");
+    const recipePB = proteinbowl.rows;
+    const vegsalad = await db.query("SELECT * FROM cartinfo WHERE type='veg salad' ");
+    const recipeVS = vegsalad.rows;
+    res.render('menupage.ejs', { recipesPB: recipePB,
+       recipesVS :recipeVS
+
+
+    });
 });
 
 app.get('/about', (req, res) => {

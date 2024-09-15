@@ -76,183 +76,109 @@
                 <img class="caret-styles" src="Assets/caret-down.webp">
             </div>
             <div class="proteinbowl">
-                <% recipes.forEach(recipe=>{ %>
+                <% recipesPB.forEach(recipe=>{ %>
+                    <form action="/cart" method="POST">
+                        <div class="section-container">
+                            <div class="content-container">
+                                <div class="details-container">
+                                    <article>
+                                        <div class="veg_nonveg_icon">
+                                            <% if (recipe.veg) {%>
+                                                <img class="veg-non-veg-icon" src="<%= recipe.veg %>">
+                                                <% } %>
+                                                    <img class="veg-non-veg-icon" src="<%= recipe.nonveg  %>">
+                                        </div>
 
-                        <form action="/cart" method="POST">
-                            <div class="section-container">
-                                <div class="content-container">
-                                    <div class="details-container">
-                                        <article>
-                                            <div class="veg_nonveg_icon">
-                                                <% if (recipe.veg) {%>
-                                                    <img class="veg-non-veg-icon" src="<%= recipe.veg %>">
-                                                    <% } %>
-                                                        <img class="veg-non-veg-icon" src="<%= recipe.nonveg  %>">
-                                            </div>
-
-                                            <p class="dish">
-                                                <%= recipe.name %>
-                                            </p>
-                                            <div class="about-container">
-                                                <div class="about-img">
-                                                    <img src="<%= recipe.image %>" alt="the peruvian bowl">
-                                                    <button class="btn1" type="submit">Add+</button>
-                                               <!--   if (message) { %>
-                                                        <p> message.news <p>
-                                                     } 
-                                                     -->
-                                                    
-                                                </div>
-                                                <P class="ingredient"><b>INGREDIENTS :</b>
-                                                    <%= recipe.ingredients %>
-                                                </P>
-                                                <p class="price"> Rs.<%= recipe.price%>
-                                                </p>
-                                                <p class="nutrients"><span>
-                                                <%= recipe.kcal %> Kcal
-                                            </span>•Protein <%= recipe.protein%> •Carbs <%=
-                                                    recipe.carbs%>•Fat <%= recipe.fat%>
-                                                        •Fiber
-                                                        <%= recipe.fiber%>
+                                        <p class="dish">
+                                            <%= recipe.name %>
                                         </p>
-                                                <input type="hidden" name="recipes[]" value='<%= JSON.stringify(recipe) %>' />
+                                        <div class="about-container">
+                                            <div class="about-img">
+                                                <img src="<%= recipe.image %>" alt="the peruvian bowl">
+                                                <button class="btn1" type="submit">Add+</button>
                                             </div>
+                                            <P class="ingredient"><b>INGREDIENTS :</b>
+                                                <%= recipe.ingredients %>
+                                            </P>
+                                            <p class="price"> Rs.<%= recipe.price%>
+                                            </p>
+                                            <p class="nutrients"><span>
+                                                    <%= recipe.kcal %> Kcal
+                                                </span>•Protein <%= recipe.protein%> •Carbs <%= recipe.carbs%>•Fat <%=
+                                                            recipe.fat%>
+                                                            •Fiber
+                                                            <%= recipe.fiber%>
+                                            </p>
+                                            <input type="hidden" name="recipes[]"
+                                                value='<%= JSON.stringify(recipe) %>' />
+                                        </div>
 
 
-                                        </article>
-
-                                        <!--   <article>
-                            <div class="veg_nonveg_icon">
-                                <img class="veg-non-veg-icon" src="Assets/veg_icon (1).png"> <img
-                                    class="veg-non-veg-icon" src="Assets/non-veg_icon (1).png">
-                            </div>
-                            <p class="dish">THE KERALA BOWL</p>
-                            <div class="about-container">
-                                <div class="about-img">
-                                    <img src="Assets/The_Kerala_Bowl.jpg" alt="the kerala bowl">
-                                    <button class="btn1">Add+</button>
-
-                                </div>
-                                <P class="ingredient"><b style="font-size:0.9rem;">INGREDIENTS :</b> Herb Brown
-                                    Rice,
-                                    Sauteed Veggies, Zoodle Salad, Pickled Onion,Tomato Relish, Coconut Milk</P>
-                                <p class="price">Rs.229</p>
-                                <p class="nutrients"><span>673Kcal</span>•27g Protein•80g Carbs•25g Fat•6.5g Fiber
-                                </p>
-
-                            </div>
-                        </article>
-                     
-                    </div>
-
-                    <div class="details-container">
-                        <article>
-                            <div class="veg_nonveg_icon">
-                                <img class="veg-non-veg-icon" src="Assets/veg_icon (1).png"> <img
-                                    class="veg-non-veg-icon" src="Assets/non-veg_icon (1).png">
-                            </div>
-                            <p class="dish">THE YELLOW PEPPER BOWL</p>
-                            <div class="about-container">
-                                <div class="about-img">
-                                    <img src="Assets/yellow pepper-bowl.jpg" alt="the yellow pepper bowl">
-                                    <button class="btn1">Add+</button>
-                                </div>
-                                <P class="ingredient"><b style="font-size:0.9rem;">INGREDIENTS :</b> Yellow Pepper,
-                                    Salt,
-                                    Black Pepper, Sunflower Oil, Onion, Leek, Celeary, Garlic, Cumin Powder,
-                                    Corainder
-                                    Powder, Red Chilli Powder, Rice</P>
-                                <p class="price">Rs.229</p>
-                                <p class="nutrients"><span>Kcal</span>•Protein•Carbs•Fat•Fiber</p>
-
-                            </div>
-                        </article>
-
-                        <article>
-                            <div class="veg_nonveg_icon">
-                                <img class="veg-non-veg-icon" src="Assets/veg_icon (1).png"> <img
-                                    class="veg-non-veg-icon" src="Assets/non-veg_icon (1).png">
-                            </div>
-                            <p class="dish">THE PERIPERI RICE BOWL</p>
-                            <div class="about-container">
-                                <div class="about-img">
-                                    <img src="Assets/THE PERIPERI RICE BOWL.JPG" alt="the periperi rice bowl">
-                                    <button class="btn1">Add+</button>
-
-                                </div>
-                                <P class="ingredient"><b style="font-size:0.9rem;">INGREDIENTS :</b>
-                                    Amul Milk, Bay Leaves, Black Pepper, Onion, Potato, Maida, Peri Peri Powder,
-                                    Garlic,
-                                    Leek, Fresh Cream, Dry Oregano, Salt, Parsley, Sugar, Sunflower Oil, Rice</P>
-                                <p class="price">Rs.229</p>
-                                <p class="nutrients"><span>Kcal</span>•Protein•Carbs•Fat•Fiber</p>
-
-                            </div>
-                        </article>
-                     
-                    </div>
-                    <div class="details-container">
-                        <article>
-                            <div class="veg_nonveg_icon">
-                                <img class="veg-non-veg-icon" src="Assets/veg_icon (1).png"> <img
-                                    class="veg-non-veg-icon" src="Assets/non-veg_icon (1).png">
-                            </div>
-                            <p class="dish">THE BBQ RICE BOWL</p>
-                            <div class="about-container">
-                                <div class="about-img">
-                                    <img src="Assets/BBQ-Chicken-.jpg" alt="the BBQ rice bowl">
-                                    <button class="btn1">Add+</button>
-                                </div>
-                                <P class="ingredient"><b style="font-size:0.9rem;">INGREDIENTS :</b>
-                                    BBQ sauce, Rosemarry, Garlic, Onion, Celeary, Leek, Sunflower Oil, Salt, Black
-                                    Pepper,
-                                    Chilli Flax, Coriander, Rice</P>
-                                <p class="price">Rs.229</p>
-                                <p class="nutrients"><span>Kcal</span>•Protein•Carbs•Fat•Fiber</p>
-
-                            </div>
-                        </article>
-
-                        <article>
-                            <div class="veg_nonveg_icon">
-                                <img class="veg-non-veg-icon" src="Assets/veg_icon (1).png"> <img
-                                    class="veg-non-veg-icon" src="Assets/non-veg_icon (1).png">
-                            </div>
-                            <p class="dish">THE N.Y BOWL</p>
-                            <div class="about-container">
-                                <div class="about-img">
-                                    <img src="Assets/The_NY_Bowl_.jpg" alt="the kerala bowl">
-                                    <button class="btn1">Add+</button>
-
-                                </div>
-                                <P class="ingredient"><b style="font-size:0.9rem;">INGREDIENTS :</b>
-                                    Herb Brown Rice, Mix Beans, Sauteed Veggies, Zoodle Salad, Guacamole, Smoked
-                                    Chilli
-                                    Dressing</P>
-                                <p class="price">Rs.229</p>
-                                <p class="nutrients"><span>673Kcal</span>•31g Protein•91g Carbs•34g Fat•14g Fiber
-                                </p>
-                            </div>
-                        </article> -->
-
-                                    </div>
+                                    </article>
                                 </div>
                             </div>
-                        </form>
-                        <% }); %>
+                        </div>
+                    </form>
+                    <% }); %>
             </div>
         </section>
-        <!-- 
-
-    <section id="salads">
-        <div id="vegsalad">
+        <section id="salads">
+            <div class="spacecaret">
+                <button class="section-heading btn12"> Veg Salads</button>
+                <img class="caret-styles" src="Assets/caret-down.webp">
+            </div>
             <div class="vegsalads">
-                <div class="spacecaret">
-                    <button class="section-heading btn1"> Veg Salads</button>
-                    <img class="caret-styles" src="Assets/caret-down.webp">
-                </div>
+                <% recipesVS.forEach(recipeVS=>{ %>
+                    <form action="/cart" method="POST">
+                        <div class="section-container">
+                            <div class="content-container">
+                                <div class="details-container">
+                                    <article>
+                                        <div class="veg_nonveg_icon">
+                                            <% if (recipeVS.veg) {%>
+                                                <img class="veg-non-veg-icon" src="<%= recipeVS.veg %>">
+                                                <% } %>
+                                                    <!-- <img class="veg-non-veg-icon" src="<%= recipeVS.nonveg  %>"> -->
+                                        </div>
+
+                                        <p class="dish">
+                                            <%= recipeVS.name %>
+                                        </p>
+                                        <div class="about-container">
+                                            <div class="about-img">
+                                                <img src="<%= recipeVS.image %>" alt="the peruvian bowl">
+                                                <button class="btn1" type="submit">Add+</button>
+                                            </div>
+                                            <P class="ingredient"><b>INGREDIENTS :</b>
+                                                <%= recipeVS.ingredients %>
+                                            </P>
+                                            <p class="price"> Rs.<%= recipeVS.price%>
+                                            </p>
+                                            <p class="nutrients"><span>
+                                                    <%= recipeVS.kcal %> Kcal
+                                                </span>•Protein <%= recipeVS.protein%> •Carbs <%= recipeVS.carbs%>•Fat
+                                                        <%= recipeVS.fat%>
+                                                            •Fiber
+                                                            <%= recipeVS.fiber%>
+                                            </p>
+                                            <input type="hidden" name="recipes[]"
+                                                value='<%= JSON.stringify(recipeVS) %>' />
+                                        </div>
 
 
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <% }); %>
+
+
+            </div>
+            </div>
+        </section>
+
+        <!-- 
                 <div class="section-container">
                     <div class="content-container">
                         <div class="details-container">
@@ -686,9 +612,9 @@
 
             <script src="https://code.jquery.com/jquery-3.7.1.js"
                 integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- Include Toastr JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <!-- Include Toastr JS -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
             <script src="src/menupage.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
