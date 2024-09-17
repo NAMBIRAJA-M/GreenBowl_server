@@ -316,8 +316,9 @@ document.addEventListener('DOMContentLoaded', () => {
 let LoginName=[];
 $(document).ready(function() {
 fetch("/api/user")
-    .then(response => response.json()) 
+    .then(response => response.json())  
     .then(data => {
+
         LoginName.push(data.loginName);
         loginName = data.loginName;
        

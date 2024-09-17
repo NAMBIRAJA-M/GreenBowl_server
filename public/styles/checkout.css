@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+p{
+    margin-bottom: 0rem;
+}
+
+body {
+    overflow-x: hidden;
+    background-color:#F5F5F5;
+
+}
+
+.section-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.section-heading{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 570;
+    color: #399918;
+    text-decoration: underline;
+
+}
+
+.details-container{
+    display: flex;
+    width: 100%;
+   /*  align-items: center; */
+    justify-content: space-around;
+    margin: 1rem;
+    margin-top: 0rem;
+    gap: 2rem;
+
+}
+.form-container{
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    height: 500px;
+}
+
+.contact-form {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:500px;
+    height: fit-content;
+    padding:0.4rem;
+    gap: 1.5rem;
+}
+
+.contact-form label:not(.deliverymode-content) {
+    font-size: 1.2rem;
+}
+
+.contact-form input:not(.contact-form .deliverymode) {
+    width: 500px;
+    height: auto;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.contact-form textarea {
+    width: 500px;
+    height: auto;
+    padding: 0.5rem;
+    font-size: 0.98rem;
+}
+.address1{
+    margin-top: -1rem;
+}
+.address:focus{
+    height:100px;
+}
+.custom-border:focus {
+    border: none;
+    border-color:#399918; /* Border color on focus */
+    box-shadow: 0 0 0 0.2rem #399918;;
+  }
+
+.checkbox-section{
+    padding-left: 0.77rem;
+    display: inline-flex;
+    gap: 0.99rem;
+}
+.deliverymode{
+    width:20px;
+}
+.deliverymode-content{
+    font-size: 0.85rem;
+}
+
+.contact-form .sendbtn {
+    border: none;
+    outline: none;
+    color: black;
+    background-color: #399918;
+    width: 160px;
+    height: 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 15px;
+    margin-left: 50%;
+    margin-top: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+.Deliveryimg{
+   /*  position: relative;
+    top: -30px; */
+    width: 400px;
+    height: 300px;
+}
+
+/* PRICE CONTAINER */
+
+.price-details{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 300px;
+    height: fit-content;
+    padding: 1rem;
+    margin: 2rem;
+    box-shadow: 0px 0px 1px 1px  #939185;
+    background-color: #fff;
+}
+
+.price-container1,.price-container2,.price-container3,.price-container4{
+display: flex;
+justify-content: space-between;
+}

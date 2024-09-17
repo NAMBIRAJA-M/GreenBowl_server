@@ -3,8 +3,8 @@
     margin: 0px;
     font-family: "Poppins", sans-serif;
     font-weight: 400;
-    font-style: normal;
-    background-color: lightgray;
+    font-style: normal; background-color: lightgray;
+   
   }
 
   @media screen and (max-width:600px) {

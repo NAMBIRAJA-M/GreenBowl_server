@@ -3,8 +3,13 @@
 function navmenu() {
     window.location.href = "/menu";
 }
+function callCheckout() {
+    window.location.href = "/deliveryService";
+}
+
 
 let orderCount = 0;
+let clickedItems=[];
 
 function addOrder() {
   orderCount++;
@@ -59,7 +64,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const cartDataDiv = document.getElementById('cart-data-' + clickedid);
             const itemsJson = cartDataDiv.getAttribute('data-items');
             const items = JSON.parse(itemsJson);
-            console.log(items)
+            console.log("data",items);
+            clickedItems.push(items);
+            console.log("dataArray",clickedItems);
 
             let checkboxElementId = 'checkbox-' + clickedid;
             let checkboxElement = document.getElementById(checkboxElementId);

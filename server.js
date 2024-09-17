@@ -9,7 +9,7 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import GoogleStrategy from 'passport-google-oauth2';
 import dotenv from 'dotenv';
 
-dotenv.config(); // Load environment variables
+dotenv.config(); 
 
 const app = express();
 const port = 3000;
@@ -173,6 +173,7 @@ app.get('/logout', (req, res) => {
 
 });
 
+
 /* GOOGLE AUTHENTICATION */
 app.get("/auth/google",
     passport.authenticate("Google", {
@@ -218,6 +219,10 @@ app.get('/about', (req, res) => {
 
 app.get('/contact', (req, res) => {
     res.render('contact.ejs');
+});
+
+app.get("/deliveryService",(req,res)=>{
+    res.render('checkoutPage.ejs')
 });
 
 let itemid = [];
