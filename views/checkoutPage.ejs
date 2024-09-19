@@ -25,7 +25,7 @@
             <div class="contact-form">
                 <div class="form-floating ">
                     <input type="text" class="form-control custom-border" id="floatingInput" placeholder="name">
-                    <label for="floatingInput" >Name</label>
+                    <label for="floatingInput">Name</label>
                 </div>
                 <div class="form-floating">
                     <input type="tel" class="form-control custom-border" id="floatingMobile"
@@ -41,13 +41,37 @@
                 <div class="checkbox-section">
                     <input type="checkbox" class="deliverymode" name="deliverystatus">
                     <label for="deliverymode" class="deliverymode-content">I will pick my order myself </label>
-                   
+
                 </div>
 
-                <div class="form-floating address1">
-                    <textarea class="form-control address  custom-border" placeholder="Leave a comment here"
-                        id="floatingTextarea"></textarea>
-                    <label for="floatingTextarea">Delivery Address</label>
+                <div class="address1" >
+                    <button class="btn-addr" onclick="addressDetails()">Delivery Address</button>
+                </div>
+                <div class="address-container">
+                    <div class="addr-container1">
+                        <div class="form-floating">
+                            <textarea class="form-control custom-border " style="width: 300px;" placeholder="door no."
+                                id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea">Flat , Building , House No.</label>
+                        </div>
+                        <div class="form-floating">
+                            <textarea class="form-control custom-border"  style="width: 550px;" placeholder="Street name"
+                                id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea">Street Name , Area </label>
+                        </div>
+                    </div>
+                    <div class="addr-container2">
+                        <div class="form-floating">
+                            <textarea class="form-control custom-border"  style="width: 530px;" placeholder="city"
+                                id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea">City</label>
+                        </div>
+                        <div class="form-floating">
+                            <textarea class="form-control custom-border"  style="width: 300px;" placeholder="Pincode"
+                                id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea">Pincode</label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="price-details">

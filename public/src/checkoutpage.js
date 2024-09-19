@@ -7,4 +7,11 @@ $(".deliverymode").click(function () {
         $(".address").prop("disabled", true);
     }
 
-})
+});
+
+
+function addressDetails(){
+  $(".address1").click(function(){
+    $(".address-container").toggleClass("open")
+  })
+}
