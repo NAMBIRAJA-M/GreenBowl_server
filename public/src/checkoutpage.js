@@ -12,6 +12,6 @@ $(".deliverymode").click(function () {
 
 function addressDetails(){
   $(".address1").click(function(){
-    $(".address-container").toggleClass("open")
+    $(".address-container").addClass("open")
   })
 }
