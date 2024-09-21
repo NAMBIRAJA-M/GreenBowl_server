@@ -23,20 +23,21 @@
         </div>
         <div class="details-container">
             <div class="contact-form">
-                <div class="form-floating ">
-                    <input type="text" class="form-control custom-border" id="floatingInput" placeholder="name">
-                    <label for="floatingInput">Name</label>
+                <div class="forms-container">
+                    <label id="name" for="input-name" >Name</label>
+                    <input type="text" class="input-name" id="name"  placeholder=" " required  >
+                   
                 </div>
-                <div class="form-floating">
-                    <input type="tel" class="form-control custom-border" id="floatingMobile"
-                        placeholder="Mobile Number">
-                    <label for="floatingMobile">Mobile Number</label>
+                <div class="forms-container">
+                    <label id="mobile" for="input-mobile">Mobile Number</label>
+                    <input type="tel" class="input-mobile" id="mobile" placeholder=" " required  >
+                    
                 </div>
 
-                <div class="form-floating">
-                    <textarea class="form-control custom-border" placeholder="Leave a comment here"
-                        id="floatingTextarea"></textarea>
-                    <label for="floatingTextarea">Order Summary</label>
+                <div class="forms-container">
+                    <label for="input-orders" id="orders" >Order Summary</label>
+                    <textarea class="input-orders" id="orders"  placeholder=" " required  ></textarea>
+                    
                 </div>
                 <div class="checkbox-section">
                     <input type="checkbox" class="deliverymode" name="deliverystatus">
@@ -44,32 +45,32 @@
 
                 </div>
 
-                <div class="address1" >
+                <div class="address1">
                     <button class="btn-addr" onclick="addressDetails()">Delivery Address</button>
                 </div>
                 <div class="address-container">
                     <div class="addr-container1">
-                        <div class="form-floating">
-                            <textarea class="form-control custom-border " style="width: 300px;" placeholder="door no."
-                                id="floatingTextarea"></textarea>
-                            <label for="floatingTextarea">Flat , Building , House No.</label>
+                        <div class="forms-container">
+                            <label  id="doorno" for="input-addr1">Flat , Building , House No.</label>
+                            <input class="input-addr1" id="doorno"  placeholder=" " required   style="width: 300px;"></input>
+
                         </div>
-                        <div class="form-floating">
-                            <textarea class="form-control custom-border"  style="width: 550px;" placeholder="Street name"
-                                id="floatingTextarea"></textarea>
-                            <label for="floatingTextarea">Street Name , Area </label>
+                        <div class="forms-container">
+                            <label id="Street" for="input-addr3">Street Name , Area </label>
+                            <input class="input-addr2"  id="Street"  placeholder=" " required  style="width: 550px;"></input>
+
                         </div>
                     </div>
                     <div class="addr-container2">
-                        <div class="form-floating">
-                            <textarea class="form-control custom-border"  style="width: 530px;" placeholder="city"
-                                id="floatingTextarea"></textarea>
-                            <label for="floatingTextarea">City</label>
+                        <div class="forms-container">
+                            <label id="city" for="floatingTextarea">City</label>
+                            <input class="input-addr3" id="city"  placeholder=" " required  style="width: 530px;"></input>
+
                         </div>
-                        <div class="form-floating">
-                            <textarea class="form-control custom-border"  style="width: 300px;" placeholder="Pincode"
-                                id="floatingTextarea"></textarea>
-                            <label for="floatingTextarea">Pincode</label>
+                        <div class="forms-container">
+                            <label id="pincode" for="input-addr4">Pincode</label>
+                            <input class="input-addr4" id="pincode"  placeholder=" " required  style="width: 300px;"></input>
+
                         </div>
                     </div>
                 </div>

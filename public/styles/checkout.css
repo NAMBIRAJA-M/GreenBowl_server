@@ -12,7 +12,7 @@ p {
 
 body {
     overflow-x: hidden;
-    background-color: #F5F5F5;
+   /*  background-color: #F5F5F5; */
 
 }
 
@@ -36,12 +36,10 @@ body {
 .details-container {
     display: flex;
     width: 100%;
-    /*  align-items: center; */
     justify-content: space-around;
     margin: 1rem;
     margin-top: 0rem;
     gap: 2rem;
-
 }
 
 .form-container {
@@ -62,36 +60,61 @@ body {
     gap: 1.5rem;
 }
 
-.contact-form label:not(.deliverymode-content) {
+.forms-container {
+    position: relative;
+}
+
+.forms-container::placeholder {
+    color: transparent;
+}
+
+/* FORM INPUT - LABEL */
+
+.forms-container label:not(.deliverymode-content) {
     font-size: 1.2rem;
-    /*   padding-bottom: 1.5rem; */
+    position: absolute;
+    top: 0.8rem;
+    left: 1rem;
+    pointer-events: none;
+
 }
 
-.contact-form input:not(.contact-form .deliverymode) {
+.forms-container input:not(.contact-form .deliverymode) {
     width: 500px;
-    height: auto;
+    height: 50px;
     font-size: 0.9rem;
-
+    border: 0.7px solid #939185;
+    border-radius: 7px;
 }
 
-.contact-form textarea {
+.forms-container textarea {
     width: 500px;
     height: auto;
     padding: 0.5rem;
     font-size: 0.98rem;
+    border: 0.7px solid #939185;
+    border-radius: 7px;
+  
 }
 
-.custom-border:focus {
+.forms-container textarea:focus {
+    outline: none;
     border: none;
-    border-color: #399918;
-    /* Border color on focus */
+    box-shadow: 0 0 0 0.2rem #399918;
+}
+
+.forms-container input:focus {
+    outline: none;
+    border: none;
     box-shadow: 0 0 0 0.2rem #399918;
 
 }
 
-.form-control {
-    padding: 2rem 0.75rem;
+.focus-input{
+ position: absolute;
+ top: -10rem;
 }
+/*    CHECK-BOX SECTION */
 
 .checkbox-section {
     padding-left: 0.77rem;
@@ -124,13 +147,13 @@ body {
 }
 
 
-
+/* 
 .Deliveryimg {
     /*  position: relative;
-    top: -30px; */
+    top: -30px; 
     width: 400px;
     height: 300px;
-}
+} */
 
 /* PRICE CONTAINER */
 
@@ -155,17 +178,15 @@ body {
 }
 
 /* ADDRESS - CONTAINER */
-
-
 .address1 {
     width: 500px;
     height: fit-content;
 
 }
 
-
-.addr-container1 input {
+.addr-container1 .forms-container input {
     width: 300;
+    height: 45px;
 }
 
 .address-container {
@@ -199,5 +220,10 @@ body {
     justify-content: flex-start;
     border-radius: 10px;
     padding: 1rem 0.75rem;
-    border: 1px solid #dee2e6 ;
+    border: 1px solid #dee2e6;
+}
+
+.extracss {
+    background-color: #E3E1D9;
+    color: #939185;
 }
