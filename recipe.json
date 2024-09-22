@@ -494,5 +494,240 @@
       "fat": "46g",
       "fiber": "6g"
     }
-]
+],
+"nonveg salads":[
+    {
+      "id": 1,
+      "type": "nonveg salad",
+      "name": "GBC Caesar Salad",
+      "price": 149,
+      "image": "Assets/gbc_caesar_salad.jpg",
+      "veg": null,
+      "nonveg": "Assets/nonveg_icon.png",
+      "ingredients": [
+        "Lettuce",
+        "Balsamic Onion",
+        "Chicken",
+        "Zucchini",
+        "Bell Pepper"
+      ],
+      "kcal": 169,
+      "protein": "8g",
+      "carbs": "8g",
+      "fat": "12g",
+      "fiber": "1g"
+    },
+    {
+      "id": 2,
+      "type": "nonveg salad",
+      "name": "Ragi Cracker Chicken Salad",
+      "price": 215,
+      "image": "Assets/ragi_cracker_salad.jpg",
+      "veg": null,
+      "nonveg": "Assets/nonveg_icon.png",
+      "ingredients": [
+        "Arugula",
+        "Mix Beans",
+        "Herb Chicken",
+        "Sautéed Brown Rice",
+        "Spicy Eggplant",
+        "Sliced Onions",
+        "French Beans",
+        "Ragi Crackers",
+        "Chili Cashews"
+      ],
+      "kcal": 595,
+      "protein": "20g",
+      "carbs": "56g",
+      "fat": "31g",
+      "fiber": "5.5g"
+    },
+    {
+      "id": 3,
+      "type": "nonveg salad",
+      "name": "Goat Cheese Fusion Salad",
+      "price": 219,
+      "image": "Assets/goat_cheese_fusion_salad.jpg",
+      "veg": null,
+      "nonveg": "Assets/nonveg_icon.png",
+      "ingredients": [
+        "Mix Lettuce",
+        "Apples",
+        "Herbed Chicken",
+        "Goat Cheese",
+        "Caramelized Walnuts"
+      ],
+      "kcal": 615,
+      "protein": "14g",
+      "carbs": "14g",
+      "fat": "46g",
+      "fiber": "5.5g"
+    },
+    {
+      "id": 4,
+      "type": "nonveg salad",
+      "name": "Ricotta Cheese Fusion Salad",
+      "price": 225,
+      "image": "Assets/ricotta_cheese_fusion_salad.jpg",
+      "veg": null,
+      "nonveg": "Assets/nonveg_icon.png",
+      "ingredients": [
+        "Mix Lettuce",
+        "Apples",
+        "Herbed Chicken",
+        "Ricotta Cheese",
+        "Caramelized Walnuts"
+      ],
+      "kcal": 615,
+      "protein": "14g",
+      "carbs": "14g",
+      "fat": "46g",
+      "fiber": "5.5g"
+    },
+    {
+      "id": 5,
+      "type": "nonveg salad",
+      "name": "Tarzan Salad",
+      "price": 229,
+      "image": "Assets/tarzan_salad.jpg",
+      "veg": null,
+      "nonveg": "Assets/nonveg_icon.png",
+      "ingredients": [
+        "American Kale",
+        "Mix Lettuce",
+        "Herb Chicken",
+        "Baby Tomato",
+        "Black Olives",
+        "Sun-Dried Tomato",
+        "Grated Carrots",
+        "Herb Broccoli",
+        "Bocconcini"
+      ],
+      "kcal": 369,
+      "protein": "19g",
+      "carbs": "8g",
+      "fat": "19g",
+      "fiber": "6.5g"
+    },
+    {
+      "id": 6,
+      "type": "nonveg salad",
+      "name": "Chicken Fiesta Salad",
+      "price": 239,
+      "image": "Assets/chicken_fiesta_salad.jpg",
+      "veg": null,
+      "nonveg": "Assets/nonveg_icon.png",
+      "ingredients": [
+        "American Kale",
+        "Mix Lettuce",
+        "Roasted Chicken",
+        "Couscous",
+        "Malta Orange",
+        "Grated Carrot"
+      ],
+      "kcal": 441,
+      "protein": "20g",
+      "carbs": "32g",
+      "fat": "25g",
+      "fiber": "7.5g"
+    },
+    {
+      "id": 7,
+      "type": "nonveg salad",
+      "name": "Tuna Harvest Salad",
+      "price": 249,
+      "image": "Assets/tuna_harvest_salad.jpg",
+      "veg": null,
+      "nonveg": "Assets/nonveg_icon.png",
+      "ingredients": [
+        "Arugula",
+        "Mix Lettuce",
+        "Cherry Tomato",
+        "Chickpea",
+        "Cucumber",
+        "Olives",
+        "Gherkins",
+        "French Beans",
+        "Broccoli",
+        "Baked Fish",
+        "Tuna",
+        "Mix Seeds"
+      ],
+      "kcal": 739,
+      "protein": "38g",
+      "carbs": "59g",
+      "fat": "38g",
+      "fiber": "16g"
+    },
+    {
+      "id": 8,
+      "type": "nonveg salad",
+      "name": "Exotic Chicken Tikka Salad",
+      "price": 259,
+      "image": "Assets/exotic_chicken_tikka_salad.jpg",
+      "veg": null,
+      "nonveg": "Assets/nonveg_icon.png",
+      "ingredients": [
+        "Arugula",
+        "Mix Lettuce",
+        "Chicken Tikka",
+        "Sliced Onion",
+        "Cucumber",
+        "Baby Tomatoes",
+        "Black Olives",
+        "Croutons",
+        "Tapenade",
+        "Parmesan"
+      ],
+      "kcal": "N/A"
+    },
+    {
+      "id": 9,
+      "type": "nonveg salad",
+      "name": "Smoked Salmon Salad",
+      "price": 269,
+      "image": "Assets/smoked_salmon_salad.jpg",
+      "veg": null,
+      "nonveg": "Assets/nonveg_icon.png",
+      "ingredients": [
+        "Spinach",
+        "Arugula",
+        "Smoked Salmon",
+        "Boiled Egg",
+        "Cherry Tomatoes",
+        "Onions",
+        "French Beans",
+        "Carrots",
+        "Mix Seeds"
+      ],
+      "kcal": "N/A"
+    },
+    {
+      "id": 10,
+      "type": "nonveg salad",
+      "name": "Quinoa Crunch Supreme Salad",
+      "price": 269,
+      "image": "Assets/quinoa_crunch_supreme_salad.jpg",
+      "veg": null,
+      "nonveg": "Assets/nonveg_icon.png",
+      "ingredients": [
+        "American Kale",
+        "Arugula",
+        "Herb Chicken",
+        "Cranberries",
+        "American Corn",
+        "French Beans",
+        "Black Olives",
+        "Mushrooms",
+        "Feta",
+        "Almonds",
+        "Spicy Cashews"
+      ],
+      "kcal": 538,
+      "protein": "20g",
+      "carbs": "24g",
+      "fat": "40g",
+      "fiber": "9g"
+    }
+  ]
 }
