@@ -8,8 +8,10 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import GoogleStrategy from 'passport-google-oauth2';
 import dotenv from 'dotenv';
+/* import getCartItems from "./public/src/cart.js";
+ */
 
-dotenv.config(); 
+dotenv.config();
 
 const app = express();
 const port = 3000;
@@ -22,7 +24,7 @@ app.use(session({
     cookie: {
         maxAge: 1000 * 60 * 30
     },
-    rolling: true 
+    rolling: true
 }));
 
 app.use(passport.initialize());
@@ -45,7 +47,9 @@ let currentUserId = 0;
 let LoginName = "";
 const rawData = fs.readFileSync('recipe.json', 'utf8');
 
-const jsonData=JSON.parse(rawData);
+const jsonData = JSON.parse(rawData);
+
+
 
 
 /* inster data from menu to cart  */
@@ -57,7 +61,7 @@ async function insertItem(ids) {
 
             const result = await db.query("SELECT * FROM cartinfo WHERE id = $1", [id]);
             ids.length = 0;
-            
+
 
             console.log("Current user id:", currentUserId)
             if (result.rows.length > 0) {
@@ -98,21 +102,21 @@ const insertData = async () => {
     for (const key of Object.keys(jsonData)) {
         const array = jsonData[key];
 
-    for (const item of array) {
-        const { type, name, price, image, veg, nonveg, ingredients, kcal, protein, carbs, fat, fiber } = item;
+        for (const item of array) {
+            const { type, name, price, image, veg, nonveg, ingredients, kcal, protein, carbs, fat, fiber } = item;
 
-        const formattedIngredients = Array.isArray(ingredients) ? JSON.stringify(ingredients) : ingredients;
+            const formattedIngredients = Array.isArray(ingredients) ? JSON.stringify(ingredients) : ingredients;
 
-        try {
-            await db.query(
-                "INSERT INTO cartinfo (type, name, price, image, veg, nonveg, ingredients, kcal, protein, carbs, fat, fiber) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) ON CONFLICT (name) DO NOTHING;",
-                [type, name, price, image, veg, nonveg, formattedIngredients, kcal, protein, carbs, fat, fiber]
-            );
-        } catch (err) {
-            console.error('Error inserting data:', err);
+            try {
+                await db.query(
+                    "INSERT INTO cartinfo (type, name, price, image, veg, nonveg, ingredients, kcal, protein, carbs, fat, fiber) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) ON CONFLICT (name) DO NOTHING;",
+                    [type, name, price, image, veg, nonveg, formattedIngredients, kcal, protein, carbs, fat, fiber]
+                );
+            } catch (err) {
+                console.error('Error inserting data:', err);
+            }
         }
     }
-}
 };
 /* insertData();
  */
@@ -143,8 +147,8 @@ app.post('/signup', async (req, res) => {
                     const user = result.rows[0];
                     req.login(user, (err) => {
                         currentUserId = user.id;
-                        LoginName=user.name;
-                        console.log("current_user from local signup",LoginName);
+                        LoginName = user.name;
+                        console.log("current_user from local signup", LoginName);
                         res.redirect(`/menu?message=You%20have%20successfully%20Signed%20Up!&name=${user.name}`)
                     });
                 }
@@ -169,7 +173,7 @@ app.get('/logout', (req, res) => {
         res.redirect('/menu?warning=You%20have%20successfully%20Logged%20Out!');
     });
     currentUserId = 0;
-    LoginName="";
+    LoginName = "";
 
 });
 
@@ -190,10 +194,10 @@ app.get("/auth/google/menu",
 
 /* routes to pages */
 
-app.get("/api/user",(req,res)=>{
-   /*  if (!req.session.user) {
-        return res.status(401).send('Session expired, please login again');
-      } */
+app.get("/api/user", (req, res) => {
+    /*  if (!req.session.user) {
+         return res.status(401).send('Session expired, please login again');
+       } */
     res.json({ loginName: LoginName });
 })
 
@@ -206,8 +210,9 @@ app.get('/menu', async (req, res) => {
     const recipePB = proteinbowl.rows;
     const vegsalad = await db.query("SELECT * FROM cartinfo WHERE type='veg salad' ");
     const recipeVS = vegsalad.rows;
-    res.render('menupage.ejs', { recipesPB: recipePB,
-       recipesVS :recipeVS
+    res.render('menupage.ejs', {
+        recipesPB: recipePB,
+        recipesVS: recipeVS
 
 
     });
@@ -221,7 +226,10 @@ app.get('/contact', (req, res) => {
     res.render('contact.ejs');
 });
 
-app.get("/deliveryService",(req,res)=>{
+app.get("/deliveryService", (req, res) => {
+  /*   let DataItems = getCartItems.getCartItems();
+    console.log("data from cart js ", DataItems);
+ */
     res.render('checkoutPage.ejs')
 });
 
@@ -256,9 +264,9 @@ app.post('/cart', async (req, res) => {
 });
 
 app.get('/cart', async (req, res) => {
-  /*   if (!req.session.user) {
-        return res.status(401).send('Session expired, please login again');
-      } */
+    /*   if (!req.session.user) {
+          return res.status(401).send('Session expired, please login again');
+        } */
     try {
         const result = await db.query(
             "SELECT cartitems.id AS item_id, cartitems.*, users.* FROM cartitems JOIN users ON users.id = user_id WHERE user_id = $1 ORDER BY cartitems.id ASC",
@@ -301,7 +309,7 @@ passport.use(new LocalStrategy({
                 const user = result.rows[0];
                 const registerPassword = user.password;
                 currentUserId = user.id;
-               
+
 
                 bcrypt.compare(password, registerPassword, (err, valid) => {
                     if (err) {
@@ -312,7 +320,7 @@ passport.use(new LocalStrategy({
                     if (valid) {
                         console.log("Authentication successful for user:", user);
                         LoginName = user.name;
-                        console.log("current_username from local:",LoginName);
+                        console.log("current_username from local:", LoginName);
 
                         return cb(null, user);
                     } else {
@@ -344,11 +352,11 @@ passport.use(
                 const result = await db.query("SELECT * FROM users WHERE email = $1", [
                     profile.email,
                 ]);
-                LoginName =profile.name.givenName;
-                console.log("current_username from google:",LoginName);
+                LoginName = profile.name.givenName;
+                console.log("current_username from google:", LoginName);
 
-               const userProfile=result.rows[0];
-                currentUserId=userProfile.id;
+                const userProfile = result.rows[0];
+                currentUserId = userProfile.id;
 
                 if (result.rows.length === 0) {
                     const newUser = await db.query(

@@ -1,4 +1,25 @@
+/* 
+import {getCartItems,items} from './cart';
 
+const data =getCartItems(items);
+console.log("data from imported",data)
+
+
+console.log("imported ",getCartItems); */
+
+
+const storedItems = JSON.parse(localStorage.getItem('cartItems'));
+
+
+
+if (storedItems) {
+  storedItems.forEach(element => {
+    console.log('Retrieved items:', element);
+  });
+  // Output: ['item1', 'item2', 'item3']
+} else {
+  console.log('No items found in localStorage');
+}
 
 $(".deliverymode").click(function () {
   $(".btn-addr").toggleClass("extracss");

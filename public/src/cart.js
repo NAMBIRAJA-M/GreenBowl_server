@@ -9,11 +9,12 @@ function callCheckout() {
 
 
 let orderCount = 0;
-let clickedItems=[];
+let clickedItems = [];
+console.log("type", typeof clickedItems, "checking", Array.isArray(clickedItems));
 
 function addOrder() {
-  orderCount++;
-  document.querySelector('.orders-count').textContent = `Your Orders (${orderCount})`;
+    orderCount++;
+    document.querySelector('.orders-count').textContent = `Your Orders (${orderCount})`;
 }
 
 
@@ -49,24 +50,29 @@ function UpdatePrice(id, count, priceofitem) {
     let actualprice = count * priceofitem;
     let priceElement = document.getElementById('details-price-' + id);
     priceElement.textContent = "Rs." + actualprice;
-    
-}
 
+}
+let items;
 document.addEventListener('DOMContentLoaded', function () {
     const checkboxes = document.querySelectorAll('.custom-checkbox');
     checkboxes.forEach(function (checkbox) {
         checkbox.addEventListener('change', function () {
             const label = document.querySelector(`label[for='${checkbox.id}']`);
-            console.log("label;", label);
+            /*     console.log("label;", label); */
             const number = checkbox.id;
             const clickedid = parseInt(number.match(/\d+/)[0], 10);
 
             const cartDataDiv = document.getElementById('cart-data-' + clickedid);
             const itemsJson = cartDataDiv.getAttribute('data-items');
-            const items = JSON.parse(itemsJson);
-            console.log("data",items);
+            items = JSON.parse(itemsJson);
+            /*   console.log("data",items); */
             clickedItems.push(items);
-            console.log("dataArray",clickedItems);
+            console.log("dataArray", clickedItems);
+            const clickedDishes = [];
+            clickedDishes.push(items);
+            localStorage.setItem('cartItems', JSON.stringify(clickedItems));
+
+            console.log('Data stored in localStorage');
 
             let checkboxElementId = 'checkbox-' + clickedid;
             let checkboxElement = document.getElementById(checkboxElementId);
@@ -74,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let priceElement = document.getElementById('details-price-' + clickedid).textContent.trim().replace('Rs.', '');
             let price = parseInt(priceElement);
-            console.log("PRICE ::", price);
+            /*        console.log("PRICE ::", price); */
 
             if (checkbox.checked) {
 
@@ -88,13 +94,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     let totalElement = document.querySelector('.totalprice');
                     let totalele = parseInt(totalElement.textContent.trim());
-                    console.log("total content", totalele);
+                    /*         console.log("total content", totalele); */
                     total = totalele + price;
                     document.querySelectorAll('.totalprice').forEach(function (element) {
                         element.textContent = total;
                     });
                     addOrder();
-                    console.log("total price", total);
+                    /*                 console.log("total price", total); */
                     return;
                 }
             } else {
@@ -105,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 totalAmt = [];
                 let totalElement = document.querySelector('.totalprice');
                 let total = parseInt(totalElement.textContent.trim());
-                console.log("total sub", total);
+                /*  console.log("total sub", total); */
                 if (total >= price) {
                     finaltotal = total - price;
                     console.log("FinalTotal", finaltotal);
@@ -121,8 +127,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
-
+/* 
+function getCartItems(items) {
+    return items;
+} */
+/* export const getCartItems = (items) => {
+    return items;
+  };
+   */
 
 
 
@@ -166,8 +178,3 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.play();
     }
 });
-
-
-
-
-
