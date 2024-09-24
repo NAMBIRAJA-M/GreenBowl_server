@@ -1,12 +1,3 @@
-/* 
-import {getCartItems,items} from './cart';
-
-const data =getCartItems(items);
-console.log("data from imported",data)
-
-
-console.log("imported ",getCartItems); */
-
 
 const storedItems = JSON.parse(localStorage.getItem('cartItems'));
 
@@ -14,24 +5,25 @@ const storedItems = JSON.parse(localStorage.getItem('cartItems'));
 
 if (storedItems) {
   storedItems.forEach(element => {
-    console.log('Retrieved items:', element);
+    $(".orders-section img").attr("src", element.image);
   });
-  // Output: ['item1', 'item2', 'item3']
 } else {
   console.log('No items found in localStorage');
 }
 
 $(".deliverymode").click(function () {
   $(".btn-addr").toggleClass("extracss");
-
-
   const isdisabled = $('.btn-addr').prop("disabled")
 
   if (isdisabled) {
     $(".btn-addr").prop("disabled", false);
+    $(".delivery-charge,.delivery-charge-price").css("text-decoration", "");
   } else {
     $(".btn-addr").prop("disabled", true);
     $(".address-container").removeClass("open")
+    $(".delivery-charge,.delivery-charge-price").css("text-decoration", "line-through");
+
+
   }
 
 });
@@ -46,7 +38,7 @@ function logincredentials() {
     });
     $(".login-credentials .icon1").css("color", "white")
   } else {
-    $(".login-container").css("display","none");
+    $(".login-container").css("display", "none");
     $(".btn-addr1").css({
       "background-color": "",
       "color": "",
@@ -95,7 +87,7 @@ function addressDetails() {
 
 
 /* INPUT - LABEL FORM */
-const inputlabelid = $
+/* const inputlabelid = $ */
 
 const label = $("#name");
 $(".forms-container input,.forms-container textarea").focus(function (event) {
@@ -141,4 +133,24 @@ $(".forms-container input,.forms-container textarea").change(function (event) {
 });
 
 
+
+/* PRICE DETAILS */
+const packageingPrice = 30;
+const deliveryCharge = 40;
+
+const storedTotal = Number(localStorage.getItem('FinalTotal'));
+console.log(storedTotal);
+const storedOrders = Number(localStorage.getItem('orders'))
+document.querySelector(".Total-price").textContent = `Rs.${storedTotal}`;
+document.querySelector(".price-orders").textContent = `Price(${storedOrders} item)`;
+
+let totalPayable;
+const isdisabled = $('.btn-addr').prop("disabled");
+if (isdisabled) {
+  totalPayable = storedTotal + packageingPrice;
+} else {
+  totalPayable = storedTotal + deliveryCharge + packageingPrice;
+}
+
+document.querySelector(".total-payable").textContent = `Rs.${totalPayable}`;
 

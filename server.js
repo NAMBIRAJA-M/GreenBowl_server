@@ -50,7 +50,7 @@ const rawData = fs.readFileSync('recipe.json', 'utf8');
 const jsonData = JSON.parse(rawData);
 
 
-
+/* const storedItems = JSON.parse(localStorage.getItem('cartItems')); */
 
 /* inster data from menu to cart  */
 
@@ -227,10 +227,12 @@ app.get('/contact', (req, res) => {
 });
 
 app.get("/deliveryService", (req, res) => {
-  /*   let DataItems = getCartItems.getCartItems();
-    console.log("data from cart js ", DataItems);
- */
-    res.render('checkoutPage.ejs')
+
+    
+
+    res.render('checkoutPage.ejs'
+        /* ,{orderedItems:storedItems} */
+   )
 });
 
 let itemid = [];

@@ -15,6 +15,7 @@ console.log("type", typeof clickedItems, "checking", Array.isArray(clickedItems)
 function addOrder() {
     orderCount++;
     document.querySelector('.orders-count').textContent = `Your Orders (${orderCount})`;
+    localStorage.setItem('orders',orderCount)
 }
 
 
@@ -94,11 +95,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     let totalElement = document.querySelector('.totalprice');
                     let totalele = parseInt(totalElement.textContent.trim());
-                    /*         console.log("total content", totalele); */
                     total = totalele + price;
                     document.querySelectorAll('.totalprice').forEach(function (element) {
                         element.textContent = total;
                     });
+                    const AnnualTotal = total;
+                    localStorage.setItem('FinalTotal', AnnualTotal);
                     addOrder();
                     /*                 console.log("total price", total); */
                     return;
@@ -118,6 +120,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.querySelectorAll('.totalprice').forEach(function (element) {
                         element.textContent = finaltotal;
                     });
+                    const AnnualTotal = finaltotal;
+                    localStorage.setItem('FinalTotal', AnnualTotal);
                 }
                 else {
                     console.log('error from total')
@@ -135,10 +139,6 @@ function getCartItems(items) {
     return items;
   };
    */
-
-
-
-
 /* LOGIN MESSAGE */
 
 function clearUrlParams() {
