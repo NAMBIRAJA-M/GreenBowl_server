@@ -13,20 +13,40 @@ if (storedItems && storedItems.length > 0) {
         </div>
       </div>
     `);
-    
+
 
     $(".orders-section").append(itemElement);
 
-    $(".input-name").attr("value",`${item.name}`)
+    $(".input-name").attr("value", `${item.name}`)
 
 
   });
 } else {
-  const itemElement=$(`
+  const itemElement = $(`
     <p>'No items found in localStorage'</p>
     `);
-    $(".orders-section").append(itemElement);
+  $(".orders-section").append(itemElement);
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const valueName = $(".input-name").attr("value");
+  const valueMobile = $(".input-name").attr("value");
+  if (valueName) {
+    $("#name").css({
+      "top": "-0.99rem",
+      "background-color": "white",
+      "font-size": "1.2rem"
+    });
+  } else {
+    $("#name").css({
+      "top": "0.8rem",
+      "background-color": "transparent",
+      "font-size": " "
+    });
+  }
+});
+
 
 
 /* PRICE DETAILS */
@@ -57,9 +77,9 @@ $(".deliverymode").click(function () {
     $(".btn-addr").prop("disabled", true);
     $(".address-container").removeClass("open")
     $(".delivery-charge,.delivery-charge-price").css({
-      "text-decoration":"line-through",
-      "text-decoration-color":"#399918",
-      "text-decoration-thickness":"0.189rem"
+      "text-decoration": "line-through",
+      "text-decoration-color": "#399918",
+      "text-decoration-thickness": "0.189rem"
     });
     totalPayable = storedTotal + packageingPrice;
     document.querySelector(".total-payable").textContent = `Rs.${totalPayable}`;
@@ -68,19 +88,19 @@ $(".deliverymode").click(function () {
   }
 
 });
-
+let isRunning = true;
 function logincredentials() {
   const isdisabled = $('.login-details').css("display");
-  if (isdisabled === "none") {
+  if (isdisabled === "none" && isRunning) {
     $(".login-details").css("display", "flex");
-    $(".btn-addr1").css({
+    $(".login-credentials").css({
       "background-color": " #88D66C",
       "color": "white",
     });
     $(".login-credentials .icon1").css("color", "white")
   } else {
     $(".login-details").css("display", "none");
-    $(".btn-addr1").css({
+    $(".login-credentials").css({
       "background-color": "",
       "color": "",
     });
@@ -91,7 +111,7 @@ function ordersSummary() {
   const isdisabled = $('.orders-section').css("display");
   if (isdisabled === "none") {
     $(".orders-section").css("display", "flex");
-    $(".btn-addr2").css({
+    $(".summary").css({
       "background-color": " #88D66C",
       "color": "white",
     });
@@ -99,7 +119,7 @@ function ordersSummary() {
   }
   else {
     $(".orders-section").css("display", "none");
-    $(".btn-addr2").css({
+    $(".summary").css({
       "background-color": "",
       "color": "",
     });
@@ -110,7 +130,7 @@ function addressDetails() {
   const isdisabled = $('.address-container').css("display");
   if (isdisabled === "none") {
     $(".address-container").css("display", "flex");
-    $(".btn-addr").css({
+    $(".address1").css({
       "background-color": " #88D66C",
       "color": "white",
     });
@@ -118,7 +138,7 @@ function addressDetails() {
   }
   else {
     $(".address-container").css("display", "none");
-    $(".btn-addr").css({
+    $(".address1").css({
       "background-color": "",
       "color": "",
     });
@@ -126,7 +146,41 @@ function addressDetails() {
   }
 }
 
+function handleChange() {
 
+}
+
+function continueCheckout() {
+  const valueName = $(".input-name").attr("value");
+  isRunning = false;
+  console.log(/* valueMobile, */valueName);
+  $(".login-details").css("display", "none");
+  $(".login-credentials .btn-valid,.btn-modify").css("display", "flex");
+  $(".login-credentials").css({
+    "background-color": "",
+    "color": "",
+  });
+  $(".login-credentials .icon1").css("color", "#399918");
+
+
+
+
+
+  /*   const valueMobile= */
+  /* console.log(valueMobile,valueName)
+  if(valueName && valueMobile){
+  $(".login-details").css("display", "none");
+  $(".login-credentials").css({
+    "background-color": "",
+    "color": "",
+  });
+  $(".login-credentials .icon1").css("color", "#399918");
+
+
+}else{
+  console.log(" fill the blank")
+} */
+}
 /* INPUT - LABEL FORM */
 /* const inputlabelid = $ */
 
@@ -148,7 +202,7 @@ $(".forms-container input,.forms-container textarea").change(function (event) {
   console.log(id);
   console.log(inputvalue)
 
-  const value=$(".forms-container input").attr("value");
+  const value = $(".forms-container input").attr("value");
 
   if (!inputvalue) {
     $("#" + id).css({
@@ -183,24 +237,6 @@ if (isdisabled) {
  
 } */
 
-document.addEventListener('DOMContentLoaded', function () {
-const valueName=$(".input-name").attr("value");
-const valueMobile=$(".input-name").attr("value");
-if(valueName){
-  $("#name").css({
-  "top": "-0.99rem",
-  "background-color": "white",
-  "font-size": "1.2rem"
-  });
-}else{
-  $("#name").css({
-    "top": "0.8rem",
-    "background-color": "transparent",
-    "font-size": " "
-  });
-}
-if(valueName && valueMobile){
-  
-}
-});
+
+
 

@@ -28,6 +28,8 @@
             <div class="contact-form">
                 <div class="login-credentials" onclick="logincredentials()">
                     <button class="btn-addr1"><i class="bi bi-1-square-fill icon1"></i>Login </button>
+                    <button class="commonbtn btn-valid"><i class="bi bi-check2 valid-icon"></i></button>
+                    <button class="commonbtn btn-modify">Change</button>
                 </div>
                 <div class="login-details">
                     <div class="forms-container login-container">
@@ -38,19 +40,17 @@
                         <label id="mobile" for="input-mobile">Mobile Number</label>
                         <input type="tel" class="input-mobile" id="mobile" placeholder=" " required>
                     </div>
+                    <button class="commonbtn btn-login" onclick="continueCheckout()">Continue Checkout</button>
                 </div>
 
-                <div class="forms-container summary">
-                    <button class="btn-addr2" onclick="ordersSummary()"><i class="bi bi-2-square-fill icon1"></i>Order
+                <div class="forms-container summary"onclick="ordersSummary()">
+                    <button class="btn-addr2" ><i class="bi bi-2-square-fill icon1"></i>Order
                         Summary</button>
-
-                    <div class="orders-section">
-                        <!--   <img src="" alt="ordered dish image">
-                        <p class="order_name" ></p>
-                        <p class="order_price" ></p>
-                        <p class="order_type" ></p> -->
-                    </div>
                 </div>
+                <div class="orders-section">
+                    <!-- contents are dynamically passed -->
+                </div>
+
                 <div class="checkbox-section">
                     <input type="checkbox" class="deliverymode" name="deliverystatus">
                     <label for="deliverymode" class="deliverymode-content">I will pick my order myself </label>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
 
-                <div class="forms-container">
+                <div class="forms-container payment">
                     <button class="btn-addr3"><i class="bi bi-4-square-fill icon1"></i>Payment Options</button>
 
                     <div class="payment-sections">
