@@ -16,12 +16,13 @@ body {
 
 }
 
-.commonbtn{
+.commonbtn {
     border: none;
     outline: none;
     cursor: pointer;
     font-size: 1.3rem;
 }
+
 .section-container {
     display: flex;
     flex-direction: column;
@@ -48,7 +49,7 @@ body {
 .details-container {
 
     display: flex;
-    width: 100%; 
+    width: 100%;
     margin: 3rem;
     margin-top: 6rem;
     gap: 2rem;
@@ -79,10 +80,10 @@ body {
 .icon1 {
     padding-top: 0.3rem;
     padding-right: 1rem;
-  color: #399918;
+    color: #399918;
 }
 
-.valid-icon{
+.valid-icon {
     border: none;
     outline: none;
     background-color: transparent;
@@ -135,17 +136,20 @@ body {
     position: absolute;
     top: -10rem;
 }
-.login-credentials{
-    display: flex;
+
+.login-credentials {
+    display:flex;
     gap: 2rem;
-    position: relative;
+    justify-content: center;
+    align-items: center;
+    /*   position: relative; */
 }
 
 .login-details {
     display: none;
     background-color: #fff;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.999rem;
     position: relative;
     top: -1.4rem;
     padding: 1.4rem;
@@ -153,22 +157,30 @@ body {
     border-radius: 0px 0px 15px 15px;
 }
 
-.btn-login{
+.btn-login {
     width: fit-content;
     height: fit-content;
     padding: 0.8rem 1.1rem;
     border-radius: 10px;
     position: relative;
     right: -17rem;
+    color: white;
+    background-color: #399918;
+
 }
-.btn-valid{
-    color:#399918;
+
+.btn-valid {
+    color: #399918;
     font-weight: 550;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     background-color: transparent;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
 }
-.btn-modify{
-    color:white;
+
+.btn-modify {
+    color: white;
     background-color: #399918;
     padding: 0.6rem 1.2rem;
     border-radius: 13px;
@@ -176,8 +188,17 @@ body {
     right: -13rem;
 }
 
-.btn-valid,.btn-modify{
+.btn-valid,
+.btn-modify {
     display: none;
+}
+
+.tovalidate{
+    color: red;
+    font-size: 0.9rem;
+    font-weight: 450;
+    margin-top: -1rem;
+    padding-left: 0.4rem;
 }
 
 /*    CHECK-BOX SECTION */
@@ -214,10 +235,13 @@ body {
 .address-container {
     display: none;
     padding: 1rem;
-    width: 500px;
+    width: 600px;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.7rem;
+    margin-top: -1.5rem;
     height: auto;
+    background-color: #fff;
+    border-radius: 0px 0px 15px 15px;
 }
 
 .open {
@@ -235,17 +259,20 @@ body {
 .btn-addr1,
 .btn-addr2,
 .btn-addr3 {
-  
+
     border: none;
     outline: none;
-  background-color: transparent;
+    background-color: transparent;
     cursor: pointer;
     font-size: 1.3rem;
-   
-    
+
+
 }
 
-.login-credentials,.summary,.address1,.payment{
+.login-credentials,
+.summary,
+.address1,
+.payment {
     display: flex;
     justify-content: flex-start;
     width: 600px;
@@ -267,7 +294,7 @@ body {
 /* PRICE CONTAINER */
 
 .price-details {
-    display: flex;
+    display: NONE;
     flex-direction: column;
     gap: 1rem;
     width: 300px;

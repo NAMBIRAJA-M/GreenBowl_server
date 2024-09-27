@@ -65,7 +65,7 @@ document.querySelector(".total-payable").textContent = `Rs.${totalPayable}`;
 
 
 $(".deliverymode").click(function () {
-  $(".btn-addr").toggleClass("extracss");
+  $(".address1").toggleClass("extracss");
   const isdisabled = $('.btn-addr').prop("disabled")
 
   if (isdisabled) {
@@ -150,36 +150,25 @@ function handleChange() {
 
 }
 
-function continueCheckout() {
+function continueCheckout1() {
   const valueName = $(".input-name").attr("value");
+  const valueMobile = $(".input-mobile").attr("value");
   isRunning = false;
-  console.log(/* valueMobile, */valueName);
+  console.log("values from login:", valueMobile, valueName);
+  if(valueName && valueMobile){
   $(".login-details").css("display", "none");
   $(".login-credentials .btn-valid,.btn-modify").css("display", "flex");
   $(".login-credentials").css({
-    "background-color": "",
-    "color": "",
+    "background-color": " #E3E1D9",
+    "color": "#939185",
   });
   $(".login-credentials .icon1").css("color", "#399918");
-
-
-
-
-
-  /*   const valueMobile= */
-  /* console.log(valueMobile,valueName)
-  if(valueName && valueMobile){
-  $(".login-details").css("display", "none");
-  $(".login-credentials").css({
-    "background-color": "",
-    "color": "",
-  });
-  $(".login-credentials .icon1").css("color", "#399918");
-
 
 }else{
-  console.log(" fill the blank")
-} */
+  document.querySelector(".tovalidate").textContent="* Fill all the fields";
+}
+
+
 }
 /* INPUT - LABEL FORM */
 /* const inputlabelid = $ */
@@ -191,7 +180,8 @@ $(".forms-container input,.forms-container textarea").focus(function (event) {
   $("#" + id).css({
     "top": "-0.99rem",
     "background-color": "white",
-    "font-size": "1.2rem"
+    "font-size": "1.2rem",
+    "color":"#399918"
   });
 });
 /*  */
@@ -200,25 +190,34 @@ $(".forms-container input,.forms-container textarea").change(function (event) {
   const inputvalue = event.target.value;
   const id = event.target.id;
   console.log(id);
-  console.log(inputvalue)
-
-  const value = $(".forms-container input").attr("value");
+   if(id === "mobile"){
+  $(".input-mobile").attr("value", `${inputvalue}`);
+  const valueMobile = $(".input-mobile").attr("value");
+  console.log(valueMobile);
+   }else{
+    $(".input-name").attr("value", `${inputvalue}`)
+    const valueName = $(".input-name").attr("value");
+    console.log(valueName);
+   }
 
   if (!inputvalue) {
     $("#" + id).css({
       "top": "0.8rem",
       "background-color": "transparent",
-      "font-size": " "
+      "font-size": " ",
+      "color":" ",
     });
   }
   else {
     $("#" + id).css({
       "top": "-0.99rem",
       "background-color": "white",
-      "font-size": "1.2rem"
+      "font-size": "1.2rem",
+      "color":"#399918"
+  
     });
   }
-  if (!inputvalue) {
+/*   if (!inputvalue) {
     console.log("excecuting")
     $("#" + id).css({
       "top": "0.8rem",
@@ -226,7 +225,7 @@ $(".forms-container input,.forms-container textarea").change(function (event) {
       "font-size": " "
     });
   }
-
+ */
 });
 
 
