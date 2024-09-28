@@ -63,17 +63,20 @@ let totalPayable;
 totalPayable = storedTotal + deliveryCharge + packageingPrice;
 document.querySelector(".total-payable").textContent = `Rs.${totalPayable}`;
 
-
+let isChecked=false;
 $(".deliverymode").click(function () {
   $(".address1").toggleClass("extracss");
   const isdisabled = $('.btn-addr').prop("disabled")
-
+   console.log("disabled",isdisabled)
+ 
   if (isdisabled) {
     $(".btn-addr").prop("disabled", false);
     $(".delivery-charge,.delivery-charge-price").css("text-decoration", "");
     totalPayable = storedTotal + deliveryCharge + packageingPrice;
     document.querySelector(".total-payable").textContent = `Rs.${totalPayable}`;
   } else {
+   isChecked=true;
+    console.log("check",isChecked)
     $(".btn-addr").prop("disabled", true);
     $(".address-container").removeClass("open")
     $(".delivery-charge,.delivery-charge-price").css({
@@ -83,9 +86,12 @@ $(".deliverymode").click(function () {
     });
     totalPayable = storedTotal + packageingPrice;
     document.querySelector(".total-payable").textContent = `Rs.${totalPayable}`;
-
-
   }
+if(isChecked){
+  console.log("check",isChecked)
+  $(".address-container").css("display", "none");
+  $(".address-container").removeClass("open");
+}
 
 });
 let isRunning = true;
@@ -143,6 +149,16 @@ function addressDetails() {
       "color": "",
     });
     $(".address1 .icon1").css("color", "#399918")
+  }
+  if(isChecked){
+    console.log("check",isChecked)
+    $(".address-container").css("display", "none");
+    $(".address1").css({
+      "background-color": "",
+      "color": "",
+    });
+    $(".address1 .icon1").css("color", "#399918")
+    $(".address-container").removeClass("open");
   }
 }
 
