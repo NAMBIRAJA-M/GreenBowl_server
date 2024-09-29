@@ -22,7 +22,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 1000 * 60 * 30
+        maxAge: 24 * 60 * 60 * 1000 //24 hours
     },
     rolling: true
 }));
@@ -228,11 +228,11 @@ app.get('/contact', (req, res) => {
 
 app.get("/deliveryService", (req, res) => {
 
-    
-
-    res.render('checkoutPage.ejs'
-        /* ,{orderedItems:storedItems} */
-   )
+   /*  if (req.isAuthenticated()) { */
+    res.render('checkoutPage.ejs')
+    /* }else{
+    res.send("Session Expired go and Login again to enjoy orders :) ...!")
+    } */
 });
 
 let itemid = [];

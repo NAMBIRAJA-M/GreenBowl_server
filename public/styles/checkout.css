@@ -142,7 +142,8 @@ body {
     gap: 2rem;
     justify-content: center;
     align-items: center;
-    /*   position: relative; */
+
+    
 }
 
 .login-details {
@@ -175,17 +176,16 @@ body {
     font-size: 1.8rem;
     background-color: transparent;
     height: fit-content;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .btn-modify {
-    color: white;
-    background-color: #399918;
-    padding: 0.6rem 1.2rem;
-    border-radius: 13px;
-    position: relative;
-    right: -13rem;
+    color:#65B741;
+    background-color: transparent;
+    padding: 0.4rem 1rem;
+    border-radius:8px;
+    border: 0.6px solid gray;
 }
 
 .btn-valid,
@@ -222,8 +222,10 @@ body {
 
 /* ADDRESS - CONTAINER */
 .address1 {
-    width: 500px;
-    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
 
 }
 
@@ -282,6 +284,8 @@ body {
     border: 1px solid #dee2e6;
     color: black;
     background-color: #fff;
+    cursor: pointer;
+    position: relative;
 }
 
 
@@ -335,10 +339,15 @@ body {
 
 
 /* summary */
+.orders-container{
+    display:flex;
+    flex-direction: column;
+    gap: 0rem;
+}
 
 .orders-section {
     display: none;
-    padding-top: 1rem;
+    padding-top: 2rem;
     flex-direction: column;
     gap: 1rem;
     background-color: #fff;
