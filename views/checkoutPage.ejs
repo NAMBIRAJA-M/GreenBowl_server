@@ -29,7 +29,7 @@
                 <div class="login-credentials" onclick="logincredentials()">
                     <div style="display:flex;gap: 1.5rem;">
                         <button class="btn-addr1"><i class="bi bi-1-square-fill icon1"></i>LOGIN
-                        
+
                         </button>
                         <button class="commonbtn btn-valid"><i class="bi bi-check2 valid-icon"></i></button>
                     </div>
@@ -104,38 +104,64 @@
 
                     </div>
                 </div>
-                <div class="forms-container payment">
+                <div class="forms-container payment" onclick="paymentDetails()">
                     <button class="btn-addr3"><i class="bi bi-4-square-fill icon1"></i>Payment Options</button>
+                </div>
+                <div class="payment-sections">
 
-                    <div class="payment-sections">
-
+                    <div class="upi-section">
+                        <img src="Assets/UPI(1).png" class="payment-img">
+                        <p> UPI</p>
+                       
                     </div>
-                </div>
+                    <div class="card-section">
+                        <img src="Assets/creditcard.png" class="payment-img">
 
-            </div>
-            <div class="price-details">
-                <p class="price-heading">PRICE DETAILS</p>
-                <hr>
-                <div class="price-container1">
-                    <p class="price-orders">Price (0 item)</p>
-                    <p class="Total-price">Rs.10</p>
-                </div>
-                <div class="price-container2">
-                    <p class="delivery-charge">Delivery Charge</p>
-                    <p class="delivery-charge-price">Rs.40</p>
-                </div>
-                <div class="price-container3">
-                    <p>Packaging Charge</p>
-                    <p class="Packaging-price">Rs.30</p>
-                </div>
-                <hr>
-                <div class="price-container4">
-                    <p>Total Payable </p>
-                    <p class="total-payable">Rs.500</p>
-                </div>
+                        <p> CREDIT/ DEBIT/ ATM CARD</p>
+                    </div>
+                    <div class="net-banking">
+                        <img src="Assets/netbanking.png" class="payment-img">
+                        <p> NET BANKING </p>
+                        
+                    </div>
+                    <div class="cashDelivery-section">
+                        <img src="Assets/cashondelivery.png" class="payment-img">
+                        <p> Cash on Delivery</p>
+                        
+                    </div>
 
+
+                </div>
             </div>
+            <!--   <div class="sub-sections">
+                        <label for="upi_app">Gpay</label>
+                        <input type="checkbox" class="upi_app" name="upi_app">
+                        <input type="checkbox" class="upi_id" name="upi_id">
+                    </div> -->
         </div>
+        <div class="price-details">
+            <p class="price-heading">PRICE DETAILS</p>
+            <hr>
+            <div class="price-container1">
+                <p class="price-orders">Price (0 item)</p>
+                <p class="Total-price">Rs.10</p>
+            </div>
+            <div class="price-container2">
+                <p class="delivery-charge">Delivery Charge</p>
+                <p class="delivery-charge-price">Rs.40</p>
+            </div>
+            <div class="price-container3">
+                <p>Packaging Charge</p>
+                <p class="Packaging-price">Rs.30</p>
+            </div>
+            <hr>
+            <div class="price-container4">
+                <p>Total Payable </p>
+                <p class="total-payable">Rs.500</p>
+            </div>
+
+        </div>
+    </div>
     </div>
     <!--   <img class="Deliveryimg" src="Assets/dsimg.png"> -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"

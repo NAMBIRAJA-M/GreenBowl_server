@@ -82,16 +82,19 @@ document.querySelector(".total-payable").textContent = `Rs.${totalPayable}`;
 function handleChange1() {
   isRunning = true;
   $(".login-credentials .btn-valid,.login-credentials .btn-modify").css("display", "");
+  $(".btn-addr1").css("color", "")
 
 }
 function handleChange2() {
   isOpened = true;
   $(".address1 .btn-valid,.address1 .btn-modify").css("display", "");
+  $(".btn-addr").css("color", "")
 }
 
 function handleChange3() {
   isOrders = true;
   $(".summary .btn-valid,.summary .btn-modify").css("display", "");
+  $(".btn-addr2").css("color", "")
 }
 
 /* CHECK BOX SECTION */
@@ -143,7 +146,7 @@ function logincredentials() {
   }
 }
 
-let isOrders;
+let isOrders=false;
 function ordersSummary() {
   const isdisabled = $('.orders-section').css("display");
   if (isdisabled === "none" && isOrders) {
@@ -163,7 +166,7 @@ function ordersSummary() {
     $(".summary .icon1").css("color", "#399918")
   }
 }
-let isOpened;
+let isOpened=false;
 function addressDetails() {
   const isdisabled = $('.address-container').css("display");
 
@@ -201,6 +204,9 @@ function addressDetails() {
   }
 }
 
+function paymentDetails(){
+  
+}
 
 
 function continueCheckout1() {

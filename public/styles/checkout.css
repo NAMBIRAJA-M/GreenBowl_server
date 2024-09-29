@@ -100,7 +100,7 @@ body {
 
 }
 
-.forms-container input:not(.contact-form .deliverymode) {
+.forms-container input:not(.contact-form .deliverymode, .payment-sections .upi) {
     width: 500px;
     height: 50px;
     font-size: 1.2rem;
@@ -138,12 +138,12 @@ body {
 }
 
 .login-credentials {
-    display:flex;
+    display: flex;
     gap: 2rem;
     justify-content: center;
     align-items: center;
 
-    
+
 }
 
 .login-details {
@@ -181,10 +181,10 @@ body {
 }
 
 .btn-modify {
-    color:#65B741;
+    color: #65B741;
     background-color: transparent;
     padding: 0.4rem 1rem;
-    border-radius:8px;
+    border-radius: 8px;
     border: 0.6px solid gray;
 }
 
@@ -193,7 +193,7 @@ body {
     display: none;
 }
 
-.tovalidate{
+.tovalidate {
     color: red;
     font-size: 0.9rem;
     font-weight: 450;
@@ -339,8 +339,8 @@ body {
 
 
 /* summary */
-.orders-container{
-    display:flex;
+.orders-container {
+    display: flex;
     flex-direction: column;
     gap: 0rem;
 }
@@ -377,4 +377,39 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+}
+
+
+
+
+/* payment */
+.payment-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color:lightblue  ;
+   padding:3rem 2rem;
+
+    border-radius: 15px;
+    width: fit-content;
+
+}
+
+.upi-section,
+.card-section,
+.net-banking,
+.cashDelivery-section {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.4rem 1rem;
+    width: 500px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.payment-img {
+    width: 60px;
+    height: 60px;
 }
