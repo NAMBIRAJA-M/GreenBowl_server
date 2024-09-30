@@ -62,7 +62,7 @@
                     </div>
                     <button class="commonbtn btn-modify" onclick="handleChange2()">Change</button>
                 </div>
-                <div class="address-container">
+                <div class="address-container" tabindex="0">
                     <div class="forms-container">
                         <label id="doorno" for="input-addr1">Flat , Building , House No.</label>
                         <input class="input-addr1" id="doorno" placeholder=" " value="" style="width: 300px;"></input>
@@ -88,7 +88,7 @@
                     <button class="commonbtn btn-login" onclick="continueCheckout2()">deliver Here</button>
 
                 </div>
-                <div class="orders-container">
+                <div class="orders-container" tabindex="0">
                     <div class="forms-container summary" onclick="ordersSummary()">
 
                         <div style="display:flex;gap: 1.5rem;">
@@ -107,12 +107,31 @@
                 <div class="forms-container payment" onclick="paymentDetails()">
                     <button class="btn-addr3"><i class="bi bi-4-square-fill icon1"></i>Payment Options</button>
                 </div>
-                <div class="payment-sections">
+                <div class="payment-sections" tabindex="0">
 
-                    <div class="upi-section">
+                    <div class="upi-section" onclick="upi()">
                         <img src="Assets/UPI(1).png" class="payment-img">
                         <p> UPI</p>
-                       
+                    </div>
+                    <div class="sub-sections">
+                        <p style="font-weight: 550;">Choose an option</p>
+                        <div class="gpay">
+                            <input type="checkbox" class="upi_app" id="upi" name="upi_app" onclick="toggleCheckbox1()">
+                            <label for="upi"><img class="gpay-img" src="Assets/google.png"> pay</label>
+                        </div>
+                        <div class="access-container">
+                            <button class="commonbtn upibtn">Continue</button>
+                        </div>
+                        <div class="upi-id">
+                            <input type="checkbox" class="upi_id" id="upi-id" name="upi_id"onclick="toggleCheckbox2()" >
+                            <label for="upi-id"><img class="gpay-img" src="Assets/upisym.png"> Your UPI ID</label>
+                        </div>
+                    <div class="upi-container">
+                        <label for="upiID">Enter UPI ID</label>
+                        <input class="upiID" id="upiID" name="upiID">
+                        <button class="total-pay-btn commonbtn">pay</button>
+                    </div>
+
                     </div>
                     <div class="card-section">
                         <img src="Assets/creditcard.png" class="payment-img">
@@ -122,22 +141,18 @@
                     <div class="net-banking">
                         <img src="Assets/netbanking.png" class="payment-img">
                         <p> NET BANKING </p>
-                        
+
                     </div>
                     <div class="cashDelivery-section">
                         <img src="Assets/cashondelivery.png" class="payment-img">
                         <p> Cash on Delivery</p>
-                        
+
                     </div>
 
 
                 </div>
             </div>
-            <!--   <div class="sub-sections">
-                        <label for="upi_app">Gpay</label>
-                        <input type="checkbox" class="upi_app" name="upi_app">
-                        <input type="checkbox" class="upi_id" name="upi_id">
-                    </div> -->
+            <!--   price sections -->
         </div>
         <div class="price-details">
             <p class="price-heading">PRICE DETAILS</p>

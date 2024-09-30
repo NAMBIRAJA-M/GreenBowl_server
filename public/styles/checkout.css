@@ -384,14 +384,14 @@ body {
 
 /* payment */
 .payment-sections {
-    display: flex;
+    display: none;
     flex-direction: column;
+    outline: none;
     gap: 2rem;
-    background-color:lightblue  ;
-   padding:3rem 2rem;
-
+    padding: 3rem 2rem;
     border-radius: 15px;
     width: fit-content;
+    padding-bottom: 5rem;
 
 }
 
@@ -404,12 +404,69 @@ body {
     align-items: center;
     background-color: #fff;
     padding: 0.4rem 1rem;
-    width: 500px;
+    width: 530px;
     border-radius: 15px;
     cursor: pointer;
+    
 }
 
 .payment-img {
     width: 60px;
     height: 60px;
+}
+
+
+/* UPI SECTIONS */
+
+.sub-sections{
+    display:none;
+    flex-direction:column;
+    gap: 1rem;
+    background-color: #fff;
+    padding: 2rem 2rem;
+    padding-left: 5rem;
+    margin-top: -2.4rem;
+    border-radius: 0px 0px 10px 10px;
+}
+.gpay-img{
+    width: 25px;
+    height:25px;
+  /*   padding-right: 1rem; */
+}
+.gpay,.upi-id{
+    display: flex;
+    gap: 1rem; 
+}
+.gpay label,.upi-id label{
+    font-size: 1.19rem;
+    padding: 1rem ;
+    cursor: pointer;
+}
+.gpay input,.upi-id input{
+   width: 17px;
+}
+.access-container{
+    display: none;
+    margin-top: -20px;
+    margin-left: 2rem;
+}
+.upibtn{
+    background-color: #399918;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
+    margin-left: 2rem;
+}
+.total-pay-btn{
+    background-color: #399918;
+    color: white;
+    font-size: 1rem;
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
+    margin-left: 2rem; 
+}
+.upi-container{
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
 }

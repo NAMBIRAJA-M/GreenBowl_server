@@ -135,18 +135,19 @@ function logincredentials() {
       "background-color": " #88D66C",
     });
     $(".btn-addr1").css("color", "white");
-    $(".login-credentials .icon1").css("color", "white")
+    $(".login-credentials .icon1").css("color", "white");
+
   } else {
     $(".login-details").css("display", "none");
     $(".login-credentials").css({
       "background-color": "",
       "color": "",
     });
-    $(".login-credentials .icon1").css("color", "#399918")
+    $(".login-credentials .icon1").css("color", "#399918");
   }
 }
 
-let isOrders=false;
+let isOrders = false;
 function ordersSummary() {
   const isdisabled = $('.orders-section').css("display");
   if (isdisabled === "none" && isOrders) {
@@ -166,7 +167,7 @@ function ordersSummary() {
     $(".summary .icon1").css("color", "#399918")
   }
 }
-let isOpened=false;
+let isOpened = false;
 function addressDetails() {
   const isdisabled = $('.address-container').css("display");
 
@@ -200,15 +201,69 @@ function addressDetails() {
       "background-color": " #88D66C",
       "color": "white",
     });
-    $(".address1 .icon1").css("color", "white")
+    $(".address1 .icon1").css("color", "white");
+    $(".").focus();
   }
 }
 
-function paymentDetails(){
-  
+let isEntered = true;
+function paymentDetails() {
+  const isdisabled = $('.payment-sections').css("display");
+  if (isdisabled === "none" && isEntered) {
+    $(".payment-sections").css("display", "flex");
+    $(".payment-sections").focus();
+  }
+  else {
+    $(".payment-sections").css("display", "none");
+  }
+
 }
 
 
+
+function upi() {
+  $(".upi-section").css({
+    "background-color": "#88D66C"
+  });
+  $(".sub-sections").css({
+    "display":"flex",
+  })
+
+}
+function toggleCheckbox1() {
+  const isAbled1= $("#upi").prop("checked");
+  const isAbled2= $("#upi-id").prop("checked");
+  console.log("isAbled",isAbled2)
+  if (isAbled1) {
+    $(".access-container").css("display", "block")
+  } else {
+    $(".access-container").css("display", "none")
+  }
+  if(isAbled2){
+    $("#upi-id").prop("checked",false);
+    $(".upi-container").css("display", "none")
+/*     toggleCheckbox2() */
+  }
+}
+
+
+function toggleCheckbox2() {
+  const isAbled= $("#upi-id").prop("checked");
+  console.log("is",isAbled)
+  if (isAbled) {
+    $(".upi-container").css("display", "flex")
+  } else {
+    $(".upi-container").css("display", "none")
+  }
+  if(isAbled){
+  $("#upi").prop("checked",false)
+  $(".access-container").css("display", "none")
+}
+
+}
+
+
+document.querySelector(".total-pay-btn").textContent = `Pay ₹${totalPayable}`;
 function continueCheckout1() {
   isOpened = true;
   const valueName = $(".input-name").attr("value");
@@ -227,13 +282,14 @@ function continueCheckout1() {
     $(".login-credentials .icon1").css("color", "#399918");
 
     /* address */
-    $(".address-container").css("display", "flex");
-    $(".address1").css({
-      "background-color": " #88D66C",
-      "color": "white",
-    });
-    $(".address1 .icon1").css("color", "white")
+    /*  $(".address-container").css("display", "flex");
+     $(".address1").css({
+       "background-color": " #88D66C",
+       "color": "white",
+     });
+     $(".address1 .icon1").css("color", "white") */
 
+    addressDetails();
   } else {
     document.querySelector(".tovalidate").textContent = "* Fill all the fields";
   }
