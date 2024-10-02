@@ -25,7 +25,7 @@
             </p>
         </div>
         <div class="details-container">
-            <div class="contact-form">
+            <div class="contact-form" tabindex="0">
                 <div class="login-credentials" onclick="logincredentials()">
                     <div style="display:flex;gap: 1.5rem;">
                         <button class="btn-addr1"><i class="bi bi-1-square-fill icon1"></i>LOGIN
@@ -35,7 +35,7 @@
                     </div>
                     <button class="commonbtn btn-modify" onclick="handleChange1()">Change</button>
                 </div>
-                <div class="login-details">
+                <div class="login-details" tabindex="0">
                     <div class="forms-container login-container">
                         <label id="name" for="input-name">Name</label>
                         <input type="text" class="input-name" id="name" placeholder=" " value="" required>
@@ -123,33 +123,90 @@
                             <button class="commonbtn upibtn">Continue</button>
                         </div>
                         <div class="upi-id">
-                            <input type="checkbox" class="upi_id" id="upi-id" name="upi_id"onclick="toggleCheckbox2()" >
+                            <input type="checkbox" class="upi_id" id="upi-id" name="upi_id" onclick="toggleCheckbox2()">
                             <label for="upi-id"><img class="gpay-img" src="Assets/upisym.png"> Your UPI ID</label>
                         </div>
-                    <div class="upi-container">
-                        <label for="upiID">Enter UPI ID</label>
-                        <input class="upiID" id="upiID" name="upiID">
-                        <button class="total-pay-btn commonbtn">pay</button>
-                    </div>
+                        <div class="upi-container">
+                            <label for="upiID" class="upi-label">Enter UPI ID</label>
+                            <div style="display: inline-flex;">
+                                <input class="upiID" id="upiID" name="upiID">
+                                <button class="total-pay-btn commonbtn">pay</button>
+                            </div>
+                        </div>
 
                     </div>
-                    <div class="card-section">
+                    <div class="card-section" onclick="creditCard()">
                         <img src="Assets/creditcard.png" class="payment-img">
-
                         <p> CREDIT/ DEBIT/ ATM CARD</p>
                     </div>
-                    <div class="net-banking">
+                    <div class="credit-card-details">
+                        <label for="card-no" class="card-no-label">Enter Card Number</label>
+                        <input class="card-no" name="credit-card-no">
+                        <label for="card-cvv" class="card-cvv-label">CVV</label>
+                        <input class="card-cvv" name="credit-card-cvv">
+                        <button class="total-pay-btn commonbtn credit-btn">pay</button>
+                        <p class="card-footer">Add and secure cards as per RBI guidelines</p>
+                    </div>
+                    <div class="net-banking" onclick="netbanking()">
                         <img src="Assets/netbanking.png" class="payment-img">
                         <p> NET BANKING </p>
+                    </div>
+                    <div class="net-banking-sections">
+                        <p  style="font-weight: 550;">Popular Banks</p>
+                        <div class="pop-banks">
+                            <input type="checkbox" id="hdfc" name="HDFC">
+                            <label for="hdfc">HDFC Bank</label>
+                            <input type="checkbox" id="hdfc" name="HDFC">
+                            <label for="hdfc">ICICI Bank</label>
+                            <input type="checkbox" id="hdfc" name="HDFC">
+                            <label for="hdfc">State Bank of India</label>
+                            <input type="checkbox" id="hdfc" name="HDFC">
+                            <label for="hdfc">Axis Bank</label>
+                            <input type="checkbox" id="hdfc" name="HDFC">
+                            <label for="hdfc">Kotak Mahindra Bank</label>
+                        </div>
+                        <div class="other-banks">
+                            <label for="banks"  style="font-weight: 550;">Other banks</label>
+                            <select id="banks" name="banks">
+                                <option value="default">--Select a bank--</option>
+                                <option value="bandhan">Bandhan Bank</option>
+                                <option value="bob">Bank of Baroda</option>
+                                <option value="bankindia">Bank of India</option>
+                                <option value="canara">Canara Bank</option>
+                                <option value="central">Central Bank of India</option>
+                                <option value="cityunion">City Union Bank</option>
+                                <option value="dcb">DCB Bank</option>
+                                <option value="dhana">Dhanlaxmi Bank</option>
+                                <option value="federal">Federal Bank</option>
+                                <option value="indian">Indian Bank</option>
+                                <option value="idbi">IDBI Bank</option>
+                                <option value="indusind">IndusInd Bank</option>
+                                <option value="jammu">Jammu & Kashmir Bank</option>
+                                <option value="karur">Karur Vysya Bank</option>
+                                <option value="karnataka">Karnataka Bank</option>
+                                <option value="pnb">Punjab National Bank (PNB)</option>
+                                <option value="rbl">RBL Bank</option>
+                                <option value="southindian">South Indian Bank</option>
+                                <option value="uco">UCO Bank</option>
+                                <option value="union">Union Bank of India</option>
+                                <option value="yes">Yes Bank</option>
+                            </select>
+                            <button class="total-pay-btn commonbtn">Pay</button>
+                        </div>
 
                     </div>
-                    <div class="cashDelivery-section">
+                    <div class="cashDelivery-section" onclick="cashonD()">
                         <img src="Assets/cashondelivery.png" class="payment-img">
                         <p> Cash on Delivery</p>
-
                     </div>
-
-
+                    <div class="COD-section">
+                        <div class="captcha-container"><p class="captcha">000 </p><i class="bi bi-arrow-clockwise refresh"></i></div>
+                        <label for="captcha-input" class="captcha-label"  >Enter the Characters</label>
+                        <input class="captcha-input" value="">
+                        <button class="commonbtn corder" onclick="handlerCaptcha()" >Confirm Order</button>
+                        <p class="error-handler"></p>
+                    </div>
+                   
                 </div>
             </div>
             <!--   price sections -->

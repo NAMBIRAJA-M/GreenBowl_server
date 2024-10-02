@@ -62,6 +62,93 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+/* INPUT - LABEL FORM */
+
+
+const label = $("#name");
+$(".forms-container input,.forms-container textarea").focus(function (event) {
+  const id = event.target.id;
+  $("#" + id).css({
+    "top": "-0.99rem",
+    "background-color": "white",
+    "font-size": "1.2rem",
+    "color": "#399918"
+  });
+});
+/*  */
+
+$(".forms-container input,.forms-container textarea").change(function (event) {
+  const inputvalue = event.target.value;
+  const id = event.target.id;
+  console.log("input value:", inputvalue)
+  console.log("id:", id)
+  if (id === "mobile") {
+    $(".input-mobile").attr("value", `${inputvalue}`);
+    $(".input-mobile").css({
+      "outline": "none",
+      "border": "none",
+      "box-shadow": "0 0 0 0.2rem #399918"
+    })
+  } else if (id === "name") {
+    $(".input-name").attr("value", `${inputvalue}`)
+    $(".input-name").css({
+      "outline": "none",
+      "border": "none",
+      "box-shadow": "0 0 0 0.2rem #399918"
+    })
+  }
+  else if (id === "doorno") {
+    $(".input-addr1").attr("value", `${inputvalue}`)
+    $(".input-addr1").css({
+      "outline": "none",
+      "border": "none",
+      "box-shadow": "0 0 0 0.2rem #399918"
+    })
+  } else if (id === "Street") {
+    $(".input-addr2").attr("value", `${inputvalue}`)
+    $(".input-addr2").css({
+      "outline": "none",
+      "border": "none",
+      "box-shadow": "0 0 0 0.2rem #399918"
+    })
+  } else if (id === "city") {
+    $(".input-addr3").attr("value", `${inputvalue}`)
+    $(".input-addr3").css({
+      "outline": "none",
+      "border": "none",
+      "box-shadow": "0 0 0 0.2rem #399918"
+    })
+  } else if (id === "pincode") {
+    $(".input-addr4").attr("value", `${inputvalue}`)
+    $(".input-addr4").css({
+      "outline": "none",
+      "border": "none",
+      "box-shadow": "0 0 0 0.2rem #399918"
+    })
+  }/*  */
+
+  if (!inputvalue) {
+    $("#" + id).css({
+      "top": "0.8rem",
+      "background-color": "transparent",
+      "font-size": " ",
+      "color": " ",
+    });
+  }
+  else {
+    $("#" + id).css({
+      "top": "-0.99rem",
+      "background-color": "white",
+      "font-size": "1.2rem",
+      "color": "#399918",
+    });
+  }
+
+});
+
+
+
+
 
 
 /* PRICE DETAILS */
@@ -202,7 +289,7 @@ function addressDetails() {
       "color": "white",
     });
     $(".address1 .icon1").css("color", "white");
-    $(".").focus();
+    $(".address1").focus();
   }
 }
 
@@ -222,47 +309,74 @@ function paymentDetails() {
 
 
 function upi() {
-  $(".upi-section").css({
-    "background-color": "#88D66C"
-  });
-  $(".sub-sections").css({
-    "display":"flex",
-  })
+
+  const isAbled = $(".sub-sections").css("display");
+  if (isAbled === "none") {
+    $(".upi-section").css({
+      "background-color": "#88D66C"
+    });
+    $(".sub-sections").css({
+      "display": "flex",
+    })
+  } else {
+    $(".upi-section").css({
+      "background-color": ""
+    });
+    $(".sub-sections").css({
+      "display": "",
+    })
+  }
+
 
 }
+
+$(".upiID").focus(function () {
+  $(".upi-label").css({
+    "top": "1.1rem",
+    "left": "1rem",
+    "font-size": "0.97rem",
+    "background-color": "white"
+  })
+})
+
+$(".upiID").blur(function () {
+  $(".upi-label").css({
+    "top": "",
+    "left": "",
+    "font-size": "",
+    "background-color": ""
+  })
+})
+
 function toggleCheckbox1() {
-  const isAbled1= $("#upi").prop("checked");
-  const isAbled2= $("#upi-id").prop("checked");
-  console.log("isAbled",isAbled2)
+  const isAbled1 = $("#upi").prop("checked");
+  const isAbled2 = $("#upi-id").prop("checked");
+  console.log("isAbled", isAbled2)
   if (isAbled1) {
     $(".access-container").css("display", "block")
   } else {
     $(".access-container").css("display", "none")
   }
-  if(isAbled2){
-    $("#upi-id").prop("checked",false);
+  if (isAbled2) {
+    $("#upi-id").prop("checked", false);
     $(".upi-container").css("display", "none")
-/*     toggleCheckbox2() */
+    /*     toggleCheckbox2() */
   }
 }
-
-
 function toggleCheckbox2() {
-  const isAbled= $("#upi-id").prop("checked");
-  console.log("is",isAbled)
+  const isAbled = $("#upi-id").prop("checked");
+  console.log("is", isAbled)
   if (isAbled) {
     $(".upi-container").css("display", "flex")
   } else {
     $(".upi-container").css("display", "none")
   }
-  if(isAbled){
-  $("#upi").prop("checked",false)
-  $(".access-container").css("display", "none")
-}
+  if (isAbled) {
+    $("#upi").prop("checked", false)
+    $(".access-container").css("display", "none")
+  }
 
 }
-
-
 document.querySelector(".total-pay-btn").textContent = `Pay ₹${totalPayable}`;
 function continueCheckout1() {
   isOpened = true;
@@ -345,95 +459,199 @@ function continueCheckout3() {
 
 
 
+/* credit card sections */
 
 
+function creditCard() {
 
-
-
-/* INPUT - LABEL FORM */
-
-
-const label = $("#name");
-$(".forms-container input,.forms-container textarea").focus(function (event) {
-  const id = event.target.id;
-  $("#" + id).css({
-    "top": "-0.99rem",
-    "background-color": "white",
-    "font-size": "1.2rem",
-    "color": "#399918"
-  });
-});
-/*  */
-
-$(".forms-container input,.forms-container textarea").change(function (event) {
-  const inputvalue = event.target.value;
-  const id = event.target.id;
-  console.log("input value:", inputvalue)
-  console.log("id:", id)
-  if (id === "mobile") {
-    $(".input-mobile").attr("value", `${inputvalue}`);
-    $(".input-mobile").css({
-      "outline": "none",
-      "border": "none",
-      "box-shadow": "0 0 0 0.2rem #399918"
-    })
-  } else if (id === "name") {
-    $(".input-name").attr("value", `${inputvalue}`)
-    $(".input-name").css({
-      "outline": "none",
-      "border": "none",
-      "box-shadow": "0 0 0 0.2rem #399918"
-    })
-  }
-  else if (id === "doorno") {
-    $(".input-addr1").attr("value", `${inputvalue}`)
-    $(".input-addr1").css({
-      "outline": "none",
-      "border": "none",
-      "box-shadow": "0 0 0 0.2rem #399918"
-    })
-  } else if (id === "Street") {
-    $(".input-addr2").attr("value", `${inputvalue}`)
-    $(".input-addr2").css({
-      "outline": "none",
-      "border": "none",
-      "box-shadow": "0 0 0 0.2rem #399918"
-    })
-  } else if (id === "city") {
-    $(".input-addr3").attr("value", `${inputvalue}`)
-    $(".input-addr3").css({
-      "outline": "none",
-      "border": "none",
-      "box-shadow": "0 0 0 0.2rem #399918"
-    })
-  } else if (id === "pincode") {
-    $(".input-addr4").attr("value", `${inputvalue}`)
-    $(".input-addr4").css({
-      "outline": "none",
-      "border": "none",
-      "box-shadow": "0 0 0 0.2rem #399918"
-    })
-  }/*  */
-
-  if (!inputvalue) {
-    $("#" + id).css({
-      "top": "0.8rem",
-      "background-color": "transparent",
-      "font-size": " ",
-      "color": " ",
+  /* canceling if upi section is there */
+  const isAbledupi = $(".sub-sections").css("display");
+  if (isAbledupi === "flex") {
+    $(".upi-section").css({
+      "background-color": ""
     });
+    $(".sub-sections").css({
+      "display": "",
+    })
   }
-  else {
-    $("#" + id).css({
-      "top": "-0.99rem",
-      "background-color": "white",
-      "font-size": "1.2rem",
-      "color": "#399918",
+
+
+  const isAbled = $(".credit-card-details").css("display");
+  if (isAbled === "none") {
+    $(".card-section").css({
+      "background-color": "#88D66C"
     });
+    $(".credit-card-details").css({
+      "display": "flex",
+    })
+  } else {
+    $(".card-section").css({
+      "background-color": ""
+    });
+    $(".credit-card-details").css({
+      "display": "",
+    })
+  }
+}
+
+/* credit - card - section  input handle changes */
+$(".card-no").focus(function () {
+  $(".card-no-label").css({
+    "top": "1.7rem",
+    "left": "1rem",
+    "font-size": "0.97rem",
+    "background-color": "white"
+  })
+})
+$(".card-cvv").focus(function () {
+  $(".card-cvv-label").css({
+    "top": "1.7rem",
+    "left": "1rem",
+    "font-size": "0.97rem",
+    "background-color": "white"
+  })
+})
+
+$(".card-no").blur(function () {
+  $(".card-no-label").css({
+    "top": "",
+    "left": "",
+    "font-size": "",
+    "background-color": ""
+  })
+})
+$(".card-cvv").blur(function () {
+  $(".card-cvv-label").css({
+    "top": "",
+    "left": "",
+    "font-size": "",
+    "background-color": ""
+  })
+})
+
+
+
+
+/* net - banking */
+
+function netbanking() {
+  const isAbled = $(".net-banking-sections").css("display");
+  if (isAbled === "none") {
+    $(".net-banking").css({
+      "background-color": "#88D66C"
+    });
+    $(".net-banking-sections").css({
+      "display": "flex",
+    })
+  } else {
+    $(".net-banking").css({
+      "background-color": ""
+    });
+    $(".net-banking-sections").css({
+      "display": "",
+    })
+  }
+}
+
+function cashonD() {
+
+  const isAbled = $(".COD-section").css("display");
+  if (isAbled === "none") {
+    $(".cashDelivery-section").css({
+      "background-color": "#88D66C"
+    });
+    $(".COD-section").css({
+      "display": "flex",
+    })
+  } else {
+    $(".cashDelivery-section").css({
+      "background-color": ""
+    });
+    $(".COD-section").css({
+      "display": "",
+    })
   }
 
-});
+}
 
+$(".captcha-input").focus(function () {
+  $(".captcha-label").css({
+    "top": "1rem",
+    "left": "10.5rem",
+    "font-size": "0.7rem",
+    "background-color": "white"
+  })
+})
+
+$(".captcha-input").blur(function () {
+  $(".captcha-label").css({
+    "top": "",
+    "left": "",
+    "font-size": "",
+    "background-color": ""
+  })
+})
+
+let captcha;
+let captchaValue;
+function captchaGenerator() {
+  let n = Math.random();
+  n = n * 900;
+  n = Math.floor(n) + 100;
+  document.querySelector(".captcha").textContent = n;
+}
+
+captchaGenerator();
+
+$(".refresh").click(function () {
+  captchaGenerator();
+
+})
+
+captcha = document.querySelector(".captcha").textContent;
+console.log(captcha);
+
+$(".captcha-input").focus(function () {
+  let errorChecker = document.querySelector(".error-handler").textContent
+  console.log(errorChecker)
+  if (errorChecker === 'Invalid Captcha') {
+    errorChecker = document.querySelector(".error-handler").textContent = '';
+  }
+})
+$(".captcha-input").change(function (event) {
+  captchaValue = event.target.value;
+  if (captchaValue) {
+    $(".captcha-label").css({
+      "top": "1rem",
+      "left": "10.5rem",
+      "font-size": "0.7rem",
+      "background-color": ""
+    })
+  
+  } else {
+    $(".captcha-label").css({
+      "top": "",
+      "left": "",
+      "font-size": "",
+      "background-color": ""
+    })
+  
+  }
+})
+
+
+function handlerCaptcha() {
+
+  captcha = document.querySelector(".captcha").textContent;
+  $(".captcha-input").attr("value", `${captchaValue}`)
+  if (captcha === captchaValue) {
+    console.log(true);
+
+  } else {
+    $(".captcha-input").val("");
+    document.querySelector(".error-handler").textContent = "Invalid Captcha";
+  }
+}
 
 
 
