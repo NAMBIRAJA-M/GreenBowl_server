@@ -467,12 +467,7 @@ function creditCard() {
   /* canceling if upi section is there */
   const isAbledupi = $(".sub-sections").css("display");
   if (isAbledupi === "flex") {
-    $(".upi-section").css({
-      "background-color": ""
-    });
-    $(".sub-sections").css({
-      "display": "",
-    })
+    upi();
   }
 
 
@@ -543,6 +538,11 @@ function netbanking() {
     $(".net-banking-sections").css({
       "display": "flex",
     })
+
+    const isAbledCredit = $(".credit-card-details").css("display");
+    if (isAbledCredit === "flex") {
+      creditCard();
+    }
   } else {
     $(".net-banking").css({
       "background-color": ""
@@ -562,7 +562,13 @@ function cashonD() {
     });
     $(".COD-section").css({
       "display": "flex",
-    })
+    });
+
+    const isAbledNetBanking = $(".net-banking-sections").css("display");
+    if (isAbledNetBanking === "flex") {
+      netbanking();
+    }
+
   } else {
     $(".cashDelivery-section").css({
       "background-color": ""
@@ -582,7 +588,7 @@ $(".captcha-input").focus(function () {
     "background-color": "white"
   })
 })
-
+/* 
 $(".captcha-input").blur(function () {
   $(".captcha-label").css({
     "top": "",
@@ -590,7 +596,7 @@ $(".captcha-input").blur(function () {
     "font-size": "",
     "background-color": ""
   })
-})
+}) */
 
 let captcha;
 let captchaValue;
@@ -612,14 +618,14 @@ captcha = document.querySelector(".captcha").textContent;
 console.log(captcha);
 
 $(".captcha-input").focus(function () {
-  let errorChecker = document.querySelector(".error-handler").textContent
-  console.log(errorChecker)
+  let errorChecker = document.querySelector(".error-handler").textContent;
   if (errorChecker === 'Invalid Captcha') {
     errorChecker = document.querySelector(".error-handler").textContent = '';
   }
 })
 $(".captcha-input").change(function (event) {
   captchaValue = event.target.value;
+
   if (captchaValue) {
     $(".captcha-label").css({
       "top": "1rem",
@@ -627,7 +633,7 @@ $(".captcha-input").change(function (event) {
       "font-size": "0.7rem",
       "background-color": ""
     })
-  
+
   } else {
     $(".captcha-label").css({
       "top": "",
@@ -635,17 +641,15 @@ $(".captcha-input").change(function (event) {
       "font-size": "",
       "background-color": ""
     })
-  
+
   }
 })
-
-
 function handlerCaptcha() {
 
   captcha = document.querySelector(".captcha").textContent;
   $(".captcha-input").attr("value", `${captchaValue}`)
   if (captcha === captchaValue) {
-    console.log(true);
+    window.location.href = "/menu"
 
   } else {
     $(".captcha-input").val("");
