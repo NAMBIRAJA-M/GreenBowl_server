@@ -645,7 +645,6 @@ $(".captcha-input").change(function (event) {
   }
 })
 function handlerCaptcha() {
-
   captcha = document.querySelector(".captcha").textContent;
   $(".captcha-input").attr("value", `${captchaValue}`)
   if (captcha === captchaValue) {
