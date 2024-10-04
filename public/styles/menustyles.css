@@ -20,12 +20,15 @@ body {
 /* toast notification */
 
 .toast-top-center {
-    top: 70px !important;
+  /*   top: 100px !important; */
     left: 80% !important;
     transform: translateX(-50%) !important;
 }
 .toast-warning {
     background-color: #343A40 !important; 
+}
+.toast-success{
+    top: 5rem !important;
 }
 .toast-info {
     background-color: #17a2b8 !important; 

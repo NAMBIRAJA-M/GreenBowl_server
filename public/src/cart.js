@@ -154,27 +154,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const error = urlParams.get('error');
 
     if (message) {
-        toastr.success(decodeURIComponent(message), {
-            timeOut: 5000,
-            closeButton: true,
-            progressBar: true,
-            positionClass: 'toast-top',
+        toastr.success(decodeURIComponent(message), '', { // '' is for the toast title
+            timeOut: 2000,
+            positionClass: 'toast-top-center',
         });
-
+    
         const audio = new Audio("/Assets/success3.mp3");
         audio.play();
         clearUrlParams();
     }
-
+    
     if (error) {
-        toastr.error(decodeURIComponent(error), {
+        toastr.error(decodeURIComponent(error), '', { // '' is for the toast title
             timeOut: 5000,
             closeButton: true,
             progressBar: true,
-            positionClass: 'toast-top',
+            positionClass: 'toast-top-center',
         });
         clearUrlParams();
+        
         const audio = new Audio("/Assets/error4.mp3");
         audio.play();
     }
-});
+});    
