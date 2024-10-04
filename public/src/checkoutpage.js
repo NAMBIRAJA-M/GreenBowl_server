@@ -1,4 +1,11 @@
 
+
+ function callContact(){
+  window.location.href="/contact"
+ }
+
+
+
 /* LOCAL STORAGE SECTIONS */
 
 const storedItems = JSON.parse(localStorage.getItem('cartItems'));

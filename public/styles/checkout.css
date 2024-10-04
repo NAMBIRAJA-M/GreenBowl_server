@@ -392,10 +392,10 @@ body {
     flex-direction: column;
     outline: none;
     gap: 2rem;
-    padding: 3rem 2rem;
+    padding: 0rem 2rem;
     border-radius: 15px;
     width: fit-content;
-    padding-bottom: 5rem;
+    padding-bottom: 8rem;
 
 }
 
@@ -670,4 +670,29 @@ color: darkgreen;
     font-size: 0.68rem;
     font-weight: 500;
     color: red;
+}
+
+
+
+
+
+.footer{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 2rem;
+    width: 100%;
+    height: fit-content;
+    padding: 2rem 2rem;
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+}
+
+.footer  a{
+   
+}
+.contact-calling{
+    color: rgb(13, 139, 218);
+    cursor: pointer;
+    text-decoration: none;
 }
