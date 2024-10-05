@@ -15,7 +15,7 @@ console.log("type", typeof clickedItems, "checking", Array.isArray(clickedItems)
 function addOrder() {
     orderCount++;
     document.querySelector('.orders-count').textContent = `Your Orders (${orderCount})`;
-    localStorage.setItem('orders',orderCount)
+    localStorage.setItem('orders', orderCount)
 }
 
 
@@ -62,26 +62,33 @@ document.addEventListener('DOMContentLoaded', function () {
             /*     console.log("label;", label); */
             const number = checkbox.id;
             const clickedid = parseInt(number.match(/\d+/)[0], 10);
+            console.log("clicked id",clickedid)
 
             const cartDataDiv = document.getElementById('cart-data-' + clickedid);
             const itemsJson = cartDataDiv.getAttribute('data-items');
+            console.log(typeof itemsJson);
             items = JSON.parse(itemsJson);
-            /*   console.log("data",items); */
-            clickedItems.push(items);
-            console.log("dataArray", clickedItems);
-            const clickedDishes = [];
-            clickedDishes.push(items);
-            localStorage.setItem('cartItems', JSON.stringify(clickedItems));
 
-            console.log('Data stored in localStorage');
+         
+           
 
             let checkboxElementId = 'checkbox-' + clickedid;
             let checkboxElement = document.getElementById(checkboxElementId);
             let checkinc = 'incheck-' + clickedid;
 
             let priceElement = document.getElementById('details-price-' + clickedid).textContent.trim().replace('Rs.', '');
-            let price = parseInt(priceElement);
-            /*        console.log("PRICE ::", price); */
+            let price = parseInt(priceElement);  /* incremented price */
+            clickedItems.push(items);
+            const itemIndex = clickedItems.findIndex(item => item.item_id === clickedid );
+            if (itemIndex !==-1) { 
+                clickedItems[itemIndex].updatedprice = price;
+            }
+            console.log("dataArray", clickedItems);
+             /* pushing data to local storage */
+
+             localStorage.setItem('cartItems', JSON.stringify(clickedItems));
+
+             console.log('Data stored in localStorage');
 
             if (checkbox.checked) {
 
@@ -158,12 +165,12 @@ document.addEventListener('DOMContentLoaded', () => {
             timeOut: 2000,
             positionClass: 'toast-top-center',
         });
-    
+
         const audio = new Audio("/Assets/success3.mp3");
         audio.play();
         clearUrlParams();
     }
-    
+
     if (error) {
         toastr.error(decodeURIComponent(error), '', { // '' is for the toast title
             timeOut: 5000,
@@ -172,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
             positionClass: 'toast-top-center',
         });
         clearUrlParams();
-        
+
         const audio = new Audio("/Assets/error4.mp3");
         audio.play();
     }

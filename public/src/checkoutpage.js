@@ -1,14 +1,22 @@
 
 
- function callContact(){
-  window.location.href="/contact"
- }
+function callContact() {
+  window.location.href = "/contact"
+}
 
 
 
 /* LOCAL STORAGE SECTIONS */
 
+let userID;
+/* let itemID;
+let userName;
+let itemName;
+let itemType; */
+
+
 const storedItems = JSON.parse(localStorage.getItem('cartItems'));
+console.log(storedItems)
 if (storedItems && storedItems.length > 0) {
   storedItems.forEach(item => {
     const itemElement = $(`
@@ -19,11 +27,21 @@ if (storedItems && storedItems.length > 0) {
         <p class="order-name">${item.item_name}</p>
         <p class="order-type">(${item.type})</p>
         <p class="order-price">Price: ${item.price}</p>
+        <p class="order-price">Updated Price: ${item.updatedprice}</p>
+         <p class="order-price">Quantity: ${item.updatedprice/item.price}</p>
+        
         </div>
       </div>
       
     `);
 
+
+    userID = `${item.user_id}`;
+   /*  itemID = `${item.item_id}`;
+    itemName=`${item.item_name}`;
+    userName=`${item.name}`;
+    itemPrice=`${item.price}`;
+ */
 
     $(".orders-section").append(itemElement);
 
@@ -206,12 +224,14 @@ $(".deliverymode").click(function () {
     document.querySelector(".total-payable").textContent = `Rs.${totalPayable}`;
   } else {
     isChecked = true;
+    isOrders = true;
     $(".btn-addr").prop("disabled", true);
     $(".delivery-charge,.delivery-charge-price").css({
       "text-decoration": "line-through",
       "text-decoration-color": "#399918",
       "text-decoration-thickness": "0.189rem"
     });
+    $(".address-container").css("display", "none");
     totalPayable = storedTotal + packageingPrice;
     document.querySelector(".total-payable").textContent = `Rs.${totalPayable}`;
   }
@@ -234,10 +254,11 @@ function logincredentials() {
   } else {
     $(".login-details").css("display", "none");
     $(".login-credentials").css({
-      "background-color": "",
-      "color": "",
+      "background-color": "#fff",
+      "color": "black",
     });
     $(".login-credentials .icon1").css("color", "#399918");
+    $(".btn-addr1").css("color", "black");
   }
 }
 
@@ -306,6 +327,7 @@ function paymentDetails() {
   if (isdisabled === "none" && isEntered) {
     $(".payment-sections").css("display", "flex");
     $(".payment-sections").focus();
+    $(".gap").css("display", "none");
   }
   else {
     $(".payment-sections").css("display", "none");
@@ -385,30 +407,28 @@ function toggleCheckbox2() {
 
 }
 document.querySelector(".total-pay-btn").textContent = `Pay ₹${totalPayable}`;
+
+
+let valueName;
+let valueMobile;
 function continueCheckout1() {
   isOpened = true;
-  const valueName = $(".input-name").attr("value");
-  const valueMobile = $(".input-mobile").attr("value");
+  valueName = $(".input-name").attr("value");
+  valueMobile = $(".input-mobile").attr("value");
   isRunning = false;
   console.log("values from login:", valueMobile, valueName);
   if (valueName && valueMobile) {
     $(".login-details").css("display", "none");
     $(".login-credentials .btn-valid,.login-credentials .btn-modify").css("display", "flex");
     $(".login-credentials").css({
-      "background-color": "",
+      "background-color": "white",
       "color": "",
       "justify-content": "space-between",
     });
     $(".btn-addr1").css("color", "#697565")
     $(".login-credentials .icon1").css("color", "#399918");
 
-    /* address */
-    /*  $(".address-container").css("display", "flex");
-     $(".address1").css({
-       "background-color": " #88D66C",
-       "color": "white",
-     });
-     $(".address1 .icon1").css("color", "white") */
+
 
     addressDetails();
   } else {
@@ -416,7 +436,7 @@ function continueCheckout1() {
   }
 
 }
-
+let userAddress;
 function continueCheckout2() {
   isOpened = false;
   isOrders = true;
@@ -424,6 +444,7 @@ function continueCheckout2() {
   const valueStreet = $(".input-addr2").attr("value");
   const valueCity = $(".input-addr3").attr("value");
   const valuePincode = $(".input-addr4").attr("value");
+  userAddress= valueDoor+","+valueStreet+","+valueCity+","+valuePincode;
   isOpened = false;
   console.log("values from address:", valueDoor, ",", valueStreet, ",", valueCity, ",", valuePincode);
 
@@ -655,7 +676,15 @@ function handlerCaptcha() {
   captcha = document.querySelector(".captcha").textContent;
   $(".captcha-input").attr("value", `${captchaValue}`)
   if (captcha === captchaValue) {
-    window.location.href = "/menu"
+    window.location.href = "/menu";
+    console.log(userID);
+/*  console.log(userName);
+    console.log(itemID);
+    console.log(itemName);
+    console.log(itemPrice); */
+    console.log(valueMobile);
+    console.log(userAddress);
+    console.log(totalPayable);
 
   } else {
     $(".captcha-input").val("");

@@ -20,34 +20,29 @@ body {
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 
 .section-container {
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
-    /*  position: relative; */
+
 }
 
 .section-heading {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     font-weight: 590;
     color: white;
     background-color: #399918;
     width: 100%;
     text-align: center;
     position: fixed;
-    z-index: 2;
-
-
+    z-index: 1000;
 }
 
 .details-container {
-
     display: flex;
     width: 100%;
     margin: 3rem;
@@ -64,7 +59,7 @@ body {
     height: 600px;
     padding: 0.4rem;
     gap: 1.5rem;
-    padding-top: 60px;
+  /*   padding-top: 60px; */
 }
 
 
@@ -93,7 +88,7 @@ body {
 /* FORM INPUT - LABEL */
 
 .forms-container label:not(.deliverymode-content) {
-    font-size: 1.2rem;
+    font-size: 1rem;
     position: absolute;
     top: 0.8rem;
     left: 1rem;
@@ -104,7 +99,7 @@ body {
 .forms-container input:not(.contact-form .deliverymode, .payment-sections .upi) {
     width: 500px;
     height: 50px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border: 0.7px solid #939185;
     border-radius: 7px;
     padding-left: 1rem;
@@ -138,23 +133,18 @@ body {
     top: -10rem;
 }
 
-.login-credentials {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
 
 
-}
+
 
 .login-details {
-    display: none;
+    display:flex;
     background-color: #fff;
     flex-direction: column;
-    gap: 1.999rem;
+    gap: 1rem;
     position: relative;
     top: -1.4rem;
-    padding: 1.4rem;
+    padding: 1rem;
     width: 600px;
     border-radius: 0px 0px 15px 15px;
 }
@@ -174,7 +164,7 @@ body {
 .btn-valid {
     color: #399918;
     font-weight: 550;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     background-color: transparent;
     height: fit-content;
     justify-content: space-evenly;
@@ -196,7 +186,7 @@ body {
 
 .tovalidate {
     color: red;
-    font-size: 0.9rem;
+    font-size: 0.6rem;
     font-weight: 450;
     margin-top: -1rem;
     padding-left: 0.4rem;
@@ -215,7 +205,7 @@ body {
 }
 
 .deliverymode-content {
-    font-size: 0.85rem;
+    font-size: 0.86rem;
 }
 
 
@@ -240,7 +230,7 @@ body {
     padding: 1rem;
     width: 600px;
     flex-direction: column;
-    gap: 1.7rem;
+    gap: 1rem;
     margin-top: -1.5rem;
     height: auto;
     background-color: #fff;
@@ -267,12 +257,9 @@ body {
     outline: none;
     background-color: transparent;
     cursor: pointer;
-    font-size: 1.3rem;
-
-
+    font-size: 1rem;
 }
 
-.login-credentials,
 .summary,
 .address1,
 .payment {
@@ -288,7 +275,19 @@ body {
     cursor: pointer;
     position: relative;
 }
-
+.login-credentials {
+    display: flex;
+    justify-content: flex-start;
+    width: 600px;
+    height: fit-content;
+    border-radius: 10px;
+    padding: 1rem 0.75rem;
+    border: 1px solid #dee2e6;
+    color: black;
+    cursor: pointer;
+    position: relative;
+    background-color: #88D66c;
+}
 
 .extracss {
     background-color: #E3E1D9;
@@ -387,6 +386,9 @@ body {
 
 
 /* payment */
+.gap{
+  padding-bottom: 5rem;
+}
 .payment-sections {
     display: none;
     flex-direction: column;
@@ -395,7 +397,8 @@ body {
     padding: 0rem 2rem;
     border-radius: 15px;
     width: fit-content;
-    padding-bottom: 8rem;
+    padding-bottom:7rem
+
 
 }
 
@@ -686,13 +689,18 @@ color: darkgreen;
     position: fixed;
     bottom: 0;
     background-color: #fff;
+    z-index: 1000;
 }
 
-.footer  a{
    
-}
 .contact-calling{
     color: rgb(13, 139, 218);
     cursor: pointer;
     text-decoration: none;
+}
+.notice-text{
+    position: absolute;
+    left: 57%;
+    top: 32rem;
+    position: fixed;
 }
