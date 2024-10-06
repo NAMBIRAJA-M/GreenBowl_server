@@ -228,11 +228,11 @@ app.get('/contact', (req, res) => {
 
 app.get("/deliveryService", (req, res) => {
 
-   /*  if (req.isAuthenticated()) { */
+   if (req.isAuthenticated()) { 
     res.render('checkoutPage.ejs')
-    /* }else{
+    }else{
     res.send("Session Expired go and Login again to enjoy orders :) ...!")
-    } */
+    } 
 });
 
 let itemid = [];

@@ -28,20 +28,12 @@ if (storedItems && storedItems.length > 0) {
         <p class="order-type">(${item.type})</p>
         <p class="order-price">Price: ${item.price}</p>
         <p class="order-price">Updated Price: ${item.updatedprice}</p>
-         <p class="order-price">Quantity: ${item.updatedprice/item.price}</p>
+         <p class="order-price">Quantity: ${item.updatedprice / item.price}</p>
         
         </div>
       </div>
       
     `);
-
-
-    userID = `${item.user_id}`;
-   /*  itemID = `${item.item_id}`;
-    itemName=`${item.item_name}`;
-    userName=`${item.name}`;
-    itemPrice=`${item.price}`;
- */
 
     $(".orders-section").append(itemElement);
 
@@ -444,7 +436,7 @@ function continueCheckout2() {
   const valueStreet = $(".input-addr2").attr("value");
   const valueCity = $(".input-addr3").attr("value");
   const valuePincode = $(".input-addr4").attr("value");
-  userAddress= valueDoor+","+valueStreet+","+valueCity+","+valuePincode;
+  userAddress = valueDoor + "," + valueStreet + "," + valueCity + "," + valuePincode;
   isOpened = false;
   console.log("values from address:", valueDoor, ",", valueStreet, ",", valueCity, ",", valuePincode);
 
@@ -677,19 +669,32 @@ function handlerCaptcha() {
   $(".captcha-input").attr("value", `${captchaValue}`)
   if (captcha === captchaValue) {
     window.location.href = "/menu";
-    console.log(userID);
-/*  console.log(userName);
-    console.log(itemID);
-    console.log(itemName);
-    console.log(itemPrice); */
-    console.log(valueMobile);
-    console.log(userAddress);
-    console.log(totalPayable);
+
+
+
+
+    if (storedItems && storedItems.length > 0) {
+      storedItems.forEach(item => {
+        userID = `${item.user_id}`;
+        itemUpdatedPrice = `${item.updatedprice}`;
+        itemQuantity = `${item.updatedprice / item.price}`
+        console.log(userID);
+        console.log(itemUpdatedPrice);
+        console.log(itemQuantity);
+        console.log(valueMobile);
+        console.log(userAddress);
+        console.log(totalPayable);
+
+        return confirm('Are  you sure to Confirm order ? ');
+
+      });
+    }
 
   } else {
     $(".captcha-input").val("");
     document.querySelector(".error-handler").textContent = "Invalid Captcha";
   }
+
 }
 
 

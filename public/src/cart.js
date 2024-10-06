@@ -4,7 +4,11 @@ function navmenu() {
     window.location.href = "/menu";
 }
 function callCheckout() {
+    if (orderCount>0){
     window.location.href = "/deliveryService";
+    }else{
+
+    }
 }
 
 
@@ -62,15 +66,15 @@ document.addEventListener('DOMContentLoaded', function () {
             /*     console.log("label;", label); */
             const number = checkbox.id;
             const clickedid = parseInt(number.match(/\d+/)[0], 10);
-            console.log("clicked id",clickedid)
+            console.log("clicked id", clickedid)
 
             const cartDataDiv = document.getElementById('cart-data-' + clickedid);
             const itemsJson = cartDataDiv.getAttribute('data-items');
             console.log(typeof itemsJson);
             items = JSON.parse(itemsJson);
 
-         
-           
+
+
 
             let checkboxElementId = 'checkbox-' + clickedid;
             let checkboxElement = document.getElementById(checkboxElementId);
@@ -78,17 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let priceElement = document.getElementById('details-price-' + clickedid).textContent.trim().replace('Rs.', '');
             let price = parseInt(priceElement);  /* incremented price */
-            clickedItems.push(items);
-            const itemIndex = clickedItems.findIndex(item => item.item_id === clickedid );
-            if (itemIndex !==-1) { 
-                clickedItems[itemIndex].updatedprice = price;
-            }
-            console.log("dataArray", clickedItems);
-             /* pushing data to local storage */
-
-             localStorage.setItem('cartItems', JSON.stringify(clickedItems));
-
-             console.log('Data stored in localStorage');
+          
 
             if (checkbox.checked) {
 
@@ -109,7 +103,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     const AnnualTotal = total;
                     localStorage.setItem('FinalTotal', AnnualTotal);
                     addOrder();
-                    /*                 console.log("total price", total); */
+
+                    clickedItems.push(items);
+                    const itemIndex = clickedItems.findIndex(item => item.item_id === clickedid);
+                    if (itemIndex !== -1) {
+                        clickedItems[itemIndex].updatedprice = price;
+                    }
+                    console.log("dataArray", clickedItems);
+                    /* pushing data to local storage */
+        
+                    localStorage.setItem('cartItems', JSON.stringify(clickedItems));
+        
+                    console.log('Data stored in localStorage');
+
                     return;
                 }
             } else {
@@ -120,7 +126,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 totalAmt = [];
                 let totalElement = document.querySelector('.totalprice');
                 let total = parseInt(totalElement.textContent.trim());
-                /*  console.log("total sub", total); */
+
+                console.log("removing id", clickedid);
+            
+                let myArray = JSON.parse(localStorage.getItem('cartItems'));
+                console.log("myarray",myArray);
+
+
+                let updatedArray = myArray.filter(item => item.item_id !== clickedid);
+                localStorage.removeItem('cartItems');
+                localStorage.setItem('cartItems', JSON.stringify(updatedArray));
+
+
                 if (total >= price) {
                     finaltotal = total - price;
                     console.log("FinalTotal", finaltotal);
@@ -138,14 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-/* 
-function getCartItems(items) {
-    return items;
-} */
-/* export const getCartItems = (items) => {
-    return items;
-  };
-   */
+
 /* LOGIN MESSAGE */
 
 function clearUrlParams() {
@@ -161,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const error = urlParams.get('error');
 
     if (message) {
-        toastr.success(decodeURIComponent(message), '', { // '' is for the toast title
+        toastr.success(decodeURIComponent(message), '', { 
             timeOut: 2000,
             positionClass: 'toast-top-center',
         });
@@ -172,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (error) {
-        toastr.error(decodeURIComponent(error), '', { // '' is for the toast title
+        toastr.error(decodeURIComponent(error), '', { 
             timeOut: 5000,
             closeButton: true,
             progressBar: true,
