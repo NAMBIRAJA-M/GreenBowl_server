@@ -313,12 +313,13 @@ function addressDetails() {
   }
 }
 
-let isEntered = true;
+let isEntered = false;
 function paymentDetails() {
   const isdisabled = $('.payment-sections').css("display");
   if (isdisabled === "none" && isEntered) {
     $(".payment-sections").css("display", "flex");
     $(".payment-sections").focus();
+    $(".COD-section").focus();
     $(".gap").css("display", "none");
   }
   else {
@@ -466,6 +467,7 @@ function continueCheckout2() {
 }
 function continueCheckout3() {
   isOrders = false;
+  isEntered = true;
   $(".orders-section").css("display", "none");
   $(".summary .btn-valid,.summary .btn-modify").css("display", "flex");
   $(".summary").css({
@@ -473,8 +475,12 @@ function continueCheckout3() {
     "color": "",
     "justify-content": "space-between"
   });
-  $(".btn-addr2").css("color", "#697565")
-  $(".summary .icon1").css("color", "#399918")
+  $(".btn-addr2").css("color", "#697565");
+  $(".summary .icon1").css("color", "#399918");
+
+/* payment section */
+paymentDetails() 
+
 }
 
 
@@ -588,6 +594,7 @@ function cashonD() {
     if (isAbledNetBanking === "flex") {
       netbanking();
     }
+    $(".COD-section").focus();
 
   } else {
     $(".cashDelivery-section").css({

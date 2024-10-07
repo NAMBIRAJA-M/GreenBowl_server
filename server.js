@@ -231,7 +231,7 @@ app.get("/deliveryService", (req, res) => {
    if (req.isAuthenticated()) { 
     res.render('checkoutPage.ejs')
     }else{
-    res.send("Session Expired go and Login again to enjoy orders :) ...!")
+    res.render('sessionexpired.ejs')
     } 
 });
 
@@ -266,9 +266,11 @@ app.post('/cart', async (req, res) => {
 });
 
 app.get('/cart', async (req, res) => {
-    /*   if (!req.session.user) {
-          return res.status(401).send('Session expired, please login again');
-        } */
+/*   if (!req.session.user) {
+    res.render('sessionexpired.ejs');
+
+        } 
+        else{ */
     try {
         const result = await db.query(
             "SELECT cartitems.id AS item_id, cartitems.*, users.* FROM cartitems JOIN users ON users.id = user_id WHERE user_id = $1 ORDER BY cartitems.id ASC",
@@ -279,6 +281,7 @@ app.get('/cart', async (req, res) => {
     } catch (err) {
         console.error(err);
     }
+/* } */
 });
 app.get("/cart/delete/:id", async (req, res) => {
     const id = req.params.id;
