@@ -675,11 +675,7 @@ function handlerCaptcha() {
   captcha = document.querySelector(".captcha").textContent;
   $(".captcha-input").attr("value", `${captchaValue}`)
   if (captcha === captchaValue) {
-    window.location.href = "/menu";
-
-
-
-
+    
     if (storedItems && storedItems.length > 0) {
       storedItems.forEach(item => {
         userID = `${item.user_id}`;
@@ -693,8 +689,9 @@ function handlerCaptcha() {
         console.log(totalPayable);
 
         return confirm('Are  you sure to Confirm order ? ');
-
+        
       });
+      window.location.href = "/menu";
     }
 
   } else {

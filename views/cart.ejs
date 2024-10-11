@@ -28,9 +28,23 @@
     <% const count=1; %>
         <div class="backwardbtn">
             <button class="bbtn" onclick="window.location.href ='/menu'">
-                <i class="bi bi-arrow-left"> Back</i>
+                <Back class="bi bi-arrow-left-circle-fill backbtn"></i>
             </button>
+            <div class="myorders-container">
+                <img src="/Assets/orders.png" style="width: 30px;">
+                <p>My Orders</p>
+            </div>
         </div>
+        <div class="modal-overlay" id="modal-overlay"></div>
+
+        <div class="orders-main-container">
+            <div class="orders-section">
+                <div class="orders-heading">
+                    <p> My Orders</p>
+                </div>
+            </div>
+        </div>
+
         <div class="cart">
             <p class="section-heading"> Your Cart</p>
             <p class="slogon">Start your day with our delicious food menu</p>
@@ -97,13 +111,13 @@
         <div class="total-container">
             <p class="orders-count"> Your Orders (0)</p>
             <div class="pricesum">
-               
+
                 <p>Total :Rs</p>
                 <p class="totalprice"> 0 </p>
-                <button id="addbtn" onclick="callCheckout()" >Add to Proceed</button>
-               
+                <button id="addbtn" onclick="callCheckout()">Add to Proceed</button>
+
             </div>
-           
+
         </div>
         <% } else { %>
             <div class="elseclass">
@@ -113,11 +127,11 @@
             </div>
             <% } %>
 
-              
+
 
                 <script src="https://code.jquery.com/jquery-3.7.1.js"
                     integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-                    
+
                 <script src="src/cart.js"></script>
 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

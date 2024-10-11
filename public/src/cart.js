@@ -4,9 +4,9 @@ function navmenu() {
     window.location.href = "/menu";
 }
 function callCheckout() {
-    if (orderCount>0){
-    window.location.href = "/deliveryService";
-    }else{
+    if (orderCount > 0) {
+        window.location.href = "/deliveryService";
+    } else {
 
     }
 }
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let priceElement = document.getElementById('details-price-' + clickedid).textContent.trim().replace('Rs.', '');
             let price = parseInt(priceElement);  /* incremented price */
-          
+
 
             if (checkbox.checked) {
 
@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                     console.log("dataArray", clickedItems);
                     /* pushing data to local storage */
-        
+
                     localStorage.setItem('cartItems', JSON.stringify(clickedItems));
-        
+
                     console.log('Data stored in localStorage');
 
                     return;
@@ -128,9 +128,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 let total = parseInt(totalElement.textContent.trim());
 
                 console.log("removing id", clickedid);
-            
+
                 let myArray = JSON.parse(localStorage.getItem('cartItems'));
-                console.log("myarray",myArray);
+                console.log("myarray", myArray);
 
 
                 let updatedArray = myArray.filter(item => item.item_id !== clickedid);
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const error = urlParams.get('error');
 
     if (message) {
-        toastr.success(decodeURIComponent(message), '', { 
+        toastr.success(decodeURIComponent(message), '', {
             timeOut: 2000,
             positionClass: 'toast-top-center',
         });
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (error) {
-        toastr.error(decodeURIComponent(error), '', { 
+        toastr.error(decodeURIComponent(error), '', {
             timeOut: 5000,
             closeButton: true,
             progressBar: true,
@@ -193,4 +193,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const audio = new Audio("/Assets/error4.mp3");
         audio.play();
     }
-});    
+});
+
+
+/* my orders */
+
+
+$(".myorders-container ").hover(() => {
+    $(".myorders-container p").css({
+        bottom: "-70%",
+        opacity: "1",
+    });
+}, () => {
+    $(".myorders-container p").css({
+        bottom: "-100%",
+        opacity: "0",
+    });
+});
+
+
+
+$(".myorders-container p, .myorders-container img").on('click', () => {
+    $(".orders-main-container").css({
+      display: "block", 
+    });
+    $(".modal-overlay").css("display","block");
+  
+    setTimeout(() => {
+      $(".orders-main-container").css({
+        transform: "translate(0%, 0%)",
+        opacity: "1",
+      });
+    }, 10);
+  });
+  

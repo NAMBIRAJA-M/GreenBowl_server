@@ -299,6 +299,10 @@ app.get("/cart/delete/:id", async (req, res) => {
     }
 });
 
+
+
+
+
 /* strategies to authentication */
 
 passport.use(new LocalStrategy({
