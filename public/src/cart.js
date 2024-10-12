@@ -21,6 +21,11 @@ function addOrder() {
     document.querySelector('.orders-count').textContent = `Your Orders (${orderCount})`;
     localStorage.setItem('orders', orderCount)
 }
+function subtractOrder(){
+    orderCount--;
+    document.querySelector('.orders-count').textContent = `Your Orders (${orderCount})`;
+    localStorage.setItem('orders', orderCount)
+}
 
 
 function increment(id, price) {
@@ -126,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 totalAmt = [];
                 let totalElement = document.querySelector('.totalprice');
                 let total = parseInt(totalElement.textContent.trim());
-
+                subtractOrder();
                 console.log("removing id", clickedid);
 
                 let myArray = JSON.parse(localStorage.getItem('cartItems'));
