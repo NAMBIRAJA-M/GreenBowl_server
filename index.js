@@ -67,8 +67,8 @@ async function insertItem(ids) {
             if (result.rows.length > 0) {
                 const cres = await db.query("SELECT * FROM cartitems JOIN users ON users.id= user_id WHERE user_id=$1", [currentUserId]);
                 const checkitem = cres.rows;
-                const { type, name, price, image } = result.rows[0];
-
+                const { id,type, name, price, image } = result.rows[0];
+              console.log("data from menupage:",id,type,name);
                 if (checkitem.length > 0) {
                     let itemFound = false;
 
@@ -85,8 +85,8 @@ async function insertItem(ids) {
                 }
 
                 await db.query(
-                    "INSERT INTO cartitems (type, item_name, price, image, user_id) VALUES ($1, $2, $3, $4, $5)",
-                    [type, name, price, image, currentUserId]
+                    "INSERT INTO cartitems (id,type, item_name, price, image, user_id) VALUES ($1, $2, $3, $4, $5,$6)",
+                    [id,type, name, price, image, currentUserId]
                 );
 
                 return 'Cart check completed successfully.';
