@@ -50,7 +50,7 @@ const rawData = fs.readFileSync('recipe.json', 'utf8');
 const jsonData = JSON.parse(rawData);
 
 
-/* const storedItems = JSON.parse(localStorage.getItem('cartItems')); */
+
 
 /* inster data from menu to cart  */
 
@@ -369,7 +369,7 @@ passport.use(
 
                 if (result.rows.length === 0) {
                     const newUser = await db.query(
-                        "INSERT INTO users (name,email, password) VALUES ($1, $2,$3)",
+                        "INSERT INTO users (id,name,email, password) VALUES ($1,$2,$3,$4)",
                         [profile.name.givenName, profile.email, "google"]
                     );
                     return cb(null, newUser.rows[0]);
