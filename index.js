@@ -134,13 +134,16 @@ app.post('/signup', async (req, res) => {
         if (Checkresult.rows.length > 0) {
             res.redirect('/menu?error=Email%20Already%20Exists');
         } else {
+            const maxIdResult = await db.query("SELECT MAX(id) FROM users");
+            const maxId = maxIdResult.rows[0].max || 0;
+            console.log("maxresukt",maxIdResult ," ",maxId);
             bcrypt.hash(password, SaltRounds, async (err, hash) => {
                 if (err) {
                     console.error("Error hashing the password", err);
                 } else {
                     const result = await db.query(
-                        "INSERT INTO users (name,email,password) VALUES ($1, $2, $3) RETURNING *",
-                        [name, email, hash]
+                        "INSERT INTO users (id,name,email,password) VALUES ($1, $2, $3) RETURNING *",
+                        [maxId+1,name, email, hash]
                     );
                     console.log("User registered successfully");
 
