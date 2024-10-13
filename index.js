@@ -136,31 +136,38 @@ app.post('/signup', async (req, res) => {
         } else {
             const maxIdResult = await db.query("SELECT MAX(id) FROM users");
             const maxId = maxIdResult.rows[0].max || 0;
-            console.log("maxresukt",maxIdResult ," ",maxId);
-            bcrypt.hash(password, SaltRounds, async (err, hash) => {
-                if (err) {
-                    console.error("Error hashing the password", err);
-                } else {
-                    const result = await db.query(
-                        "INSERT INTO users (id,name,email,password) VALUES ($1, $2, $3,$4) RETURNING *",
-                        [maxId+1,name, email, hash]
-                    );
-                    console.log("User registered successfully");
+            console.log("maxresukt", maxIdResult, " ", maxId);
 
-                    const user = result.rows[0];
-                    req.login(user, (err) => {
-                        currentUserId = user.id;
-                        LoginName = user.name;
-                        console.log("current_user from local signup", LoginName);
-                        res.redirect(`/menu?message=You%20have%20successfully%20Signed%20Up!&name=${user.name}`)
-                    });
+            // Hash the password before saving the user
+            const hashedPassword = await bcrypt.hash(password, SaltRounds);
+
+            // Insert the new user into the database
+            const result = await db.query(
+                "INSERT INTO users (id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
+                [maxId + 1, name, email, hashedPassword]
+            );
+            console.log("User registered successfully");
+
+            // Automatically log the user in after signup
+            const user = result.rows[0];
+            req.login(user, (err) => {
+                if (err) {
+                    console.error("Error logging in after signup", err);
+                    res.redirect('/menu?error=Login%20failed');
+                } else {
+                    currentUserId = user.id;
+                    LoginName = user.name;
+                    console.log("current_user from local signup", LoginName);
+                    res.redirect(`/menu?message=You%20have%20successfully%20Signed%20Up!&name=${user.name}`);
                 }
             });
         }
     } catch (e) {
         console.error("Error handling signup:", e);
+        res.redirect('/menu?error=Signup%20failed');
     }
 });
+
 app.post('/login',
     passport.authenticate("local", {
         successRedirect: `/menu?message=You%20have%20successfully%20logged%20in!`,
