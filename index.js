@@ -366,11 +366,12 @@ passport.use(
 
                 const userProfile = result.rows[0];
                 currentUserId = userProfile.id;
-
+                const maxIdResult = await db.query("SELECT MAX(id) FROM users");
+                const maxId = maxIdResult.rows[0].max || 0;
                 if (result.rows.length === 0) {
                     const newUser = await db.query(
                         "INSERT INTO users (id,name,email, password) VALUES ($1,$2,$3,$4)",
-                        [id,profile.name.givenName, profile.email, "google"]
+                        [maxId+1,profile.name.givenName, profile.email, "google"]
                     );
                     return cb(null, newUser.rows[0]);
                 } else {
