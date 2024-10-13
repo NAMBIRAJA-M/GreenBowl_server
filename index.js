@@ -142,7 +142,7 @@ app.post('/signup', async (req, res) => {
                     console.error("Error hashing the password", err);
                 } else {
                     const result = await db.query(
-                        "INSERT INTO users (id,name,email,password) VALUES ($1, $2, $3) RETURNING *",
+                        "INSERT INTO users (id,name,email,password) VALUES ($1, $2, $3,$4) RETURNING *",
                         [maxId+1,name, email, hash]
                     );
                     console.log("User registered successfully");
