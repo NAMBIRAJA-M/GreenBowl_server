@@ -33,6 +33,8 @@ app.use(passport.session());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.json());
+
 
 const db = new pg.Client({
     user: process.env.PG_USER,
@@ -67,8 +69,8 @@ async function insertItem(ids) {
             if (result.rows.length > 0) {
                 const cres = await db.query("SELECT * FROM cartitems JOIN users ON users.id= user_id WHERE user_id=$1", [currentUserId]);
                 const checkitem = cres.rows;
-                const { id,type, name, price, image } = result.rows[0];
-              console.log("data from menupage:",id,type,name);
+                const { id, type, name, price, image } = result.rows[0];
+                console.log("data from menupage:", id, type, name);
                 if (checkitem.length > 0) {
                     let itemFound = false;
 
@@ -86,7 +88,7 @@ async function insertItem(ids) {
 
                 await db.query(
                     "INSERT INTO cartitems (id,type, item_name, price, image, user_id) VALUES ($1, $2, $3, $4, $5,$6)",
-                    [id,type, name, price, image, currentUserId]
+                    [id, type, name, price, image, currentUserId]
                 );
 
                 return 'Cart check completed successfully.';
@@ -211,6 +213,32 @@ app.get("/api/user", (req, res) => {
     res.json({ loginName: LoginName });
 })
 
+app.post("/orders", async (req, res) => {
+    const data = req.body;
+    console.log("data from delivery page:", data);
+    for (const orderItem of data) {
+        console.log("data from server form /orders:", orderItem);
+        try {
+const {itemid,userid,usermobile,useraddress,itemPrice,itemquantity,totalamount, }=orderItem;
+
+        } catch (err) {
+            console.log("Error from inserting values in orders:", err);
+        }
+
+
+    }
+})
+
+app.get("/orders",async (req, res) => {
+    res.json({ loginName: LoginName });
+
+    try {
+
+    } catch (err) {
+        console.log("Error from getting values from orders:", err);
+    }
+})
+
 app.get('/', (req, res) => {
     res.render('index.ejs');
 });
@@ -238,11 +266,11 @@ app.get('/contact', (req, res) => {
 
 app.get("/deliveryService", (req, res) => {
 
-   if (req.isAuthenticated()) { 
-    res.render('checkoutPage.ejs')
-    }else{
-    res.render('sessionexpired.ejs')
-    } 
+    if (req.isAuthenticated()) {
+        res.render('checkoutPage.ejs')
+    } else {
+        res.render('sessionexpired.ejs')
+    }
 });
 
 let itemid = [];
@@ -276,11 +304,11 @@ app.post('/cart', async (req, res) => {
 });
 
 app.get('/cart', async (req, res) => {
-/*   if (!req.session.user) {
-    res.render('sessionexpired.ejs');
-
-        } 
-        else{ */
+    /*   if (!req.session.user) {
+        res.render('sessionexpired.ejs');
+    
+            } 
+            else{ */
     try {
         const result = await db.query(
             "SELECT cartitems.id AS item_id, cartitems.*, users.* FROM cartitems JOIN users ON users.id = user_id WHERE user_id = $1 ORDER BY cartitems.id ASC",
@@ -291,7 +319,7 @@ app.get('/cart', async (req, res) => {
     } catch (err) {
         console.error(err);
     }
-/* } */
+    /* } */
 });
 app.get("/cart/delete/:id", async (req, res) => {
     const id = req.params.id;
@@ -381,7 +409,7 @@ passport.use(
                 if (result.rows.length === 0) {
                     const newUser = await db.query(
                         "INSERT INTO users (id,name,email, password) VALUES ($1,$2,$3,$4)",
-                        [maxId+1,profile.name.givenName, profile.email, "google"]
+                        [maxId + 1, profile.name.givenName, profile.email, "google"]
                     );
                     return cb(null, newUser.rows[0]);
                 } else {

@@ -9,14 +9,16 @@ function callContact() {
 /* LOCAL STORAGE SECTIONS */
 
 let userID;
-/* let itemID;
+let itemID;
+let paymentMethod;
+/* 
 let userName;
 let itemName;
 let itemType; */
 
 
 const storedItems = JSON.parse(localStorage.getItem('cartItems'));
-console.log(storedItems)
+console.log("local storage:",storedItems)
 if (storedItems && storedItems.length > 0) {
   storedItems.forEach(item => {
     const itemElement = $(`
@@ -97,8 +99,8 @@ $(".forms-container input,.forms-container textarea").focus(function (event) {
 $(".forms-container input,.forms-container textarea").change(function (event) {
   const inputvalue = event.target.value;
   const id = event.target.id;
-  console.log("input value:", inputvalue)
-  console.log("id:", id)
+/*   console.log("input value:", inputvalue)
+  console.log("id:", id) */
   if (id === "mobile") {
     $(".input-mobile").attr("value", `${inputvalue}`);
     $(".input-mobile").css({
@@ -174,7 +176,7 @@ const packageingPrice = 30;
 const deliveryCharge = 40;
 
 const storedTotal = Number(localStorage.getItem('FinalTotal'));
-console.log(storedTotal);
+
 const storedOrders = Number(localStorage.getItem('orders'))
 document.querySelector(".Total-price").textContent = `Rs.${storedTotal}`;
 document.querySelector(".price-orders").textContent = `Price(${storedOrders} item)`;
@@ -373,7 +375,7 @@ $(".upiID").blur(function () {
 function toggleCheckbox1() {
   const isAbled1 = $("#upi").prop("checked");
   const isAbled2 = $("#upi-id").prop("checked");
-  console.log("isAbled", isAbled2)
+
   if (isAbled1) {
     $(".access-container").css("display", "block")
   } else {
@@ -387,7 +389,7 @@ function toggleCheckbox1() {
 }
 function toggleCheckbox2() {
   const isAbled = $("#upi-id").prop("checked");
-  console.log("is", isAbled)
+
   if (isAbled) {
     $(".upi-container").css("display", "flex")
   } else {
@@ -409,7 +411,7 @@ function continueCheckout1() {
   valueName = $(".input-name").attr("value");
   valueMobile = $(".input-mobile").attr("value");
   isRunning = false;
-  console.log("values from login:", valueMobile, valueName);
+/*   console.log("values from login:", valueMobile, valueName); */
   if (valueName && valueMobile) {
     $(".login-details").css("display", "none");
     $(".login-credentials .btn-valid,.login-credentials .btn-modify").css("display", "flex");
@@ -439,7 +441,7 @@ function continueCheckout2() {
   const valuePincode = $(".input-addr4").attr("value");
   userAddress = valueDoor + "," + valueStreet + "," + valueCity + "," + valuePincode;
   isOpened = false;
-  console.log("values from address:", valueDoor, ",", valueStreet, ",", valueCity, ",", valuePincode);
+
 
   if (valueDoor && valueStreet && valueCity && valuePincode) {
     $(".address1 .btn-valid,.address1 .btn-modify").css("display", "flex");
@@ -642,7 +644,7 @@ $(".refresh").click(function () {
 })
 
 captcha = document.querySelector(".captcha").textContent;
-console.log(captcha);
+
 
 $(".captcha-input").focus(function () {
   let errorChecker = document.querySelector(".error-handler").textContent;
@@ -670,29 +672,40 @@ $(".captcha-input").change(function (event) {
     })
 
   }
-})
+});
+
+let dishes=[];
+
+
 function handlerCaptcha() {
   captcha = document.querySelector(".captcha").textContent;
   $(".captcha-input").attr("value", `${captchaValue}`)
   if (captcha === captchaValue) {
-    
+    paymentMethod="Cash on Delivery";
     if (storedItems && storedItems.length > 0) {
       storedItems.forEach(item => {
+        itemID=`${item.item_id}`
         userID = `${item.user_id}`;
         itemUpdatedPrice = `${item.updatedprice}`;
         itemQuantity = `${item.updatedprice / item.price}`
-        console.log(userID);
-        console.log(itemUpdatedPrice);
-        console.log(itemQuantity);
-        console.log(valueMobile);
-        console.log(userAddress);
-        console.log(totalPayable);
+
+
+        dishes.push({itemid:`${itemID}`,userid:`${userID}`,usermobile:`${valueMobile}`,useraddress:`${userAddress}`,itemPrice:`${itemUpdatedPrice}`,itemquantity:`${itemQuantity}`,totalamount:`${totalPayable}`,paymentmethod:`${paymentMethod}`});
 
         return confirm('Are  you sure to Confirm order ? ');
         
       });
       window.location.href = "/menu";
+
+      fetch("/orders",{
+        method:'POST',
+        headers:{'content-Type':'application/json'
+    },
+    body:JSON.stringify(dishes)
+  })
     }
+console.log("array",dishes);
+
 
   } else {
     $(".captcha-input").val("");

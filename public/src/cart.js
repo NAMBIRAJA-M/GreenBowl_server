@@ -216,7 +216,12 @@ $(".myorders-container ").hover(() => {
     });
 });
 
-
+function myOrders(){
+    fetch("/orders")
+    .then(response => response.json())
+    .then(data => console.log("from fetch",data))
+    .catch(err => console.log("error from orders:",err));
+}
 
 $(".myorders-container p, .myorders-container img").on('click', () => {
     $(".orders-main-container").css({
@@ -229,6 +234,8 @@ $(".myorders-container p, .myorders-container img").on('click', () => {
         transform: "translate(0%, 0%)",
         opacity: "1",
       });
+      myOrders();
+
     }, 10);
   });
   
