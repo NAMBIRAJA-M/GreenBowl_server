@@ -92,6 +92,7 @@ body {
 .logo {
     display: flex;
     flex-direction: row;
+    cursor: pointer;
 }
 
 .logo img {

@@ -218,9 +218,15 @@ app.post("/orders", async (req, res) => {
     console.log("data from delivery page:", data);
     for (const orderItem of data) {
         console.log("data from server form /orders:", orderItem);
+        const { itemid, userid, usermobile, useraddress, itemPrice, itemquantity, totalamount, paymentmethod } = orderItem;
         try {
-const {itemid,userid,usermobile,useraddress,itemPrice,itemquantity,totalamount, }=orderItem;
-
+            const maxIdResult = await db.query("SELECT MAX(id) FROM orders");
+            const maxId = maxIdResult.rows[0].max || 0;
+            await db.query(
+                "INSERT INTO orders (id,itemid,user_id,mobile_number,address,price,quantity,payableamount,paymentmethod) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9)",
+                [maxId+1,itemid, userid, usermobile, useraddress, itemPrice, itemquantity, totalamount, paymentmethod]
+            );
+            console.log("inserted orders successfully");
         } catch (err) {
             console.log("Error from inserting values in orders:", err);
         }
@@ -229,7 +235,7 @@ const {itemid,userid,usermobile,useraddress,itemPrice,itemquantity,totalamount, 
     }
 })
 
-app.get("/orders",async (req, res) => {
+app.get("/orders", async (req, res) => {
     res.json({ loginName: LoginName });
 
     try {

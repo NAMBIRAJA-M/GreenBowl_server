@@ -13,30 +13,32 @@
 
 /*Breadcrumb*/
 ol.breadcrumb {
-    padding: 1rem 0; /* Increased top/bottom padding */
+    padding: 10px 16px;
     list-style: none;
-    margin: 0; /* Resetting margin */
+    margin-left: -5px;
+    padding: 1rem;
 }
 
 ol.breadcrumb li {
-    display: inline; /* Change to inline for horizontal layout */
-    font-size: 1.2rem;
+    display: inline;
+    font-size: 1rem;
+    padding-right: 0.3rem;
 }
 
-ol.breadcrumb li+li::before {
-    padding: 0 8px; 
+ol.breadcrumb li+li:before {
+    padding: 8px;
     color: black;
-    content: ">";
+    content: "<\00a0";}
+
+ol.breadcrumb a {
+    color: black;
+    text-decoration: none;
 }
 
-ol.breadcrumb li a {
-    color: black; 
-    text-decoration: none; 
+ol.breadcrumb li.active {
+    font-weight: 300;
 }
 
-ol.breadcrumb li a:hover {
-    text-decoration: underline; 
-}
 
 
 

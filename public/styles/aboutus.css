@@ -14,12 +14,9 @@
 }
 
 /*Breadcrumb*/
-
 ol.breadcrumb {
     padding: 10px 16px;
     list-style: none;
-    text-decoration: none;
-    color: black;
     margin-left: -5px;
     padding: 1rem;
 }
@@ -32,8 +29,18 @@ ol.breadcrumb li {
 ol.breadcrumb li+li:before {
     padding: 8px;
     color: black;
-    content: ">\00a0";
+    content: "<\00a0"; 
 }
+
+ol.breadcrumb a {
+    color: black;
+    text-decoration: none;
+}
+
+ol.breadcrumb li.active {
+    font-weight: 300;
+}
+
 
 /*ABOUT PAGE*/
 

@@ -55,3 +55,27 @@ ALTER SEQUENCE cartitems_id_seq RESTART WITH 1;
 
 /* display the records */
 SELECT * FROM cartitems;
+
+
+
+
+
+
+
+/* ORDERS */
+
+
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    user_id VARCHAR(100) NOT NULL,
+    Mobile_Number VARCHAR(20) NOT NULL,
+	Address VARCHAR(200) NOT NULL,
+	Price INTEGER NOT NULL,
+    Quantity INTEGER NOT NULL,
+    PayableAmount INTEGER NOT NULL,
+    PaymentMethod VARCHAR(200) NOT NULL
+);
+
+/* NEW COLUMN  */
+ALTER TABLE orders
+    ADD itemid  INTEGER NOT NULL

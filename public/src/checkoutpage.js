@@ -18,7 +18,7 @@ let itemType; */
 
 
 const storedItems = JSON.parse(localStorage.getItem('cartItems'));
-console.log("local storage:",storedItems)
+console.log("local storage:", storedItems)
 if (storedItems && storedItems.length > 0) {
   storedItems.forEach(item => {
     const itemElement = $(`
@@ -99,8 +99,8 @@ $(".forms-container input,.forms-container textarea").focus(function (event) {
 $(".forms-container input,.forms-container textarea").change(function (event) {
   const inputvalue = event.target.value;
   const id = event.target.id;
-/*   console.log("input value:", inputvalue)
-  console.log("id:", id) */
+  /*   console.log("input value:", inputvalue)
+    console.log("id:", id) */
   if (id === "mobile") {
     $(".input-mobile").attr("value", `${inputvalue}`);
     $(".input-mobile").css({
@@ -411,7 +411,7 @@ function continueCheckout1() {
   valueName = $(".input-name").attr("value");
   valueMobile = $(".input-mobile").attr("value");
   isRunning = false;
-/*   console.log("values from login:", valueMobile, valueName); */
+  /*   console.log("values from login:", valueMobile, valueName); */
   if (valueName && valueMobile) {
     $(".login-details").css("display", "none");
     $(".login-credentials .btn-valid,.login-credentials .btn-modify").css("display", "flex");
@@ -480,8 +480,8 @@ function continueCheckout3() {
   $(".btn-addr2").css("color", "#697565");
   $(".summary .icon1").css("color", "#399918");
 
-/* payment section */
-paymentDetails() 
+  /* payment section */
+  paymentDetails()
 
 }
 
@@ -674,45 +674,46 @@ $(".captcha-input").change(function (event) {
   }
 });
 
-let dishes=[];
+let dishes = [];
 
 
 function handlerCaptcha() {
   captcha = document.querySelector(".captcha").textContent;
   $(".captcha-input").attr("value", `${captchaValue}`)
   if (captcha === captchaValue) {
-    paymentMethod="Cash on Delivery";
-    if (storedItems && storedItems.length > 0) {
-      storedItems.forEach(item => {
-        itemID=`${item.item_id}`
-        userID = `${item.user_id}`;
-        itemUpdatedPrice = `${item.updatedprice}`;
-        itemQuantity = `${item.updatedprice / item.price}`
-
-
-        dishes.push({itemid:`${itemID}`,userid:`${userID}`,usermobile:`${valueMobile}`,useraddress:`${userAddress}`,itemPrice:`${itemUpdatedPrice}`,itemquantity:`${itemQuantity}`,totalamount:`${totalPayable}`,paymentmethod:`${paymentMethod}`});
-
-        return confirm('Are  you sure to Confirm order ? ');
-        
-      });
-      window.location.href = "/menu";
-
-      fetch("/orders",{
-        method:'POST',
-        headers:{'content-Type':'application/json'
-    },
-    body:JSON.stringify(dishes)
-  })
-    }
-console.log("array",dishes);
-
-
+    paymentMethod = "Cash on Delivery";
+    getValues();
+    window.location.href = "/menu";
   } else {
     $(".captcha-input").val("");
     document.querySelector(".error-handler").textContent = "Invalid Captcha";
   }
-
 }
 
 
+function getValues() {
 
+  if (storedItems && storedItems.length > 0) {
+    storedItems.forEach(item => {
+      itemID = `${item.item_id}`
+      userID = `${item.user_id}`;
+      itemUpdatedPrice = `${item.updatedprice}`;
+      itemQuantity = `${item.updatedprice / item.price}`
+
+      console.log("array", dishes);
+      dishes.push({ itemid: `${itemID}`, userid: `${userID}`, usermobile: `${valueMobile}`, useraddress: `${userAddress}`, itemPrice: `${itemUpdatedPrice}`, itemquantity: `${itemQuantity}`, totalamount: `${totalPayable}`, paymentmethod: `${paymentMethod}` });
+
+      fetch("/orders", {
+        method: 'POST',
+        headers: {
+          'content-Type': 'application/json'
+        },
+        body: JSON.stringify(dishes)
+      })
+
+
+
+    });
+  }
+
+}
