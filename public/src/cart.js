@@ -223,9 +223,6 @@ async function myOrders() {
         .then(data => {
             orderedItems = data;
             console.log(orderedItems);
-          const{id,name,user_id,mobile_number,address,originalprice,price,quantity,payableamount,paymentmethod,itemid }=orderedItems
-          console.log("id:",id);
-          console.log("userid:",user_id);
         })
 
         .catch(err => console.log("error from orders:", err));
