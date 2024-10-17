@@ -395,7 +395,6 @@ passport.use(new LocalStrategy({
             return cb(err);
         }
     }));
-
 passport.use(
     "Google",
     new GoogleStrategy({
@@ -428,7 +427,7 @@ passport.use(
                     return cb(null, result.rows[0]);
                 }
             } catch (err) {
-                return cb(err);
+                return cb("error from signup google",err);
             }
         }));
 
@@ -447,7 +446,7 @@ passport.deserializeUser(async (id, cb) => {
             cb(new Error('User not found'));
         }
     } catch (err) {
-        cb(err);
+        cb("error from desereliazer",err);
     }
 });
 
