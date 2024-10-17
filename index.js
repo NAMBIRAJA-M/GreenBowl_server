@@ -408,20 +408,12 @@ passport.use(
                 const result = await db.query("SELECT * FROM users WHERE email = $1", [
                     profile.email,
                 ]);
-                LoginName = profile.name.givenName;
-                console.log("current_username from google:", LoginName);
-                try {
+
+
+                if (result.rows.length === 0 ) {
                     const maxIdResult = await db.query("SELECT MAX(id) FROM users");
                     const maxId = maxIdResult.rows[0].max || 0;  
                     console.log('Max ID:', maxId);
-                    
-                } catch (err) {
-                    console.error('Error executing query', err);
-                }
-
-                console.log("maxId:",maxId);
-
-                if (result.rows.length === 0) {
                     LoginName = profile.name.givenName;
                     console.log("current_username from google signup:", LoginName);
                     const newUser = await db.query(
