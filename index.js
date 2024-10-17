@@ -411,18 +411,17 @@ passport.use(
                 ]);
                 LoginName = profile.name.givenName;
                 console.log("current_username from google:", LoginName);
-
                 const userProfile = result.rows[0];
                 currentUserId = userProfile.id;
-                console.log("userprofile:",userProfile);
-                console.log("userprofile ID:",userProfile.id);
-
+                console.log("userprofile:",profile);
+                console.log("userprofile ID:",profile.id);
                 const maxIdResult = await db.query("SELECT MAX(id) FROM users");
                 const maxId = maxIdResult.rows[0].max || 0;
+                console.log("maxId:",maxId);
                 if (result.rows.length === 0) {
                     const newUser = await db.query(
                         "INSERT INTO users (id,name,email,password) VALUES ($1,$2,$3,$4)",
-                        [userProfile.id, profile.name.givenName, profile.email, "google"]
+                        [maxId, profile.name.givenName, profile.email, "google"]
                     );
                     return cb(null, newUser.rows[0]);
                 } else {
