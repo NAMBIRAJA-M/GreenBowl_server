@@ -403,35 +403,44 @@ passport.use(
         callbackURL: "https://greenbowl.onrender.com/auth/google/menu",
         userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
-        async (accessToken, refreshToken, profile, cb) => {
-            try {
-                const result = await db.query("SELECT * FROM users WHERE email = $1", [
-                    profile.email,
-                ]);
-
-
-                if (result.rows.length === 0 ) {
-                    const maxIdResult = await db.query("SELECT MAX(id) FROM users");
-                    const maxId = maxIdResult.rows[0].max || 0;  
-                    console.log('Max ID:', maxId);
-                    LoginName = profile.name.givenName;
-                    console.log("current_username from google signup:", LoginName);
-                    const newUser = await db.query(
-                        "INSERT INTO users (id,name,email,password) VALUES ($1,$2,$3,$4)",
-                        [maxId, profile.name.givenName, profile.email, "google"]
-                    );
-                    return cb(null, newUser.rows[0]);
-                } else {
-                    LoginName = profile.name.givenName;
-                    console.log("current_username from google login:", LoginName);
-                    const userProfile = result.rows[0];
-                    currentUserId = userProfile.id;
-                    return cb(null, result.rows[0]);
-                }
-            } catch (err) {
-                return cb("error from signup google",err);
+    async (accessToken, refreshToken, profile, cb) => {
+        try {
+            
+            const email = profile.emails[0].value;
+    
+            const result = await db.query("SELECT * FROM users WHERE email = $1", [email]);
+    
+            if (result.rows.length === 0) {
+                const maxIdResult = await db.query("SELECT MAX(id) FROM users");
+                const maxId = maxIdResult.rows[0].max || 0;  
+                
+                LoginName = profile.name.givenName;
+                console.log("current_username from google signup:", LoginName);
+    
+                const newUser = await db.query(
+                    "INSERT INTO users (id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
+                    [maxId + 1, profile.name.givenName, email, "google"]
+                );
+                
+            
+                return cb(null, newUser.rows[0]);
+            } else {
+              
+                LoginName = profile.name.givenName;
+                console.log("current_username from google login:", LoginName);
+                
+                const userProfile = result.rows[0];
+                currentUserId = userProfile.id;
+                
+               
+                return cb(null, userProfile);
             }
-        }));
+        } catch (err) {
+           
+            console.error("Error during Google authentication:", err);
+            return cb("error from signup google", err);
+        }
+    }));
 
 
 
