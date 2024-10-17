@@ -21,7 +21,7 @@ function addOrder() {
     document.querySelector('.orders-count').textContent = `Your Orders (${orderCount})`;
     localStorage.setItem('orders', orderCount)
 }
-function subtractOrder(){
+function subtractOrder() {
     orderCount--;
     document.querySelector('.orders-count').textContent = `Your Orders (${orderCount})`;
     localStorage.setItem('orders', orderCount)
@@ -216,26 +216,33 @@ $(".myorders-container ").hover(() => {
     });
 });
 
-function myOrders(){
-    fetch("/orders")
-    .then(response => response.json())
-    .then(data => console.log("from fetch",data))
-    .catch(err => console.log("error from orders:",err));
+async function myOrders() {
+    let orderedItems;
+  await fetch("/orders")
+        .then(response => response.json())
+        .then(data => {
+            orderedItems = data;
+            console.log(orderedItems);
+          const{id,name,user_id,mobile_number,address,originalprice,price,quantity,payableamount,paymentmethod,itemid }=orderedItems
+          console.log("id:",id);
+          console.log("userid:",user_id);
+        })
+
+        .catch(err => console.log("error from orders:", err));
 }
 
 $(".myorders-container p, .myorders-container img").on('click', () => {
     $(".orders-main-container").css({
-      display: "block", 
+        display: "block",
     });
-    $(".modal-overlay").css("display","block");
-  
+    $(".modal-overlay").css("display", "block");
+
     setTimeout(() => {
-      $(".orders-main-container").css({
-        transform: "translate(0%, 0%)",
-        opacity: "1",
-      });
-      myOrders();
+        $(".orders-main-container").css({
+            transform: "translate(0%, 0%)",
+            opacity: "1",
+        });
+        myOrders();
 
     }, 10);
-  });
-  
+});

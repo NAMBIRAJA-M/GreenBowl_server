@@ -36,7 +36,7 @@ Green Bowl is a website dedicated to providing hygienic, nutritious, and environ
     - Create a `.env` file in the root directory.
     - Add the following variables:
         ```env
-        PORT=000
+        PORT,
         DATABASE_URL=your_postgresql_connection_string
        
         ```
