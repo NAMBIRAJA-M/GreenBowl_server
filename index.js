@@ -236,14 +236,10 @@ app.post("/orders", async (req, res) => {
 })
 
 app.get("/orders", async (req, res) => {
-   
-
     try {
        const result= await db.query("SELECT cartinfo.name,cartinfo.price AS originalprice,orders.* FROM orders JOIN cartinfo ON cartinfo.id =itemid WHERE user_id=$1",[currentUserId]);
        const orderedItems=result.rows;
-       res.json({ loginName: orderedItems });
-
-
+       res.json({ orderedDatabases: orderedItems });
     } catch (err) {
         console.log("Error from getting values from orders:", err);
     }

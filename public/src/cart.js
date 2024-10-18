@@ -215,14 +215,38 @@ $(".myorders-container ").hover(() => {
         opacity: "0",
     });
 });
-
+{/* <img src="${item.image}" alt="${item.name}" />  */}
 async function myOrders() {
     let orderedItems;
-  await fetch("/orders")
+    await fetch("/orders")
         .then(response => response.json())
         .then(data => {
             orderedItems = data;
-            console.log(orderedItems);
+            if(orderedItems.orderedDatabases.length>0){
+            console.log("object", orderedItems);
+            for (const item of orderedItems.orderedDatabases) {
+                console.log(item);
+                const itemElement = $(`
+                    <div class="order-item">
+
+                      
+                    <div class="order-details">
+                      <p class="order-name">${item.name}</p>
+                      <p class="order-type">(${item.paymentmethod})</p>
+                      <p class="order-price">Price: ${item.originalprice}</p>
+                      <p class="order-price">Updated Price: ${item.price}</p>
+                       <p class="order-price">Quantity: ${item.quantity}</p>
+                      
+                      </div>
+                    </div>
+                    
+                  `);
+                  $(".orders-list").append(itemElement);
+
+            }
+        }else{
+            console.log("no orders");
+        }
         })
 
         .catch(err => console.log("error from orders:", err));
