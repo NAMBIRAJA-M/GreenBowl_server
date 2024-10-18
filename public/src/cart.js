@@ -215,21 +215,19 @@ $(".myorders-container ").hover(() => {
         opacity: "0",
     });
 });
-{/* <img src="${item.image}" alt="${item.name}" />  */}
+{/* <img src="${item.image}" alt="${item.name}" />  */ }
 async function myOrders() {
     let orderedItems;
     await fetch("/orders")
         .then(response => response.json())
         .then(data => {
             orderedItems = data;
-            if(orderedItems.orderedDatabases.length>0){
-            console.log("object", orderedItems);
-            for (const item of orderedItems.orderedDatabases) {
-                console.log(item);
-                const itemElement = $(`
+            if (orderedItems.orderedDatabases.length > 0) {
+                console.log("object", orderedItems);
+                for (const item of orderedItems.orderedDatabases) {
+                    console.log(item);
+                    const itemElement = $(`
                     <div class="order-item">
-
-                      
                     <div class="order-details">
                       <p class="order-name">${item.name}</p>
                       <p class="order-type">(${item.paymentmethod})</p>
@@ -241,29 +239,59 @@ async function myOrders() {
                     </div>
                     
                   `);
-                  $(".orders-list").append(itemElement);
+                    $(".orders-list").append(itemElement);
 
+                }
+            } else {
+                console.log("no orders");
             }
-        }else{
-            console.log("no orders");
-        }
         })
 
         .catch(err => console.log("error from orders:", err));
 }
 
-$(".myorders-container p, .myorders-container img").on('click', () => {
-    $(".orders-main-container").css({
-        display: "block",
-    });
-    $(".modal-overlay").css("display", "block");
+/* my orders open and close */
 
-    setTimeout(() => {
+$(document).ready(function () {
+   
+    $(".myorders-container p, .myorders-container img").on('click', (e) => {
+        e.stopPropagation(); 
         $(".orders-main-container").css({
-            transform: "translate(0%, 0%)",
-            opacity: "1",
+            display: "block",
         });
-        myOrders();
+        $(".modal-overlay").css("display", "block");
 
-    }, 10);
+        setTimeout(() => {
+            $(".orders-main-container").css({
+                transform: "translate(0%, 0%)",
+                opacity: "1",
+            });
+            myOrders();
+
+        }, 10);
+    });
+    $(document).click(function (event) {
+    let isdisabled = $('.orders-main-container').css("display");
+
+    if (isdisabled === "block") {
+        $(document).click(function (event) {
+        
+            if (!$(event.target).closest('.orders-main-container .myorders-container').length) {
+
+                $(".orders-main-container").css({
+                    display: "none", 
+                });
+                $(".modal-overlay").css("display", "none"); 
+
+                setTimeout(() => {
+                    $(".orders-main-container").css({
+                        transform: "translate(100%, 0)", 
+                        opacity: "1", 
+                    });
+                }, 10);
+            }
+
+        });
+    }
+});
 });
