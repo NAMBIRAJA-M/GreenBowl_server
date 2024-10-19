@@ -218,7 +218,7 @@ app.post("/orders", async (req, res) => {
     console.log("data from delivery page:", data);
     for (const orderItem of data) {
         console.log("data from server form /orders:", orderItem);
-        const { itemid, userid, usermobile, useraddress, itemPrice, itemquantity, totalamount, paymentmethod } = orderItem;
+        const { itemid, userid, usermobile, useraddress, itemPrice, itemquantity, totalamount, paymentmethod} = orderItem;
         try {
             const maxIdResult = await db.query("SELECT MAX(id) FROM orders");
             const maxId = maxIdResult.rows[0].max || 0;
@@ -237,7 +237,7 @@ app.post("/orders", async (req, res) => {
 
 app.get("/orders", async (req, res) => {
     try {
-       const result= await db.query("SELECT cartinfo.name,cartinfo.price AS originalprice,orders.* FROM orders JOIN cartinfo ON cartinfo.id =itemid WHERE user_id=$1",[currentUserId]);
+       const result= await db.query("SELECT cartinfo.name,cartinfo.price AS originalprice,cartinfo.image,DATE(created_at) AS order_date,orders.* FROM orders JOIN cartinfo ON cartinfo.id =itemid WHERE user_id=$1",[currentUserId]);
        const orderedItems=result.rows;
        res.json({ orderedDatabases: orderedItems });
     } catch (err) {

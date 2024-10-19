@@ -215,7 +215,10 @@ $(".myorders-container ").hover(() => {
         opacity: "0",
     });
 });
-{/* <img src="${item.image}" alt="${item.name}" />  */ }
+{/*   /*              <p class="order-price">Price: ${item.originalprice}</p>
+                      <p class="order-type">(${item.paymentmethod})</p> 
+                      <p class="order-price">Quantity: ${item.quantity}</p>
+                      <p class="order-price">Updated Price: ${item.price}</p> */  }
 async function myOrders() {
     let orderedItems;
     await fetch("/orders")
@@ -226,18 +229,28 @@ async function myOrders() {
                 console.log("object", orderedItems);
                 for (const item of orderedItems.orderedDatabases) {
                     console.log(item);
+                    const timestamp = item.order_date;
+                    const date = new Date(timestamp).toLocaleDateString('en-GB');
+                    console.log("date:", date);
                     const itemElement = $(`
                     <div class="order-item">
+                    <img src="${item.image}" alt="${item.name}" /> 
                     <div class="order-details">
                       <p class="order-name">${item.name}</p>
-                      <p class="order-type">(${item.paymentmethod})</p>
-                      <p class="order-price">Price: ${item.originalprice}</p>
-                      <p class="order-price">Updated Price: ${item.price}</p>
-                       <p class="order-price">Quantity: ${item.quantity}</p>
-                      
-                      </div>
+                      <p class="order-price">₹ ${item.price}</p>
+
+                    <div class="order-articles">
+                  
+                        <div class="status">
+                        <p class="bullet"></p>
+                        <p class="order-status"> Delivered within minutes</p>
+                        </div>
+                        <p class="order-status-details"> your order has been placed.</p>
+                        <p class="order-date">Ordered date: ${date}</p>
                     </div>
                     
+                      </div>
+                    </div>
                   `);
                     $(".orders-list").append(itemElement);
 
@@ -253,9 +266,9 @@ async function myOrders() {
 /* my orders open and close */
 
 $(document).ready(function () {
-   
+
     $(".myorders-container p, .myorders-container img").on('click', (e) => {
-        e.stopPropagation(); 
+        e.stopPropagation();
         $(".orders-main-container").css({
             display: "block",
         });
@@ -271,27 +284,27 @@ $(document).ready(function () {
         }, 10);
     });
     $(document).click(function (event) {
-    let isdisabled = $('.orders-main-container').css("display");
+        let isdisabled = $('.orders-main-container').css("display");
 
-    if (isdisabled === "block") {
-        $(document).click(function (event) {
-        
-            if (!$(event.target).closest('.orders-main-container .myorders-container').length) {
+        if (isdisabled === "block") {
+            $(document).click(function (event) {
 
-                $(".orders-main-container").css({
-                    display: "none", 
-                });
-                $(".modal-overlay").css("display", "none"); 
+                if (!$(event.target).closest('.orders-main-container .myorders-container').length) {
 
-                setTimeout(() => {
                     $(".orders-main-container").css({
-                        transform: "translate(100%, 0)", 
-                        opacity: "1", 
+                        display: "none",
                     });
-                }, 10);
-            }
+                    $(".modal-overlay").css("display", "none");
 
-        });
-    }
-});
+                    setTimeout(() => {
+                        $(".orders-main-container").css({
+                            transform: "translate(100%, 0)",
+                            opacity: "1",
+                        });
+                    }, 10);
+                }
+
+            });
+        }
+    });
 });
