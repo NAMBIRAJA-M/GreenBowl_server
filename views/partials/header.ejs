@@ -158,38 +158,90 @@
                 <li><i class="bi bi-menu-up btnpress2 menus1"></i></li>
                 <li><i class="person  bi bi-person btnpress"></i></li>
                 <li><i class="bi bi-cart btnpress1" onclick="cartnav()"></i></li>
-                <div class="loginway">
-                    <p>Hi healthyMan!</p>
-                    <button class="btn1 cnl"><i class="bi bi-x"></i></button>
-                    <button class="btn1 lgn1">Login</button>
+            
+                 <div class="loginway">
+                    <div id="overlay" class="overlaylog"></div>
+                    <p style="margin-bottom: 0.5rem;" class="loginname">Hi healthyMan!</p>
+                    <button class="btn12 cnl"><i class="bi bi-x"></i></button>
+                    <button class="btn12 lgn1">Login</button>
+                    <p class="pathsign">Create Account ? <button class="signupbtn">Sign Up</button></p>
                 </div>
-
                 <div class="loginpopup">
                     <div class="loginpop-content">
-                        <p class="headingpop">Get <b>Started</b></p>
-                        <button class="btn1 cnllogin"><i class="bi bi-x"></i></button>
+                        <p style="font-size: 24px;">Get <b>Started</b></p>
+                        <button class="btn12 cnllogin"><i class="bi bi-x"></i></button>
 
-                        <p class="sub-heading">Please enter your Mobile Number to continue</p>
+                        <p style="font-size: 1rem; font-weight: 600px;">Please enter your Email to continue</p>
                     </div>
                     <div class="loginpop-content1">
-                        <div class="inner-content">
-                            <form>
-                                <label for="mobileno" class="mobno">Enter
-                                    Mobile
-                                    Number</label>
-                                <br>
-                            
-                                <br>
-                                <div class="bottompop">
-                                    <button class="otpbtn">SEND OTP</button>
-                                    <p>By Confirming, you agree to Green bowl Terms and
-                                        Conditions and Privacy Policy.</p>
-                                </div>
 
+                        <form class="form-content" action="/login" method="POST">
+
+                            <input type="email" name="email" value="" placeholder=" Enter Your Email" id="textbox4"
+                                required>
+                            <input type="password" name="password" value="" placeholder="Enter Your password"
+                                id="textbox5" required>
+                            <button class="otpbtn" type="submit">LOG IN
+                            </button>
+                            <p class="orword">
+                                or
+                            </p>
+                        </form>
+                        <form class="form-content_google" action="/auth/google" method="GET">
+                            <button class="btng"> <img id="imgg" src="/Assets/google.png"> Log in with
+                                Google</button>
+                            <p style="font-size: 0.7rem; text-align: center; padding-top: 0.3rem;">By Confirming, you
+                                agree to Green
+                                Bowl's Terms and
+                                Conditions and Privacy Policy.</p>
+                        </form>
+
+
+
+                    </div>
+                </div>
+
+                <!-- sign up -->
+                <div class="signuppopup">
+                    <div class="signup-content">
+                        <p style="font-size: 24px;">Get <b>Started</b></p>
+                        <button class="btn12 cnllogin"><i class="bi bi-x"></i></button>
+                        <p style="font-size: 1rem; font-weight: 600px;">Please enter your Email to continue</p>
+                    </div>
+                    <div class="signup-content1">
+                        <div>
+                            <form class="form-content" action="/signup" method="POST">
+
+                                <input type="text" name="fname" value="" placeholder="Enter Your Name" id="textbox1"
+                                    required>
+
+
+                                <input type="email" name="email" value="" placeholder=" Enter Your Email" id="textbox2"
+                                    required>
+                                <input type="password" name="password" value="" placeholder="Enter Your password"
+                                    id="textbox3" required>
+
+                                <button class="otpbtn" type="submit">SIGN UP
+                                </button>
                             </form>
+                            
+                            <form class="form-content_google" action="/auth/google" method="GET">
+                                <p class="orword">
+                                    or
+                                </p>
+                                <button class="btng"> <img id="imgg" src="/Assets/google.png"> sign up with
+                                    Google</button>
+                                <p style="font-size: 0.7rem; text-align: center; padding-top: 0.3rem;">By Confirming,
+                                    you agree to Green
+                                    Bowl's Terms and
+                                    Conditions and Privacy Policy.</p>
+                            </form>
+
+
                         </div>
                     </div>
                 </div>
+                
                 <div id="overlay" class="overlay"></div>
 
 

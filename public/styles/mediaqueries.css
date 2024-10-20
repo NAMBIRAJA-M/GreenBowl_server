@@ -65,7 +65,7 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-    
+
     }
 
 }
@@ -109,11 +109,11 @@
     .btnpress2 {
         font-size: 1.6rem;
     }
-
+  
     .loginway {
-        width: 80px;
+        width: 50px;
         font-size: 0.9rem;
-        flex-direction: row;
+        flex-direction:column;
         padding-right: 2px;
         padding-bottom: 1rem;
         right: 30px;
@@ -121,19 +121,30 @@
     }
 
     .loginway p {
-        margin-bottom: 0.3rem;
+        margin-bottom: 0rem;
     }
 
     .loginway .lgn1 {
         padding: 8px 50px;
         font-size: 12px;
         font-weight: 600;
+
+    }
+
+    .pathsign {
+        margin-top: 0.2rem;
+        font-size: 0.70rem;
+        font-weight: 500;
+        position: relative;
+        left: 0.2rem;
+        margin-bottom: 0.1rem;
     }
 
     .cnl,
     .cnllogin,
     .cnlotp {
         font-size: 20px;
+        border-radius: 50%;
     }
 
     .hamburger-menu {
@@ -141,13 +152,12 @@
     }
 
     .hamburger-icon {
-
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 19px;
         width: 25px;
-    
+
     }
 
     .menu-links {
@@ -170,68 +180,135 @@
     /*.loginpopup*/
 
 
+
     .loginpopup {
-        left: 0.1rem;
+      
+        left:4%;
         width: 100%;
-        max-width: 550px;
-        height: 300px;
-
-    }
-
-    .headingpop {
-        font-size: 0.9rem;
-    }
-
-    .sub-heading {
-        font-size: 0.8rem;
-        margin-bottom: 5px;
+        max-width:400px;
+        height: 400px;
     }
 
     .loginpop-content {
         margin: 15px;
         margin-bottom: 5px;
     }
-
-    .loginpop-content1,
-    .otppop-content1 {
-        min-width: 220px;
+    .loginpop-content1 {
+        max-width: 350px;
+        min-width: 150px;
         min-height: 185px;
-        margin-left: 20px;
-        margin-right: 20px;
-
+        margin-left: 0px;
+        margin-right: 0px;
+        justify-content:center;
+        align-items: center;
+        left: 6%;
+    }
+    .signuppopup {
+       
+        left:4%;
+        width: 100%;
+        max-width:400px;
+        height: 430px;
+    
     }
 
+    .signup-content{
+        margin: 2px;
+        margin-bottom: 5px;
+        justify-content: center;
+  
+    }
+    .signup-content p{
+        margin-bottom: 0.5rem;
+    }
+    
+.signup-content1 {
+    max-width: 350px;
+    min-width: 150px;
+    min-height: 185px;
+    margin-left: 0px;
+    margin-right: 0px;
+    left: 6%;
+}
+    
 
-    .inner-content {
-        position: absolute;
-        left: 30px;
-        padding: 10px;
-        padding-top: 5px;
+    .btng {
+     
+        font-size: 0.7rem;
+        border-radius: 15px;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .orword {
+        font-size: 0.8rem;
+    }
+
+    #imgg {
+        width: 20px;
+        height: 20px;
+        margin-right: 1rem;
+    }
+
+    .form-content {
+        gap: 0.5rem;
+        margin: 0.5rem 1rem;
+        padding: 0.5rem;
         padding-bottom: 0rem;
-    }
-
-    .inner-content ::placeholder {
-        font-weight: 500;
-        font-size: 0.76rem;
+        margin-bottom: 0.5rem;
 
     }
 
-    .mobno {
-        font-size: 1rem;
-        font-weight: 500;
-        margin-top: 2px;
-        margin-bottom: 4px;
+    .form-content_google {
+        gap: 0.4rem;
     }
+
 
     .otpbtn {
-        margin: 15px;
-        width: 100px;
-        height: 32px;
-        padding: 2px 10px;
-        font-size: 10px;
-        font-weight: bold;
-        margin-left: 5px;
+
+        text-align: center;
+        border: none;
+        border-radius: 10px;
+        width: 130px;
+        height: 35 px;
+        padding: 10px 30px;
+        font-size: 13px;
+        font-weight: bolder;
+        background-color: black;
+        color: white;
     }
+
+    #textbox1,
+    #textbox2,
+    #textbox3,
+    #textbox4,
+    #textbox5 {
+        width: 280px;
+        height: 45px;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+        border-radius: 15px;
+
+    }
+
+    .bottompop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bottompop p {
+        text-align: center;
+        font-size: 0.7rem;
+    }
+
+
+
+
+
+
+
+
+
 
 
     #textbox {
@@ -314,16 +391,16 @@
 
 
     /*sections*/
-   
-   
+
+
     #proteinbowl {
         padding-top: 20px;
     }
 
 
-   .proteinbowl{
-    margin:1rem;
-   }
+    .proteinbowl {
+        margin: 1rem;
+    }
 
     .section-heading {
         font-size: 1.2rem;
@@ -335,9 +412,9 @@
 
 
 
-     article {
-        width:25rem;
-    } 
+    article {
+        width: 25rem;
+    }
 
     .about-img {
         margin-bottom: 24px;
@@ -402,182 +479,183 @@
 
 
 
-/*contact page*/
+    /*contact page*/
 
-.contact-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-   margin: 0.1rem;
-}
-
-.touch-container,
-.find-container {
-    width: 300px;
-    margin: 1rem;
-    margin-top: 1rem;
-}
-
-.touch-header {
-    gap: 1rem;
-}
-
-.touch-heading {
-    font-size: 1rem;
-    padding: 8px;
-
-}
-
-.touch-content {
-    font-size: 0.78rem;
-}
-
-.contact-form {
-    margin: 0.9rem;
-    display: flex;
-    padding: 2.5rem;
-    gap: 0.4rem;
-}
-
-.contact-form label {
-    font-size: 1rem;
-}
-
-.contact-form input {
-    width: 250px;
-    font-size: 0.8rem;
-}
-
-.contact-form textarea {
-    font-size: 1rem;
-}
-
-.contact-form .sendbtn {
-    width: 155px;
-    height: 35px;
-    font-size: 0.9rem;
-    margin-left: 50%;
-    margin-top: 25px;
-}
-
-
-/*FIND CONTAINER*/
-
-find-container {
-    width: 300px;
-    margin: 1rem;
-  margin-left: 0.5rem;
-
-}
-
-
-.find-content {
-    gap: 2rem;
-    width: 300px;
-    margin-top: 30px;
-}
-
-.find-block {
-    gap: 1rem;
-}
-
-.loc {
-    font-size: 1rem;
-
-}
-
-
-.find-header {
-    font-size: 1.1rem;
-}
-
-.addr {
-    font-size: 0.8rem;
-    margin-top: 0.7rem;
-    margin-left: 2.2rem;
-    padding-left: 2.2rem;
-}
-
-.embedded-map {
-    margin: 0.6rem;
-
-}
-.embedded-map iframe {
-    
-    width: 300px;
-    height: 250px;
-}
-
-.mapcaption {
-    font-size: 0.8rem;
-}
-
-
-
-/*FOOTER CONTAINER*/
-
-
-.footer-container {
-    margin-top: 1rem;
-    margin-left: 0.5rem;
-    margin-right:0.5rem;
-    margin-bottom: 1rem;
-    min-width:350px;
-
-}
-
-.foot-container1 {
-    gap: 0.4rem;
-    flex-wrap: wrap;
-}
-
-.logofoot {
-    margin: 15px;
-    width: 75px;
-    height: 75px;
-}
-
-.logo-textfoot {
-    font-size: 1.3rem;
-}
-
-.foot-container2 {
-    gap: 0.3rem;
-    padding: 0.5rem;
-    min-width:350px;
-}
-
-.foot-container2 .caption {
-    font-size: 0.8rem;
-    padding: 5px;
-    overflow-wrap: anywhere;
-    
+    .contact-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 0.1rem;
     }
 
-.smedia {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    padding: 1rem;
-}
+    .touch-container,
+    .find-container {
+        width: 300px;
+        margin: 1rem;
+        margin-top: 1rem;
+    }
 
-.benifits {
-    gap: 0.4rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-   
-}
+    .touch-header {
+        gap: 1rem;
+    }
 
-.smedia i {
-    font-size: 1rem;
-}
+    .touch-heading {
+        font-size: 1rem;
+        padding: 8px;
 
-.copyright {
-    font-size: 0.8rem;
-    padding: 1rem;
-    color: gray;
-    text-align: center;
-}
+    }
+
+    .touch-content {
+        font-size: 0.78rem;
+    }
+
+    .contact-form {
+        margin: 0.9rem;
+        display: flex;
+        padding: 2.5rem;
+        gap: 0.4rem;
+    }
+
+    .contact-form label {
+        font-size: 1rem;
+    }
+
+    .contact-form input {
+        width: 250px;
+        font-size: 0.8rem;
+    }
+
+    .contact-form textarea {
+        font-size: 1rem;
+    }
+
+    .contact-form .sendbtn {
+        width: 155px;
+        height: 35px;
+        font-size: 0.9rem;
+        margin-left: 50%;
+        margin-top: 25px;
+    }
+
+
+    /*FIND CONTAINER*/
+
+    find-container {
+        width: 300px;
+        margin: 1rem;
+        margin-left: 0.5rem;
+
+    }
+
+
+    .find-content {
+        gap: 2rem;
+        width: 300px;
+        margin-top: 30px;
+    }
+
+    .find-block {
+        gap: 1rem;
+    }
+
+    .loc {
+        font-size: 1rem;
+
+    }
+
+
+    .find-header {
+        font-size: 1.1rem;
+    }
+
+    .addr {
+        font-size: 0.8rem;
+        margin-top: 0.7rem;
+        margin-left: 2.2rem;
+        padding-left: 2.2rem;
+    }
+
+    .embedded-map {
+        margin: 0.6rem;
+
+    }
+
+    .embedded-map iframe {
+
+        width: 300px;
+        height: 250px;
+    }
+
+    .mapcaption {
+        font-size: 0.8rem;
+    }
+
+
+
+    /*FOOTER CONTAINER*/
+
+
+    .footer-container {
+        margin-top: 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        margin-bottom: 1rem;
+        min-width: 350px;
+
+    }
+
+    .foot-container1 {
+        gap: 0.4rem;
+        flex-wrap: wrap;
+    }
+
+    .logofoot {
+        margin: 15px;
+        width: 75px;
+        height: 75px;
+    }
+
+    .logo-textfoot {
+        font-size: 1.3rem;
+    }
+
+    .foot-container2 {
+        gap: 0.3rem;
+        padding: 0.5rem;
+        min-width: 350px;
+    }
+
+    .foot-container2 .caption {
+        font-size: 0.8rem;
+        padding: 5px;
+        overflow-wrap: anywhere;
+
+    }
+
+    .smedia {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .benifits {
+        gap: 0.4rem;
+        padding: 0.5rem;
+        font-size: 1rem;
+
+    }
+
+    .smedia i {
+        font-size: 1rem;
+    }
+
+    .copyright {
+        font-size: 0.8rem;
+        padding: 1rem;
+        color: gray;
+        text-align: center;
+    }
 
 }
 
@@ -586,18 +664,19 @@ find-container {
 
 @media screen and (max-width:374px) {
 
-    
+
     article {
-        width:20rem;
+        width: 20rem;
     }
+
     #proteinbowl {
         padding-top: 20px;
     }
 
 
-   .proteinbowl{
-    margin:1rem;
-   }
+    .proteinbowl {
+        margin: 1rem;
+    }
 
     .section-heading {
         font-size: 1.1rem;
@@ -614,7 +693,7 @@ find-container {
 
     .ingredient {
         font-size: 0.5rem;
-      
+
     }
 
     .ingredient b {
@@ -669,12 +748,13 @@ find-container {
         padding: 5px;
     }
 
-/*ABOUT PAGE*/
+    /*ABOUT PAGE*/
     .story-section {
         margin-right: 1rem;
         margin-left: 0.6rem;
     }
-    .section-details{
+
+    .section-details {
         width: 300px;
         height: fit-content;
         font-size: 0.76rem;

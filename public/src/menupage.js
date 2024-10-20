@@ -325,8 +325,9 @@ fetch("/api/user")
 
         console.log("Login Name is:", loginName);
         if(loginName){
-        $(".loginname").text("Hi " + loginName + " !");
-        $(".lgn1").text("Log Out");
+        $(".loginname media-lgname").text("Hi " + loginName + " !");
+        $(".loginway .lgn1").text("Log Out");
+        
         $(".loginway .lgn1").click(function () {
             $(".nav-links .loginpopup").removeClass("hiddenpopup ")
         })
