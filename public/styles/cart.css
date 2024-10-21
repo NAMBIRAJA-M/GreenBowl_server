@@ -410,15 +410,27 @@
     z-index: 999;
 }
 .orders-heading {
-    font-size: 2rem;
-    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7rem;
     width: 100%;
     background-color: #399918;
     padding: 1rem 0rem;
-    text-align: center;
     position: fixed;
     top: 0rem;
+    font-size: 2rem;
 }
+.orders-heading p{
+    text-align: center;
+    font-weight: 500;
+
+
+}
+.orders-heading .bbtn  {
+ position: relative;
+ left: -6rem;
+} 
 .orders-list {
     overflow-y: auto;
     overflow-x: hidden; 
