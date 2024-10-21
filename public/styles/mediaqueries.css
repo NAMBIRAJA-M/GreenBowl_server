@@ -381,7 +381,7 @@
         margin-left: 0.3rem
     }
 
-    .about-img{
+    .about-img,img{
         margin-top: -0.01rem;
         width: 150px;
         height: 100px;
