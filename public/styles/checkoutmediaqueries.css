@@ -1,0 +1,387 @@
+
+
+@media screen and (max-width:600px) {
+
+
+.section-heading {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+.details-container {
+    margin:1.2rem;
+    margin-top: 3rem;
+    gap: 1rem;
+/*     flex-direction: row; */
+}
+
+.contact-form {
+    margin: 0rem;
+    width: 400px;
+    height: 600px;
+    gap: 1rem;
+}
+
+.login-credentials {
+    max-width: 370px;
+    min-width: 300px;
+    padding: 0.5rem 0.5rem;
+}
+.login-details {
+    gap: 1.5rem;
+    padding: 1rem;
+    max-width: 370px;
+    min-width: 300px;
+}
+.forms-container label:not(.deliverymode-content) {
+    font-size: 0.8rem;
+    top: 0.8rem;
+
+}
+
+.forms-container input:not(.contact-form .deliverymode, .payment-sections .upi) {
+    width: 340px;
+    height: 40px;
+    font-size: 0.8rem;
+}
+
+.forms-container textarea {
+    width: 340px;
+    font-size: 0.78rem;
+
+}
+/* #name,#mobile{
+    font-size: 0.89rem;
+}
+ */
+ .btn-login {
+    padding: 0.5rem 0.8rem;
+    right: -8rem;
+
+}
+
+.btn-valid {
+    font-size: 1rem;
+    margin-top: 0.3rem;
+}
+
+.btn-modify {
+    padding: 0.2rem 0.8rem;
+    border-radius: 8px;
+
+}
+.tovalidate {
+    font-size: 0.7rem;
+}
+
+
+/* * ADDRESS - CONTAINER */ 
+.address1 {
+    gap: 1rem;
+
+}
+
+.addr-container1 .forms-container input {
+    width: 250;
+    height: 35px;
+}
+
+.address-container {
+   
+    padding: 1rem;
+    max-width: 370px;
+    gap: 1rem;
+    margin-top: -1.5rem;
+
+}
+
+.addr-container1,
+.addr-container2 {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.btn-addr,
+.btn-addr1,
+.btn-addr2,
+.btn-addr3 {
+    font-size: 0.9rem;
+}
+
+.summary,
+.address1,
+.payment {
+    width: 370px;
+    padding: 0.9rem 0.65rem;
+}
+
+/* summary */
+
+.orders-section {
+    width: 370px;
+    height: 280px;
+
+}
+
+.order-item {
+    display: flex;
+    flex-direction: row;
+    gap: 1.4rem;
+    margin-left: 2rem;
+}
+
+.order-item img {
+    width: 100px;
+    height: 100px;
+}
+/* payment */
+.gap {
+    padding-bottom: 3rem;
+}
+
+.payment-sections {
+    gap: 0.7rem;
+    padding: 0rem 1rem;
+    padding-bottom: 5rem
+}
+
+.upi-section,
+.card-section,
+.net-banking,
+.cashDelivery-section {
+    padding: 0rem 0.89rem;
+    width: 370px;
+}
+
+.payment-img {
+    width: 40px;
+    height: 40px;
+}
+
+
+/* UPI SECTIONS */
+
+.sub-sections {
+    gap: 0.7rem;
+    background-color: #fff;
+    padding: 1rem 1rem;
+    padding-left: 2rem;
+    margin-top: -1rem;
+    border-radius: 0px 0px 10px 10px;
+    width: 370px;
+}
+
+.gpay-img {
+    width: 20px;
+    height: 20px;
+    /*   padding-right: 1rem; */
+}
+
+.gpay,
+.upi-id {
+    display: flex;
+    gap: 0.7rem;
+}
+
+.gpay label,
+.upi-id label {
+    font-size: 1rem;
+}
+
+.gpay input,
+.upi-id input {
+    width: 15px;
+}
+
+.access-container {
+    margin-top: -15px;
+    margin-left: 1.5rem;
+}
+
+.upibtn {
+    padding: 0.3rem 0.8rem;
+    border-radius: 10px;
+    margin-left: 2rem;
+}
+
+.total-pay-btn {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+    margin-left: 1.5rem;
+    width: 120px;
+    margin-top: -0.1rem;
+}
+
+.upi-container {
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 1000;
+
+}
+
+.upiID {
+    width: 200px;
+    height: 30px;
+}
+
+.upi-label {
+    font-size: 0.88rem;
+    position: relative;
+    left: 1.1rem;
+    top: 2rem;
+}
+
+
+/* CREDIT CARD DETAILS */
+
+.credit-card-details {
+    gap: 0.7rem;
+    padding: 1.2rem 1.2rem;
+    padding-left: 3rem;
+    margin-top: -0.7rem;
+    width: 370px;
+}
+
+.card-no {
+    width: 270px;
+    height: 35px;
+}
+
+.card-cvv {
+    width: 100px;
+    height: 35px;
+}
+
+.card-no-label,
+.card-cvv-label {
+    font-size: 0.79rem;
+    position: relative;
+    left: 1.8rem;
+    top: 2.4rem;
+}
+
+.credit-btn {
+    width: 80px;
+    margin-left: 0rem;
+}
+
+.card-footer {
+    color: #697565;
+    font-size: 0.68rem;
+}
+
+
+
+
+
+/* net banking section */
+.net-banking-sections {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #fff;
+    padding: 2rem 2rem;
+    padding-left: 1rem;
+    margin-top: -2rem;
+    padding-top: 1.5rem;
+    border-radius: 0px 0px 10px 10px;
+    position: relative;
+    width: 530px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.pop-banks {
+    display: flex;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+}
+
+.other-banks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.COD-section {
+    display: none;
+    gap: 1rem;
+    align-items: center;
+    background-color: #fff;
+    padding: 2rem 2rem;
+    padding-left: 0.5rem;
+    margin-top: -2rem;
+    padding-top: 1.5rem;
+    border-radius: 0px 0px 10px 10px;
+    position: relative;
+    width: 530px;
+}
+
+.captcha-container {
+    border: 0.77px solid #399918;
+    width: 130px;
+    height: 40px;
+    display: inline-flex;
+    gap: 0.666rem;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.captcha {
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: darkgreen;
+}
+
+.captcha-input {
+    width: 140px;
+    height: 45px;
+}
+
+.refresh {
+    color: 3A6D8C;
+    font-weight: 650;
+    font-size: 1.2rem;
+}
+
+.captcha-label {
+    position: absolute;
+    font-size: 0.7rem;
+    left: 10.5rem;
+    pointer-events: none;
+
+}
+
+.corder {
+    color: white;
+    background-color: #399918;
+    padding: 0.66rem;
+}
+
+.captcha-input:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0 0.2rem #399918;
+}
+
+.error-handler {
+    position: absolute;
+    left: 10rem;
+    top: 4.9rem;
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: red;
+}
+/* PRICE CONTAINER */
+.right-container {
+    display: none;
+  /*   flex-direction: row;
+    position:static;
+    right: 0rem;
+    top: -10rem;
+    gap: 3rem; */
+}
+}
