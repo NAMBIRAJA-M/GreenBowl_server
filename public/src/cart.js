@@ -256,13 +256,24 @@ async function myOrders() {
 
                 }
             } else {
-                console.log("no orders");
+                const itemElement = $(`
+                    <div class="no-orders">
+                  
+                    <img src="Assets/No data-cuate.png" alt="no-orders" />
+                      <p class="no-orders-head">NO ORDERS FOUND </p>
+                      <p class="no-orders-text">Looks like  you haven't made your order yet</p>
+                    </div>
+                  `);
+                $(".orders-list").append(itemElement);
             }
         })
 
         .catch(err => console.log("error from orders:", err));
 }
+{/* <img src="Assets/No data-cuate.png" alt="no-orders" />  */ }
 
+
+myOrders();
 /* my orders open and close */
 
 $(document).ready(function () {
@@ -279,7 +290,7 @@ $(document).ready(function () {
                 transform: "translate(0%, 0%)",
                 opacity: "1",
             });
-            myOrders();
+           
 
         }, 10);
     });
@@ -289,13 +300,14 @@ $(document).ready(function () {
         if (isdisabled === "block") {
             $(document).click(function (event) {
 
-                if (!$(event.target).closest('.orders-main-container .myorders-container').length) {
-
+                if (!$(event.target).closest('.orders-main-container, .myorders-container, .orders-list').length) {
+                    
                     $(".orders-main-container").css({
                         display: "none",
                     });
                     $(".modal-overlay").css("display", "none");
-
+                
+                   
                     setTimeout(() => {
                         $(".orders-main-container").css({
                             transform: "translate(100%, 0)",
@@ -303,6 +315,7 @@ $(document).ready(function () {
                         });
                     }, 10);
                 }
+                
 
             });
         }

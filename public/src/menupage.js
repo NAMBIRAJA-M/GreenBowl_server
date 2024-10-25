@@ -1,4 +1,18 @@
+
+
+/* function triggerConfetti()
+{
+confetti({
+    particleCount:200,
+    spread:100,
+
+})
+}
+ */
+
 //MENUCARD
+
+
 $(".nav-links .menus").click(function () {
     $(".nav-links .menucard").toggleClass("menucard-js");
 });

@@ -8,6 +8,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import GoogleStrategy from 'passport-google-oauth2';
 import dotenv from 'dotenv';
+import confetti from "canvas-confetti";
 /* import getCartItems from "./public/src/cart.js";
  */
 
@@ -236,6 +237,7 @@ app.post("/orders", async (req, res) => {
 })
 
 app.get("/orders", async (req, res) => {
+    if (req.isAuthenticated()) {
     try {
        const result= await db.query("SELECT cartinfo.name,cartinfo.price AS originalprice,cartinfo.image,DATE(created_at) AS order_date,orders.* FROM orders JOIN cartinfo ON cartinfo.id =itemid WHERE user_id=$1",[currentUserId]);
        const orderedItems=result.rows;
@@ -243,6 +245,9 @@ app.get("/orders", async (req, res) => {
     } catch (err) {
         console.log("Error from getting values from orders:", err);
     }
+}else{
+    res.json({ orderedDatabases: 0});
+}
 })
 
 app.get('/', (req, res) => {
