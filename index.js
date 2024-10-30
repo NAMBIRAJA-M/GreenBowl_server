@@ -52,7 +52,7 @@ const rawData = fs.readFileSync('recipe.json', 'utf8');
 
 const jsonData = JSON.parse(rawData);
 
-
+console.log("Current user id:", currentUserId)
 
 
 /* inster data from menu to cart  */
