@@ -710,8 +710,13 @@ function getValues() {
         },
         body: JSON.stringify(dishes)
       })
-
-
+      fetch("/twilio/sms")
+          .then(response => response.json())  
+           .then(data => {
+            console.log("data from twilio:",data);
+           }).catch(function() {
+            console.error('Error fetching SMS');
+        });
 
     });
   }

@@ -8,9 +8,10 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import GoogleStrategy from 'passport-google-oauth2';
 import dotenv from 'dotenv';
-import confetti from "canvas-confetti";
+/* import confetti from "canvas-confetti"; */
 /* import getCartItems from "./public/src/cart.js";
  */
+import twilio from 'twilio';
 
 dotenv.config();
 
@@ -44,6 +45,8 @@ const db = new pg.Client({
     password: process.env.PG_PASSWORD,
     port: process.env.PG_PORT,
 });
+
+
 db.connect();
 
 let currentUserId = 0;
@@ -213,13 +216,15 @@ app.get("/api/user", (req, res) => {
        } */
     res.json({ loginName: LoginName });
 })
-
+let clientMobile;
 app.post("/orders", async (req, res) => {
     const data = req.body;
-    console.log("data from delivery page:", data);
+   /*  console.log("data from delivery page:", data); */
     for (const orderItem of data) {
         console.log("data from server form /orders:", orderItem);
         const { itemid, userid, usermobile, useraddress, itemPrice, itemquantity, totalamount, paymentmethod} = orderItem;
+        clientMobile = "+"+ parseInt("91" + usermobile, 10);
+        console.log(clientMobile);
         try {
             const maxIdResult = await db.query("SELECT MAX(id) FROM orders");
             const maxId = maxIdResult.rows[0].max || 0;
@@ -231,7 +236,6 @@ app.post("/orders", async (req, res) => {
         } catch (err) {
             console.log("Error from inserting values in orders:", err);
         }
-
 
     }
 })
@@ -348,6 +352,34 @@ app.get("/cart/delete/:id", async (req, res) => {
     }
 });
 
+app.get("/twilio/sms",async (req,res)=>{
+    try{
+        const client=twilio(process.env.TWILIO_ACCOUNT_SID,process.env.TWILIO_AUTH_TOKEN);
+        console.log(clientMobile);
+    function sendSms(to,message){
+        client.messages.create({
+            body: message,
+            from: process.env.TWILIO_PHONE_NUMBER,
+            to: to
+        })
+        .then(message => console.log('Message SID:', message.sid))
+        .catch(error => console.error('Error sending SMS:', error));
+    }
+    
+    sendSms(clientMobile,'Hello from GREEN BOWL..!, Yours Order Has Been Placed :)  ')
+    
+    }catch(err){
+        console.log("Error from sending SMS:", err);
+               
+    }
+    res.json({message:"SMS SENT SUCCESSFULLY"});
+    
+})
+
+
+
+/* TWILIO */
+
 
 
 
@@ -442,6 +474,8 @@ passport.use(
             return cb("error from signup google", err);
         }
     }));
+
+
 
 
 
