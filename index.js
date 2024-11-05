@@ -351,7 +351,7 @@ app.get("/cart/delete/:id", async (req, res) => {
         console.error("Error deleting item:", err);
     }
 });
-
+/* TWILIO SMS SERVICE */
 app.get("/twilio/sms",async (req,res)=>{
     try{
         const client=twilio(process.env.TWILIO_ACCOUNT_SID,process.env.TWILIO_AUTH_TOKEN);
