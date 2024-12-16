@@ -687,11 +687,85 @@ body {
     font-weight: 500;
     color: red;
 }
+.done-icon{
+    display: none;
+    font-size: 2.5rem;
+    color:#399918;
+   
+}
+.done-text{
+    font-size: 1rem;
+    color:black;
+    font-weight: 500;
+}
 
+.success-div{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 50%;
+}
+/* CONFIRMATION POP UP */
 
+.confimation-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.con-container {
+    max-width: 500px;
+    max-height: 600px;
+    min-width: 400px;
+    min-height: 250px;
+    margin: 1px;
+    padding: 2px;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    background-color: #F2F9FF;
+    z-index: 1000;
+    border-radius: 10px;
+}
 
+.con-header {
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 1rem;
+    padding-bottom: 0rem;
+    color: #399918;
+}
 
+.con-subject {
+    font-size: 1.2rem;
+    font-weight: 350;
+    text-align: center;
+    padding: 1rem;
+}
+
+.con-btn {
+    position: relative;
+    left: 50%;
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+
+}
+
+.con-btn button {
+    border: none;
+    outline: none;
+    background-color: #a4a7a3;
+    border-radius: 10px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.99rem;
+}
+.con-btn button:hover{
+    background-color: #399918;
+}
 .footer {
     display: flex;
     justify-content: space-evenly;

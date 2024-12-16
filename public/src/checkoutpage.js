@@ -681,9 +681,14 @@ function handlerCaptcha() {
   captcha = document.querySelector(".captcha").textContent;
   $(".captcha-input").attr("value", `${captchaValue}`)
   if (captcha === captchaValue) {
+    $(".captcha-container").css("display","none");
+    $(".captcha-input").hide();
+    $(".commonbtn").hide();
+    $(".done-icon").css("display","flex");
+    $(".captcha-label").hide();
     paymentMethod = "Cash on Delivery";
     getValues();
-    window.location.href = "/menu";
+    getConfirmation();
   } else {
     $(".captcha-input").val("");
     document.querySelector(".error-handler").textContent = "Invalid Captcha";
@@ -721,4 +726,17 @@ function getValues() {
     });
   }
 
+}
+
+
+function getConfirmation(){
+ $(".confimation-box ").css("display","flex");
+
+ $(".btn-yes").click(function (){
+  alert("i m got clicked yes")
+ });
+
+
+
+  
 }

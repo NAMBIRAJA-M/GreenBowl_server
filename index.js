@@ -8,9 +8,6 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import GoogleStrategy from 'passport-google-oauth2';
 import dotenv from 'dotenv';
-/* import confetti from "canvas-confetti"; */
-/* import getCartItems from "./public/src/cart.js";
- */
 import twilio from 'twilio';
 
 dotenv.config();

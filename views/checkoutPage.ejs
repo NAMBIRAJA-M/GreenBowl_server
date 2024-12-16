@@ -103,7 +103,7 @@
                     </div>
                     <div class="orders-section">
 
-                        
+
                         <!-- contents are dynamically passed -->
 
 
@@ -207,11 +207,16 @@
                     </div>
                     <div class="COD-section" tabindex="0">
                         <div class="captcha-container">
+
                             <p class="captcha">000 </p><i class="bi bi-arrow-clockwise refresh"></i>
                         </div>
                         <label for="captcha-input" class="captcha-label">Enter the Characters</label>
                         <input class="captcha-input" value="">
                         <button class="commonbtn corder" onclick="handlerCaptcha() ">Confirm Order</button>
+                        <div class="success-div">
+                            <p class="done-icon"><i class="bi bi-check-circle-fill"></i></p>
+                            <p class="done-icon done-text">Done</p>
+                        </div>
                         <p class="error-handler"></p>
                     </div>
 
@@ -219,34 +224,47 @@
                 <!-- <img class="Deliveryimg" src="Assets/deliveryimg.png"> -->
             </div>
             <!--   price sections -->
-    
-        <div class="right-container">
-            <div class="price-details">
-                <p class="price-heading">PRICE DETAILS</p>
-                <hr>
-                <div class="price-container1">
-                    <p class="price-orders">Price (0 item)</p>
-                    <p class="Total-price">Rs.10</p>
+
+            <div class="right-container">
+                <div class="price-details">
+                    <p class="price-heading">PRICE DETAILS</p>
+                    <hr>
+                    <div class="price-container1">
+                        <p class="price-orders">Price (0 item)</p>
+                        <p class="Total-price">Rs.10</p>
+                    </div>
+                    <div class="price-container2">
+                        <p class="delivery-charge">Delivery Charge</p>
+                        <p class="delivery-charge-price">Rs.40</p>
+                    </div>
+                    <div class="price-container3">
+                        <p>Packaging Charge</p>
+                        <p class="Packaging-price">Rs.30</p>
+                    </div>
+                    <hr>
+                    <div class="price-container4">
+                        <p>Amount Payable </p>
+                        <p class="total-payable">Rs.500</p>
+                    </div>
+
                 </div>
-                <div class="price-container2">
-                    <p class="delivery-charge">Delivery Charge</p>
-                    <p class="delivery-charge-price">Rs.40</p>
-                </div>
-                <div class="price-container3">
-                    <p>Packaging Charge</p>
-                    <p class="Packaging-price">Rs.30</p>
-                </div>
-                <hr>
-                <div class="price-container4">
-                    <p>Amount Payable </p>
-                    <p class="total-payable">Rs.500</p>
-                </div>
+                <p><i class="bi bi-shield-fill-check shield"></i> Safe and Secure Payments. Easy returns.<br> 100%
+                    Authentic products.</p>
 
             </div>
-            <p><i class="bi bi-shield-fill-check shield"></i> Safe and Secure Payments. Easy returns.<br> 100% Authentic products.</p>
-           
         </div>
-    </div>
+
+        <div class="confimation-box">
+            <div class="con-container">
+                <p class="con-header">Order Confirmation </p>
+                <hr>
+                <p class="con-subject">Are you sure you want to place this order?</p>
+                <div class="con-btn">
+                    <button class="btn-yes">Yes</button>
+                    <button class="btn-no">No</button>
+                </div>
+            </div>
+        </div>
         <div class="footer">
             <p class="policies">Policies: Returns Policy | Terms of Use | Security | Privacy | Infringement </p>
             <p><i class="bi bi-c-circle-fill"></i> 2024 Green Bowl </p>
@@ -254,7 +272,7 @@
         </div>
     </div>
 
-      
+
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
