@@ -687,19 +687,21 @@ body {
     font-weight: 500;
     color: red;
 }
-.done-icon{
+
+.done-icon {
     display: none;
     font-size: 2.5rem;
-    color:#399918;
-   
+    color: #399918;
+
 }
-.done-text{
+
+.done-text {
     font-size: 1rem;
-    color:black;
+    color: black;
     font-weight: 500;
 }
 
-.success-div{
+.success-div {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -708,12 +710,18 @@ body {
     position: relative;
     left: 50%;
 }
+
 /* CONFIRMATION POP UP */
 
 .confimation-box {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+}
+.success-box{
+    display: none;
+    justify-content: center;
+    align-items: center; 
 }
 
 .con-container {
@@ -724,7 +732,7 @@ body {
     margin: 1px;
     padding: 2px;
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 35%;
     background-color: #F2F9FF;
     z-index: 1000;
@@ -763,8 +771,82 @@ body {
     padding: 0.5rem 0.8rem;
     font-size: 0.99rem;
 }
-.con-btn button:hover{
+
+.con-btn button:hover {
     background-color: #399918;
+    color: white;
+}
+
+.done-icon-succ {
+    display: block;
+    font-size: 3.5rem;
+    color: #65B741;
+    text-align: center;
+    padding-top: 3rem;
+}
+
+.succ-header {
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.succ-subject {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    padding: 0rem;
+    font-size: 1.4rem;
+}
+
+.con-succ {
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.con-succ button {
+    border: none;
+    outline: none;
+    background-color: #399918;
+    color: white;
+    border-radius: 10px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.99rem;
+}
+
+.con-succ button:hover {
+    background-color: #a4a7a3;
+    color: black;
+}
+
+.menu-again {
+    color:#0A3981;
+    font-size: 1.1rem;
+    font-weight: 450;
+    float: right;
+    cursor: pointer;
+    padding: 0rem 2rem 1rem 1rem;
+    position: relative;
+    top: -10px;
+    
+}
+.exit{
+    border: none;
+    outline: none;
+    color:black;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 0.5rem 0.8rem;
+    font-size: 2rem;
+    float: right;
+    cursor: pointer;
+}
+.exit i{
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 0rem;
 }
 .footer {
     display: flex;

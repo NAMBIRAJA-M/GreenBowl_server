@@ -733,10 +733,25 @@ function getConfirmation(){
  $(".confimation-box ").css("display","flex");
 
  $(".btn-yes").click(function (){
-  alert("i m got clicked yes")
+  $(".success-box ").css("display","flex");
+  $(".confimation-box ").css("display","none");
  });
 
-
-
-  
+ $(".btn-no").click(function (){
+  $(".confimation-box ").css("display","none");
+ });
 }
+
+
+
+/* ORDERS  SUCCESSFUL PAGE AND ORDER CONFIRMATION PAGE */
+
+$(".status").click(()=>{
+  window.location.href='/orders';
+});
+$(".menu-again").click(()=>{
+  window.location.href = "/menu";
+});
+$(".exit").click(()=>{
+  window.location.href = "/cart";
+});
