@@ -37,11 +37,14 @@ if (storedItems && storedItems.length > 0) {
       
     `);
 
+  deleteCartItems(item.item_id);
+
+
     $(".orders-section").append(itemElement);
 
     $(".input-name").attr("value", `${item.name}`)
-
-
+    
+     window.Location.href=`/cart/delete/${item.item_id}`;
   });
   const btnElement = $(`<button class="commonbtn btn-login" onclick="continueCheckout3()">Continue</button>`);
   $(".orders-section").append(btnElement);
@@ -51,6 +54,19 @@ if (storedItems && storedItems.length > 0) {
     `);
   $(".orders-section").append(itemElement);
 }
+
+
+async function deleteCartItems(id) {
+  console.log("id from checkout:",id);
+  await fetch(`/cart/delete/${id}`)
+      .then(response => response.json())
+      .then(data => { console.log("deleted from checkout page",data);});
+}
+
+
+
+
+
 
 /* END..! */
 
