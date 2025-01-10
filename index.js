@@ -46,18 +46,18 @@ const db = new pg.Client({
 
 db.connect();
 
-let currentUserId = 0;
-let LoginName = "";
+/* let currentUserId = 0; */
+
 const rawData = fs.readFileSync('recipe.json', 'utf8');
 
 const jsonData = JSON.parse(rawData);
-
-console.log("Current user id:", currentUserId)
+/* 
+console.log("Current user id:", currentUserId) */
 
 
 /* inster data from menu to cart  */
 
-async function insertItem(ids) {
+async function insertItem(ids, currentUserId) {
     try {
         for (const id of ids) {
             console.log(`Processing item with id: ${id}`);
@@ -141,26 +141,24 @@ app.post('/signup', async (req, res) => {
             const maxId = maxIdResult.rows[0].max || 0;
             console.log("maxresukt", maxIdResult, " ", maxId);
 
-            // Hash the password before saving the user
+
             const hashedPassword = await bcrypt.hash(password, SaltRounds);
 
-            // Insert the new user into the database
+
             const result = await db.query(
                 "INSERT INTO users (id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
                 [maxId + 1, name, email, hashedPassword]
             );
             console.log("User registered successfully");
 
-            // Automatically log the user in after signup
+
             const user = result.rows[0];
             req.login(user, (err) => {
                 if (err) {
-                    console.error("Error logging in after signup", err);
+                    console.error("Error logging in after signup:", err);
                     res.redirect('/menu?error=Login%20failed');
                 } else {
-                    currentUserId = user.id;
-                    LoginName = user.name;
-                    console.log("current_user from local signup", LoginName);
+                    console.log("User logged in successfully:", user.name);
                     res.redirect(`/menu?message=You%20have%20successfully%20Signed%20Up!&name=${user.name}`);
                 }
             });
@@ -178,15 +176,15 @@ app.post('/login',
     })
 
 );
-app.get('/logout', (req, res) => {
+
+app.get('/logout', (req, res, next) => {
     req.logout(function (err) {
         if (err) {
-            return next("error from logout", err);
+            console.log("error from logout", err)
+            return next(err);
         }
         res.redirect('/menu?warning=You%20have%20successfully%20Logged%20Out!');
     });
-    currentUserId = 0;
-    LoginName = "";
 
 });
 
@@ -208,26 +206,27 @@ app.get("/auth/google/menu",
 /* routes to pages */
 
 app.get("/api/user", (req, res) => {
-    /*  if (!req.session.user) {
-         return res.status(401).send('Session expired, please login again');
-       } */
-    res.json({ loginName: LoginName });
+    if (req.isAuthenticated()) {
+
+    res.json({ loginName: req.user.name});
+    }
+
 })
 let clientMobile;
 app.post("/orders", async (req, res) => {
     const data = req.body;
-   /*  console.log("data from delivery page:", data); */
+    /*  console.log("data from delivery page:", data); */
     for (const orderItem of data) {
         console.log("data from server form /orders:", orderItem);
-        const { itemid, userid, usermobile, useraddress, itemPrice, itemquantity, totalamount, paymentmethod} = orderItem;
-        clientMobile = "+"+ parseInt("91" + usermobile, 10);
+        const { itemid, userid, usermobile, useraddress, itemPrice, itemquantity, totalamount, paymentmethod } = orderItem;
+        clientMobile = "+" + parseInt("91" + usermobile, 10);
         console.log(clientMobile);
         try {
             const maxIdResult = await db.query("SELECT MAX(id) FROM orders");
             const maxId = maxIdResult.rows[0].max || 0;
             await db.query(
                 "INSERT INTO orders (id,itemid,user_id,mobile_number,address,price,quantity,payableamount,paymentmethod) VALUES ($1, $2, $3, $4, $5,$6,$7,$8,$9)",
-                [maxId+1,itemid, userid, usermobile, useraddress, itemPrice, itemquantity, totalamount, paymentmethod]
+                [maxId + 1, itemid, userid, usermobile, useraddress, itemPrice, itemquantity, totalamount, paymentmethod]
             );
             console.log("inserted orders successfully");
         } catch (err) {
@@ -239,16 +238,16 @@ app.post("/orders", async (req, res) => {
 
 app.get("/orders", async (req, res) => {
     if (req.isAuthenticated()) {
-    try {
-       const result= await db.query("SELECT cartinfo.name,cartinfo.price AS originalprice,cartinfo.image,DATE(created_at) AS order_date,orders.* FROM orders JOIN cartinfo ON cartinfo.id =itemid WHERE user_id=$1",[currentUserId]);
-       const orderedItems=result.rows;
-       res.json({ orderedDatabases: orderedItems });
-    } catch (err) {
-        console.log("Error from getting values from orders:", err);
+        try {
+            const result = await db.query("SELECT cartinfo.name,cartinfo.price AS originalprice,cartinfo.image,DATE(created_at) AS order_date,orders.* FROM orders JOIN cartinfo ON cartinfo.id =itemid WHERE user_id=$1", [req.user.id]);
+            const orderedItems = result.rows;
+            res.json({ orderedDatabases: orderedItems });
+        } catch (err) {
+            console.log("Error from getting values from orders:", err);
+        }
+    } else {
+        res.json({ orderedDatabases: 0 });
     }
-}else{
-    res.json({ orderedDatabases: 0});
-}
 })
 
 app.get('/', (req, res) => {
@@ -256,6 +255,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/menu', async (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log("from requser da mavane", req.user, ",", req.user.id)
+    }
     const proteinbowl = await db.query("SELECT * FROM cartinfo WHERE type='protein bowl' ");
     const recipePB = proteinbowl.rows;
     const vegsalad = await db.query("SELECT * FROM cartinfo WHERE type='veg salad' ");
@@ -296,7 +298,7 @@ app.post('/cart', async (req, res) => {
             itemid.push(id);
         });
 
-        const response = await insertItem(itemid);
+        const response = await insertItem(itemid, req.user.id);
 
         console.log("Response from function", response);
 
@@ -315,23 +317,27 @@ app.post('/cart', async (req, res) => {
 
 });
 
-app.get('/cart', async (req, res) => {
-    /*   if (!req.session.user) {
-        res.render('sessionexpired.ejs');
-    
-            } 
-            else{ */
-    try {
-        const result = await db.query(
-            "SELECT cartitems.id AS item_id, cartitems.*, users.* FROM cartitems JOIN users ON users.id = user_id WHERE user_id = $1 ORDER BY cartitems.id ASC",
-            [currentUserId]
-        );
-        const cartItems = result.rows;
-        res.render('cart.ejs', { orders: cartItems });
-    } catch (err) {
-        console.error(err);
+app.get('/cartpage', async (req, res) => {
+    if (req.isAuthenticated()) {
+        try {
+            const result = await db.query(
+                "SELECT cartitems.id AS item_id, cartitems.*, users.* FROM cartitems JOIN users ON users.id = user_id WHERE user_id = $1 ORDER BY cartitems.id ASC",
+                [req.user.id ]
+            );
+            const cartItems = result.rows;
+            try{
+            res.render('cart.ejs', { orders: cartItems });
+            }
+            catch(e){
+                console.log("Error from cartpage",e);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    } else {
+        res.redirect('/menu?info=Log%20in%20to%20access%20your%20cart%20and%20complete%20your%20order..');
     }
-    /* } */
+
 });
 app.get("/cart/delete/:id", async (req, res) => {
     const id = req.params.id;
@@ -340,37 +346,37 @@ app.get("/cart/delete/:id", async (req, res) => {
 
         if (result.rowCount > 0) {
             console.log("Item deleted successfully.");
-            res.redirect("/cart?message=Item%20Deleted%20successfully");
+            res.redirect("/cartpage?message=Item%20Deleted%20successfully");
         } else {
-            res.redirect("/cart?error=Item%20not%20found.");
+            res.redirect("/cartpage?error=Item%20not%20found.");
         }
     } catch (err) {
         console.error("Error deleting item:", err);
     }
 });
 /* TWILIO SMS SERVICE */
-app.get("/twilio/sms",async (req,res)=>{
-    try{
-        const client=twilio(process.env.TWILIO_ACCOUNT_SID,process.env.TWILIO_AUTH_TOKEN);
+app.get("/twilio/sms", async (req, res) => {
+    try {
+        const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
         console.log(clientMobile);
-    function sendSms(to,message){
-        client.messages.create({
-            body: message,
-            from: process.env.TWILIO_PHONE_NUMBER,
-            to: to
-        })
-        .then(message => console.log('Message SID:', message.sid))
-        .catch(error => console.error('Error sending SMS:', error));
-    }
-    
-    sendSms(clientMobile,'Hello from GREEN BOWL..!, Yours Order Has Been Placed :)  ')
-    
-    }catch(err){
+        function sendSms(to, message) {
+            client.messages.create({
+                body: message,
+                from: process.env.TWILIO_PHONE_NUMBER,
+                to: to
+            })
+                .then(message => console.log('Message SID:', message.sid))
+                .catch(error => console.error('Error sending SMS:', error));
+        }
+
+        sendSms(clientMobile, 'Hello from GREEN BOWL..!, Yours Order Has Been Placed :)  ')
+
+    } catch (err) {
         console.log("Error from sending SMS:", err);
-               
+
     }
-    res.json({message:"SMS SENT SUCCESSFULLY"});
-    
+    res.json({ message: "SMS SENT SUCCESSFULLY" });
+
 })
 
 
@@ -395,7 +401,7 @@ passport.use(new LocalStrategy({
             if (result.rows.length > 0) {
                 const user = result.rows[0];
                 const registerPassword = user.password;
-                currentUserId = user.id;
+
 
 
                 bcrypt.compare(password, registerPassword, (err, valid) => {
@@ -406,10 +412,10 @@ passport.use(new LocalStrategy({
 
                     if (valid) {
                         console.log("Authentication successful for user:", user);
-                        LoginName = user.name;
-                        console.log("current_username from local:", LoginName);
+                      
 
-                        return cb(null, user);
+                        return cb(null, { id: user.id, name: user.name });
+
                     } else {
                         console.log("Invalid credentials: Password mismatch");
                         return cb(null, false, { message: 'Invalid credentials' });
@@ -433,44 +439,40 @@ passport.use(
         callbackURL: "https://greenbowl.onrender.com/auth/google/menu",
         userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
-    async (accessToken, refreshToken, profile, cb) => {
-        try {
-            
-            const email = profile.emails[0].value;
-    
-            const result = await db.query("SELECT * FROM users WHERE email = $1", [email]);
-    
-            if (result.rows.length === 0) {
-                const maxIdResult = await db.query("SELECT MAX(id) FROM users");
-                const maxId = maxIdResult.rows[0].max || 0;  
-                
-                LoginName = profile.name.givenName;
-                console.log("current_username from google signup:", LoginName);
-    
-                const newUser = await db.query(
-                    "INSERT INTO users (id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
-                    [maxId + 1, profile.name.givenName, email, "google"]
-                );
-                
-            
-                return cb(null, newUser.rows[0]);
-            } else {
-              
-                LoginName = profile.name.givenName;
-                console.log("current_username from google login:", LoginName);
-                
-                const userProfile = result.rows[0];
-                currentUserId = userProfile.id;
-                
-               
-                return cb(null, userProfile);
+        async (accessToken, refreshToken, profile, cb) => {
+            try {
+
+                const email = profile.emails[0].value;
+
+                const result = await db.query("SELECT * FROM users WHERE email = $1", [email]);
+
+                if (result.rows.length === 0) {
+                    const maxIdResult = await db.query("SELECT MAX(id) FROM users");
+                    const maxId = maxIdResult.rows[0].max || 0;
+
+
+                    console.log("current_username from google signup:", profile.name.givenName);
+
+                    const newUser = await db.query(
+                        "INSERT INTO users (id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
+                        [maxId + 1, profile.name.givenName, email, "google"]
+                    );
+
+
+                    return cb(null, newUser.rows[0]);
+                } else {
+
+                    console.log("current_username from google login:", profile.name.givenName);
+
+                    const userProfile = result.rows[0];
+                    return cb(null, userProfile);
+                }
+            } catch (err) {
+
+                console.error("Error during Google authentication:", err);
+                return cb("error from signup google", err);
             }
-        } catch (err) {
-           
-            console.error("Error during Google authentication:", err);
-            return cb("error from signup google", err);
-        }
-    }));
+        }));
 
 
 
@@ -489,7 +491,7 @@ passport.deserializeUser(async (id, cb) => {
             cb(new Error('User not found'));
         }
     } catch (err) {
-        cb("error from desereliazer",err);
+        cb("error from desereliazer", err);
     }
 });
 

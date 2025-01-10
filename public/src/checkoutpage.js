@@ -769,5 +769,5 @@ $(".menu-again").click(()=>{
   window.location.href = "/menu";
 });
 $(".exit").click(()=>{
-  window.location.href = "/cart";
+  window.location.href = "/cartpage";
 });

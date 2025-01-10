@@ -98,7 +98,7 @@ $(".loginway .signupbtn").click(function () {
 
 
 function submitSign() {
-    window.location.href = "/cart";
+    window.location.href = "/cartpage";
 }
 
 
@@ -196,7 +196,7 @@ $(document).click(function (event) {
 
 
 function cartnav() {
-    window.location.href = "/cart";
+    window.location.href = "/cartpage";
 }
 
 
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Redirect after a short delay to allow the animation to play
                     setTimeout(() => {
-                        window.location.href = '/cart';
+                        window.location.href = '/cartpage';
                     }, 100);
                 });
             }
@@ -327,33 +327,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-let LoginName=[];
+
 $(document).ready(function() {
 fetch("/api/user")
     .then(response => response.json())  
     .then(data => {
 
-        LoginName.push(data.loginName);
         loginName = data.loginName;
        
 
-        console.log("Login Name is:", loginName);
-        if(loginName){
-        $(".loginname media-lgname").text("Hi " + loginName + " !");
-        $(".loginway .lgn1").text("Log Out");
+        console.log("Login Name is from js page:", loginName);
+        dynamicChanges(loginName);
         
-        $(".loginway .lgn1").click(function () {
-            $(".nav-links .loginpopup").removeClass("hiddenpopup ")
-        })
-        $(".lgn1").click(() => {
-            window.location.href = `/logout`;
-        })
-    }
     }).catch(function() {
         console.error('Error fetching LoginName');
     });
 });
 
-LoginName.forEach(loginName => {
-    console.log("outside:",loginName);  
-});
+
+
+function dynamicChanges(loginName){
+    console.log("function called????");
+    $(".loginname").text("Hi " + loginName + " !");
+    $(".loginway .lgn1").text("Log Out");
+    
+    $(".loginway .lgn1").click(function () {
+        $(".nav-links .loginpopup").removeClass("hiddenpopup ")
+    })
+    $(".lgn1").click(() => {
+        window.location.href = `/logout`;
+    })
+}

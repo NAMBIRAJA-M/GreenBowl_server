@@ -5,7 +5,7 @@ $(".nav-links .menus").click(function () {
 
 
 function cartnav() {
-    window.location.href = "/cart";
+    window.location.href = "/cartpage";
 }
 
 
