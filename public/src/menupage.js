@@ -1,14 +1,49 @@
 
 
-/* function triggerConfetti()
-{
-confetti({
-    particleCount:200,
-    spread:100,
+let ws;
+let messageServer;
+function connect() {
 
-})
+    ws = new WebSocket('ws://localhost:8080');
+
+    ws.onopen = () => {
+        console.log('WebSocket connected');
+    };
+
+    ws.onmessage = (event) => {
+        console.log(`Message from server: ${event.data}`);
+        messageServer=event.data;
+        
+
+    };
+
+    ws.onclose = () => {
+        console.log('WebSocket disconnected');
+    };
 }
- */
+function sendMessage() {
+    const message = document.getElementById('messageInput').value;
+    ws.send(message);
+    if (message) {
+        const itemElement = $(`
+            <div class="client">${message}</div>
+            `)
+            $(".chat-section").append(itemElement);
+   
+        document.getElementById('messageInput').value = " ";
+    }
+
+    if (messageServer) {
+        const itemElement1 = $(`
+            <div class="server">${messageServer}</div>
+            `)
+            $(".chat-section").append(itemElement1);
+        document.getElementById('messageInput').value = " ";
+    }
+}
+
+connect();
+
 
 //MENUCARD
 
@@ -328,29 +363,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-$(document).ready(function() {
-fetch("/api/user")
-    .then(response => response.json())  
-    .then(data => {
+$(document).ready(function () {
+    fetch("/api/user")
+        .then(response => response.json())
+        .then(data => {
 
-        loginName = data.loginName;
-       
+            loginName = data.loginName;
 
-        console.log("Login Name is from js page:", loginName);
-        dynamicChanges(loginName);
-        
-    }).catch(function() {
-        console.error('Error fetching LoginName');
-    });
+
+            console.log("Login Name is from js page:", loginName);
+            dynamicChanges(loginName);
+
+        }).catch(function () {
+            console.error('Error fetching LoginName');
+        });
 });
 
 
 
-function dynamicChanges(loginName){
+function dynamicChanges(loginName) {
     console.log("function called????");
     $(".loginname").text("Hi " + loginName + " !");
     $(".loginway .lgn1").text("Log Out");
-    
+
     $(".loginway .lgn1").click(function () {
         $(".nav-links .loginpopup").removeClass("hiddenpopup ")
     })

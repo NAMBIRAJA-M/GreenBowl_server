@@ -272,7 +272,11 @@
     #textbox2,
     #textbox3,
     #textbox4,
-    #textbox5 {
+    #textbox5, #textbox11,
+    #textbox22,
+    #textbox33,
+    #textbox44,
+    #textbox55 {
         width: 280px;
         height: 45px;
         padding: 0.5rem;

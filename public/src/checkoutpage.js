@@ -37,14 +37,14 @@ if (storedItems && storedItems.length > 0) {
       
     `);
 
-  deleteCartItems(item.item_id);
+    deleteCartItems(item.item_id);
 
 
     $(".orders-section").append(itemElement);
 
     $(".input-name").attr("value", `${item.name}`)
-    
-     window.Location.href=`/cart/delete/${item.item_id}`;
+
+    window.Location.href = `/cart/delete/${item.item_id}`;
   });
   const btnElement = $(`<button class="commonbtn btn-login" onclick="continueCheckout3()">Continue</button>`);
   $(".orders-section").append(btnElement);
@@ -57,10 +57,10 @@ if (storedItems && storedItems.length > 0) {
 
 
 async function deleteCartItems(id) {
-  console.log("id from checkout:",id);
+  console.log("id from checkout:", id);
   await fetch(`/cart/delete/${id}`)
-      .then(response => response.json())
-      .then(data => { console.log("deleted from checkout page",data);});
+    .then(response => response.json())
+    .then(data => { console.log("deleted from checkout page", data); });
 }
 
 
@@ -427,24 +427,36 @@ function continueCheckout1() {
   valueName = $(".input-name").attr("value");
   valueMobile = $(".input-mobile").attr("value");
   isRunning = false;
+  const regex = /^[6-9]\d{9}$/;
   /*   console.log("values from login:", valueMobile, valueName); */
   if (valueName && valueMobile) {
-    $(".login-details").css("display", "none");
-    $(".login-credentials .btn-valid,.login-credentials .btn-modify").css("display", "flex");
-    $(".login-credentials").css({
-      "background-color": "white",
-      "color": "",
-      "justify-content": "space-between",
-    });
-    $(".btn-addr1").css("color", "#697565")
-    $(".login-credentials .icon1").css("color", "#399918");
+    if (regex.test(valueMobile)) {
+      $(".login-details").css("display", "none");
+      $(".login-credentials .btn-valid,.login-credentials .btn-modify").css("display", "flex");
+      $(".login-credentials").css({
+        "background-color": "white",
+        "color": "",
+        "justify-content": "space-between",
+      });
+      $(".btn-addr1").css("color", "#697565")
+      $(".login-credentials .icon1").css("color", "#399918");
+      document.querySelector(".tovalidate").textContent = "";
 
 
 
-    addressDetails();
+      addressDetails();
+    } else {
+      document.querySelector(".tovalidate").textContent = "* Invalid Mobile Number";
+    }
   } else {
     document.querySelector(".tovalidate").textContent = "* Fill all the fields";
   }
+
+
+
+
+
+
 
 }
 let userAddress;
@@ -607,6 +619,7 @@ function cashonD() {
     $(".COD-section").css({
       "display": "flex",
     });
+    $(".cashDelivery-section").focus();
 
     const isAbledNetBanking = $(".net-banking-sections").css("display");
     if (isAbledNetBanking === "flex") {
@@ -697,10 +710,10 @@ function handlerCaptcha() {
   captcha = document.querySelector(".captcha").textContent;
   $(".captcha-input").attr("value", `${captchaValue}`)
   if (captcha === captchaValue) {
-    $(".captcha-container").css("display","none");
+    $(".captcha-container").css("display", "none");
     $(".captcha-input").hide();
     $(".commonbtn").hide();
-    $(".done-icon").css("display","flex");
+    $(".done-icon").css("display", "flex");
     $(".captcha-label").hide();
     paymentMethod = "Cash on Delivery";
     getValues();
@@ -732,11 +745,11 @@ function getValues() {
         body: JSON.stringify(dishes)
       })
       fetch("/twilio/sms")
-          .then(response => response.json())  
-           .then(data => {
-            console.log("data from twilio:",data);
-           }).catch(function() {
-            console.error('Error fetching SMS');
+        .then(response => response.json())
+        .then(data => {
+          console.log("data from twilio:", data);
+        }).catch(function () {
+          console.error('Error fetching SMS');
         });
 
     });
@@ -745,29 +758,58 @@ function getValues() {
 }
 
 
-function getConfirmation(){
- $(".confimation-box ").css("display","flex");
+function getConfirmation() {
+  $(".confimation-box ").css("display", "flex");
+  $(".confimation-box ").focus();
 
- $(".btn-yes").click(function (){
-  $(".success-box ").css("display","flex");
-  $(".confimation-box ").css("display","none");
- });
+  $(".btn-yes").click(function () {
+    $(".success-box ").css("display", "flex");
+    $(".confimation-box ").css("display", "none");
+  });
 
- $(".btn-no").click(function (){
-  $(".confimation-box ").css("display","none");
- });
+  $(".btn-no").click(function () {
+    $(".confimation-box ").css("display", "none");
+    $(".backoff").css("display", "none");
+    unlockScroll();
+  });
+
+  $(".backoff").css("display", "block");
+  lockScroll()
+
 }
 
 
 
 /* ORDERS  SUCCESSFUL PAGE AND ORDER CONFIRMATION PAGE */
 
-$(".status").click(()=>{
-  window.location.href='/orders';
+$(".status").click(() => {
+  window.location.href = '/orders';
 });
-$(".menu-again").click(()=>{
+$(".menu-again").click(() => {
   window.location.href = "/menu";
 });
-$(".exit").click(()=>{
+$(".exit").click(() => {
   window.location.href = "/cartpage";
 });
+
+
+
+
+
+
+
+// Lock the scroll
+const lockScroll = () => {
+  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${scrollPosition}px`;
+  document.body.dataset.scrollLock = scrollPosition; // Store scroll position in data attribute
+};
+// Unlock the scroll
+const unlockScroll = () => {
+  const scrollPosition = parseInt(document.body.dataset.scrollLock || '0', 10);
+  document.body.style.position = '';
+  document.body.style.top = '';
+  window.scrollTo(0, scrollPosition); // Restore scroll position
+  document.body.dataset.scrollLock = ''; // Clear the stored position
+};

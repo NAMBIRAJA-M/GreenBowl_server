@@ -9,12 +9,21 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import GoogleStrategy from 'passport-google-oauth2';
 import dotenv from 'dotenv';
 import twilio from 'twilio';
+import cors from 'cors';
+
+import { WebSocketServer } from 'ws';
+
+
+
+
 
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = 4000;
+const wsport=8080;
 const SaltRounds = 10;
+const wss = new WebSocketServer({ port: wsport});
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -25,6 +34,12 @@ app.use(session({
     },
     rolling: true
 }));
+
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -46,13 +61,12 @@ const db = new pg.Client({
 
 db.connect();
 
-/* let currentUserId = 0; */
+
 
 const rawData = fs.readFileSync('recipe.json', 'utf8');
 
 const jsonData = JSON.parse(rawData);
-/* 
-console.log("Current user id:", currentUserId) */
+
 
 
 /* inster data from menu to cart  */
@@ -126,6 +140,8 @@ const insertData = async () => {
 
 
 /* LOCAL AUTHENTICATION  */
+
+
 
 app.post('/signup', async (req, res) => {
     const name = req.body.fname;
@@ -205,10 +221,14 @@ app.get("/auth/google/menu",
 
 /* routes to pages */
 
+
+
+
+
 app.get("/api/user", (req, res) => {
     if (req.isAuthenticated()) {
 
-    res.json({ loginName: req.user.name});
+        res.json({ loginName: req.user.name });
     }
 
 })
@@ -322,14 +342,14 @@ app.get('/cartpage', async (req, res) => {
         try {
             const result = await db.query(
                 "SELECT cartitems.id AS item_id, cartitems.*, users.* FROM cartitems JOIN users ON users.id = user_id WHERE user_id = $1 ORDER BY cartitems.id ASC",
-                [req.user.id ]
+                [req.user.id]
             );
             const cartItems = result.rows;
-            try{
-            res.render('cart.ejs', { orders: cartItems });
+            try {
+                res.render('cart.ejs', { orders: cartItems });
             }
-            catch(e){
-                console.log("Error from cartpage",e);
+            catch (e) {
+                console.log("Error from cartpage", e);
             }
         } catch (err) {
             console.error(err);
@@ -412,7 +432,7 @@ passport.use(new LocalStrategy({
 
                     if (valid) {
                         console.log("Authentication successful for user:", user);
-                      
+
 
                         return cb(null, { id: user.id, name: user.name });
 
@@ -494,6 +514,69 @@ passport.deserializeUser(async (id, cb) => {
         cb("error from desereliazer", err);
     }
 });
+
+
+
+
+
+
+/* HANDLING REQUEST FROM REACT APP */
+
+app.get("/sample", (req, res) => {
+    res.json("hello from server");
+})
+
+
+app.get("/order", async (req, res) => {
+    const result = await db.query("SELECT cartinfo.name,cartinfo.price AS originalprice,cartinfo.image,DATE(created_at) AS order_date,orders.* FROM orders JOIN cartinfo ON cartinfo.id =itemid ");
+    const orderedItems = result.rows;
+    res.json({ orderedItems });
+})
+
+
+
+
+
+
+
+
+
+/* web socket server  */
+
+try{
+    let info="Hi buddy! what about today";
+    wss.on('connection', function connection(ws) {
+      console.log('A New Client Connected');
+         ws.send('Welcome! Greetings from server');
+      
+      ws.on('message', function(message) {
+        console.log('Received message', message.toString());
+   
+        ws.send(`${info}`);
+      });
+    
+      ws.on('close', function close() {
+        console.log('Client disconnected');
+      });
+    });
+}catch(e){
+    console.log("error from ws",e)
+}
+
+console.log(`Websocket server is running on the ${wsport}`)
+   
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

@@ -67,116 +67,11 @@
                 <li><a href="#proteinbowl">Protein Bowl</a></li>
             </ul>
         </div>
-
-
-        <section id="proteinbowl">
-
-            <div class="spacecaret">
-                <button class="section-heading btn12"> Protein Bowl</button>
-                <img class="caret-styles" src="Assets/caret-down.webp">
-            </div>
-            <div class="proteinbowl">
-                <% recipesPB.forEach(recipe=>{ %>
-                    <form action="/cart" method="POST">
-                        <div class="section-container">
-                            <div class="content-container">
-                                <div class="details-container">
-                                    <article>
-                                        <div class="veg_nonveg_icon">
-                                            <% if (recipe.veg) {%>
-                                                <img class="veg-non-veg-icon" src="<%= recipe.veg %>">
-                                                <% } %>
-                                                    <img class="veg-non-veg-icon" src="<%= recipe.nonveg  %>">
-                                        </div>
-
-                                        <p class="dish">
-                                            <%= recipe.name %>
-                                        </p>
-                                        <div class="about-container">
-                                            <div class="about-img">
-                                                <img src="<%= recipe.image %>" alt="the peruvian bowl">
-                                                <button onclick="triggerConfetti()" class="btn1" type="submit">Add+</button>
-                                            </div>
-                                            <P class="ingredient"><b>INGREDIENTS :</b>
-                                                <%= recipe.ingredients %>
-                                            </P>
-                                            <p class="price"> Rs.<%= recipe.price%>
-                                            </p>
-                                            <p class="nutrients"><span>
-                                                    <%= recipe.kcal %> Kcal
-                                                </span>•Protein <%= recipe.protein%> •Carbs <%= recipe.carbs%>•Fat <%=
-                                                            recipe.fat%>
-                                                            •Fiber
-                                                            <%= recipe.fiber%>
-                                            </p>
-                                            <input type="hidden" name="recipes[]"
-                                                value='<%= JSON.stringify(recipe) %>' />
-                                        </div>
-
-
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <% }); %>
-            </div>
-        </section>
-        <section id="salads">
-            <div class="spacecaret">
-                <button class="section-heading btn12"> Veg Salads</button>
-                <img class="caret-styles" src="Assets/caret-down.webp">
-            </div>
-            <div class="vegsalads">
-                <% recipesVS.forEach(recipeVS=>{ %>
-                    <form action="/cart" method="POST">
-                        <div class="section-container">
-                            <div class="content-container">
-                                <div class="details-container">
-                                    <article>
-                                        <div class="veg_nonveg_icon">
-                                            <% if (recipeVS.veg) {%>
-                                                <img class="veg-non-veg-icon" src="<%= recipeVS.veg %>">
-                                                <% } %>
-                                                    <!-- <img class="veg-non-veg-icon" src="<%= recipeVS.nonveg  %>"> -->
-                                        </div>
-
-                                        <p class="dish">
-                                            <%= recipeVS.name %>
-                                        </p>
-                                        <div class="about-container">
-                                            <div class="about-img">
-                                                <img src="<%= recipeVS.image %>" alt="the peruvian bowl">
-                                                <button class="btn1" type="submit">Add+</button>
-                                            </div>
-                                            <P class="ingredient"><b>INGREDIENTS :</b>
-                                                <%= recipeVS.ingredients %>
-                                            </P>
-                                            <p class="price"> Rs.<%= recipeVS.price%>
-                                            </p>
-                                            <p class="nutrients"><span>
-                                                    <%= recipeVS.kcal %> Kcal
-                                                </span>•Protein <%= recipeVS.protein%> •Carbs <%= recipeVS.carbs%>•Fat
-                                                        <%= recipeVS.fat%>
-                                                            •Fiber
-                                                            <%= recipeVS.fiber%>
-                                            </p>
-                                            <input type="hidden" name="recipes[]"
-                                                value='<%= JSON.stringify(recipeVS) %>' />
-                                        </div>
-
-
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <% }); %>
-
-
-            </div>
-            </div>
-        </section>
+        <!--   <div id="message"></div>
+        <div class="messagebox">
+            <input id="messageInput" onchange="sendMessage()">
+        </div>
+ -->
 
         <!-- 
                 <div class="section-container">
@@ -606,6 +501,22 @@
     </section>
 
      -->
+
+
+        <div class="chatbox-container">
+            <div class="chat-section">
+            </div>
+
+
+            <div class="chatbox-inputfield">
+                <input id="messageInput" placeholder="Type a message"  >
+                <div class="icon-holder">
+
+                   <img src="Assets/send.png" class="sendbtn" onclick="sendMessage()">
+                </div>
+
+            </div>
+        </div>
 
         <%- include("../views/partials/footer.ejs") %>
 

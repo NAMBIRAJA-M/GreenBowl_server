@@ -712,6 +712,21 @@ body {
 }
 
 /* CONFIRMATION POP UP */
+::-webkit-scrollbar{
+    display: none;
+}
+
+.backoff {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+  
+  }
 
 .confimation-box {
     display: none;
@@ -731,7 +746,7 @@ body {
     min-height: 250px;
     margin: 1px;
     padding: 2px;
-    position: absolute;
+    position: fixed;
     top: 20%;
     left: 35%;
     background-color: #F2F9FF;

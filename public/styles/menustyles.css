@@ -20,36 +20,40 @@ body {
 /* toast notification */
 
 .toast-top-center {
-  /*   top: 100px !important; */
+    /*   top: 100px !important; */
     left: 80% !important;
     transform: translateX(-50%) !important;
 }
+
 .toast-warning {
-    background-color: #343A40 !important; 
+    background-color: #343A40 !important;
 }
-.toast-success{
+
+.toast-success {
     top: 5rem !important;
 }
+
 .toast-info {
-    background-color: #17a2b8 !important; 
-    color: #151515 !important; 
+    background-color: #17a2b8 !important;
+    color: #151515 !important;
     font-size: 2rem;
 }
 
 /* Define the shake animation */
 @keyframes shake {
     0% {
-        transform: scale(1) ;
+        transform: scale(1);
     }
+
     100% {
-        transform: scale(3.5) ;
+        transform: scale(3.5);
     }
 }
 
 
 /* Apply the shake animation to an icon */
 .icon-shake {
-        animation: shake 1s ease; 
+    animation: shake 1s ease;
 }
 
 
@@ -137,7 +141,7 @@ body {
     border-radius: 10px;
 }
 
-.pathsign{
+.pathsign {
     margin-top: 0.7rem;
     font-size: 0.90rem;
     font-weight: 500;
@@ -146,13 +150,14 @@ body {
     margin-bottom: 0.3rem;
 
 }
-.signupbtn{
+
+.signupbtn {
     border: none;
     background: transparent;
-    color:#151515;
+    color: #151515;
     font-weight: 650;
     text-decoration: underline;
-    
+
 }
 
 
@@ -209,6 +214,7 @@ body {
     z-index: 2;
 
 }
+
 .signuppopup {
     display: none;
     position: absolute;
@@ -254,14 +260,16 @@ body {
     flex-direction: column;
     margin-bottom: 10px;
 }
-.signup-content{
+
+.signup-content {
     margin: 10px;
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-bottom: 5px;
 }
-.signup-content p{
+
+.signup-content p {
     margin-bottom: 0.5rem;
 }
 
@@ -292,24 +300,27 @@ body {
     margin-right: 20px;
 
 }
-.btng{
-border: none;
-background-color: white;
-font-size: 0.9rem;
-border-radius: 15px;
-padding: 0.3rem 0.8rem;
+
+.btng {
+    border: none;
+    background-color: white;
+    font-size: 0.9rem;
+    border-radius: 15px;
+    padding: 0.3rem 0.8rem;
 }
-.orword{
+
+.orword {
     font-size: 1.1rem;
     padding: 0%;
     margin: 0%;
 }
 
-#imgg{
+#imgg {
     width: 30px;
     height: 30px;
     margin-right: 1rem;
 }
+
 .inner-content {
     font-size: 0.9rem;
     position: absolute;
@@ -326,7 +337,8 @@ padding: 0.3rem 0.8rem;
     padding: 0.5rem;
     border-radius: 15px;
 }
-.form-content_google{
+
+.form-content_google {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
@@ -336,7 +348,7 @@ padding: 0.3rem 0.8rem;
 
 
 .otpbtn {
-   
+
     text-align: center;
     border: none;
     border-radius: 10px;
@@ -349,7 +361,16 @@ padding: 0.3rem 0.8rem;
     color: white;
 }
 
-#textbox1,#textbox2,#textbox3,#textbox4,#textbox5 {
+#textbox1,
+#textbox2,
+#textbox3,
+#textbox4,
+#textbox5,
+#textbox11,
+#textbox22,
+#textbox33,
+#textbox44,
+#textbox55 {
     width: 380px;
     height: 45px;
     padding: 0.5rem;
@@ -646,7 +667,8 @@ padding: 0.3rem 0.8rem;
     margin-right: 10rem
 }
 
-.proteinbowl,.vegsalads {
+.proteinbowl,
+.vegsalads {
     margin: 3rem;
     display: flex;
     justify-content: center;
@@ -791,11 +813,75 @@ span {
 
 
 
+/* CHAT BOT */
 
+.chatbox-container {
+  
+    right: 0;
+    position: absolute;
+}
+.chat-section{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: lightgreen;
+    width: 350px;
+    height: 400px;
+    overflow-y: scroll;
+   
+    padding: 1rem;
+    padding-bottom: 3.5rem;
+}
+.chatbox-inputfield {
+    display: flex;
+    position: absolute;
+    bottom: 0%;
+    padding-left:0.4rem;
+    gap: 0.5rem;
+    background-color: lightgray;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-right: 1rem;
+  
 
+}
+#messageInput{
+    width: 300px;
+    height: 45px; 
+    border-radius: 15px; 
+    padding-left: 0.3rem;
+}
+.sendbtn{
+    font-size: 0.44rem;
+    background-color:#399918;
+    color: white;
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
 
+}
+.client,
+.server {
+    width: 150px;
+    height: fit-content;
+    padding: 0.5rem;
+    font-size: 0.88rem;
+}
 
+.client {
 
+    background-color: #fff;
+    position: relative;
+    right: -150px;
+
+}
+
+.server {
+    background-color: #17a2b8;
+}
 
 
 
@@ -875,6 +961,7 @@ span {
     font-size: 1.2rem;
     cursor: pointer;
 }
+
 .benifits p {
     margin-top: 15px;
 }

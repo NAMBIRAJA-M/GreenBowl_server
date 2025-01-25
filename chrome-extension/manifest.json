@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Food Delivery Extension",
+    "short_name": "FoodExt",
+    "version": "1.0",
+    "description": "An extension for enhancing the food delivery experience.",
+    "permissions": [
+      "activeTab",
+      "scripting"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
