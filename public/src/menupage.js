@@ -12,8 +12,8 @@ function connect() {
 
     ws.onmessage = (event) => {
         console.log(`Message from server: ${event.data}`);
-        messageServer=event.data;
-        
+        messageServer = event.data;
+
 
     };
 
@@ -22,27 +22,38 @@ function connect() {
     };
 }
 function sendMessage() {
-    const message = document.getElementById('messageInput').value;
-    ws.send(message);
-    if (message) {
-        const itemElement = $(`
-            <div class="client">${message}</div>
-            `)
-            $(".chat-section").append(itemElement);
-   
-        document.getElementById('messageInput').value = " ";
-    }
 
-    if (messageServer) {
-        const itemElement1 = $(`
-            <div class="server">${messageServer}</div>
+    /* CLIENT MESSAGES  */
+    const message = document.getElementById('messageInput').value;
+
+    if (message.trim() !== "") {
+        ws.send(message);
+
+        const itemElement = $(`
+            <p class="client">${message}</p>
+            
+            `)
+        $(".chat-section").append(itemElement);
+
+        document.getElementById('messageInput').value = "";
+
+        /* SERVER MESSAGES */
+
+        if (messageServer) {
+            const itemElement1 = $(`
+            <p class="server">${messageServer}</p>
             `)
             $(".chat-section").append(itemElement1);
-        document.getElementById('messageInput').value = " ";
+
+        }
     }
+    $(".chat-section").scrollTop($(".chat-section")[0].scrollHeight);
+
 }
 
 connect();
+
+
 
 
 //MENUCARD
