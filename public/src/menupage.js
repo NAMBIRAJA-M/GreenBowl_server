@@ -2,12 +2,15 @@
 
 let ws;
 let messageServer;
+const clientMessage = {
+}
 function connect() {
 
     ws = new WebSocket('ws://localhost:8080');
 
     ws.onopen = () => {
         console.log('WebSocket connected');
+       
     };
 
     ws.onmessage = (event) => {
@@ -21,13 +24,43 @@ function connect() {
         console.log('WebSocket disconnected');
     };
 }
+
+
+$(document).ready(function () {
+    fetch("/api/user")
+        .then(response => response.json())
+        .then(data => {
+            processLoginDetails(data.loginName)
+        }).catch(function () {
+            console.error('Error fetching LoginName');
+        });
+
+
+
+    function processLoginDetails(loginDetails) {
+        clientMessage.id = loginDetails.id;
+        clientMessage.name = loginDetails.name;
+        console.log("clients details:", clientMessage.id);
+
+
+    }
+});
+
+
 function sendMessage() {
 
     /* CLIENT MESSAGES  */
     const message = document.getElementById('messageInput').value;
-
     if (message.trim() !== "") {
-        ws.send(message);
+
+
+        clientMessage.type = "client",
+            clientMessage.action = "chat",
+            clientMessage.content = message;
+
+        ws.send(JSON.stringify(clientMessage));
+        console.log(clientMessage)
+
 
         const itemElement = $(`
             <p class="client">${message}</p>
@@ -382,8 +415,8 @@ $(document).ready(function () {
             loginName = data.loginName;
 
 
-            console.log("Login Name is from js page:", loginName);
-            dynamicChanges(loginName);
+            console.log("Login Name is from js page:", loginName.name);
+            dynamicChanges(loginName.name);
 
         }).catch(function () {
             console.error('Error fetching LoginName');

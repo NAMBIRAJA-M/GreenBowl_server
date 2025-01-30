@@ -12,7 +12,8 @@ import twilio from 'twilio';
 import cors from 'cors';
 import http from 'http';
 
-import { WebSocketServer } from 'ws';
+import { WebSocket, WebSocketServer } from 'ws';
+import { type } from 'os';
 
 
 
@@ -22,9 +23,9 @@ dotenv.config();
 
 const app = express();
 const port = 4000;
-const wsport=8080;
+const wsport = 8080;
 const SaltRounds = 10;
-const wss = new WebSocketServer({ port: wsport});
+const wss = new WebSocketServer({ port: wsport });
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -229,7 +230,7 @@ app.get("/auth/google/menu",
 app.get("/api/user", (req, res) => {
     if (req.isAuthenticated()) {
 
-        res.json({ loginName: req.user.name });
+        res.json({ loginName: req.user });
     }
 
 })
@@ -544,33 +545,104 @@ app.get("/order", async (req, res) => {
 
 /* web socket server  */
 
-try{
-    let info="Thank You for Interacting..!";
+
+/* const ClientMessage={
+    id:1,
+    type: "server",
+    action: "chats",
+    content:"Thank You for Interacting..!",
+
+} */
+
+
+try {
+
+    var adminWs = null;
+    var clients = new Map();
     wss.on('connection', function connection(ws) {
-      console.log('A New Client Connected');
-    console.log("Active users:",wss.clients.size);
-        ws.send('Hi buddy! Welcome! Greetings from server');
+        console.log('A New Client Connected');
+        console.log("Active users:", wss.clients.size);
+        setTimeout(() => {
+            if (ws.readyState === WebSocket.OPEN) {
+                ws.send('Hi buddy! Welcome! Greetings from server');
+            }
+        }, 100);
 
 
-      
-      ws.on('message', function(message) {
-        console.log('Received message', message.toString());
-            ws.send(`${info}`);
-       
-    
-      
-      });
-    
-      ws.on('close', function close() {
-        console.log('Client disconnected');
-      });
+        ws.on('message', function (message) {
+
+
+
+            console.log('Received message', message.toString());
+
+            const source = JSON.parse(message);
+            console.log("source message", source);
+
+            const { type } = source;
+
+            switch (type) {
+                case 'client':
+                    handleClient(source, ws)
+                    break;
+                case 'admin':
+                    handleAdmin(source, ws)
+            }
+
+
+        });
+
+        ws.on('close', function close() {
+            console.log('Client disconnected');
+        });
     });
-}catch(e){
-    console.log("error from ws",e)
+} catch (e) {
+    console.log("error from ws", e)
+}
+
+
+
+
+
+
+function handleClient(source, ws) {
+    const { action, id, content } = source;
+    console.log("from handleclient", action, id, content);
+    if (action === "chat") {
+
+        clients.set(id, ws);
+        console.log(`Message from Client (${id}):`, content);
+        if (adminWs && adminWs.readyState === WebSocket.OPEN) {
+
+            adminWs.send(JSON.stringify({ type: "admin", id, content }));
+            console.log("**!!! Client message is sent to  ADMIN successfully..!!!")
+
+        } else {
+            console.log("** ADMIN is not in ready state **");
+        }
+    }
+
+}
+function handleAdmin(source, ws) {
+    if (!adminWs) {
+        adminWs = ws;
+        console.log("Admin is connected");
+    }
+
+    const { id, content } = source;
+    console.log("content:", content)
+    const clientWs = clients.get(id);
+    /*     console.log("id:",clientWs) */
+    if (clientWs && clientWs.readyState === WebSocket.OPEN) {
+        console.log("** ADMIN message is sent to Client  successfully..!!!")
+        clientWs.send(JSON.stringify({ content }));
+    } else {
+        console.log(`Client (${id}) is not connected.`);
+    }
+
 }
 
 console.log(`Websocket server is running on the ${wsport}`)
-   
+
 
 
 

@@ -118,8 +118,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     /* pushing data to local storage */
 
                     localStorage.setItem('cartItems', JSON.stringify(clickedItems));
-
-                    console.log('Data stored in localStorage');
+                  /*   sessionStorage.setItem('userInfo',clickedItems)
+                    console.log('Data stored in sessionStorage',clickedItems.name); */
 
                     return;
                 }
