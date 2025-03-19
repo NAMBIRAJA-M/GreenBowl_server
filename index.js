@@ -520,9 +520,9 @@ passport.deserializeUser(async (id, cb) => {
 
 
 
+/* 
 
-
-/* HANDLING REQUEST FROM REACT APP */
+/* HANDLING REQUEST FROM REACT APP 
 
 app.get("/sample", (req, res) => {
     res.json("hello from server");
@@ -552,7 +552,7 @@ app.get("/order", async (req, res) => {
     action: "chats",
     content:"Thank You for Interacting..!",
 
-} */
+} 
 
 
 try {
@@ -631,7 +631,7 @@ function handleAdmin(source, ws) {
     const { id, content } = source;
     console.log("content:", content)
     const clientWs = clients.get(id);
-    /*     console.log("id:",clientWs) */
+    /*     console.log("id:",clientWs) 
     if (clientWs && clientWs.readyState === WebSocket.OPEN) {
         console.log("** ADMIN message is sent to Client  successfully..!!!")
         clientWs.send(JSON.stringify({ content }));
@@ -646,7 +646,7 @@ console.log(`Websocket server is running on the ${wsport}`)
 
 
 
-
+ */
 
 
 
