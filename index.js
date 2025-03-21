@@ -520,9 +520,9 @@ passport.deserializeUser(async (id, cb) => {
 
 
 
-/* 
 
-/* HANDLING REQUEST FROM REACT APP 
+/* 
+ HANDLING REQUEST FROM REACT APP  */
 
 app.get("/sample", (req, res) => {
     res.json("hello from server");
@@ -543,7 +543,7 @@ app.get("/order", async (req, res) => {
 
 
 
-/* web socket server  */
+/* web socket server  
 
 
 /* const ClientMessage={

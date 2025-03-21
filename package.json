@@ -29,5 +29,6 @@
     "toastr": "^2.1.4",
     "twilio": "^5.3.5",
     "ws": "^8.18.0"
-  }
+  },
+  "devDependencies": {}
 }
