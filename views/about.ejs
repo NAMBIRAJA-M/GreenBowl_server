@@ -1,159 +1,161 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
- 
-    <title>
-        About Us
-    </title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - The Green Bowl</title>
+    <link rel="stylesheet" href="styles/aboutus.css">
+    <link rel="stylesheet" href="styles/aboutmediaqueries.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 
 <body>
     <%- include("../views/partials/header.ejs") %>
 
-
-    <div class="specificnav">
-        <nav class="bread">
-            <ol class="breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li><a href="/menu">Menu</a></li>
-                <li class=" active" aria-current="page">About Us</li>
-            </ol>
-        </nav>
-    </div>
-    
-    <div class="aboutus-container">
-        <div class="section-containers">
-
-            <div class="story-section">
-                <div class="story-heading">
-                    <p>Our Story</p>
-                </div>
-                <div class="section-details">
-                    <p>Welcome to The Green Bowl, where passion for delicious food meets innovation in delivery. Founded
-                        in 2023 , we set out with a mission to make high-quality, diverse food options easily accessible
-                        to everyone in our community.</p>
-                </div>
-            </div>
-            <div class="story-section">
-                <div class="story-heading">
-                    <p>Meet Our Founder</p>
-                </div>
-                <div class="section-details">
-                    <div class="media-container">
-                        <img src="./Assets/surya founder.jpeg">
-                        <p>SURYA RAMIAH - Founder & CEO </p>
-                    </div>
-                    <p> Surya embarked on this journey with a vision to revolutionize the food delivery experience. He
-                        brings 2 years of experience in this field and a deep love for food..
-                        Driven by a commitment to excellence and customer satisfaction, Surya has overseen
-                        every aspect of The Green Bowl's growth.His dedication to quality and
-                        innovation is reflected in our diverse menu and our seamless delivery service.
-                    </p>
-                </div>
-            </div>
-            <div class="story-section">
-                <div class="story-heading">
-                    <p>Our Mission</p>
-                </div>
-                <div class="section-details">
-                    <p>At The Green Bowl, we believe that good food brings people together. Our mission is to
-                        provide you with an exceptional dining experience from the comfort of your home. We are
-                        dedicated to sourcing fresh ingredients, supporting local chefs, and ensuring prompt, friendly
-                        service.</p>
-                </div>
-            </div>
-            <div class="story-section">
-                <div class="story-heading">
-                    <p>Our Values</p>
-                </div>
-                <div class="values-container">
-                    <div class="values">
-                        <div class="value-heading">
-                            <p>Quality</p>
-                        </div>
-                        <div class="value-detail">
-                            <p>We only partner with trusted vendors and chefs to ensure top-notch food.</p>
-                        </div>
-                    </div>
-                    <div class="values">
-                        <div class="value-heading">
-                            <p class="emerclass">Customer Satisfaction</p>
-                        </div>
-                        <div class="value-detail">
-                            <p>Your happiness is our priority.we’re here to make sure you have a delightful experience
-                                with every bite.</p>
-                        </div>
-                    </div>
-                    <div class="values">
-                        <div class="value-heading">
-                            <p>Innovation</p>
-                        </div>
-                        <div class="value-detail">
-                            <p> We continuously seek new ways to enhance your food delivery experience.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="story-section">
-                <div class="section-details footercaption ">
-                    <p>
-                        Thank you for choosing The Green Bowl . We look forward to serving you..!
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-
-
-    <section id="greenpass">
-
-        <div class="story-section">
-            <div class="story-heading">
-                <p>Green Pass</p>
-            </div>
-        </div>
-        <div class="GP-container">
-            <div class="greenpass">
-                <img src="Assets/GPbanner.jpg" class="GPbanner" alt="greenpass">
-            </div>
-            <div class="aboutbg">
-
-                <div class="about-content">
-                    <ul class="list">
-                        <li>The advertisement introduces the "Green Pass," a membership available for ₹49, which offers
-                            numerous
-                            benefits.</li>
-                        <li>The pass includes unlimited free deliveries in the areas of Mahim, Matunga, and Dadar
-                            (West).
-                        </li>
-                        <li>Members also receive exclusive discounts, additional savings tailored for Green Pass
-                            holders.
-                        </li>
-                        <li>To support fitness goals, the pass covers deliveries to partnered gyms.</li>
-                        <li> Furthermore, the membership eliminates packaging costs, ensuring premium packaging without
-                            any
-                            extra
-                            charges.</li>
-                        <li>This promotional offer encourages customers to enjoy these advantages by signing up for the
-                            Green
-                            Pass and saving on delivery fees each month. Terms and conditions apply</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>About The Green Bowl</h1>
+            <p>Delivering fresh, delicious food with passion and innovation</p>
         </div>
     </section>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li class="active">About Us</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Our Story Section -->
+            <section class="content-section story-section">
+                <div class="section-header">
+                    <h2>Our Story</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="section-content">
+                    <p>Welcome to The Green Bowl, where passion for delicious food meets innovation in delivery. Founded in 2023, we set out with a mission to make high-quality, diverse food options easily accessible to everyone in our community.</p>
+                </div>
+            </section>
+
+            <!-- Founder Section -->
+            <section class="content-section founder-section">
+                <div class="section-header">
+                    <h2>Meet Our Founder</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="founder-content">
+                    <div class="founder-image">
+                        <img src="./Assets/surya founder.jpeg" alt="Surya Ramiah - Founder & CEO">
+                        <div class="founder-overlay">
+                            <h3>Surya Ramiah</h3>
+                            <p>Founder & CEO</p>
+                        </div>
+                    </div>
+                    <div class="founder-text">
+                        <p>Surya embarked on this journey with a vision to revolutionize the food delivery experience. He brings 2 years of experience in this field and a deep love for food.</p>
+                        <p>Driven by a commitment to excellence and customer satisfaction, Surya has overseen every aspect of The Green Bowl's growth. His dedication to quality and innovation is reflected in our diverse menu and our seamless delivery service.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mission Section -->
+            <section class="content-section mission-section">
+                <div class="section-header">
+                    <h2>Our Mission</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="section-content">
+                    <p>At The Green Bowl, we believe that good food brings people together. Our mission is to provide you with an exceptional dining experience from the comfort of your home. We are dedicated to sourcing fresh ingredients, supporting local chefs, and ensuring prompt, friendly service.</p>
+                </div>
+            </section>
+
+            <!-- Values Section -->
+            <section class="content-section values-section">
+                <div class="section-header">
+                    <h2>Our Values</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Quality</h3>
+                        <p>We only partner with trusted vendors and chefs to ensure top-notch food.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Customer Satisfaction</h3>
+                        <p>Your happiness is our priority. We're here to make sure you have a delightful experience with every bite.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Innovation</h3>
+                        <p>We continuously seek new ways to enhance your food delivery experience.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="content-section cta-section">
+                <div class="cta-content">
+                    <h2>Thank you for choosing The Green Bowl</h2>
+                    <p>We look forward to serving you!</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Green Pass Section -->
+    <section class="greenpass-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Green Pass</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="greenpass-content">
+                <div class="greenpass-image">
+                    <img src="Assets/GPbanner.jpg" alt="Green Pass Membership" class="gp-banner">
+                </div>
+                <div class="greenpass-details">
+                    <h3>Unlock Premium Benefits</h3>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check"></i> Unlimited free deliveries in Mahim, Matunga, and Dadar (West)</li>
+                        <li><i class="fas fa-check"></i> Exclusive discounts and additional savings</li>
+                        <li><i class="fas fa-check"></i> Gym delivery partnerships for fitness goals</li>
+                        <li><i class="fas fa-check"></i> Premium packaging at no extra cost</li>
+                        <li><i class="fas fa-check"></i> Monthly savings on delivery fees</li>
+                    </ul>
+                    <div class="price-tag">
+                        <span class="priceabout">₹49</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="terms">Terms and conditions apply</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <%- include("../views/partials/footer.ejs") %>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="src/about.js"></script>
 </body>
 </html>

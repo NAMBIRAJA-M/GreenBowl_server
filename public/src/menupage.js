@@ -104,21 +104,16 @@ $(document).click(function (event) {
 
 //caret up and down
 
-$("#proteinbowl .section-heading,#proteinbowl .caret-styles").click(function () {
-    $("#proteinbowl .caret-styles").toggleClass("caret-styles-js");
-    $("#proteinbowl .section-container").toggleClass("section-container-js");
-});
-$("#salads .section-heading,#salads .caret-styles").click(function () {
-    $("#salads .caret-styles").toggleClass("caret-styles-js")
-    $("#salads .section-container").toggleClass("section-container-js")
-});
-$(".nonvegsalads .section-heading,.nonvegsalads .caret-styles").click(function () {
-    $(".nonvegsalads .caret-styles").toggleClass("caret-styles-js")
-    $(".nonvegsalads .section-container").toggleClass("section-container-js")
-});
-$(".vegsandwiches .section-heading,.vegsandwiches .caret-styles").click(function () {
-    $(".vegsandwiches .caret-styles").toggleClass("caret-styles-js")
-    $(".vegsandwiches .section-container").toggleClass("section-container-js")
+$(document).ready(function() {
+    $(".section-heading, .caret-styles").on("click", function () {         
+        console.log("Section heading clicked!");
+        // Get the spacecaret container
+        const spacecaret = $(this).closest('.spacecaret');
+        // Toggle the caret rotation
+        spacecaret.find(".caret-styles").toggleClass("caret-styles-js");
+        // Toggle the section container visibility
+        spacecaret.next().toggleClass("section-container-js");
+    });
 });
 
 //loginpathway

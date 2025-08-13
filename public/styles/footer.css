@@ -1,0 +1,311 @@
+/* Modern Footer Styles */
+.footer {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-top: 1px solid #dee2e6;
+    margin-top: 3rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    align-items: start;
+}
+
+/* Brand Section */
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.brand-logo {
+    margin-bottom: 1rem;
+}
+
+.logo-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.brand-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #399918;
+    margin: 0.5rem 0;
+    letter-spacing: 0.5px;
+}
+
+.brand-tagline {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #212529;
+    margin: 0 0 1rem 0;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: #399918;
+    border-radius: 1px;
+}
+
+/* Social Media Section */
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: #399918;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(57, 153, 24, 0.3);
+}
+
+.social-link:hover {
+    background: #2d7a13;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(57, 153, 24, 0.4);
+}
+
+.social-link i {
+    font-size: 1.2rem;
+}
+
+/* Quick Links Section */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.footer-link {
+    color: #495057;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    position: relative;
+}
+
+.footer-link:hover {
+    color: #399918;
+    background: rgba(57, 153, 24, 0.1);
+    transform: translateX(5px);
+}
+
+/* Contact Section */
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-text {
+    color: #6c757d;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Copyright Section */
+.footer-bottom {
+    background: #212529;
+    color: #adb5bd;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid #dee2e6;
+}
+
+.copyright {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1.5rem 1.5rem;
+        text-align: center;
+    }
+
+    .footer-brand {
+        order: 1;
+    }
+
+    .footer-social {
+        order: 2;
+    }
+
+    .footer-links {
+        order: 3;
+    }
+
+    .footer-contact {
+        order: 4;
+    }
+
+    .brand-name {
+        font-size: 1.5rem;
+    }
+
+    .logo-img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .social-links {
+        gap: 0.8rem;
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-link i {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1rem;
+    }
+
+    .contact-text {
+        font-size: 0.9rem;
+    }
+
+    .footer-bottom {
+        padding: 1rem 1.5rem;
+    }
+
+    .copyright {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-content {
+        padding: 1.5rem 1rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .brand-name {
+        font-size: 1.3rem;
+    }
+
+    .logo-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .social-links {
+        gap: 0.6rem;
+    }
+
+    .social-link {
+        width: 35px;
+        height: 35px;
+    }
+
+    .social-link i {
+        font-size: 0.9rem;
+    }
+
+    .footer-nav {
+        gap: 0.6rem;
+    }
+
+    .footer-link {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .contact-text {
+        font-size: 0.85rem;
+    }
+
+    .footer-bottom {
+        padding: 0.8rem 1rem;
+    }
+
+    .copyright {
+        font-size: 0.75rem;
+    }
+}
+
+/* Animation for better UX */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer-content > * {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.footer-content > *:nth-child(1) { animation-delay: 0.1s; }
+.footer-content > *:nth-child(2) { animation-delay: 0.2s; }
+.footer-content > *:nth-child(3) { animation-delay: 0.3s; }
+.footer-content > *:nth-child(4) { animation-delay: 0.4s; } 

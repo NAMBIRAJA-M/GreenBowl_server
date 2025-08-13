@@ -10,11 +10,11 @@ import GoogleStrategy from 'passport-google-oauth2';
 import dotenv from 'dotenv';
 import twilio from 'twilio';
 import cors from 'cors';
-import http from 'http';
+/* import http from 'http';
 
 import { WebSocket, WebSocketServer } from 'ws';
 import { type } from 'os';
-
+ */
 
 
 
@@ -25,7 +25,7 @@ const app = express();
 const port = 4000;
 const wsport = 8080;
 const SaltRounds = 10;
-const wss = new WebSocketServer({ port: wsport });
+/* const wss = new WebSocketServer({ port: wsport }); */
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -122,7 +122,25 @@ const insertData = async () => {
         const array = jsonData[key];
 
         for (const item of array) {
-            const { type, name, price, image, veg, nonveg, ingredients, kcal, protein, carbs, fat, fiber } = item;
+            // Handle different field names in the JSON data
+            const type = item.type || key; // Use item.type if exists, otherwise use the category key
+            const name = item.name || item.title; // Use item.name if exists, otherwise use item.title
+            const price = item.price;
+            const image = item.image;
+            const veg = item.veg || item.vegicon; // Use item.veg if exists, otherwise use item.vegicon
+            const nonveg = item.nonveg || item.nonvegicon; // Use item.nonveg if exists, otherwise use item.nonvegicon
+            const ingredients = item.ingredients;
+            const kcal = item.kcal;
+            const protein = item.protein;
+            const carbs = item.carbs;
+            const fat = item.fat;
+            const fiber = item.fiber;
+
+            // Skip items that don't have required fields
+            if (!name || !price || !image) {
+                console.log(`Skipping item with missing required fields:`, item);
+                continue;
+            }
 
             const formattedIngredients = Array.isArray(ingredients) ? JSON.stringify(ingredients) : ingredients;
 
@@ -137,8 +155,9 @@ const insertData = async () => {
         }
     }
 };
-/* insertData();
- */
+/* insertData(); */
+
+
 
 
 /* LOCAL AUTHENTICATION  */
@@ -280,13 +299,10 @@ app.get('/menu', async (req, res) => {
     if (req.isAuthenticated()) {
         console.log("from requser da mavane", req.user, ",", req.user.id)
     }
-    const proteinbowl = await db.query("SELECT * FROM cartinfo WHERE type='protein bowl' ");
-    const recipePB = proteinbowl.rows;
-    const vegsalad = await db.query("SELECT * FROM cartinfo WHERE type='veg salad' ");
-    const recipeVS = vegsalad.rows;
+    const results=await db.query("SELECT * FROM cartinfo");
+    const recipes=results.rows;
     res.render('menupage.ejs', {
-        recipesPB: recipePB,
-        recipesVS: recipeVS
+        recipes: recipes
 
 
     });
@@ -530,12 +546,16 @@ app.get("/sample", (req, res) => {
 
 
 app.get("/order", async (req, res) => {
-    const result = await db.query("SELECT cartinfo.name,cartinfo.price AS originalprice,cartinfo.image,DATE(created_at) AS order_date,orders.* FROM orders JOIN cartinfo ON cartinfo.id =itemid ");
+    const result = await db.query("SELECT cartinfo.name,cartinfo.price AS originalprice,cartinfo.image,address,DATE(created_at) AS order_date,orders.* FROM orders JOIN cartinfo ON cartinfo.id =itemid ");
     const orderedItems = result.rows;
     res.json({ orderedItems });
 })
 
-
+app.get("/user", async (req, res) => {
+    const result = await db.query("SELECT orders.address AS address ,orders.mobile_number AS mobile,users.* FROM users JOIN orders ON users.id = CAST(orders.user_id AS INTEGER)");
+    const users = result.rows;
+    res.json({ users });
+})
 
 
 

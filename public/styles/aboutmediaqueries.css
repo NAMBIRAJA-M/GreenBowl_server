@@ -1,130 +1,545 @@
-
-
-@media screen and (max-width:600px) {
-
-    /*ABOUT PAGE*/
-
-
-
-    .story-section {
-        gap: 0.9rem;
-        flex-wrap: wrap;
-        margin-right: 1.5rem;
-        margin-left: 1.5rem;
+/* Tablet and Small Desktop */
+@media screen and (max-width: 1024px) {
+    .container {
+        max-width: 900px;
     }
-
-    .story-heading {
-        font-size: 1.2rem;
+    
+    .hero-content h1 {
+        font-size: 3.5rem;
     }
-
-
-    .section-details{
-        width: 350px;
-        height: fit-content;
-        font-size: 0.9rem;
-        text-align: justify;
+    
+    .founder-content {
+        gap: 3rem;
     }
-
-    .media-container {
-        text-align: center;
+    
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-
-    .media-container img {
-        width: 200px;
-        height: auto;
-
-    }
-
-    .media-container p {
-        font-size: 1.2rem;
-    }
-
-    .values-container {
-        gap: 0.8rem;
-
-    }
-
-    .values {
-        width: 300px;
-
-    }
-
-    .value-heading {
-        font-size: 1.3rem;
-    }
-
-    .value-detail {
-        font-size: 0.87rem;
-        padding-top: 0.2rem;
-    }
-
-    .footercaption {
-        font-size: 1.1rem;
-    }
-
-
-    /*GREEN PASS*/
-
-    .GP-container {
-       flex-wrap: wrap;
-       padding-top: 1.4rem;
-       margin-left: 1.5rem;
-       margin-right: 1.5rem;
-       gap: 1.4rem;
-       justify-content: center;
-       align-items: center;
-    }
-    .aboutbg {
-        gap: 0.2rem;
-        margin-top: 0%;
-        margin-right: 0%;
-    }
-    .about-content {
-        width: 300px;
-        height: 300px;
-        color: black;
-        font-size: 0.6rem;
-        margin: 10px;
-        margin-left: 0%;
-        padding: 20px 10px;
-        border: 5px solid green;
-    }
-
-    .list li {
-        padding: 5px;
-    }
-
-
-    /*GREEN PASS*/
-
-
-    .GPbanner {
-        width: 300px;
-        height:300px;
-    }
-
 }
 
-
-
-
-
-
-
-
-
-@media screen and (max-width:400px) {
-
-/*ABOUT PAGE*/
-    .story-section {
-        margin-right: 1rem;
-        margin-left: 0.6rem;
+/* Tablet Portrait */
+@media screen and (max-width: 768px) {
+    .hero-section {
+        padding: 80px 0 70px;
     }
-    .section-details{
-        width: 300px;
-        height: fit-content;
-        font-size: 0.76rem;
-        text-align: justify;
+    
+    .hero-content h1 {
+        font-size: 3rem;
     }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    
+    .main-content {
+        padding: 4rem 0;
+    }
+    
+    .content-section {
+        margin-bottom: 5rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+    
+    .section-content {
+        font-size: 1.1rem;
+    }
+    
+    .founder-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    
+    .founder-image img {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .founder-overlay {
+        padding: 1.2rem 2rem;
+        bottom: -25px;
+        left: 100px;
+        width: 200px;
+        padding: 0rem 0rem;
+    }
+    
+    .founder-overlay h3 {
+        font-size: 0.77rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .value-card {
+        padding: 2.5rem 2rem;
+    }
+    
+    .value-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .cta-section {
+        padding: 3rem 2rem;
+        margin-top: 4rem;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    .greenpass-section {
+        padding: 4rem 0;
+        margin-top: 4rem;
+    }
+    
+    .greenpass-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .greenpass-details h3 {
+        font-size: 2rem;
+        text-align: center;
+    }
+    
+    .benefits-list li {
+        font-size: 1.1rem;
+    }
+    
+    .price {
+        font-size: 3rem;
+    }
+}
 
+/* Mobile Large */
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-section {
+        padding: 60px 0 50px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .breadcrumb {
+        font-size: 0.85rem;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        align-items: center;
+    }
+    
+    .breadcrumb li {
+     
+        display: flex;
+        align-items: center;
+    }
+    
+    
+    .breadcrumb a {
+        padding: 0.2rem 0.4rem;
+    }
+    
+    .breadcrumb-nav {
+        min-height: 40px;
+        padding: 0.8rem 0;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .section-divider {
+        width: 80px;
+        height: 3px;
+    }
+    
+    .founder-image img {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .founder-overlay {
+        padding: 1rem 1.8rem;
+        border-radius: 40px;
+        bottom: -20px;
+    }
+    
+    .founder-overlay h3 {
+        font-size: 1.2rem;
+    }
+    
+    .founder-overlay p {
+        font-size: 0.9rem;
+    }
+    
+    .founder-text {
+        font-size: 1.1rem;
+    }
+    
+    .value-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .value-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .value-card h3 {
+        font-size: 1.4rem;
+    }
+    
+    .value-card p {
+        font-size: 1rem;
+    }
+    
+    .cta-section {
+        padding: 2.5rem 1.5rem;
+        border-radius: 24px;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .cta-content p {
+        font-size: 1.1rem;
+    }
+    
+    .greenpass-details h3 {
+        font-size: 1.8rem;
+    }
+    
+    .benefits-list li {
+        font-size: 1rem;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        padding: 0.8rem 1.2rem;
+    }
+    
+    .benefits-list i {
+        font-size: 1.2rem;
+        min-width: 20px;
+        padding: 0.4rem;
+    }
+    
+    .price {
+        font-size: 2.8rem;
+    }
+    
+    .period {
+        font-size: 1.2rem;
+    }
+}
+
+/* Mobile Small */
+@media screen and (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-content {
+        font-size: 1rem;
+    }
+    
+    .founder-image img {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .founder-overlay {
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        bottom: -15px;
+    }
+    
+    .founder-overlay h3 {
+        font-size: 1.1rem;
+    }
+    
+    .founder-overlay p {
+        font-size: 0.8rem;
+    }
+    
+    .founder-text {
+        font-size: 1rem;
+    }
+    
+    .founder-text p {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+    }
+    
+    .founder-text p::before {
+        font-size: 2.5rem;
+    }
+    
+    .value-card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 20px;
+    }
+    
+    .value-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .value-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .value-card p {
+        font-size: 0.95rem;
+    }
+    
+    .cta-section {
+        padding: 2rem 1.2rem;
+        margin-top: 3rem;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .cta-content p {
+        font-size: 1rem;
+    }
+    
+    .greenpass-section {
+        padding: 3rem 0;
+        margin-top: 3rem;
+    }
+    
+    .greenpass-details h3 {
+        font-size: 1.6rem;
+    }
+    
+    .benefits-list li {
+        font-size: 0.95rem;
+        gap: 0.8rem;
+        margin-bottom: 0.8rem;
+        padding: 0.7rem 1rem;
+    }
+    
+    .benefits-list i {
+        font-size: 1.1rem;
+        min-width: 18px;
+        padding: 0.3rem;
+    }
+    
+    .price {
+        font-size: 2.5rem;
+    }
+    
+    .period {
+        font-size: 1.1rem;
+    }
+    
+    .terms {
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra Small Mobile */
+@media screen and (max-width: 360px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .founder-image img {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .value-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .value-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .value-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .value-card p {
+        font-size: 0.9rem;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .greenpass-details h3 {
+        font-size: 1.4rem;
+    }
+    
+    .benefits-list li {
+        font-size: 0.9rem;
+    }
+    
+    .price {
+        font-size: 2.2rem;
+    }
+}
+
+/* Landscape Orientation */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        padding: 40px 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .main-content {
+        padding: 3rem 0;
+    }
+    
+    .content-section {
+        margin-bottom: 3rem;
+    }
+    
+    .founder-content {
+        gap: 2rem;
+    }
+    
+    .founder-image img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .founder-image img,
+    .gp-banner {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .hero-section {
+        background: white !important;
+        color: black !important;
+        padding: 20px 0;
+    }
+    
+    .breadcrumb-nav,
+    .cta-section {
+        display: none;
+    }
+    
+    .value-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .greenpass-section {
+        background: white !important;
+    }
+}
+
+/* Smooth scrolling for better UX */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced focus states for accessibility */
+.breadcrumb a:focus,
+.value-card:focus,
+.founder-image:focus {
+    outline: 2px solid #27ae60;
+    outline-offset: 2px;
+}
+
+/* Loading animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Hover effects for interactive elements */
+.breadcrumb a:hover,
+.value-card:hover,
+.founder-image:hover,
+.gp-banner:hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced shadows for depth */
+.value-card,
+.founder-image img,
+.gp-banner,
+.cta-section {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Gradient text effects */
+.hero-content h1,
+.section-header h2,
+.value-card h3 {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-content h1 {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }

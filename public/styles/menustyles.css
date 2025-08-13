@@ -622,7 +622,17 @@ body {
 
 
 /*PROTEIN BOWL*/
-#proteinbowl {
+#proteinbowl,
+#salads,
+#wraps,
+#vegsandwiches,
+#nonvegsandwiches,
+#vegwraps,
+#nonvegwraps,
+#smoothies,
+#diaryFreesmoothies,
+#Smoothiebowl,
+#smoothiebowl {
     position: relative;
     padding-top: 20px;
 
@@ -668,13 +678,27 @@ body {
 }
 
 .proteinbowl,
-.vegsalads {
+.vegsalads,
+.salads,
+.wraps,
+.vegsandwiches,
+.nonvegsandwiches,
+.vegwraps,
+.nonvegwraps,
+.smoothies,
+.diaryfreesmoothies,
+.dairyfreesmoothies,
+.Smoothiebowl,
+.smoothiebowl,
+.proteinbowl,
+.vegsalad,
+.nonvegsalad {
     margin: 3rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 3rem;
+    align-items: flex-start;
+    gap: 2rem;
     overflow-wrap: break-word;
 }
 
@@ -683,7 +707,7 @@ body {
     justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
-}
+    }
 
 .section-container-js {
     display: none;
@@ -694,7 +718,7 @@ body {
     text-align: initial;
     flex-wrap: wrap;
     gap: 1.5rem;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-bottom: 2rem;
 
 }
@@ -703,8 +727,9 @@ article {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 35rem;
+    width: 30rem;
     min-width: 15rem;
+    max-width: 30rem;
     justify-content: start;
     gap: 0.01rem;
     margin-bottom: 0.1rem;
@@ -712,12 +737,13 @@ article {
     border-radius: 15px;
     padding: 1rem;
     overflow-wrap: break-word;
+    flex: 0 0 auto;
 }
 
 .about-img {
     float: right;
     margin-left: 0.5rem;
-    margin-top: -2rem;
+    margin-top: 0rem;
     overflow-wrap: break-word;
 
 }

@@ -232,24 +232,26 @@ async function myOrders() {
                     const timestamp = item.order_date;
                     const date = new Date(timestamp).toLocaleDateString('en-GB');
                     console.log("date:", date);
+
+
                     const itemElement = $(`
                     <div class="order-item">
                     <img src="${item.image}" alt="${item.name}" /> 
                     <div class="order-details">
                       <p class="order-name">${item.name}</p>
                       <p class="order-price">₹ ${item.price}</p>
-
+</div>
                     <div class="order-articles">
                   
                         <div class="status">
                         <p class="bullet"></p>
-                        <p class="order-status"> Delivered within minutes</p>
+                        <p class="order-status">We are preparing your order</p>
                         </div>
-                        <p class="order-status-details"> your order has been placed.</p>
-                        <p class="order-date">Ordered date: ${date}</p>
+                        <p class="order-status-details"> Your order will be delivered within 30 minutes.</p>
+                        <p class="order-date">Ordered on: ${date}</p>
                     </div>
                     
-                      </div>
+                      
                     </div>
                   `);
                     $(".orders-list").append(itemElement);
